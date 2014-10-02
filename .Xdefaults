@@ -7,7 +7,7 @@ URxvt.scrollBar:        0
 URxvt.font:             xft:Ubuntu Mono:pixelsize=15
 URxvt.color10:          #66ff66
 URxvt.color12:          #6666ff
-URxvt.path:             /home/diovani/Imagens/Wallpapers
+!URxvt.path:             /home/diovani/Imagens/Wallpapers
 !URxvt.backgroundPixmap: ergo_proxy_1440x900.jpg;root
 !URxvt.backgroundPixmap: cthulhu_rising_by_nebezial_1440x900_rxvt.jpg;root
 !URxvt.backgroundPixmap: doctor_who_tardis_desktop_1440x900_wallpaper_darkened.jpg;root
@@ -15,3 +15,8 @@ URxvt.borderLess:       0
 URxvt.termName:         rxvt
 URxvt.urlLauncher:      google-chrome
 URxvt.loginShell:       1
+
+! Font resize extension
+URxvt.perl-ext-common: ...,font-size
+URxvt.keysym.C-S-Up:   perl:font-size:increase
+URxvt.keysym.C-S-Down: perl:font-size:decrease
