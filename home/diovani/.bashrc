@@ -68,12 +68,16 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
     ;;
 *)
     ;;
 esac
+
+# Start tmux at login
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -137,9 +141,3 @@ alias vimless='/usr/share/vim/vim74/macros/less.sh'
 
 # Change pager to LESS (for psql)
 export PAGER=less
-
-# Start Tmux
-if [[ ! $TERM =~ screen ]]; then
-    exec tmux
-fi
-
