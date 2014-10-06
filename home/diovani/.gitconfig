@@ -1,0 +1,11 @@
+[color]
+	ui = always
+[push]
+	default = simple
+[alias]
+    ci = commit
+    co = checkout
+	st = status
+	history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
+[credential]
+	helper = cache --timeout=1800
