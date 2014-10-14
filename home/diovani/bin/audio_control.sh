@@ -7,7 +7,7 @@
 # 
 # @author Paulo Diovani <paulo@diovani.com>
 # 
-# Current players:
+# Current supported players:
 # * Audacious
 # * MPD/mpc
 
@@ -74,10 +74,10 @@ if [ $cmdindex -eq -1 ]; then
     err "Invalid command: $1"
 fi
 
-# Check for running players, and then exec the command
+# Check for running players, and then exec the command for the first one
 for p in ${!PLAYERS[@]}; do
-    plist=${PLAYERS[$p]}
-    pname=$(getname $plist)
+    plist=${PLAYERS[$p]}    # command list for the player
+    pname=$(getname $plist) # player name
 
     if [ $(ps -ef | grep "$pname" | grep -v "grep" | wc -l) -gt 0 ]; then
         parray=($plist)                                       # player list to array
