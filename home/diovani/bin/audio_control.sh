@@ -85,9 +85,6 @@ for p in ${!PLAYERS[@]}; do
         pindex="$(( $pstart + $cmdindex ))"                   # index for command to run
     
         cmd="$(getcmd "$plist" "$pstart") ${parray[$pindex]}" # command to run
-    
-        echo "i: $cmdindex, pi: $pindex, ps: $pstart"
-        echo "$cmd"
         break
     fi
 done
