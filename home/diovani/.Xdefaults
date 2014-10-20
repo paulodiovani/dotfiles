@@ -8,7 +8,7 @@ URxvt.font:             xft:Ubuntu Mono:pixelsize=15
 URxvt.color10:          #66ff66
 URxvt.color12:          #6666ff
 URxvt.borderLess:       0
-URxvt.termName:         rxvt
+URxvt.termName:         rxvt-unicode
 URxvt.urlLauncher:      google-chrome
 URxvt.loginShell:       1
 
