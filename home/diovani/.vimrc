@@ -13,6 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,6 +64,10 @@ map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
+
+" atalhos para o nerdtree
+map <C-k><C-b> :NERDTreeToggle<CR>
+map <S-C-r> :NERDTreeFind<CR>
 
 " background color (light|dark)
 set background=dark
