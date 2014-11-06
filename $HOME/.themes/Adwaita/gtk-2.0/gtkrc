@@ -195,3 +195,30 @@ widget_class "*.GtkComboBox.GtkButton" style "clearlooks-combo"
 widget_class "*.GtkCombo.GtkButton" style "clearlooks-combo"
 class "GtkButton" style "clearlooks-button"
 class "GtkScrollbar" style "clearlooks-scrollbar"
+
+# Pidgin config (color for chat window)
+style "pidgin-styles" {
+  # Change the color of hyperlinks.
+  GtkIMHtml::hyperlink-color = "#6F6FFF"
+  # Change the color of the nick in highlighted messages, e.g. messages containing your nick
+  GtkIMHtml::highlight-name-color = "#FCF1AB"
+  # Change the color of the nick in received message
+  GtkIMHtml::receive-name-color = "#D54444"
+  # Change the color of the nick in sent message
+  GtkIMHtml::send-name-color = "#208A85"
+  # Change the color of the nick in action messages, e.g. "/me likes pidgin"
+  GtkIMHtml::action-name-color = "#208A65"
+  # Change the font of the typing notification in conversation history.
+  GtkIMHtml::typing-notification-font = "italic light 8.0"
+  # Change the color of the typing notification
+  GtkIMHtml::typing-notification-color = "#ff0000"
+  # Enable/Disable the typing notification
+  GtkIMHtml::typing-notification-enable = 1
+
+  # The following settings will change the behaviour in all GTK+ applications
+  # Change the cursor color
+  #GtkWidget::cursor-color    = "#0000FF"
+  #GtkWidget::secondary-cursor-color = "#00FF00" #for mixed ltr and rtl
+}
+widget_class "*" style "pidgin-styles"
+
