@@ -211,7 +211,7 @@ style "pidgin-styles" {
   # Change the font of the typing notification in conversation history.
   GtkIMHtml::typing-notification-font = "italic light 8.0"
   # Change the color of the typing notification
-  GtkIMHtml::typing-notification-color = "#ff0000"
+  GtkIMHtml::typing-notification-color = "#CCCCCC"
   # Enable/Disable the typing notification
   GtkIMHtml::typing-notification-enable = 1
 
