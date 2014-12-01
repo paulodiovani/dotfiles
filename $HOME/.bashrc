@@ -141,3 +141,6 @@ alias vimless='/usr/share/vim/vim74/macros/less.sh'
 
 # Change pager to LESS (for psql)
 export PAGER=less
+
+# Rbenv init
+eval "$(rbenv init -)"
