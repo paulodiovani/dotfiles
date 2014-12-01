@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix="$HOME/Imagens/Screenshots/"
+prefix="$HOME/Pictures/Screenshots/"
 date="$(date -Is)"
 type='png'
 quality='90'
