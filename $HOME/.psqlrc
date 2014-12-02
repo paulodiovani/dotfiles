@@ -1,0 +1,25 @@
+\set QUIET 1
+-- formatting
+\x auto
+
+-- show execution times
+\timing
+
+-- limit paging
+\pset pager always
+
+-- replace nulls
+\pset null NULL
+
+-- line style
+\pset linestyle unicode
+\pset border 2
+
+--logging
+-- Use a separate history file per-database.
+\set HISTFILE ~/.psql_history- :DBNAME
+-- If a command is run more than once in a row, only store it once in the
+-- history.
+\set HISTCONTROL ignoredups
+
+\unset QUIET

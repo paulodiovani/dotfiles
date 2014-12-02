@@ -136,6 +136,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# less
+PAGER="less -S"
+
 # vim less
 alias vimless='/usr/share/vim/vim74/macros/less.sh'
 
