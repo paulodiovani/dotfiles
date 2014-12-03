@@ -12,7 +12,7 @@
     },
     "no_trailing_whitespace": {
         "name": "no_trailing_whitespace",
-        "level": "error",
+        "level": "warn",
         "allowed_in_comments": false,
         "allowed_in_empty_lines": true
     },
@@ -29,7 +29,7 @@
     },
     "no_trailing_semicolons": {
         "name": "no_trailing_semicolons",
-        "level": "error"
+        "level": "warn"
     },
     "indentation": {
         "name": "indentation",
@@ -67,6 +67,7 @@
     },
     "no_implicit_parens": {
         "name": "no_implicit_parens",
+        "strict": true,
         "level": "ignore"
     },
     "no_empty_param_list": {
@@ -109,6 +110,18 @@
     },
     "non_empty_constructor_needs_parens": {
         "name": "non_empty_constructor_needs_parens",
+        "level": "ignore"
+    },
+    "no_unnecessary_double_quotes": {
+        "name": "no_unnecessary_double_quotes",
+        "level": "ignore"
+    },
+    "no_debugger": {
+        "name": "no_debugger",
+        "level": "warn"
+    },
+    "no_interpolation_in_single_quotes": {
+        "name": "no_interpolation_in_single_quotes",
         "level": "ignore"
     }
 }
