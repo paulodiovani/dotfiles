@@ -52,7 +52,7 @@ ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 ZSH_TMUX_FIXTERM="true"
 # Allow tmux set title
-DISABLE_AUTO_TITLE="true"
+#DISABLE_AUTO_TITLE="true"
 
 # User configuration
 
