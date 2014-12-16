@@ -61,6 +61,8 @@ export PATH="/home/diovani/bin:/home/diovani/.rbenv/shims:/usr/bin:/home/diovani
 
 source $ZSH/oh-my-zsh.sh
 
+source ~/.zsh_local_history.sh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
