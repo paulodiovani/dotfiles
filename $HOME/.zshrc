@@ -99,6 +99,9 @@ alias less='less -S'
 # vim less
 alias vimless='/usr/share/vim/vim74/macros/less.sh'
 
+# force firefox to use adwaita theme
+alias firefox='env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc firefox'
+
 # Change pager to LESS (for psql)
 export PAGER="less -S"
 
