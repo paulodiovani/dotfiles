@@ -56,7 +56,6 @@ ZSH_TMUX_FIXTERM="true"
 
 # User configuration
 
-export PATH="/home/diovani/bin:/home/diovani/.rbenv/shims:/usr/bin:/home/diovani/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
