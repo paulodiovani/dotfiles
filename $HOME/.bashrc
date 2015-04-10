@@ -130,22 +130,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-
-# Some more alias to avoid making mistakes:
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-# vim less
-alias vimless='/usr/share/vim/vim74/macros/less.sh'
-
-# Force firefox to use adwaita theme
-alias firefox='env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc firefox'
-
-# alias for bundler commands
-alias be='bundle exec'
-
-# Change pager to LESS (for psql)
+# Change pager to LESS (for psql, etc)
 export PAGER="less -S"
 
 # Rbenv init

@@ -78,6 +78,15 @@ source ~/.zsh_local_history.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -87,23 +96,6 @@ source ~/.zsh_local_history.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Some more alias to avoid making mistakes:
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-# scrollable less
-alias less='less -S'
-
-# vim less
-alias vimless='/usr/share/vim/vim74/macros/less.sh'
-
-# force firefox to use adwaita theme
-alias firefox='env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc firefox'
-
-# alias for bundler commands
-alias be='bundle exec'
-
-# Change pager to LESS (for psql)
+# change pager to LESS (for psql, etc)
 export PAGER="less -S"
 
