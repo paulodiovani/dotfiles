@@ -3,13 +3,14 @@
 [push]
 	default = simple
 [alias]
-  ci = commit
-  co = checkout
+	ci = commit
+	co = checkout
 	st = status
-  history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
-# User Gnome keyring as credential helper
+	history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+[blame]
+	date = short
