@@ -12,7 +12,7 @@ URxvt.termName:         rxvt-unicode
 URxvt.urlLauncher:      google-chrome
 URxvt.loginShell:       1
 
-! Font resize extension
-URxvt.perl-ext-common: ...,font-size
-URxvt.keysym.C-S-Up:   perl:font-size:increase
-URxvt.keysym.C-S-Down: perl:font-size:decrease
+! Font size extension and keybindins
+URxvt.perl-ext-common:   font-size
+URxvt.keysym.C-S-Up:     perl:font-size:increase
+URxvt.keysym.C-S-Down:   perl:font-size:decrease
