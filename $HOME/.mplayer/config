@@ -1,0 +1,3 @@
+# Increase volume above 100%
+softvol=1
+softvol-max=150
