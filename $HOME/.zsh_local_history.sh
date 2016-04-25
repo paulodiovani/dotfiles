@@ -1,7 +1,7 @@
 # Up/Down use local history
 # source: http://superuser.com/a/691603/173488
-bindkey "${key[Up]}" up-line-or-local-history
-bindkey "${key[Down]}" down-line-or-local-history
+bindkey "OA" up-line-or-local-history
+bindkey "OB" down-line-or-local-history
 
 up-line-or-local-history() {
     zle set-local-history 1
