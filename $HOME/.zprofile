@@ -1,9 +1,10 @@
-# Rbenv init
+# rbenv init
 export RBENV_DIR="$HOME/.rbenv"
 [ -s "$RBENV_DIR/bin/rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"
-[ -s "$RBENV_DIR/bin/rbenv" ] && eval "$(rbenv init -)"
+command -v rbenv > /dev/null && eval "$(rbenv init -)"
 
-# NVM init
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# ndenv init
+export NDENV_DIR="$HOME/.ndenv"
+[ -s "$NDENV_DIR/bin/ndenv" ] && export PATH="$HOME/.ndenv/bin:$PATH"
+command -v ndenv > /dev/null && eval "$(ndenv init -)"
 
