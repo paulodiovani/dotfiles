@@ -1,3 +1,0 @@
-# Docker.io library folder
-/mnt/userdata/var/lib/docker              /var/lib/docker none    bind            0       0
-
