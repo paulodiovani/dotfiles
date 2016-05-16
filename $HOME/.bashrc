@@ -133,6 +133,9 @@ esac
 # Change pager to LESS (for psql, etc)
 export PAGER="less -S"
 
+# ~/bin
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+
 # rbenv init
 export RBENV_DIR="$HOME/.rbenv"
 [ -s "$RBENV_DIR/bin/rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"

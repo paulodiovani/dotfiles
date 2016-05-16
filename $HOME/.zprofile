@@ -1,3 +1,6 @@
+# ~/bin
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+
 # rbenv init
 export RBENV_DIR="$HOME/.rbenv"
 [ -s "$RBENV_DIR/bin/rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"
