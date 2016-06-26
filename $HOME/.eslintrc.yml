@@ -1,15 +1,17 @@
 rules:
   indent:
-    - 2
+    - warn
     - 2
   quotes:
-    - 2
+    - warn
     - single
   linebreak-style:
-    - 2
+    - error
     - unix
+  no-unused-vars:
+    - warn
   semi:
-    - 2
+    - warn
     - always
 env:
   es6: true
