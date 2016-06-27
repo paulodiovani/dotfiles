@@ -2,6 +2,9 @@ rules:
   indent:
     - warn
     - 2
+  max-len:
+    - warn
+    - 80
   quotes:
     - warn
     - single
