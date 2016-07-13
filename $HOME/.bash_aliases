@@ -12,5 +12,6 @@ alias vimless='/usr/share/vim/vim74/macros/less.sh'
 # force some apps to use adwaita theme
 alias firefox='env GTK_THEME=Adwaita:light firefox'
 
-# alias for bundler commands
+# aliases for common commands
 alias bx='bundle exec'
+alias dc='docker-compose'
