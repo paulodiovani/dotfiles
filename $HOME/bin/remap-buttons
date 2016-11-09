@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DEVICE=xwayland-pointer:13
+
+function mousemapping() {
+    /usr/bin/xinput set-button-map "$DEVICE" 1 2 3
+}
+
+function touchpadmapping() {
+    /usr/bin/xinput set-button-map "$DEVICE" 1 3 2
+}
+
+
+case $1 in
+    'm')
+				mousemapping
+				;;
+    'mouse')
+        mousemapping
+        ;;
+    't')
+				touchpadmapping
+				;;
+    'touchpad')
+				touchpadmapping
+				;;
+    *)
+				echo $"Usage: $0 {m|mouse|t|touchpad}"
+        exit 1
+esac
+        
