@@ -7,7 +7,7 @@ alias mv='mv -i'
 alias less='less -S'
 
 # vim less (user vim as less for syntax highlight)
-alias vimless='/usr/share/vim/vim74/macros/less.sh'
+alias vimless='/usr/share/vim/vim80/macros/less.sh'
 
 # force some apps to use adwaita theme
 alias firefox='env GTK_THEME=Adwaita:light firefox'
