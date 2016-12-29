@@ -8,7 +8,7 @@
 	st = status
 	history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+	helper = gnome-keyring
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
