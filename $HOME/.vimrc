@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 "Plugin 'wakatime/vim-wakatime'
 
@@ -47,7 +48,7 @@ set fdm=marker          " habilita o folding
 
 set bs=2                " mexe com o backspace mas nao lembro o que faz
 set sm                  " colore chaves/parenteses casados
-set ai cindent sw=4     " configura a identacao
+set ai cindent sw=2     " configura a identacao
 "set is ic              " configura a busca
 set et st=2 ts=2        " configura o TAB
 retab                   " substitui os TAB's por espacos
@@ -67,9 +68,21 @@ imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
 
-" atalhos para o nerdtree
-map <C-k><C-b> :Explore!<CR>
+" nerdtree keymaps
+map <C-k><C-b> :NERDTreeToggle<CR>
 map <S-C-r> :NERDTreeFind<CR>
+
+" set Alt-f
+execute "set <A-f>=\ef"
+
+" buffers (files) keymaps
+map <A-f>a :buffers<CR>
+map <A-f>o :edit 
+map <A-f>n :bnext<CR>
+map <A-f>p :bprev<CR>
+map <A-f>f :bfirst<CR>
+map <A-f>l :blast<CR>
+map <A-f>p :bprev<CR>
 
 " background color (light|dark)
 set background=dark
