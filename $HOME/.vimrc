@@ -82,17 +82,17 @@ set pastetoggle=<F11>
 map <C-k><C-b> :NERDTreeToggle<CR>
 map <S-C-r> :NERDTreeFind<CR>
 
-" set Alt-f
-execute "set <A-f>=\ef"
+" tabs/buffers keymaps (Note: Leader=\ by default)
+map <Leader>f :tabfirst<CR>
+map <Leader>l :tablast<CR>
+map <Leader>p :tabprev<CR>
+map <Leader><Left> :tabprev<CR>
+map <Leader>n :tabnext<CR>
+map <Leader><Right> :tabnext<CR>
 
-" buffers (files) keymaps
-map <A-f>a :buffers<CR>
-map <A-f>e :edit 
-map <A-f>n :bnext<CR>
-map <A-f>p :bprev<CR>
-map <A-f>f :bfirst<CR>
-map <A-f>l :blast<CR>
-map <A-f>p :bprev<CR>
+" navigate in buffers
+map <Leader><Up> :bprev<CR>
+map <Leader><Down> :bnext<CR>
 
 " background color (light|dark)
 set background=dark
