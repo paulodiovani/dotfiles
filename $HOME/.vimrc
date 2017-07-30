@@ -77,7 +77,7 @@ execute "set <A-f>=\ef"
 
 " buffers (files) keymaps
 map <A-f>a :buffers<CR>
-map <A-f>o :edit 
+map <A-f>e :edit 
 map <A-f>n :bnext<CR>
 map <A-f>p :bprev<CR>
 map <A-f>f :bfirst<CR>
