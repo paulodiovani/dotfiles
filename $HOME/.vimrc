@@ -37,31 +37,31 @@ filetype plugin indent on    " required
 " ---------------------------------------------------------------------
 " Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
 
-"set nu                  " enumera as linhas
-set ruler               " mostra a posicao do cursor
-set title               " mostra o nome do arquivo na barra de titulo
-set t_vb=               " desabilita o alerta sonoro (chato)
-"set termencoding=utf8   " define todos os arquivos ocmo UTF-8
-"set nobackup            " nao grava os arquivos ~* de backup
-set fdm=marker          " habilita o folding
+"set nu                  " add line numbers
+set ruler               " show cursor position
+set title               " show filename on title bar
+set t_vb=               " no bell
+"set termencoding=utf8   " all files are utf8
+"set nobackup            " don't write ~* backup files
+set fdm=marker          " folding
 "set tw=80               " text width
 
-set bs=2                " mexe com o backspace mas nao lembro o que faz
-set sm                  " colore chaves/parenteses casados
-set ai cindent sw=2     " configura a identacao
-"set is ic              " configura a busca
-set et st=2 ts=2        " configura o TAB
-retab                   " substitui os TAB's por espacos
-syntax on               " habilita a colocaracao de sintaxe
+set bs=2                " same as :set backspace=indent,eol,start
+set sm                  " color matching braces/parenthesis
+set ai cindent sw=2     " indentation
+"set is ic              " search
+set et st=2 ts=2        " TAB width
+retab                   " use spaces for Tabs
+syntax on
 set noautoindent
 
-" atalho para embaralhar letras quando alguem estiver olhando
+" shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
 
-" atalho para retirar ^M do final das linhas
+" remove <CR>/^M from line endings
 map <F2> :%s/\r//g<CR>
 
-" atalho para ativar/desativar o modo paste
+" enable/disable paste mode
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
@@ -87,5 +87,5 @@ map <A-f>p :bprev<CR>
 " background color (light|dark)
 set background=dark
 
-" aliases uteis para fechar o vim
+" aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
