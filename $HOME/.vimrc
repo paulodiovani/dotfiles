@@ -22,6 +22,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
 "Plugin 'wakatime/vim-wakatime'
 
 " Languages syntax
@@ -49,9 +50,35 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='silver'
 
-" ---------------------------------------------------------------------
-" Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+map <Leader>s :SyntasticCheck<CR>
+map <Leader>ss :SyntasticToggleMode<CR>
+map <Leader>st :SyntasticToggleMode<CR>
+
+" Location list settings
+map <Leader>lo :lopen<CR>
+map <Leader>lc :lclose<CR>
+map <Leader>ln :lnext<CR>
+map <Leader>l :lnext<CR>
+map <Leader>ll :lnext<CR>
+map <Leader>lp :lprevious<CR>
+map <Leader>L :lprevious<CR>
+map <Leader>lL :lprevious<CR>
+map <Leader>LL :lprevious<CR>
+
+" General config
+" Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
 "set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
@@ -60,7 +87,6 @@ set t_vb=               " no bell
 "set nobackup            " don't write ~* backup files
 set fdm=marker          " folding
 "set tw=80               " text width
-
 set bs=2                " same as :set backspace=indent,eol,start
 set sm                  " color matching braces/parenthesis
 set ai cindent sw=2     " indentation
@@ -69,16 +95,11 @@ set et st=2 ts=2        " TAB width
 retab                   " use spaces for Tabs
 syntax on
 set noautoindent
-
-" background color (light|dark)
-set background=dark
-
+set background=dark     " background color (light|dark)
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
-
 " remove <CR>/^M from line endings
 map <F2> :%s/\r//g<CR>
-
 " enable/disable paste mode
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
@@ -91,16 +112,17 @@ map <C-k><C-b> :NERDTreeToggle<CR>
 map <S-C-r> :NERDTreeFind<CR>
 
 " tabs/buffers keymaps (Note: Leader=\ by default)
-map <Leader>f :tabfirst<CR>
-map <Leader>l :tablast<CR>
-map <Leader>p :tabprev<CR>
+map <Leader>tp :tabprev<CR>
 map <Leader><Left> :tabprev<CR>
-map <Leader>n :tabnext<CR>
+map <Leader>tn :tabnext<CR>
 map <Leader><Right> :tabnext<CR>
 
 " navigate in buffers
+map <Leader>bp :bprev<CR>
 map <Leader><Up> :bprev<CR>
+map <Leader>bn :bnext<CR>
 map <Leader><Down> :bnext<CR>
+map <Leader>bd :bdelete<CR>
 map <Leader>q :bdelete<CR>
 
 " list buffers/tabs in CtrlP
