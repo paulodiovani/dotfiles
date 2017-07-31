@@ -12,15 +12,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
+Plugin 'DavidEGx/ctrlp-smarttabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'editorconfig/editorconfig-vim'
-"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
-"Plugin 'wakatime/vim-wakatime'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'wakatime/vim-wakatime'
+
+" Languages syntax
 Plugin 'elixir-lang/vim-elixir'
 
 " All of your Plugins must be added before the following line
@@ -66,6 +70,9 @@ retab                   " use spaces for Tabs
 syntax on
 set noautoindent
 
+" background color (light|dark)
+set background=dark
+
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
 
@@ -94,9 +101,15 @@ map <Leader><Right> :tabnext<CR>
 " navigate in buffers
 map <Leader><Up> :bprev<CR>
 map <Leader><Down> :bnext<CR>
+map <Leader>q :bdelete<CR>
 
-" background color (light|dark)
-set background=dark
+" list buffers/tabs in CtrlP
+map <C-b> :CtrlPBuffer<CR>
+map <C-t> :CtrlPSmartTabs<CR>
+
+" Git commands
+map <C-g>b :Git blame %<CR>
+map <C-g>d :Git diff %<CR>
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
