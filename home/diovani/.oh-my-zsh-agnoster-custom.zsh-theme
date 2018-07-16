@@ -207,12 +207,12 @@ prompt_virtualenv() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && [[ $RETVAL -ne 130 ]] && symbols+="%{%F{red}%}✘"
+  [[ $RETVAL -ne 0 ]] && [[ $RETVAL -ne 130 ]] && symbols+="%{%F{red}%} ✘"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%} ⚙"
 
+  [[ ${#symbols[@]} -eq 0 ]] && symbols+="$SHELL_ICON"
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
-  [[ -n "$symbols" ]] || [[ -n $SHELL_ICON ]] && prompt_segment black default "$SHELL_ICON"
 }
 
 ## Main prompt
