@@ -200,6 +200,12 @@ prompt_virtualenv() {
   fi
 }
 
+# Emoji for prompt line
+shell_emoji() {
+  icon_list=(☕ 👽 👾 🤖 🦑 🍄 🥑 🎃 🤔 💩)
+  echo ${icon_list[$RANDOM % ${#icon_list[@]} + 1]}
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -211,7 +217,7 @@ prompt_status() {
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%} ⚙"
 
-  [[ ${#symbols[@]} -eq 0 ]] && symbols+="$SHELL_ICON"
+  [[ ${#symbols[@]} -eq 0 ]] && symbols+=$(shell_emoji)
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
