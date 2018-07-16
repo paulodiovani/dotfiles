@@ -1,4 +1,8 @@
-# ~/bin
+# shell icon for zsh theme
+icon_list=(☕ 👽 👾 🤖 🦑 🍄 🥑 🎃 🤔 💩)
+SHELL_ICON=${icon_list[$RANDOM % ${#icon_list[@]} + 1]}
+
+#~/bin
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
 # rbenv init
