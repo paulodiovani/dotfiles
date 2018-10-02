@@ -9,16 +9,19 @@ cutinate()
 {
     perc=$1
     inc=$(( 100 / $NUM_HEARTS))
+    hearts=''
 
 
     for i in `seq $NUM_HEARTS`; do
         if [ $perc -lt 100 ]; then
-            echo $HEART_EMPTY
+            hearts="$HEART_EMPTY$hearts"
         else
-            echo $HEART_FULL
+            hearts="$HEART_FULL$hearts"
         fi
         perc=$(( $perc + $inc ))
     done
+
+    echo $hearts
 }
 
 linux_get_bat ()
