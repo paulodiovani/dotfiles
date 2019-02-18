@@ -7,7 +7,7 @@ alias mv='mv -i'
 alias less='less -S'
 
 # vim less (user vim as less for syntax highlight)
-alias vimless='/usr/share/vim/vim80/macros/less.sh'
+alias vimless='/usr/share/vim/vim81/macros/less.sh'
 
 # aliases for common commands
 alias bx='bundle exec'
@@ -15,3 +15,6 @@ alias dc='docker-compose'
 
 # make aliases work with sudo
 alias sudo='sudo '
+
+# always copy password to clipboard instead of showying
+alias pass='pass -c'

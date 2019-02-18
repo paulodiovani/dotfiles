@@ -5,7 +5,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="../../.oh-my-zsh-custom"
+# ZSH_THEME="sporty_256"
+# ZSH_THEME="agnoster"
+ZSH_THEME="../../.oh-my-zsh-agnoster-custom"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +47,7 @@ ZSH_THEME="../../.oh-my-zsh-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git grunt tmux docker docker-compose vagrant)
+plugins=(git tmux docker docker-compose pass)
 
 # Autostart tmux but initiates new session
 ZSH_TMUX_AUTOSTART="true"
@@ -99,3 +101,6 @@ fi
 # change pager to LESS (for psql, etc)
 export PAGER="less -S"
 
+# tabtab source for jiractl package
+# uninstall by removing these lines or running `tabtab uninstall jiractl`
+[[ -f /home/diovani/Development/GoDaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh ]] && . /home/diovani/Development/GoDaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh
