@@ -1,3 +1,6 @@
+# editor
+export EDITOR=vim
+
 #~/bin
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
