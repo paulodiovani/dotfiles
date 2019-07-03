@@ -13,8 +13,6 @@ alias vimless='/usr/share/vim/vim81/macros/less.sh'
 alias bx='bundle exec'
 alias dc='docker-compose'
 
-# make aliases work with sudo
+# make aliases work with sudo and noglob
 alias sudo='sudo '
-
-# always copy password to clipboard instead of showying
-alias pass='pass -c'
+alias noglob='noglob '
