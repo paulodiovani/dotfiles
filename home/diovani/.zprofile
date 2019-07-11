@@ -1,6 +1,12 @@
 # editor
 export EDITOR=vim
 
+# Use GTK+ theme on QT5 apps
+export QT_QPA_PLATFORMTHEME=gtk2
+
+# Change pager to LESS (for psql, etc)
+export PAGER="less -S"
+
 #~/bin
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
