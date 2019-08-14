@@ -16,3 +16,6 @@ alias dc='docker-compose'
 # make aliases work with sudo and noglob
 alias sudo='sudo '
 alias noglob='noglob '
+
+# make linux better
+alias please='sudo '
