@@ -1,6 +1,6 @@
 [submodule "home/diovani/.vim/bundle/Vundle.vim"]
-	path = home/diovani/.vim/bundle/Vundle.vim
+	path = home/user/.vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "home/diovani/.oh-my-zsh"]
-	path = home/diovani/.oh-my-zsh
+	path = home/user/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
