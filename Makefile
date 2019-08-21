@@ -1,6 +1,6 @@
-FROMHOME = ./home/user
+FROMHOME = home/user
 BINFILES := $(wildcard $(FROMHOME)/bin/*)
-SUBMODULES := $(FROMHOME)/.oh-my-zsh $(FROMHOME)/.vim
+SUBMODULES := $(shell git config --file .gitmodules --get-regexp path | awk '{ print $$2 }')
 DOTFILES := $(wildcard $(FROMHOME)/\.[^\.]*)
 DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
 
@@ -17,6 +17,12 @@ dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
 
 submodules:
-	# for m in "$(SUBMODULES)"; do
-	# 	echo $m
-	# done
+	git submodule init
+	git submodule update
+	for module in $(SUBMODULES); do				\
+		pushd $$module;							\
+		url="$$(git remote get-url origin)";	\
+		path="$${module#$(FROMHOME)/}";			\
+		echo git clone $$url $(HOME)/$$path;	\
+		popd;									\
+	done
