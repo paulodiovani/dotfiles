@@ -3,7 +3,7 @@ BINFILES := $(wildcard $(FROMHOME)/bin/*)
 SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
 DOTFILES := $(wildcard $(FROMHOME)/\.[^\.]*)
 DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
-PACKAGES = git tmux vim zsh
+PACKAGES = awk git tmux vim zsh
 
 # .PHONY: all
 
@@ -11,7 +11,7 @@ PACKAGES = git tmux vim zsh
 
 all: install config
 
-install: sudo install_archlinux install_debian
+install: sudo install_archlinux
 
 config: dotfiles binfiles submodules
 
@@ -20,13 +20,10 @@ sudo:
 	|| echo "ALERT! sudo not available! You must install the following packages manually: $(PACKAGES)"
 
 install_archlinux:
-	-command -v pacman > /dev/null \
-	&& sudo pacman -Sy --noconfirm $(PACKAGES)
-
-install_debian:
-	-command -v apt-get > /dev/null \
-	&& sudo apt-get update 			\
-	&& sudo apt-get install -yy $(PACKAGES)
+	@command -v pacman > /dev/null \
+	&& sudo pacman -Sy --noconfirm $(PACKAGES) \
+	|| echo "OPS! This is no Arch Linux, you'll have to install these manually: $(PACKAGES)" \
+	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
 dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
