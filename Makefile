@@ -24,6 +24,6 @@ submodules:
 		cd $$module;							\
 		url="$$(git remote get-url origin)";	\
 		path="$${module#$(FROMHOME)/}";			\
-		echo git clone $$url $(HOME)/$$path;	\
+		git clone $$url $(HOME)/$$path;			\
 		cd -;									\
 	done
