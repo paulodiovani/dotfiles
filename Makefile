@@ -20,10 +20,13 @@ sudo:
 	|| echo "ALERT! sudo not available! You must install the following packages manually: $(PACKAGES)"
 
 install_archlinux:
-	-command -v pacman > /dev/null && sudo pacman -Sy $(PACKAGES)
+	-command -v pacman > /dev/null \
+	&& sudo pacman -Sy $(PACKAGES)
 
 install_debian:
-	-command -v apt-get > /dev/null && sudo apt-get install $(PACKAGES)
+	-command -v apt-get > /dev/null \
+	&& sudo apt-get update 			\
+	&& sudo apt-get install $(PACKAGES)
 
 dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
