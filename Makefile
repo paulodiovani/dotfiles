@@ -21,12 +21,12 @@ sudo:
 
 install_archlinux:
 	-command -v pacman > /dev/null \
-	&& sudo pacman -Sy $(PACKAGES)
+	&& sudo pacman -Sy --noconfirm $(PACKAGES)
 
 install_debian:
 	-command -v apt-get > /dev/null \
 	&& sudo apt-get update 			\
-	&& sudo apt-get install $(PACKAGES)
+	&& sudo apt-get install -yy $(PACKAGES)
 
 dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
