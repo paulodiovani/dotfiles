@@ -21,9 +21,9 @@ submodules:
 	git submodule init
 	git submodule update
 	for module in $(SUBMODULES); do				\
-		pushd $$module;							\
+		cd $$module;							\
 		url="$$(git remote get-url origin)";	\
 		path="$${module#$(FROMHOME)/}";			\
 		echo git clone $$url $(HOME)/$$path;	\
-		popd;									\
+		cd -;									\
 	done
