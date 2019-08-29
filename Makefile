@@ -11,6 +11,7 @@ DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
 all: binfiles dotfiles
 
 binfiles:
+	mkdir -p $(HOME)/bin/
 	cp -vu $(BINFILES) $(HOME)/bin/
 
 dotfiles:
