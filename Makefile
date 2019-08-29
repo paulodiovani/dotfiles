@@ -1,10 +1,10 @@
 FROMHOME = home/user
 BINFILES := $(wildcard $(FROMHOME)/bin/*)
-SUBMODULES := $(shell git config --file .gitmodules --get-regexp path | awk '{ print $$2 }')
+SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
 DOTFILES := $(wildcard $(FROMHOME)/\.[^\.]*)
 DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
 
-# .PHONY: all bin
+# .PHONY: all
 
 .NOTPARALLEL:
 
@@ -18,12 +18,9 @@ dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
 
 submodules:
-	git submodule init
-	git submodule update
-	for module in $(SUBMODULES); do				\
-		cd $$module;							\
-		url="$$(git remote get-url origin)";	\
-		path="$${module#$(FROMHOME)/}";			\
-		git clone $$url $(HOME)/$$path;			\
-		cd -;									\
+	for submodule in $(SUBMODULES); do										\
+		sm_path=$$(git config --file .gitmodules --get $$submodule.path);	\
+		sm_path=$${sm_path#$(FROMHOME)/};									\
+		sm_url=$$(git config --file .gitmodules --get $$submodule.url);		\
+		git clone --depth 1 $$sm_url $(HOME)/$$sm_path;						\
 	done
