@@ -12,19 +12,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'DavidEGx/ctrlp-smarttabs'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'editorconfig/editorconfig-vim'
-"Plugin 'edkolev/tmuxline.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'christoomey/vim-conflicted'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'edkolev/tmuxline.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'DavidEGx/ctrlp-smarttabs'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tomtom/tcomment_vim'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'vim-syntastic/syntastic'
-"Plugin 'wakatime/vim-wakatime'
+" Plugin 'christoomey/vim-conflicted'
+" Plugin 'wakatime/vim-wakatime'
 
 " Languages syntax
 Plugin 'elixir-lang/vim-elixir'
@@ -116,6 +116,9 @@ map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
+
+" CtrlP custom listing
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
