@@ -94,9 +94,18 @@ set ai cindent sw=2     " indentation
 "set is ic              " search
 set et st=2 ts=2        " TAB width
 retab                   " use spaces for Tabs
-syntax on
 set noautoindent
+
+" syntax and color scheme
+set termguicolors       " enable true color support
+colorscheme one
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+syntax on
 set background=dark     " background color (light|dark)
+" use transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
 " remove <CR>/^M from line endings
