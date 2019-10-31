@@ -16,7 +16,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'edkolev/tmuxline.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'DavidEGx/ctrlp-smarttabs'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -43,6 +43,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Map Space as <Leader>
+let mapleader = " "
 
 " Airline config
 set t_Co=256
@@ -80,9 +83,10 @@ map <Leader>LL :lprevious<CR>
 
 " General config
 " Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
-"set nu                  " add line numbers
+set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
+set titlestring=%t      " show only filename
 set t_vb=               " no bell
 "set termencoding=utf8   " all files are utf8
 "set nobackup            " don't write ~* backup files
@@ -103,8 +107,10 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax on
 set background=dark     " background color (light|dark)
-" use transparent background
-hi Normal guibg=NONE ctermbg=NONE
+
+" hide menu and toolbar (gvim only)
+" :set guioptions -=m
+:set guioptions -=T
 
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
@@ -118,7 +124,7 @@ imap <F11> <nop>
 set pastetoggle=<F11>
 
 " CtrlP custom listing
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
