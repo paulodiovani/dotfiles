@@ -37,3 +37,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
 	path = home/user/.vim/pack/plugins/opt/vim-conflicted
 	url = https://github.com/christoomey/vim-conflicted
+[submodule "home/user/.vim/pack/syntax/opt/elixir"]
+	path = home/user/.vim/pack/syntax/opt/elixir
+	url = https://github.com/elixir-lang/vim-elixir
