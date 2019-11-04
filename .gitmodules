@@ -1,6 +1,42 @@
-[submodule "home/user/.vim/bundle/Vundle.vim"]
-	path = home/user/.vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "home/user/.oh-my-zsh"]
 	path = home/user/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "home/user/.vim/pack/plugins/start/vim-one"]
+	path = home/user/.vim/pack/colors/start/one
+	url = https://github.com/rakr/vim-one.git
+[submodule "home/user/.vim/pack/plugins/start/vim-airline"]
+	path = home/user/.vim/pack/plugins/start/airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "home/user/.vim/pack/plugins/start/editorconfig"]
+	path = home/user/.vim/pack/plugins/start/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "home/user/.vim/pack/plugins/start/ctrlp"]
+	path = home/user/.vim/pack/plugins/start/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "home/user/.vim/pack/plugins/start/ctrlp-smarttabs"]
+	path = home/user/.vim/pack/plugins/start/ctrlp-smarttabs
+	url = https://github.com/DavidEGx/ctrlp-smarttabs
+[submodule "home/user/.vim/pack/plugins/start/nerdtree"]
+	path = home/user/.vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "home/user/.vim/pack/plugins/start/nerdtree-git-plugin"]
+	path = home/user/.vim/pack/plugins/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "home/user/.vim/pack/plugins/start/tcomment"]
+	path = home/user/.vim/pack/plugins/start/tcomment
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "home/user/.vim/pack/plugins/start/syntastic"]
+	path = home/user/.vim/pack/plugins/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "home/user/.vim/pack/plugins/opt/tmuxline"]
+	path = home/user/.vim/pack/plugins/opt/tmuxline
+	url = https://github.com/edkolev/tmuxline.vim
+[submodule "home/user/.vim/pack/plugins/opt/vim-fugitive"]
+	path = home/user/.vim/pack/plugins/opt/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
+	path = home/user/.vim/pack/plugins/opt/conflicted
+	url = https://github.com/christoomey/vim-conflicted
+[submodule "home/user/.vim/pack/syntax/opt/elixir"]
+	path = home/user/.vim/pack/syntax/opt/elixir
+	url = https://github.com/elixir-lang/vim-elixir
