@@ -33,9 +33,15 @@ binfiles:
 	cp -vu $(BINFILES) $(HOME)/bin/
 
 submodules:
-	for submodule in $(SUBMODULES); do										\
-		sm_path=$$(git config --file .gitmodules --get $$submodule.path);	\
-		sm_path=$${sm_path#$(FROMHOME)/};									\
-		sm_url=$$(git config --file .gitmodules --get $$submodule.url);		\
-		git clone --depth 1 $$sm_url $(HOME)/$$sm_path;						\
+	for submodule in $(SUBMODULES); do                                  \
+		sm_path=$$(git config --file .gitmodules --get $$submodule.path); \
+		sm_path=$${sm_path#$(FROMHOME)/};                                 \
+		sm_url=$$(git config --file .gitmodules --get $$submodule.url);   \
+		if [ -d $(HOME)/$$sm_path ]; then                                 \
+			cd $(HOME)/$$sm_path;                                      \
+			git pull;                                                  \
+			cd -;                                                      \
+		else                                                              \
+			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;            \
+		fi                                                                \
 	done
