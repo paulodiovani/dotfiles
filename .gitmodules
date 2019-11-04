@@ -2,10 +2,10 @@
 	path = home/user/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "home/user/.vim/pack/plugins/start/vim-one"]
-	path = home/user/.vim/pack/colors/start/vim-one
+	path = home/user/.vim/pack/colors/start/one
 	url = https://github.com/rakr/vim-one.git
 [submodule "home/user/.vim/pack/plugins/start/vim-airline"]
-	path = home/user/.vim/pack/plugins/start/vim-airline
+	path = home/user/.vim/pack/plugins/start/airline
 	url = https://github.com/vim-airline/vim-airline.git
 [submodule "home/user/.vim/pack/plugins/start/editorconfig"]
 	path = home/user/.vim/pack/plugins/start/editorconfig
@@ -32,10 +32,10 @@
 	path = home/user/.vim/pack/plugins/opt/tmuxline
 	url = https://github.com/edkolev/tmuxline.vim
 [submodule "home/user/.vim/pack/plugins/opt/vim-fugitive"]
-	path = home/user/.vim/pack/plugins/opt/vim-fugitive
+	path = home/user/.vim/pack/plugins/opt/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
-	path = home/user/.vim/pack/plugins/opt/vim-conflicted
+	path = home/user/.vim/pack/plugins/opt/conflicted
 	url = https://github.com/christoomey/vim-conflicted
 [submodule "home/user/.vim/pack/syntax/opt/elixir"]
 	path = home/user/.vim/pack/syntax/opt/elixir
