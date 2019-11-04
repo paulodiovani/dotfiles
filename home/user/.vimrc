@@ -100,7 +100,7 @@ set t_Co=256
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='silver'
+let g:airline_theme='one'
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")

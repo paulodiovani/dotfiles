@@ -1,3 +1,9 @@
 [submodule "home/user/.oh-my-zsh"]
 	path = home/user/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "home/user/.vim/pack/plugins/start/vim-one"]
+	path = home/user/.vim/pack/plugins/start/vim-one
+	url = https://github.com/rakr/vim-one.git
+[submodule "home/user/.vim/pack/plugins/start/vim-airline"]
+	path = home/user/.vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
