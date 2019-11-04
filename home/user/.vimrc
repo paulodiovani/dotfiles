@@ -47,6 +47,54 @@ filetype plugin indent on    " required
 " Map Space as <Leader>
 let mapleader = " "
 
+" General config
+" Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
+set nu                  " add line numbers
+set ruler               " show cursor position
+set title               " show filename on title bar
+set titlestring=%t      " show only filename
+set t_vb=               " no bell
+"set termencoding=utf8   " all files are utf8
+"set nobackup            " don't write ~* backup files
+set fdm=marker          " folding
+"set tw=80               " text width
+set bs=2                " same as :set backspace=indent,eol,start
+set sm                  " color matching braces/parenthesis
+set ai cindent sw=2     " indentation
+"set is ic              " search
+set et st=2 ts=2        " TAB width
+retab                   " use spaces for Tabs
+set noautoindent
+
+" shuffle text content (to hide sentitive data)
+map <F8> ggVGg?
+" remove <CR>/^M from line endings
+map <F2> :%s/\r//g<CR>
+" enable/disable paste mode
+map <F10> :set paste<CR>
+map <F11> :set nopaste<CR>
+imap <F10> <C-O>:set paste<CR>
+imap <F11> <nop>
+set pastetoggle=<F11>
+
+" aliases to prevent typos in close commands
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
+
+" syntax and color scheme
+set termguicolors       " enable true color support
+colorscheme one
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+syntax on
+set background=dark     " background color (light|dark)
+
+" GUI settings (gvim only)
+set guifont=Source\ Code\ Pro\ Regular\ 11
+
+" hide menu and toolbar
+" :set guioptions -=m
+:set guioptions -=T
+
 " Airline config
 set t_Co=256
 set laststatus=2
@@ -82,48 +130,6 @@ map <Leader>L :lprevious<CR>
 map <Leader>lL :lprevious<CR>
 map <Leader>LL :lprevious<CR>
 
-" General config
-" Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
-set nu                  " add line numbers
-set ruler               " show cursor position
-set title               " show filename on title bar
-set titlestring=%t      " show only filename
-set t_vb=               " no bell
-"set termencoding=utf8   " all files are utf8
-"set nobackup            " don't write ~* backup files
-set fdm=marker          " folding
-"set tw=80               " text width
-set bs=2                " same as :set backspace=indent,eol,start
-set sm                  " color matching braces/parenthesis
-set ai cindent sw=2     " indentation
-"set is ic              " search
-set et st=2 ts=2        " TAB width
-retab                   " use spaces for Tabs
-set noautoindent
-
-" syntax and color scheme
-set termguicolors       " enable true color support
-colorscheme one
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-syntax on
-set background=dark     " background color (light|dark)
-
-" hide menu and toolbar (gvim only)
-" :set guioptions -=m
-:set guioptions -=T
-
-" shuffle text content (to hide sentitive data)
-map <F8> ggVGg?
-" remove <CR>/^M from line endings
-map <F2> :%s/\r//g<CR>
-" enable/disable paste mode
-map <F10> :set paste<CR>
-map <F11> :set nopaste<CR>
-imap <F10> <C-O>:set paste<CR>
-imap <F11> <nop>
-set pastetoggle=<F11>
-
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
 
@@ -148,6 +154,3 @@ map <Leader>q :bdelete<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
-
-" aliases to prevent typos in close commands
-cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
