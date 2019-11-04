@@ -55,7 +55,7 @@ set title               " show filename on title bar
 set titlestring=%t      " show only filename
 set t_vb=               " no bell
 "set termencoding=utf8   " all files are utf8
-"set nobackup            " don't write ~* backup files
+set nobackup            " don't write ~* backup files
 set fdm=marker          " folding
 "set tw=80               " text width
 set bs=2                " same as :set backspace=indent,eol,start
