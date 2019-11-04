@@ -28,3 +28,12 @@
 [submodule "home/user/.vim/pack/plugins/start/syntastic"]
 	path = home/user/.vim/pack/plugins/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic
+[submodule "home/user/.vim/pack/plugins/opt/tmuxline"]
+	path = home/user/.vim/pack/plugins/opt/tmuxline
+	url = https://github.com/edkolev/tmuxline.vim
+[submodule "home/user/.vim/pack/plugins/opt/vim-fugitive"]
+	path = home/user/.vim/pack/plugins/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
+	path = home/user/.vim/pack/plugins/opt/vim-conflicted
+	url = https://github.com/christoomey/vim-conflicted
