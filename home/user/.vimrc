@@ -65,9 +65,10 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
 
 map <Leader>s :SyntasticCheck<CR>
-map <Leader>ss :SyntasticToggleMode<CR>
+map <Leader>ss :SyntasticCheck<CR>
 map <Leader>st :SyntasticToggleMode<CR>
 
 " Location list settings
@@ -128,7 +129,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
-map <S-C-r> :NERDTreeFind<CR>
+map <C-k><C-r> :NERDTreeFind<CR>
 
 " tabs/buffers keymaps (Note: Leader=\ by default)
 map <Leader>tp :tabprev<CR>
@@ -147,10 +148,6 @@ map <Leader>q :bdelete<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
-
-" Git commands
-map <C-g>b :Git blame %<CR>
-map <C-g>d :Git diff %<CR>
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
