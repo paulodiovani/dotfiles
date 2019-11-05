@@ -12,31 +12,31 @@
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "home/user/.vim/pack/plugins/start/ctrlp-smarttabs"]
 	path = home/user/.vim/pack/plugins/start/ctrlp-smarttabs
-	url = https://github.com/DavidEGx/ctrlp-smarttabs
+	url = https://github.com/DavidEGx/ctrlp-smarttabs.git
 [submodule "home/user/.vim/pack/plugins/start/nerdtree"]
 	path = home/user/.vim/pack/plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "home/user/.vim/pack/plugins/start/nerdtree-git-plugin"]
 	path = home/user/.vim/pack/plugins/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "home/user/.vim/pack/plugins/start/tcomment"]
 	path = home/user/.vim/pack/plugins/start/tcomment
-	url = https://github.com/tomtom/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "home/user/.vim/pack/plugins/start/syntastic"]
 	path = home/user/.vim/pack/plugins/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "home/user/.vim/pack/plugins/opt/tmuxline"]
 	path = home/user/.vim/pack/plugins/opt/tmuxline
-	url = https://github.com/edkolev/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
 [submodule "home/user/.vim/pack/plugins/opt/vim-fugitive"]
 	path = home/user/.vim/pack/plugins/start/fugitive
-	url = https://github.com/tpope/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
 	path = home/user/.vim/pack/plugins/opt/conflicted
-	url = https://github.com/christoomey/vim-conflicted
+	url = https://github.com/christoomey/vim-conflicted.git
 [submodule "home/user/.vim/pack/syntax/opt/elixir"]
 	path = home/user/.vim/pack/syntax/opt/elixir
-	url = https://github.com/elixir-lang/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule "home/user/.vim/pack/plugins/lightline"]
 	path = home/user/.vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
