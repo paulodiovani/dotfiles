@@ -49,12 +49,26 @@ set guifont=Source\ Code\ Pro\ Regular\ 11
 " :set guioptions -=m
 :set guioptions -=T
 
-" Airline config
+" Lightline config
 set t_Co=256
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='one'
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"\ue0a2":""}',
+      \   'gitbranch': "\ue0a0 %{fugitive#head()}"
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help" && &readonly)',
+      \   'gitbranch': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ }
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")

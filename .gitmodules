@@ -29,7 +29,7 @@
 	path = home/user/.vim/pack/plugins/opt/tmuxline
 	url = https://github.com/edkolev/tmuxline.vim
 [submodule "home/user/.vim/pack/plugins/opt/vim-fugitive"]
-	path = home/user/.vim/pack/plugins/opt/fugitive
+	path = home/user/.vim/pack/plugins/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
 	path = home/user/.vim/pack/plugins/opt/conflicted
