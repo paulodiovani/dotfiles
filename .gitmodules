@@ -4,9 +4,6 @@
 [submodule "home/user/.vim/pack/plugins/start/vim-one"]
 	path = home/user/.vim/pack/colors/start/one
 	url = https://github.com/rakr/vim-one.git
-[submodule "home/user/.vim/pack/plugins/start/vim-airline"]
-	path = home/user/.vim/pack/plugins/start/airline
-	url = https://github.com/vim-airline/vim-airline.git
 [submodule "home/user/.vim/pack/plugins/start/editorconfig"]
 	path = home/user/.vim/pack/plugins/start/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
@@ -40,3 +37,6 @@
 [submodule "home/user/.vim/pack/syntax/opt/elixir"]
 	path = home/user/.vim/pack/syntax/opt/elixir
 	url = https://github.com/elixir-lang/vim-elixir
+[submodule "home/user/.vim/pack/plugins/lightline"]
+	path = home/user/.vim/pack/plugins/start/lightline
+	url = https://github.com/itchyny/lightline.vim.git
