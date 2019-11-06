@@ -130,8 +130,14 @@ xterm*|rxvt*)
     ;;
 esac
 
+# change tab width
+tabs -4
+
+# text editor
+export EDITOR=vim
+
 # Change pager to LESS (for psql, etc)
-export PAGER="less -S"
+export PAGER="less -S -x4"
 
 # ~/bin
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
@@ -146,7 +152,59 @@ command -v rbenv > /dev/null && eval "$(rbenv init -)"
 [ -s /usr/share/nvm/nvm.sh ] && source /usr/share/nvm/nvm.sh
 # source /usr/share/nvm/bash_completion
 # source /usr/share/nvm/install-nvm-exec
-command -v nvm > /dev/null && source .bashrc-cdnvm
+
+# automatically choose node version
+find-up () {
+    path=$(pwd)
+    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+        path=${path%/*}
+    done
+    echo "$path"
+}
+
+cdnvm(){
+    cd "$@";
+    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+
+    # If there are no .nvmrc file, use the default nvm version
+    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+
+        declare default_version;
+        default_version=$(nvm version default);
+
+        # If there is no default version, set it to `node`
+        # This will use the latest version on your machine
+        if [[ $default_version == "N/A" ]]; then
+            nvm alias default node;
+            default_version=$(nvm version default);
+        fi
+
+        # If the current version is not the default version, set it to use the default version
+        if [[ $(nvm current) != "$default_version" ]]; then
+            nvm use default;
+        fi
+
+        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+        declare nvm_version
+        nvm_version=$(<"$nvm_path"/.nvmrc)
+
+        declare locally_resolved_nvm_version
+        # `nvm ls` will check all locally-available versions
+        # If there are multiple matching versions, take the latest one
+        # Remove the `->` and `*` characters and spaces
+        # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+        locally_resolved_nvm_version=$(nvm ls --no-colors $(<"./.nvmrc") | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+        # If it is not already installed, install it
+        # `nvm install` will implicitly use the newly-installed version
+        if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+            nvm install "$nvm_version";
+        elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+            nvm use "$nvm_version";
+        fi
+    fi
+}
+alias cd='cdnvm'
 
 # direnv
 command -v direnv > /dev/null && eval "$(direnv hook bash)"

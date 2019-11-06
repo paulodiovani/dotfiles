@@ -11,17 +11,15 @@ set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
 set titlestring=%t      " show only filename
-set t_vb=               " no bell
-"set termencoding=utf8   " all files are utf8
-set nobackup            " don't write ~* backup files
+set t_vb=               " no
+"set termencoding=utf8   " all files are utf8set nobackup            " don't write ~* backup files
 set fdm=marker          " folding
 "set tw=80               " text width
 set bs=2                " same as :set backspace=indent,eol,start
 set sm                  " color matching braces/parenthesis
 set ai cindent sw=2     " indentation
 "set is ic              " search
-set et st=2 ts=2        " TAB width
-retab                   " use spaces for Tabs
+set et ts=2 sts=2 sw=2  " TAB width
 set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
 
@@ -89,15 +87,15 @@ let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
 map <Leader>s :SyntasticCheck<CR>
 
 " Location list settings
-map <Leader>lo :lopen<CR>
-map <Leader>lc :lclose<CR>
-map <Leader>ln :lnext<CR>
+" map <Leader>lo :lopen<CR>
+" map <Leader>lc :lclose<CR>
+" map <Leader>ln :lnext<CR>
 map <Leader>l :lnext<CR>
-map <Leader>ll :lnext<CR>
-map <Leader>lp :lprevious<CR>
+" map <Leader>ll :lnext<CR>
+" map <Leader>lp :lprevious<CR>
 map <Leader>L :lprevious<CR>
-map <Leader>lL :lprevious<CR>
-map <Leader>LL :lprevious<CR>
+" map <Leader>lL :lprevious<CR>
+" map <Leader>LL :lprevious<CR>
 
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']

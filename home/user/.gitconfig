@@ -13,6 +13,6 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
-	pager = less -XFR
+	pager = less -XFR -x4
 [blame]
 	date = short

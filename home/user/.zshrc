@@ -67,13 +67,6 @@ source ~/.zsh_local_history.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -98,8 +91,14 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# change tab width
+tabs -4
+
+# text editor
+export EDITOR=vim
+
 # change pager to LESS (for psql, etc)
-export PAGER="less -S"
+export PAGER="less -S -x4"
 
 # tabtab source for jiractl package
 # uninstall by removing these lines or running `tabtab uninstall jiractl`

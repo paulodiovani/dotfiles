@@ -3,8 +3,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# scrollable less
-alias less='less -S'
+# scrollable less and tabwidth=4
+alias less='less -S -x4'
+alias expand='expand -t4'
 
 # vim less (user vim as less for syntax highlight)
 alias vimless='/usr/share/vim/vim81/macros/less.sh'
