@@ -1,8 +1,12 @@
 " Map Space as <Leader>
 let mapleader = " "
 
+" GUI settings (gvim only)
+set guifont=Source\ Code\ Pro\ Regular\ 11
+" set guioptions -=m     " hide menu
+set guioptions -=T     " hide toolbar
+
 " General config
-" Based on .vimrc from http://arthurfurlan.org/dotfiles/vimrc.txt
 set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
@@ -19,6 +23,10 @@ set ai cindent sw=2     " indentation
 set et st=2 ts=2        " TAB width
 retab                   " use spaces for Tabs
 set noautoindent
+set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
+
+" show hidden chars
+nmap <leader>h :set list!<CR>
 
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
@@ -41,13 +49,6 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax on
 set background=dark     " background color (light|dark)
-
-" GUI settings (gvim only)
-set guifont=Source\ Code\ Pro\ Regular\ 11
-
-" hide menu and toolbar
-" :set guioptions -=m
-:set guioptions -=T
 
 " Lightline config
 set t_Co=256
@@ -86,8 +87,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
 
 map <Leader>s :SyntasticCheck<CR>
-map <Leader>ss :SyntasticCheck<CR>
-map <Leader>st :SyntasticToggleMode<CR>
 
 " Location list settings
 map <Leader>lo :lopen<CR>
