@@ -120,6 +120,9 @@ map <Leader><Down> :bnext<CR>
 map <Leader>bd :bdelete<CR>
 map <Leader>q :bdelete<CR>
 
+" silver search word under cursor
+map <Leader>ag bye:!ag <C-r>"
+
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
