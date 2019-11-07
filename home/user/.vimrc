@@ -12,15 +12,17 @@ set ruler               " show cursor position
 set title               " show filename on title bar
 set titlestring=%t      " show only filename
 set t_vb=               " no
-"set termencoding=utf8   " all files are utf8set nobackup            " don't write ~* backup files
+"set termencoding=utf8   " all files are utf8set nobackup
+"set nobackup            " don't write ~* backup files
 set fdm=marker          " folding
 "set tw=80               " text width
 set bs=2                " same as :set backspace=indent,eol,start
 set sm                  " color matching braces/parenthesis
 set ai cindent sw=2     " indentation
 "set is ic              " search
-set et ts=2 sts=2 sw=2  " TAB width
-set noautoindent
+set expandtab           " convert tabs to spaces
+set ts=2 sts=2 sw=2     " TAB width
+" set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
 
 " show hidden chars
@@ -121,3 +123,24 @@ map <Leader>q :bdelete<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
+
+" do not save buffers in sessions
+set ssop-=buffers
+
+" auto save/load sessions
+fu! SaveSess()
+  if filewritable(getcwd() . '/.vim-session')
+    execute 'mksession! ' . getcwd() . '/.vim-session'
+  endif
+endfunction
+
+fu! RestoreSess()
+  if filereadable(getcwd() . '/.vim-session')
+    execute 'so ' . getcwd() . '/.vim-session'
+    " open args/buffers in new tabs
+    execute 'tab sball'
+  endif
+endfunction
+
+autocmd VimLeave * call SaveSess()
+autocmd VimEnter * call RestoreSess()
