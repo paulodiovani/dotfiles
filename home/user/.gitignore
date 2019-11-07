@@ -1,0 +1,14 @@
+# to track, run `git add -f docker-compose.yml`
+#docker-compose.yml
+docker-compose.override.yml
+
+# override npm rules per project
+.npmrc
+
+# rakelib for addicional tasks
+rakelib
+
+# vim session and temporary files
+*~
+.vim-session
+
