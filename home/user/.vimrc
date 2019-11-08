@@ -132,14 +132,14 @@ set ssop-=buffers
 
 " auto save/load sessions
 fu! SaveSess()
-  if filewritable(getcwd() . '/.vim-session')
-    execute 'mksession! ' . getcwd() . '/.vim-session'
+  if filewritable(getcwd() . '/Session.vim')
+    execute 'mksession! ' . getcwd() . '/Session.vim'
   endif
 endfunction
 
 fu! RestoreSess()
-  if filereadable(getcwd() . '/.vim-session')
-    execute 'so ' . getcwd() . '/.vim-session'
+  if filereadable(getcwd() . '/Session.vim')
+    execute 'so ' . getcwd() . '/Session.vim'
     " open args/buffers in new tabs
     execute 'tab sball'
   endif

@@ -9,6 +9,6 @@ docker-compose.override.yml
 rakelib
 
 # vim session and temporary files
+Session.vim
 *~
-.vim-session
 
