@@ -130,17 +130,21 @@ map <C-t> :CtrlPSmartTabs<CR>
 " do not save buffers in sessions
 set ssop-=buffers
 
-" auto save/load sessions
+" auto save/load sessions, unless already opened
 fu! SaveSess()
-  if filewritable(getcwd() . '/Session.vim')
-    execute 'mksession! ' . getcwd() . '/Session.vim'
+  if filewritable(getcwd() . '/Session.vim') && filewritable(getcwd() . '/Session.lock')
+    execute 'mksession!' getcwd() . '/Session.vim'
+    " remove lock file
+    execute 'silent !rm -f' getcwd() . '/Session.lock'
   endif
 endfunction
 
 fu! RestoreSess()
-  if filereadable(getcwd() . '/Session.vim')
-    execute 'so ' . getcwd() . '/Session.vim'
-    " open args/buffers in new tabs
+  if filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
+    " create a (pseudo) lockfile
+    execute 'silent !(umask 077; touch' getcwd() . '/Session.lock)'
+    " source session file and open args/buffers in new tabs (if any)
+    execute 'so' getcwd() . '/Session.vim'
     execute 'tab sball'
   endif
 endfunction
