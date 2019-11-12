@@ -125,7 +125,10 @@ map <Leader>ag bye:!ag <C-r>"
 
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
-map <C-t> :CtrlPSmartTabs<CR>
+" map <C-t> :CtrlPSmartTabs<CR>
+
+" open definition (using ctags) in new tab
+nnoremap <silent><F12> <C-w><C-]><C-w>T
 
 " do not save buffers in sessions
 set ssop-=buffers
