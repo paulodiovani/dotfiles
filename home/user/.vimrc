@@ -31,7 +31,7 @@ nmap <leader>h :set list!<CR>
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
 " remove <CR>/^M from line endings
-map <F2> :%s/\r//g<CR>
+" map <F2> :%s/\r//g<CR>
 " enable/disable paste mode
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
@@ -110,18 +110,13 @@ map <C-k><C-b> :NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
 
 " tabs/buffers keymaps (Note: Leader=\ by default)
-map <Leader>tp :tabprev<CR>
 map <Leader><Left> :tabprev<CR>
-map <Leader>tn :tabnext<CR>
 map <Leader><Right> :tabnext<CR>
 
 " navigate in buffers
-map <Leader>bp :bprev<CR>
 map <Leader><Up> :bprev<CR>
-map <Leader>bn :bnext<CR>
 map <Leader><Down> :bnext<CR>
 map <Leader>bd :bdelete<CR>
-map <Leader>q :bdelete<CR>
 
 " silver search word under cursor
 map <Leader>ag bye:!ag <C-r>"
