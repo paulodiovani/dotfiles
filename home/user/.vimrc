@@ -25,7 +25,10 @@ set ts=2 sts=2 sw=2     " TAB width
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
 
-" show hidden chars
+" show/hide line numbers
+nmap <leader># :set invnumber<CR>
+
+" show/hide hidden chars
 nmap <leader>h :set list!<CR>
 
 " shuffle text content (to hide sentitive data)
@@ -104,6 +107,9 @@ map <Leader>L :lprevious<CR>
 
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
+
+" nerdtree show hidden files
+let NERDTreeShowHidden=1
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
