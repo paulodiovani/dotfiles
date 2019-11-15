@@ -31,16 +31,22 @@ nmap <leader># :set invnumber<CR>
 " show/hide hidden chars
 nmap <leader>h :set list!<CR>
 
+" Map <F*> keys...
+
 " shuffle text content (to hide sentitive data)
 map <F8> ggVGg?
+" Rename/Move
+map <expr> <F2> ':Move ' . expand('%')
 " remove <CR>/^M from line endings
-" map <F2> :%s/\r//g<CR>
+" map <F3> :%s/\r//g<CR>
 " enable/disable paste mode
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
+" open definition (using ctags) in new tab
+nnoremap <silent><F12> <C-w><C-]><C-w>T
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
@@ -130,9 +136,6 @@ map <Leader>ag bye:!ag <C-r>"
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 " map <C-t> :CtrlPSmartTabs<CR>
-
-" open definition (using ctags) in new tab
-nnoremap <silent><F12> <C-w><C-]><C-w>T
 
 " do not save buffers in sessions
 set ssop-=buffers
