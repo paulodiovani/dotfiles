@@ -43,3 +43,6 @@
 [submodule "home/user/.vim/pack/plugins/start/eunuch"]
 	path = home/user/.vim/pack/plugins/start/eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "home/user/.vim/pack/plugins/start/rhubarb"]
+	path = home/user/.vim/pack/plugins/start/rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
