@@ -103,6 +103,9 @@ map <Leader>s :SyntasticCheck<CR>
 map <Leader>l :lnext<CR>
 map <Leader>L :lprevious<CR>
 
+" Vim Fugitive Github Browse on (almos) any domain
+let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
+
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
 
