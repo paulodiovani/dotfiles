@@ -99,17 +99,9 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_exec = '/home/diovani/.rbenv/shims/rubocop'
 
 map <Leader>s :SyntasticCheck<CR>
-
 " Location list settings
-" map <Leader>lo :lopen<CR>
-" map <Leader>lc :lclose<CR>
-" map <Leader>ln :lnext<CR>
 map <Leader>l :lnext<CR>
-" map <Leader>ll :lnext<CR>
-" map <Leader>lp :lprevious<CR>
 map <Leader>L :lprevious<CR>
-" map <Leader>lL :lprevious<CR>
-" map <Leader>LL :lprevious<CR>
 
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
