@@ -53,6 +53,7 @@ plugins=(git tmux docker docker-compose pass)
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 ZSH_TMUX_FIXTERM="true"
+ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 # Allow tmux set title
 #DISABLE_AUTO_TITLE="true"
 
