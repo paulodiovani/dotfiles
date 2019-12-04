@@ -132,8 +132,11 @@ map <Leader>ag bye:!ag <C-r>"
 map <C-b> :CtrlPBuffer<CR>
 " map <C-t> :CtrlPSmartTabs<CR>
 
+" minimap
+map <Leader>mm :MinimapToggle<CR>
+
 " do not save buffers in sessions
-set ssop-=buffers
+set sessionoptions-=buffers
 
 fu! IsCurrentSess()
   let l:lines = readfile(getcwd() . '/Session.lock')

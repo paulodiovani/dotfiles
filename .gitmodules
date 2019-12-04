@@ -46,3 +46,6 @@
 [submodule "home/user/.vim/pack/plugins/start/rhubarb"]
 	path = home/user/.vim/pack/plugins/start/rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "home/user/.vim/pack/plugins/opt/minimap"]
+	path = home/user/.vim/pack/plugins/opt/minimap
+	url = https://github.com/severin-lemaignan/vim-minimap.git
