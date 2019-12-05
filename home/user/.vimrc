@@ -38,15 +38,13 @@ map <F8> ggVGg?
 " Rename/Move
 map <expr> <F2> ':Move ' . expand('%')
 " remove <CR>/^M from line endings
-" map <F3> :%s/\r//g<CR>
-" enable/disable paste mode
-map <F10> :set paste<CR>
-map <F11> :set nopaste<CR>
-imap <F10> <C-O>:set paste<CR>
-imap <F11> <nop>
-set pastetoggle=<F11>
+map <F3> :%s/\r//g<CR>
+" enable/disable paste mode with F10
+map <F10> :set paste!<CR>:set paste?<CR>
+set pastetoggle=<F10>
 " open definition (using ctags) in new tab
-nnoremap <silent><F12> <C-w><C-]><C-w>T
+noremap <silent><F12> <C-w><C-]><C-w>T
+inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
@@ -114,19 +112,23 @@ let NERDTreeShowHidden=1
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
+imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
+imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
 
 " tabs/buffers keymaps (Note: Leader=\ by default)
-map <Leader><Left> :tabprev<CR>
-map <Leader><Right> :tabnext<CR>
+noremap <Leader><Left> :tabprev<CR>
+noremap <Leader><Right> :tabnext<CR>
 
 " navigate in buffers
-map <Leader><Up> :bprev<CR>
-map <Leader><Down> :bnext<CR>
-map <Leader>bd :bdelete<CR>
+noremap <Leader><Up> :bprev<CR>
+noremap <Leader><Down> :bnext<CR>
+noremap <Leader>bd :bdelete<CR>
 
+" paste word under cursor in command mode
+noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
-map <Leader>ag bye:!ag <C-r>"
+noremap <Leader>ag bye:!ag <C-r>" 
 
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
