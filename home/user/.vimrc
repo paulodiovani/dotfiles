@@ -1,6 +1,11 @@
 " Map Space as <Leader>
 let mapleader = " "
 
+
+""""""""""""""""""""
+" SETTINGS SECTION "
+""""""""""""""""""""
+
 " GUI settings (gvim only)
 set guifont=Source\ Code\ Pro\ Regular\ 11
 " set guioptions -=m     " hide menu
@@ -24,30 +29,8 @@ set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
-
-" show/hide line numbers
-nmap <leader># :set invnumber<CR>
-
-" show/hide hidden chars
-nmap <leader>h :set list!<CR>
-
-" Map <F*> keys...
-
-" shuffle text content (to hide sentitive data)
-map <F8> ggVGg?
-" Rename/Move
-map <expr> <F2> ':Move ' . expand('%')
-" remove <CR>/^M from line endings
-map <F3> :%s/\r//g<CR>
-" enable/disable paste mode with F10
-map <F10> :set paste!<CR>:set paste?<CR>
-set pastetoggle=<F10>
-" open definition (using ctags) in new tab
-noremap <silent><F12> <C-w><C-]><C-w>T
-inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
-
-" aliases to prevent typos in close commands
-cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
+" do not save buffers in sessions
+set sessionoptions-=buffers
 
 " syntax and color scheme
 set termguicolors       " enable true color support
@@ -96,11 +79,6 @@ let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_exec = '/home/diovani/.rbenv/shims/rubocop'
 
-map <Leader>s :SyntasticCheck<CR>
-" Location list settings
-map <Leader>l :lnext<CR>
-map <Leader>L :lprevious<CR>
-
 " Vim Fugitive Github Browse on (almos) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 
@@ -109,6 +87,41 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " nerdtree show hidden files
 let NERDTreeShowHidden=1
+
+
+""""""""""""""""""""
+" MAPPINGS SECTION "
+""""""""""""""""""""
+
+" aliases to prevent typos in close commands
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
+
+" show/hide line numbers
+nmap <leader># :set invnumber<CR>
+
+" show/hide hidden chars
+nmap <leader>h :set list!<CR>
+
+" Map <F*> keys...
+
+" shuffle text content (to hide sentitive data)
+map <F8> ggVGg?
+" Rename/Move
+map <expr> <F2> ':Move ' . expand('%')
+" remove <CR>/^M from line endings
+map <F3> :%s/\r//g<CR>
+" enable/disable paste mode with F10
+map <F10> :set paste!<CR>:set paste?<CR>
+set pastetoggle=<F10>
+" open definition (using ctags) in new tab
+noremap <silent><F12> <C-w><C-]><C-w>T
+inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
+
+" Run Syntax check
+map <Leader>s :SyntasticCheck<CR>
+" Location list settings
+map <Leader>l :lnext<CR>
+map <Leader>L :lprevious<CR>
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
@@ -134,18 +147,20 @@ noremap <Leader>ag bye:!ag <C-r>"
 map <C-b> :CtrlPBuffer<CR>
 " map <C-t> :CtrlPSmartTabs<CR>
 
-" minimap
+" show/hide minimap
 map <Leader>mm :MinimapToggle<CR>
 
-" do not save buffers in sessions
-set sessionoptions-=buffers
 
+"""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS AND AUTO COMMANDS SECTION "
+"""""""""""""""""""""""""""""""""""""""
+
+" auto save/load sessions, unless already opened
 fu! IsCurrentSess()
   let l:lines = readfile(getcwd() . '/Session.lock')
   return get(l:lines, 0) == getpid()
 endfunction
 
-" auto save/load sessions, unless already opened
 fu! SaveSess()
   if filewritable(getcwd() . '/Session.vim') && IsCurrentSess()
     execute 'mksession!' getcwd() . '/Session.vim'
