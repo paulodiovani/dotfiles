@@ -28,7 +28,7 @@ set ai cindent sw=2     " indentation
 set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
 " set noautoindent
-set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hhidden characters
+set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
 " do not save buffers in sessions
 set sessionoptions-=buffers
 
@@ -151,9 +151,9 @@ map <C-b> :CtrlPBuffer<CR>
 map <Leader>mm :MinimapToggle<CR>
 
 
-"""""""""""""""""""""""""""""""""""""""
-" FUNCTIONS AND AUTO COMMANDS SECTION "
-"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""
+" FUNCTIONS SECTION "
+"""""""""""""""""""""
 
 " auto save/load sessions, unless already opened
 fu! IsCurrentSess()
