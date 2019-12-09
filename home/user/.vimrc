@@ -163,6 +163,7 @@ fu! IsCurrentSess()
 endfunction
 
 fu! SaveSess()
+  " write session only if exists
   if filewritable(getcwd() . '/Session.vim') && IsCurrentSess()
     execute 'mksession!' getcwd() . '/Session.vim'
     " remove lock file
@@ -171,11 +172,13 @@ fu! SaveSess()
 endfunction
 
 fu! RestoreSess()
-  if filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
-    " create a (pseudo) lockfile
+  " restore if no args, session exists and not yet opened (no Session.lock)
+  if argc() == 0 && filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
+    " create a (pseudo) lockfile with the current session pid
     call writefile([getpid()], getcwd() . '/Session.lock', 's')
-    " source session file and open args/buffers in new tabs (if any)
+    " source session file
     execute 'so' getcwd() . '/Session.vim'
+    " open buffers in new tabs
     execute 'tab sball'
   endif
 endfunction
