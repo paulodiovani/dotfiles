@@ -130,10 +130,12 @@ imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
 imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
 
-" tabs/buffers keymaps (Note: Leader=\ by default)
+" navigate in tabs
 noremap <Leader><Left> :tabprev<CR>
 noremap <Leader><Right> :tabnext<CR>
-
+" move tabs
+noremap <Leader><S-Left> :tabm -1<CR>
+noremap <Leader><S-Right> :tabm +1<CR>
 " navigate in buffers
 noremap <Leader><Up> :bprev<CR>
 noremap <Leader><Down> :bnext<CR>
