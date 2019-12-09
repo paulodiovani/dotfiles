@@ -29,8 +29,9 @@ set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
-" do not save buffers in sessions
+" do not save buffers or options in sessions
 set sessionoptions-=buffers
+set sessionoptions-=options
 
 " syntax and color scheme
 set termguicolors       " enable true color support
@@ -180,4 +181,4 @@ fu! RestoreSess()
 endfunction
 
 autocmd VimLeave * call SaveSess()
-autocmd VimEnter * call RestoreSess()
+autocmd VimEnter * nested call RestoreSess()
