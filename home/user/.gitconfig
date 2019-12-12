@@ -1,18 +1,20 @@
 [color]
-	ui = always
+  ui = always
 [push]
-	default = simple
+  default = simple
 [alias]
-	ci = commit
-	co = checkout
-	st = status
-	history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
-	pr-history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --date=short origin/master..
+  ci = commit
+  co = checkout
+  st = status
+  diffvim = -c core.pager=/usr/share/vim/vim81/macros/less.sh diff --no-color
+  logvim = -c core.pager=/usr/share/vim/vim81/macros/less.sh log --no-color
+  history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
+  pr-history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --date=short origin/master..
 [credential]
-	helper = gnome-keyring
+  helper = gnome-keyring
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
-	pager = less -XFR -x4
+  editor = vim
+  excludesfile = ~/.gitignore
+  pager = less -XFR -x4
 [blame]
-	date = short
+  date = short
