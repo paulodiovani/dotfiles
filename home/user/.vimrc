@@ -159,12 +159,12 @@ map <Leader>mm :MinimapToggle<CR>
 """""""""""""""""""""
 
 " auto save/load sessions, unless already opened
-fu! IsCurrentSess()
+function! IsCurrentSess()
   let l:lines = readfile(getcwd() . '/Session.lock')
   return get(l:lines, 0) == getpid()
 endfunction
 
-fu! SaveSess()
+function! SaveSess()
   " write session only if exists
   if filewritable(getcwd() . '/Session.vim') && IsCurrentSess()
     execute 'mksession!' getcwd() . '/Session.vim'
@@ -173,9 +173,9 @@ fu! SaveSess()
   endif
 endfunction
 
-fu! RestoreSess()
-  " restore if no args, session exists and not yet opened (no Session.lock)
-  if argc() == 0 && filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
+function! RestoreSess()
+  " restore session exists and not yet opened (no Session.lock)
+  if filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
     " create a (pseudo) lockfile with the current session pid
     call writefile([getpid()], getcwd() . '/Session.lock', 's')
     " source session file
@@ -185,5 +185,11 @@ fu! RestoreSess()
   endif
 endfunction
 
-autocmd VimLeave * call SaveSess()
-autocmd VimEnter * nested call RestoreSess()
+augroup SessMgmt
+  let IsStdIn = 0
+  autocmd!
+  autocmd StdinReadPost * let IsStdIn = 1
+  " RestoreSess() if no args nor read from stdin
+  autocmd VimEnter * nested if !argc() && !IsStdIn | call RestoreSess() | endif
+  autocmd VimLeave * call SaveSess()
+augroup END
