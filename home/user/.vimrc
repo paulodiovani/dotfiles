@@ -25,6 +25,7 @@ set bs=2                " same as :set backspace=indent,eol,start
 set sm                  " color matching braces/parenthesis
 set ai cindent sw=2     " indentation
 "set is ic              " search
+set hlsearch            " highlight search
 set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
 " set noautoindent
