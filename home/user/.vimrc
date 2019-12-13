@@ -97,12 +97,6 @@ let NERDTreeShowHidden=1
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
-" show/hide line numbers
-nmap <leader># :set invnumber<CR>
-
-" show/hide hidden chars
-nmap <leader>h :set list!<CR>
-
 " Map <F*> keys...
 
 " shuffle text content (to hide sentitive data)
@@ -118,11 +112,20 @@ set pastetoggle=<F10>
 noremap <silent><F12> <C-w><C-]><C-w>T
 inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
 
+" show/hide line numbers
+nmap <Leader># :set invnumber<CR>
+nmap <Leader>3 :set invnumber<CR>
+" show/hide hidden chars
+nmap <Leader>$ :set list!<CR>
+nmap <Leader>4 :set list!<CR>
+" toggle search highlight
+noremap <Leader>n :set hlsearch!<CR>
+
 " Run Syntax check
 map <Leader>s :SyntasticCheck<CR>
-" Location list settings
-map <Leader>l :lnext<CR>
-map <Leader>L :lprevious<CR>
+" Location list mappings
+command! Lnext try | lnext | catch | lfirst | catch | endtry
+map <Leader>, :Lnext<CR>
 
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
@@ -133,15 +136,20 @@ imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
 " navigate in tabs
 noremap <Leader><Left> :tabprev<CR>
 noremap <Leader><Right> :tabnext<CR>
+noremap <Leader>h :tabprev<CR>
+noremap <Leader>l :tabnext<CR>
 " move tabs
 noremap <Leader><S-Left> :tabm -1<CR>
-noremap <Leader><S-Right> :tabm +1<CR>
+noremap <Leader><S-Right> :tabm -1<CR>
+noremap <Leader>H :tabm -1<CR>
+noremap <Leader>L :tabm +1<CR>
 " navigate in buffers
 noremap <Leader><Up> :bprev<CR>
 noremap <Leader><Down> :bnext<CR>
+noremap <Leader>k :bprev<CR>
+noremap <Leader>j :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
-" toggle search higllight
-noremap <Leader>s :set hlsearch!<CR>
+
 " paste word under cursor in command mode
 noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
