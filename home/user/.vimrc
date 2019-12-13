@@ -131,14 +131,6 @@ map <Leader>s :SyntasticCheck<CR>
 command! Lnext try | lnext | catch | lfirst | catch | endtry
 map <Leader>, :Lnext<CR>
 
-" nerdtree keymaps
-map <C-k><C-b> :NERDTreeToggle<CR>
-imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
-map <C-k><C-r> :NERDTreeFind<CR>
-imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
-" show/hide minimap
-map <C-k><C-m> :MinimapToggle<CR>
-
 " navigate in tabs
 noremap <Leader><Left> :tabprev<CR>
 noremap <Leader><Right> :tabnext<CR>
@@ -161,9 +153,19 @@ noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
 noremap <Leader>ag bye:!ag <C-r>" 
 
+" nerdtree keymaps
+map <C-k><C-b> :NERDTreeToggle<CR>
+imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
+map <C-k><C-r> :NERDTreeFind<CR>
+imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
+" show/hide minimap
+map <C-k><C-m> :MinimapToggle<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
-" map <C-t> :CtrlPSmartTabs<CR>
+map <C-t> :CtrlPSmartTabs<CR>
+" tags navigation: goto tag or pop back
+command! -range Tag try | pop | catch | execute '<line1>,<line2>tag' expand("<cword>") | catch | endtry
+map <C-]> :Tag<CR>
 
 
 """""""""""""""""""""
