@@ -1,6 +1,5 @@
-" Map Space as <Leader>
-let mapleader = " "
-
+" let mapleader = "\\"
+nmap <Space> \
 
 """"""""""""""""""""
 " SETTINGS SECTION "
@@ -141,7 +140,8 @@ noremap <Leader><S-Right> :tabm +1<CR>
 noremap <Leader><Up> :bprev<CR>
 noremap <Leader><Down> :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
-
+" toggle search higllight
+noremap <Leader>s :set hlsearch!<CR>
 " paste word under cursor in command mode
 noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
@@ -186,11 +186,10 @@ function! RestoreSess()
   endif
 endfunction
 
-augroup SessMgmt
+augroup SessMngr
   let IsStdIn = 0
   autocmd!
   autocmd StdinReadPost * let IsStdIn = 1
-  " RestoreSess() if no args nor read from stdin
-  autocmd VimEnter * nested if !argc() && !IsStdIn | call RestoreSess() | endif
   autocmd VimLeave * call SaveSess()
+  autocmd VimEnter * nested if !argc() && !IsStdIn | call RestoreSess() | endif
 augroup END
