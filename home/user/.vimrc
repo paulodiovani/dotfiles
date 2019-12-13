@@ -121,6 +121,10 @@ nmap <Leader>4 :set list!<CR>
 " toggle search highlight
 noremap <Leader>n :set hlsearch!<CR>
 
+" go to next/prev marks
+nnoremap <Leader>m ]`
+nnoremap <Leader>M [`
+
 " Run Syntax check
 map <Leader>s :SyntasticCheck<CR>
 " Location list mappings
@@ -132,6 +136,8 @@ map <C-k><C-b> :NERDTreeToggle<CR>
 imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
 imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
+" show/hide minimap
+map <C-k><C-m> :MinimapToggle<CR>
 
 " navigate in tabs
 noremap <Leader><Left> :tabprev<CR>
@@ -158,9 +164,6 @@ noremap <Leader>ag bye:!ag <C-r>"
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 " map <C-t> :CtrlPSmartTabs<CR>
-
-" show/hide minimap
-map <Leader>mm :MinimapToggle<CR>
 
 
 """""""""""""""""""""
