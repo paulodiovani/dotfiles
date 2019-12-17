@@ -157,16 +157,21 @@ noremap <Leader>k :bprev<CR>
 noremap <Leader>j :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
 
+" past in command (:) with Shift + Insert
+cnoremap <S-Insert> <C-R>"
 " paste word under cursor in command mode
 noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
 noremap <Leader>ag bye:!ag <C-r>" 
 
+" outdent with Shift+Tab
+imap <S-Tab> <C-o><<
+
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
-imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
+imap <C-k><C-b> <C-o>:NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
-imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
+imap <C-k><C-r> <C-o>:NERDTreeFind<CR>
 " show/hide minimap
 map <C-k><C-m> :MinimapToggle<CR>
 " list buffers/tabs in CtrlP
