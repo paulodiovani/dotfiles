@@ -41,6 +41,14 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax on
 set background=dark     " background color (light|dark)
 
+" fix arrow keys when using tmux
+if &term =~ '^tmux' || &term =~ '^screen'
+	execute "set <xUp>=\e[1;*A"
+	execute "set <xDown>=\e[1;*B"
+	execute "set <xRight>=\e[1;*C"
+	execute "set <xLeft>=\e[1;*D"
+endif
+
 " Lightline config
 set t_Co=256
 set laststatus=2
