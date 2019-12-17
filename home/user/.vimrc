@@ -86,9 +86,10 @@ let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
 
-" nerdtree show hidden files
+" nerdtree config
 let NERDTreeShowHidden=1
-
+let NERDTreeMapOpenInTab='<C-t>'
+let NERDTreeQuitOnOpen = 1
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
