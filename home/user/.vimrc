@@ -147,7 +147,7 @@ noremap <Leader>h :tabprev<CR>
 noremap <Leader>l :tabnext<CR>
 " move tabs
 noremap <Leader><S-Left> :tabm -1<CR>
-noremap <Leader><S-Right> :tabm -1<CR>
+noremap <Leader><S-Right> :tabm +1<CR>
 noremap <Leader>H :tabm -1<CR>
 noremap <Leader>L :tabm +1<CR>
 " navigate in buffers
