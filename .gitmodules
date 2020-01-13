@@ -49,3 +49,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/minimap"]
 	path = home/user/.vim/pack/plugins/opt/minimap
 	url = https://github.com/severin-lemaignan/vim-minimap.git
+[submodule "home/user/.vim/pack/plugins/start/interestingwords"]
+	path = home/user/.vim/pack/plugins/start/interestingwords
+	url = https://github.com/lfv89/vim-interestingwords.git
