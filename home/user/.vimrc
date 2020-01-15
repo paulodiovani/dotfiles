@@ -99,6 +99,10 @@ let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='<C-t>'
 let NERDTreeQuitOnOpen = 1
 
+" interestingwords colors
+let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
+let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
+
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -151,10 +155,10 @@ noremap <Leader><S-Right> :tabm +1<CR>
 noremap <Leader>H :tabm -1<CR>
 noremap <Leader>L :tabm +1<CR>
 " navigate in buffers
-noremap <Leader><Up> :bprev<CR>
-noremap <Leader><Down> :bnext<CR>
-noremap <Leader>k :bprev<CR>
-noremap <Leader>j :bnext<CR>
+" noremap <Leader><Up> :bprev<CR>
+" noremap <Leader><Down> :bnext<CR>
+" noremap <Leader>k :bprev<CR>
+" noremap <Leader>j :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
 
 " past in command (:) with Shift + Insert
