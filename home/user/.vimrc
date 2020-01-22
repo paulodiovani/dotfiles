@@ -166,7 +166,7 @@ cnoremap <S-Insert> <C-R>"
 " paste word under cursor in command mode
 noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
-noremap <Leader>ag bye:!clear;ag <C-r>" 
+noremap <Leader>ag bye:!clear;ag <C-r>"
 
 " outdent with Shift+Tab
 imap <S-Tab> <C-o><<
