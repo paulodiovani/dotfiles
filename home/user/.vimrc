@@ -135,8 +135,8 @@ nmap <Leader>4 :set list!<CR>
 noremap <Leader>n :set hlsearch!<CR>
 
 " go to next/prev marks
-nnoremap <Leader>m ]`
-nnoremap <Leader>M [`
+nnoremap m] ]`
+nnoremap m[ [`
 
 " Run Syntax check
 map <Leader>s :SyntasticCheck<CR>
