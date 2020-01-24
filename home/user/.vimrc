@@ -176,8 +176,6 @@ map <C-k><C-b> :NERDTreeToggle<CR>
 imap <C-k><C-b> <C-o>:NERDTreeToggle<CR>
 map <C-k><C-r> :NERDTreeFind<CR>
 imap <C-k><C-r> <C-o>:NERDTreeFind<CR>
-" show/hide minimap
-map <C-k><C-m> :MinimapToggle<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
