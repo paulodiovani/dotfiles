@@ -162,21 +162,19 @@ command! Lnext try | lnext | catch | lfirst | catch | endtry
 map <Leader>, :Lnext<CR>
 
 " navigate in tabs
-noremap <Leader><Left> :tabprev<CR>
-noremap <Leader><Right> :tabnext<CR>
-noremap <Leader>h :tabprev<CR>
-noremap <Leader>l :tabnext<CR>
+noremap <Leader><PageUp> :tabprev<CR>
+noremap <Leader><PageDown> :tabnext<CR>
 " move tabs
-noremap <Leader><S-Left> :tabm -1<CR>
-noremap <Leader><S-Right> :tabm +1<CR>
-noremap <Leader>H :tabm -1<CR>
-noremap <Leader>L :tabm +1<CR>
+noremap <Leader><S-PageUp> :tabm -1<CR>
+noremap <Leader><S-PageDown> :tabm +1<CR>
 " navigate in buffers
-" noremap <Leader><Up> :bprev<CR>
-" noremap <Leader><Down> :bnext<CR>
-" noremap <Leader>k :bprev<CR>
-" noremap <Leader>j :bnext<CR>
+noremap gb :<C-U>execute "buffer" . v:count<CR>
+noremap <Leader><Left> :bprev<CR>
+noremap <Leader><Right> :bnext<CR>
+noremap <Leader>h :bprev<CR>
+noremap <Leader>l :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
+noremap <Leader>x :bdelete<CR>
 
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
