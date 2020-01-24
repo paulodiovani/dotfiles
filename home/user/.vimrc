@@ -41,6 +41,14 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax on
 set background=dark     " background color (light|dark)
 
+" fix arrow keys when using tmux
+if &term =~ '^tmux' || &term =~ '^screen'
+	execute "set <xUp>=\e[1;*A"
+	execute "set <xDown>=\e[1;*B"
+	execute "set <xRight>=\e[1;*C"
+	execute "set <xLeft>=\e[1;*D"
+endif
+
 " Lightline config
 set t_Co=256
 set laststatus=2
@@ -86,9 +94,14 @@ let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 " CtrlP custom listing
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
 
-" nerdtree show hidden files
+" nerdtree config
 let NERDTreeShowHidden=1
+let NERDTreeMapOpenInTab='<C-t>'
+let NERDTreeQuitOnOpen = 1
 
+" interestingwords colors
+let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
+let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
@@ -121,17 +134,15 @@ nmap <Leader>4 :set list!<CR>
 " toggle search highlight
 noremap <Leader>n :set hlsearch!<CR>
 
+" go to next/prev marks
+nnoremap m] ]`
+nnoremap m[ [`
+
 " Run Syntax check
 map <Leader>s :SyntasticCheck<CR>
 " Location list mappings
 command! Lnext try | lnext | catch | lfirst | catch | endtry
 map <Leader>, :Lnext<CR>
-
-" nerdtree keymaps
-map <C-k><C-b> :NERDTreeToggle<CR>
-imap <C-k><C-b> <C-O>:NERDTreeToggle<CR>
-map <C-k><C-r> :NERDTreeFind<CR>
-imap <C-k><C-r> <C-O>:NERDTreeFind<CR>
 
 " navigate in tabs
 noremap <Leader><Left> :tabprev<CR>
@@ -140,27 +151,37 @@ noremap <Leader>h :tabprev<CR>
 noremap <Leader>l :tabnext<CR>
 " move tabs
 noremap <Leader><S-Left> :tabm -1<CR>
-noremap <Leader><S-Right> :tabm -1<CR>
+noremap <Leader><S-Right> :tabm +1<CR>
 noremap <Leader>H :tabm -1<CR>
 noremap <Leader>L :tabm +1<CR>
 " navigate in buffers
-noremap <Leader><Up> :bprev<CR>
-noremap <Leader><Down> :bnext<CR>
-noremap <Leader>k :bprev<CR>
-noremap <Leader>j :bnext<CR>
+" noremap <Leader><Up> :bprev<CR>
+" noremap <Leader><Down> :bnext<CR>
+" noremap <Leader>k :bprev<CR>
+" noremap <Leader>j :bnext<CR>
 noremap <Leader>bd :bdelete<CR>
 
+" past in command (:) with Shift + Insert
+cnoremap <S-Insert> <C-R>"
 " paste word under cursor in command mode
 noremap <Leader>: bye: <C-r>"<Home>
 " silver search word under cursor
-noremap <Leader>ag bye:!ag <C-r>" 
+noremap <Leader>ag bye:!clear;ag <C-r>"
 
+" outdent with Shift+Tab
+imap <S-Tab> <C-o><<
+
+" nerdtree keymaps
+map <C-k><C-b> :NERDTreeToggle<CR>
+imap <C-k><C-b> <C-o>:NERDTreeToggle<CR>
+map <C-k><C-r> :NERDTreeFind<CR>
+imap <C-k><C-r> <C-o>:NERDTreeFind<CR>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
-" map <C-t> :CtrlPSmartTabs<CR>
-
-" show/hide minimap
-map <Leader>mm :MinimapToggle<CR>
+map <C-t> :CtrlPSmartTabs<CR>
+" tags navigation: goto tag or pop back
+command! -range Tag try | pop | catch | execute '<line1>,<line2>tag' expand("<cword>") | catch | endtry
+map <C-]> :Tag<CR>
 
 
 """""""""""""""""""""
