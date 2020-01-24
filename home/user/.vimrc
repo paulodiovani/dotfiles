@@ -31,7 +31,7 @@ set noequalalways       " Do not resize windows on close
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
 " do not save buffers or options in sessions
-set sessionoptions-=buffers
+" set sessionoptions-=buffers
 set sessionoptions-=options
 
 " syntax and color scheme
@@ -105,7 +105,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " nerdtree config
 let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='<C-t>'
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 
 " interestingwords colors
 let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
@@ -234,9 +234,13 @@ function! RestoreSess()
     " source session file
     execute 'so' getcwd() . '/Session.vim'
     " open buffers in new tabs
-    execute 'tab sball'
+    " execute 'tab sball'
   endif
 endfunction
+
+"""""""""""""""""""
+" AUTOCMD SECTION "
+"""""""""""""""""""
 
 augroup SessMngr
   let IsStdIn = 0
