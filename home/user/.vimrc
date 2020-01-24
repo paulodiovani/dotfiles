@@ -27,11 +27,11 @@ set ai cindent sw=2     " indentation
 set hlsearch            " highlight search
 set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
+set hidden              " Allow unsaved hidden buffers
 set noequalalways       " Do not resize windows on close
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
-" do not save buffers or options in sessions
-" set sessionoptions-=buffers
+" do not save options in sessions
 set sessionoptions-=options
 
 " syntax and color scheme
@@ -244,6 +244,7 @@ function! RestoreSess()
     " execute 'tab sball'
   endif
 endfunction
+
 
 """""""""""""""""""
 " AUTOCMD SECTION "
