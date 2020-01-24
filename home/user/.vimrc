@@ -55,6 +55,7 @@ endif
 " Lightline config
 set t_Co=256
 set laststatus=2
+set showtabline=2
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
@@ -66,17 +67,25 @@ let g:lightline = {
       \ 'inactive': {
       \   'left': [['filename', 'conflicted']],
       \ },
+      \ 'tabline': {
+      \   'left': [['buffers']],
+      \   'right': [['close'], ['tabs']],
+      \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
       \   'gitbranch': "\ue0a0 %{fugitive#head()}",
       \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
       \ },
+      \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+      \ 'component_type': { 'buffers': 'tabsel' },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help" && &readonly)',
       \   'gitbranch': '(exists("*fugitive#head") && "" != fugitive#head())',
       \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
       \ },
       \ }
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")
