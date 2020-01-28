@@ -138,9 +138,15 @@ map <F3> :%s/\r//g<CR>
 " enable/disable paste mode with F10
 map <F10> :set paste!<CR>:set paste?<CR>
 set pastetoggle=<F10>
+
+" open definition (using ctags) in new buffer
+noremap <F12> <C-]>
+inoremap <F12> <C-o><C-]>
 " open definition (using ctags) in new tab
-noremap <silent><F12> <C-w><C-]><C-w>T
-inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
+" noremap <F12> <C-w><C-]><C-w>T
+" inoremap <F12> <C-o><C-w><C-]><C-w>T
+noremap <Leader><F12> :pop<CR>
+inoremap <Leader><F12> <C-o>:pop<CR>
 
 " show/hide line numbers
 nmap <Leader># :set invnumber<CR>
@@ -197,9 +203,6 @@ map <Leader>f :NERDTreeFind<CR><C-w><C-p>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
-" tags navigation: goto tag or pop back
-command! -range Tag try | pop | catch | execute '<line1>,<line2>tag' expand("<cword>") | catch | endtry
-map <C-]> :Tag<CR>
 
 " writeroom keymap (see functions section)
 map <silent><Leader>v :call WriteRoomToggle()<CR>
