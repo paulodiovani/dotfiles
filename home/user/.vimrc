@@ -161,6 +161,8 @@ map <Leader>s :SyntasticCheck<CR>
 command! Lnext try | lnext | catch | lfirst | catch | endtry
 map <Leader>, :Lnext<CR>
 
+" navigate in windows
+noremap <Leader>w <C-w>w
 " navigate in tabs
 noremap <Leader><PageUp> :tabprev<CR>
 noremap <Leader><PageDown> :tabnext<CR>
