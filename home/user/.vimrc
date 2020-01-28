@@ -27,6 +27,7 @@ set ai cindent sw=2     " indentation
 set hlsearch            " highlight search
 set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
+set noequalalways       " Do not resize windows on close
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
 " do not save buffers or options in sessions
@@ -40,6 +41,8 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax on
 set background=dark     " background color (light|dark)
+" hide vertical split separator
+hi VertSplit guifg=bg guibg=NONE gui=NONE
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
@@ -174,8 +177,9 @@ imap <S-Tab> <C-o><<
 " nerdtree keymaps
 map <C-k><C-b> :NERDTreeToggle<CR>
 imap <C-k><C-b> <C-o>:NERDTreeToggle<CR>
-map <C-k><C-r> :NERDTreeFind<CR>
-imap <C-k><C-r> <C-o>:NERDTreeFind<CR>
+map <C-k><C-f> :NERDTreeFind<CR>
+imap <C-k><C-f> <C-o>:NERDTreeFind<CR>
+map <Leader>f :NERDTreeFind<CR><C-w><C-p>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
@@ -183,10 +187,24 @@ map <C-t> :CtrlPSmartTabs<CR>
 command! -range Tag try | pop | catch | execute '<line1>,<line2>tag' expand("<cword>") | catch | endtry
 map <C-]> :Tag<CR>
 
+" writeroom keymap (see functions section)
+map <silent><Leader>v :call WriteRoomToggle()<CR>
 
 """""""""""""""""""""
 " FUNCTIONS SECTION "
 """""""""""""""""""""
+
+" use a smaller viewport
+function! WriteRoomToggle()
+  let l:name = '_writeroom_'
+  if bufwinnr(l:name) > 0
+    wincmd o
+  else
+    let l:width = (&columns - &textwidth) / 5
+    execute 'topleft' l:width . 'vsplit +setlocal\ nobuflisted' l:name | wincmd p
+    execute 'botright' l:width . 'vsplit +setlocal\ nobuflisted' l:name | wincmd p
+    endif
+endfunction
 
 " auto save/load sessions, unless already opened
 function! IsCurrentSess()
