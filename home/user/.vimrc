@@ -181,8 +181,9 @@ noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
 noremap <Leader>h :bprev<CR>
 noremap <Leader>l :bnext<CR>
-noremap <Leader>bd :bdelete<CR>
-noremap <Leader>x :bdelete<CR>
+" delete buffer without closing the window
+command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
+noremap <Leader>x :Bdelete<CR>
 
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
