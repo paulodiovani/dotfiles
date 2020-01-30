@@ -176,7 +176,7 @@ noremap <Leader><PageDown> :tabnext<CR>
 noremap <Leader><S-PageUp> :tabm -1<CR>
 noremap <Leader><S-PageDown> :tabm +1<CR>
 " navigate in buffers
-noremap gb :<C-U>execute "buffer" . v:count<CR>
+noremap gb <C-^>
 noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
 noremap <Leader>h :bprev<CR>
