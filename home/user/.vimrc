@@ -60,16 +60,21 @@ let g:lightline = {
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \   'left': [['mode', 'paste' ],
+      \            ['gitbranch', 'readonly', 'relativepath', 'conflicted', 'modified']],
+      \ },
+      \ 'inactive': {
+      \   'left': [['filename', 'conflicted']],
       \ },
       \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"\ue0a2":""}',
-      \   'gitbranch': "\ue0a0 %{fugitive#head()}"
+      \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
+      \   'gitbranch': "\ue0a0 %{fugitive#head()}",
+      \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help" && &readonly)',
-      \   'gitbranch': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   'gitbranch': '(exists("*fugitive#head") && "" != fugitive#head())',
+      \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
       \ },
       \ }
 
