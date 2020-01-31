@@ -10,6 +10,7 @@
   logvim = -c core.pager=/usr/share/vim/vim81/macros/less.sh log --no-color
   history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
   pr-history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --date=short origin/master..
+  conflicted = !vim +'packadd conflicted | Conflicted'
 [credential]
   helper = gnome-keyring
 [core]
