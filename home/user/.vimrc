@@ -27,11 +27,11 @@ set ai cindent sw=2     " indentation
 set hlsearch            " highlight search
 set expandtab           " convert tabs to spaces
 set ts=2 sts=2 sw=2     " TAB width
+set hidden              " Allow unsaved hidden buffers
 set noequalalways       " Do not resize windows on close
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
-" do not save buffers or options in sessions
-set sessionoptions-=buffers
+" do not save options in sessions
 set sessionoptions-=options
 
 " syntax and color scheme
@@ -55,6 +55,7 @@ endif
 " Lightline config
 set t_Co=256
 set laststatus=2
+set showtabline=2
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
@@ -66,17 +67,25 @@ let g:lightline = {
       \ 'inactive': {
       \   'left': [['filename', 'conflicted']],
       \ },
+      \ 'tabline': {
+      \   'left': [['buffers']],
+      \   'right': [['close'], ['tabs']],
+      \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
       \   'gitbranch': "\ue0a0 %{fugitive#head()}",
       \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
       \ },
+      \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+      \ 'component_type': { 'buffers': 'tabsel' },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help" && &readonly)',
       \   'gitbranch': '(exists("*fugitive#head") && "" != fugitive#head())',
       \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
       \ },
       \ }
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")
@@ -105,7 +114,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " nerdtree config
 let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='<C-t>'
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 
 " interestingwords colors
 let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
@@ -129,9 +138,15 @@ map <F3> :%s/\r//g<CR>
 " enable/disable paste mode with F10
 map <F10> :set paste!<CR>:set paste?<CR>
 set pastetoggle=<F10>
+
+" open definition (using ctags) in new buffer
+noremap <F12> <C-]>
+inoremap <F12> <C-o><C-]>
 " open definition (using ctags) in new tab
-noremap <silent><F12> <C-w><C-]><C-w>T
-inoremap <silent><F12> <Esc><C-w><C-]><C-w>T
+" noremap <F12> <C-w><C-]><C-w>T
+" inoremap <F12> <C-o><C-w><C-]><C-w>T
+noremap <Leader><F12> :pop<CR>
+inoremap <Leader><F12> <C-o>:pop<CR>
 
 " show/hide line numbers
 nmap <Leader># :set invnumber<CR>
@@ -152,22 +167,23 @@ map <Leader>s :SyntasticCheck<CR>
 command! Lnext try | lnext | catch | lfirst | catch | endtry
 map <Leader>, :Lnext<CR>
 
+" navigate in windows
+noremap <Leader>w <C-w>w
 " navigate in tabs
-noremap <Leader><Left> :tabprev<CR>
-noremap <Leader><Right> :tabnext<CR>
-noremap <Leader>h :tabprev<CR>
-noremap <Leader>l :tabnext<CR>
+noremap <Leader><PageUp> :tabprev<CR>
+noremap <Leader><PageDown> :tabnext<CR>
 " move tabs
-noremap <Leader><S-Left> :tabm -1<CR>
-noremap <Leader><S-Right> :tabm +1<CR>
-noremap <Leader>H :tabm -1<CR>
-noremap <Leader>L :tabm +1<CR>
+noremap <Leader><S-PageUp> :tabm -1<CR>
+noremap <Leader><S-PageDown> :tabm +1<CR>
 " navigate in buffers
-" noremap <Leader><Up> :bprev<CR>
-" noremap <Leader><Down> :bnext<CR>
-" noremap <Leader>k :bprev<CR>
-" noremap <Leader>j :bnext<CR>
-noremap <Leader>bd :bdelete<CR>
+noremap gb <C-^>
+noremap <Leader><Left> :bprev<CR>
+noremap <Leader><Right> :bnext<CR>
+noremap <Leader>h :bprev<CR>
+noremap <Leader>l :bnext<CR>
+" delete buffer without closing the window
+command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
+noremap <Leader>x :Bdelete<CR>
 
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
@@ -188,9 +204,6 @@ map <Leader>f :NERDTreeFind<CR><C-w><C-p>
 " list buffers/tabs in CtrlP
 map <C-b> :CtrlPBuffer<CR>
 map <C-t> :CtrlPSmartTabs<CR>
-" tags navigation: goto tag or pop back
-command! -range Tag try | pop | catch | execute '<line1>,<line2>tag' expand("<cword>") | catch | endtry
-map <C-]> :Tag<CR>
 
 " writeroom keymap (see functions section)
 map <silent><Leader>v :call WriteRoomToggle()<CR>
@@ -234,9 +247,14 @@ function! RestoreSess()
     " source session file
     execute 'so' getcwd() . '/Session.vim'
     " open buffers in new tabs
-    execute 'tab sball'
+    " execute 'tab sball'
   endif
 endfunction
+
+
+"""""""""""""""""""
+" AUTOCMD SECTION "
+"""""""""""""""""""
 
 augroup SessMngr
   let IsStdIn = 0

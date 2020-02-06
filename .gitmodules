@@ -52,3 +52,6 @@
 [submodule "home/user/.vim/pack/plugins/start/signature"]
 	path = home/user/.vim/pack/plugins/start/signature
 	url = https://github.com/kshenoy/vim-signature.git
+[submodule "home/user/.vim/pack/plugins/start/lightline-bufferline"]
+	path = home/user/.vim/pack/plugins/start/lightline-bufferline
+	url = https://github.com/mengelbrecht/lightline-bufferline.git
