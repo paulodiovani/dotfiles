@@ -52,3 +52,6 @@
 [submodule "home/user/.vim/pack/plugins/start/lightline-bufferline"]
 	path = home/user/.vim/pack/plugins/start/lightline-bufferline
 	url = https://github.com/mengelbrecht/lightline-bufferline.git
+[submodule "home/user/.vim/pack/syntax/opt/coffee-script"]
+	path = home/user/.vim/pack/syntax/opt/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
