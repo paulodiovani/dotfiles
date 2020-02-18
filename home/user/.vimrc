@@ -192,6 +192,8 @@ noremap <Leader>l :bnext<CR>
 command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
 noremap <Leader>x :Bdelete<CR>
 
+" delete without copying
+noremap <Leader>d "_d
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
 " paste word under cursor in command mode
