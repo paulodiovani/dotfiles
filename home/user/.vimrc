@@ -59,6 +59,23 @@ if &term =~ '^tmux' || &term =~ '^screen'
 	execute "set <xLeft>=\e[1;*D"
 endif
 
+" FZF config
+let g:fzf_layout = { 'window': 'below ' . string(&lines * 0.3) . 'split' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " Lightline config
 set t_Co=256
 set laststatus=2
@@ -203,7 +220,7 @@ map <C-k><C-b> :Drawer<CR>
 
 " list files
 map <C-p> :Files<CR>
-" list buffers 
+" list buffers
 map <C-b> :Buffers<CR>
 " list tags (current file / all)
 map <C-t> :BTags<CR>
