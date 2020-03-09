@@ -226,9 +226,9 @@ map <C-b> :Buffers<CR>
 map <C-t> :BTags<CR>
 map <Leader>t :Tags<CR>
 " ripgrep search word under cursor
-noremap <Leader>rg elyb:!clear;ag <C-r>"
+noremap <Leader>rg yiw:Rg <C-r>"<Space>
 " paste word under cursor in command mode
-noremap <Leader>: elyb: <C-r>"<Home>
+noremap <Leader>: yiw: <C-r>"<Home>
 
 " writeroom keymap (see functions section)
 map <silent><Leader>v :call WriteRoomToggle()<CR>
