@@ -218,8 +218,9 @@ map <C-k><C-b> :Drawer<CR>
 
 " fzf and ripgrep maps
 
-" list files
-map <C-p> :Files<CR>
+" list files/git files
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+map <C-p> :Ctrlp<CR>
 " list buffers
 map <C-b> :Buffers<CR>
 " list tags (current file / all)
