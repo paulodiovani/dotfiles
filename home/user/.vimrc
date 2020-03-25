@@ -34,6 +34,13 @@ set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
 " do not save options in sessions
 set sessionoptions-=options
 
+" netrw/Explore (almost) like NERDTree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 " syntax and color scheme
 set termguicolors       " enable true color support
 colorscheme one
@@ -51,6 +58,23 @@ if &term =~ '^tmux' || &term =~ '^screen'
 	execute "set <xRight>=\e[1;*C"
 	execute "set <xLeft>=\e[1;*D"
 endif
+
+" FZF config
+let g:fzf_layout = { 'window': 'below ' . string(&lines * 0.3) . 'split' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " Lightline config
 set t_Co=256
@@ -107,21 +131,6 @@ let g:syntastic_ruby_rubocop_exec = '/home/diovani/.rbenv/shims/rubocop'
 
 " Vim Fugitive Github Browse on (almos) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
-
-" CtrlP custom listing for git repos
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -maxdepth 4 -type f']
-" CtrlP tags configuration
-let g:ctrlp_buftag_types = {
-  \ 'css' : '',
-  \ 'javascript' : '',
-  \ 'ruby' : '',
-  \ 'scss' : '--langmap=css:+.scss',
-  \ }
-
-" nerdtree config
-let NERDTreeShowHidden=1
-let NERDTreeMapOpenInTab='<C-t>'
-let NERDTreeQuitOnOpen = 0
 
 " interestingwords colors
 let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
@@ -192,29 +201,35 @@ noremap <Leader>l :bnext<CR>
 command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
 noremap <Leader>x :Bdelete<CR>
 
+" close current window
+noremap <Leader>q :q<CR>
+
 " delete without copying
 noremap <Leader>d "_d
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
-" paste word under cursor in command mode
-noremap <Leader>: bye: <C-r>"<Home>
-" silver search word under cursor
-noremap <Leader>ag bye:!clear;ag <C-r>"
 
 " outdent with Shift+Tab
 imap <S-Tab> <C-o><<
 
-" nerdtree keymaps
-map <C-k><C-b> :NERDTreeToggle<CR>
-imap <C-k><C-b> <C-o>:NERDTreeToggle<CR>
-map <C-k><C-f> :NERDTreeFind<CR>
-imap <C-k><C-f> <C-o>:NERDTreeFind<CR>
-map <Leader>f :NERDTreeFind<CR><C-w><C-p>
-" list buffers in CtrlP
-map <C-b> :CtrlPBuffer<CR>
-" list tags (current file / all) in CtrlP
-map <C-t> :CtrlPBufTag<CR>
-map <Leader>t :CtrlPTag<CR>
+" open netrw/Explore (similar to NERDTree)
+command! Drawer if winnr() == winnr('$') | Lexplore | else | 1 wincmd w | Explore | endif
+map <C-k><C-b> :Drawer<CR>
+
+" fzf and ripgrep maps
+
+" list files/git files
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+map <C-p> :Ctrlp<CR>
+" list buffers
+map <C-b> :Buffers<CR>
+" list tags (current file / all)
+map <C-t> :BTags<CR>
+map <Leader>t :Tags<CR>
+" ripgrep search word under cursor
+noremap <Leader>rg yiw:Rg <C-r>"
+" paste word under cursor in command mode
+noremap <Leader>: yiw:<Space><C-r>"<Home>
 
 " writeroom keymap (see functions section)
 map <silent><Leader>v :call WriteRoomToggle()<CR>

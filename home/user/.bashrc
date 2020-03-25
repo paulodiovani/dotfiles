@@ -139,6 +139,9 @@ export EDITOR=vim
 # Change pager to LESS (for psql, etc)
 export PAGER="less -S -x4"
 
+# Fuzzy search command
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # ~/bin
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
