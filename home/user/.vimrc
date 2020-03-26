@@ -213,7 +213,7 @@ cnoremap <S-Insert> <C-R>"
 imap <S-Tab> <C-o><<
 
 " open netrw/Explore (similar to NERDTree)
-command! -nargs=? Drawer if winnr() == winnr('$') | Vexplore <args>| else | 1 wincmd w | Explore <args>| endif
+command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args>| endif
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:h") | normal n
 map <C-k><C-b> :DrawerCwd<CR>
