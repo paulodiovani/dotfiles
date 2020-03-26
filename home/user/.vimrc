@@ -213,8 +213,11 @@ cnoremap <S-Insert> <C-R>"
 imap <S-Tab> <C-o><<
 
 " open netrw/Explore (similar to NERDTree)
-command! Drawer if winnr() == winnr('$') | Lexplore | else | 1 wincmd w | Explore | endif
-map <C-k><C-b> :Drawer<CR>
+command! -nargs=? Drawer if winnr() == winnr('$') | Vexplore <args>| else | 1 wincmd w | Explore <args>| endif
+command! DrawerCwd execute 'Drawer' getcwd()
+command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:h") | normal n
+map <C-k><C-b> :DrawerCwd<CR>
+map <C-k><C-f> :DrawerFind<CR>
 
 " fzf and ripgrep maps
 
