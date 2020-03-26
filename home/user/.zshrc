@@ -104,3 +104,5 @@ export PAGER="less -S -x4"
 # Fuzzy search command
 export FZF_DEFAULT_COMMAND='rg --files'
 
+# Bat theme
+export BAT_THEME="OneHalfDark"
