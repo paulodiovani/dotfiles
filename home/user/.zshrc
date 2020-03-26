@@ -104,6 +104,3 @@ export PAGER="less -S -x4"
 # Fuzzy search command
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# tabtab source for jiractl package
-# uninstall by removing these lines or running `tabtab uninstall jiractl`
-[[ -f /home/diovani/Development/GoDaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh ]] && . /home/diovani/Development/GoDaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh
