@@ -31,8 +31,8 @@ set hidden              " Allow unsaved hidden buffers
 set noequalalways       " Do not resize windows on close
 " set noautoindent
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
-" do not save options in sessions
-set sessionoptions-=options
+set sessionoptions-=options  " do not save options in sessions
+set path+=**            " search subfolders (find, ...)
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -157,6 +157,7 @@ set pastetoggle=<F10>
 
 " open definition (using ctags) in new buffer
 noremap <F12> <C-]>
+noremap g<F12> g<C-]>
 inoremap <F12> <C-o><C-]>
 " open definition (using ctags) in new tab
 " noremap <F12> <C-w><C-]><C-w>T
@@ -195,8 +196,8 @@ noremap <Leader><S-PageDown> :tabm +1<CR>
 noremap gb <C-^>
 noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
-noremap <Leader>h :bprev<CR>
-noremap <Leader>l :bnext<CR>
+noremap <Leader>, :bprev<CR>
+noremap <Leader>. :bnext<CR>
 " delete buffer without closing the window
 command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
 noremap <Leader>x :Bdelete<CR>
@@ -204,8 +205,6 @@ noremap <Leader>x :Bdelete<CR>
 " close current window
 noremap <Leader>q :q<CR>
 
-" delete without copying
-noremap <Leader>d "_d
 " past in command (:) with Shift + Insert
 cnoremap <S-Insert> <C-R>"
 
@@ -217,18 +216,25 @@ command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:h") | normal n
 map <C-k><C-b> :DrawerCwd<CR>
+map <Leader>d :DrawerCwd<CR>
 map <C-k><C-f> :DrawerFind<CR>
+map <Leader>f :DrawerFind<CR>
 
 " fzf and ripgrep maps
 
 " list files/git files
 command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
 map <C-p> :Ctrlp<CR>
+map <Leader>p :Ctrlp<CR>
+map <Leader>P :Ctrlp<CR>
 " list buffers
-map <C-b> :Buffers<CR>
-" list tags (current file / all)
-map <C-t> :BTags<CR>
-map <Leader>t :Tags<CR>
+map <Leader>b :Buffers<CR>
+" list tags (current buffer / all)
+map <Leader>t :BTags<CR>
+map <Leader>T :Tags<CR>
+" list lines (current buffer)
+map <Leader>l :BLines<CR>
+map <Leader>L :Lines<CR>
 " ripgrep search word under cursor
 noremap <Leader>rg yiw:Rg <C-r>"
 " paste word under cursor in command mode
