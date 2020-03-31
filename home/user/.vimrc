@@ -197,8 +197,8 @@ noremap <Leader><S-PageDown> :tabm +1<CR>
 noremap gb <C-^>
 noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
-noremap <Leader>, :bprev<CR>
-noremap <Leader>. :bnext<CR>
+noremap <Leader>< :bprev<CR>
+noremap <Leader>> :bnext<CR>
 " delete buffer without closing the window
 command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
 noremap <Leader>x :Bdelete<CR>
