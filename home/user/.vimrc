@@ -112,6 +112,9 @@ let g:lightline = {
 let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#unnamed      = '[No Name]'
 
+" indentline config
+let g:indentLine_char = '▏'
+
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")
   set statusline+=%#warningmsg#
