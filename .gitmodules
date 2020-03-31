@@ -49,3 +49,6 @@
 [submodule "home/user/.vim/pack/plugins/start/fzf"]
 	path = home/user/.vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "home/user/.vim/pack/plugins/start/indentline"]
+	path = home/user/.vim/pack/plugins/start/indentline
+	url = https://github.com/Yggdroot/indentLine.git
