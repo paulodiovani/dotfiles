@@ -169,6 +169,14 @@ inoremap <F12> <C-o><C-]>
 noremap <Leader><F12> :pop<CR>
 inoremap <Leader><F12> <C-o>:pop<CR>
 
+" Toggles
+
+" show/hide indentline
+nmap <Leader>! :IndentLinesToggle<CR>
+nmap <Leader>1 :IndentLinesToggle<CR>
+" show/hide marks
+nmap <Leader>@ :SignatureToggle<CR>
+nmap <Leader>2 :SignatureToggle<CR>
 " show/hide line numbers
 nmap <Leader># :set invnumber<CR>
 nmap <Leader>3 :set invnumber<CR>
@@ -176,7 +184,11 @@ nmap <Leader>3 :set invnumber<CR>
 nmap <Leader>$ :set list!<CR>
 nmap <Leader>4 :set list!<CR>
 " toggle search highlight
-noremap <Leader>n :set hlsearch!<CR>
+noremap <Leader>% :set hlsearch!<CR>
+noremap <Leader>5 :set hlsearch!<CR>
+" writeroom keymap (see functions section)
+noremap <silent><Leader>^ :call WriteRoomToggle()<CR>
+noremap <silent><Leader>6 :call WriteRoomToggle()<CR>
 
 " go to next/prev marks
 nnoremap m] ]`
@@ -243,9 +255,6 @@ map <Leader>L :Lines<CR>
 noremap <Leader>rg yiw:Rg <C-r>"
 " paste word under cursor in command mode
 noremap <Leader>: yiw:<Space><C-r>"<Home>
-
-" writeroom keymap (see functions section)
-map <silent><Leader>v :call WriteRoomToggle()<CR>
 
 """""""""""""""""""""
 " FUNCTIONS SECTION "
