@@ -256,6 +256,12 @@ noremap <Leader>rg yiw:Rg <C-r>"
 " paste word under cursor in command mode
 noremap <Leader>: yiw:<Space><C-r>"<Home>
 
+"""""""""""""""""""""""""""
+" CUSTOM COMMANDS SECTION "
+"""""""""""""""""""""""""""
+command! Hexdump %!xxd
+command! HexdumpReverse %!xxd -r
+
 """""""""""""""""""""
 " FUNCTIONS SECTION "
 """""""""""""""""""""
@@ -303,6 +309,10 @@ endfunction
 """""""""""""""""""
 " AUTOCMD SECTION "
 """""""""""""""""""
+
+augroup FileTypes
+  autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+augroup END
 
 augroup SessMngr
   let IsStdIn = 0
