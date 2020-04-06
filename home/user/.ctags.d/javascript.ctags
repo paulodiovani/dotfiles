@@ -1,0 +1,10 @@
+--langmap=javascript:.js.es6.es.jsx
+
+--regex-javascript=/^[ \t]*var[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+--regex-javascript=/^[ \t]*let[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+--regex-javascript=/^[ \t]*const[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+
+--regex-javascript=/^[ \t]*export[ \t]var[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+--regex-javascript=/^[ \t]*export[ \t]let[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+--regex-javascript=/^[ \t]*export[ \t]const[ \t]\{1,\}\([a-z][A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*([^\*]/\1/f,function,functions/b
+
