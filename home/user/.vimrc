@@ -33,6 +33,7 @@ set noequalalways       " Do not resize windows on close
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
 set sessionoptions-=options  " do not save options in sessions
 set path+=**            " search subfolders (find, ...)
+set conceallevel=0      " do not conceal characters
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -43,11 +44,12 @@ let g:netrw_winsize = 25
 
 " syntax and color scheme
 set termguicolors       " enable true color support
-colorscheme one
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " tmux true color support
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " tmux true color support
 syntax on
 set background=dark     " background color (light|dark)
+let g:one_allow_italics = 1
+colorscheme one
 " hide vertical split separator
 hi VertSplit guifg=bg guibg=NONE gui=NONE
 
@@ -114,6 +116,7 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " indentline config
 let g:indentLine_char = '▏'
+let g:indentLine_conceallevel = 0
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")
