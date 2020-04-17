@@ -5,7 +5,8 @@ docker-compose.override.yml
 # override npm rules per project
 .npmrc
 
-# rakelib for addicional tasks
+# ruby tools
+.byebug_history
 rakelib
 
 # ctags file
@@ -16,3 +17,5 @@ Session.vim
 Session.lock
 *~
 
+# direnv allow per directory rc file
+.envrc
