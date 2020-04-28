@@ -131,7 +131,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
+let g:syntastic_javascript_eslint_exe = 'npx eslint'
 
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_exec = '/home/diovani/.rbenv/shims/rubocop'
