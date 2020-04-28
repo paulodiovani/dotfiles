@@ -52,3 +52,6 @@
 [submodule "home/user/.vim/pack/plugins/start/indentline"]
 	path = home/user/.vim/pack/plugins/start/indentline
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "home/user/.vim/pack/plugins/opt/markdown-toc"]
+	path = home/user/.vim/pack/plugins/opt/markdown-toc
+	url = https://github.com/ajorgensen/vim-markdown-toc.git
