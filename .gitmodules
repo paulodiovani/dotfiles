@@ -55,3 +55,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/markdown-toc"]
 	path = home/user/.vim/pack/plugins/opt/markdown-toc
 	url = https://github.com/ajorgensen/vim-markdown-toc.git
+[submodule "home/user/.vim/pack/plugins/start/emmet"]
+	path = home/user/.vim/pack/plugins/start/emmet
+	url = https://github.com/mattn/emmet-vim.git
