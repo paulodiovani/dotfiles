@@ -18,7 +18,7 @@ set titlestring=%t      " show only filename
 set t_vb=               " no
 "set termencoding=utf8   " all files are utf8set nobackup
 "set nobackup            " don't write ~* backup files
-set fdm=marker          " folding
+set foldmethod=manual   " folding (manual, indent, syntax, expr, marker, diff)
 "set tw=80               " text width
 set bs=2                " same as :set backspace=indent,eol,start
 set sm                  " color matching braces/parenthesis
@@ -116,7 +116,7 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " indentline config
 let g:indentLine_char = '▏'
-let g:indentLine_conceallevel = 0
+" let g:indentLine_conceallevel = 0
 
 " Syntastic config
 if exists("*SyntasticStatuslineFlag")
@@ -152,12 +152,17 @@ cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw 
 
 " Map <F*> keys...
 
-" shuffle text content (to hide sentitive data)
-map <F8> ggVGg?
 " Rename/Move
 map <expr> <F2> ':Move ' . expand('%')
 " remove <CR>/^M from line endings
 map <F3> :%s/\r//g<CR>
+" shuffle text content (to hide sentitive data)
+map <F8> ggVGg?
+" fold/unfold with F9/*{{{*/
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf}}}
 " enable/disable paste mode with F10
 map <F10> :set paste!<CR>:set paste?<CR>
 set pastetoggle=<F10>
