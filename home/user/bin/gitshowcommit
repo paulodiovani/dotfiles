@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# get a git commit hash from a log line and
+# show using vimless, bat or less (default)
+
+if [ "$1" == "--bat" ]; then
+  PAGER='bat --style=numbers --color=always'
+  shift
+elif [ "$1" == "--vim" ]; then
+  PAGER=/usr/share/vim/vim82/macros/less.sh
+  NC=--no-color
+  shift
+else
+  PAGER='less'
+fi
+
+echo "$@" |
+  grep -o -w -E '[[:alnum:]]+' |
+  head -1 |
+  xargs git show $NC |
+  $PAGER
