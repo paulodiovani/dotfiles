@@ -11,6 +11,7 @@ set guifont=Source\ Code\ Pro\ Regular\ 11
 set guioptions -=T     " hide toolbar
 
 " General config
+set mouse=""            " disable mouse support
 set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
