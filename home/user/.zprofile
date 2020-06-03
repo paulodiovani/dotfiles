@@ -22,6 +22,9 @@ command -v rbenv > /dev/null && eval "$(rbenv init -)"
 # automatically choose node version
 autoload -U add-zsh-hook
 load-nvmrc() {
+  # quit if no nvm
+  command -v nvm > /dev/null || return
+
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 

@@ -101,8 +101,9 @@ export EDITOR=vim
 # change pager to LESS (for psql, etc)
 export PAGER="less -S -x4"
 
-# Fuzzy search command
+# Fuzzy search command and options
 export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_OPTS='--bind="F12:toggle-preview"'
 
 # Bat theme
 export BAT_THEME="OneHalfDark"
