@@ -189,11 +189,10 @@ noremap <silent><Leader>6 :call WriteRoomToggle()<CR>
 nnoremap m] ]`
 nnoremap m[ [`
 
-" Run Syntax check
-map <Leader>s :SyntasticCheck<CR>
 " Location list mappings
-command! Lnext try | lnext | catch | lfirst | catch | endtry
-map <Leader>, :Lnext<CR>
+map <Leader>s :lopen<CR>
+map <Leader>, :lprev<CR>
+map <Leader>. :lnext<CR>
 
 " navigate in windows
 noremap <Leader>w <C-w>p
