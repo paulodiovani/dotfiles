@@ -184,6 +184,9 @@ noremap <Leader>5 :set hlsearch!<CR>
 " writeroom keymap (see functions section)
 noremap <silent><Leader>^ :call WriteRoomToggle()<CR>
 noremap <silent><Leader>6 :call WriteRoomToggle()<CR>
+" toggle ALE linting
+noremap <Leader>& :ALEToggle<CR>
+noremap <Leader>7 :ALEToggle<CR>
 
 " go to next/prev marks
 nnoremap m] ]`
