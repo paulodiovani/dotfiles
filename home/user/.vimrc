@@ -11,6 +11,7 @@ set guifont=Source\ Code\ Pro\ Regular\ 11
 set guioptions -=T     " hide toolbar
 
 " General config
+set mouse=""            " disable mouse support
 set nu                  " add line numbers
 set ruler               " show cursor position
 set title               " show filename on title bar
@@ -62,6 +63,7 @@ if &term =~ '^tmux' || &term =~ '^screen'
 endif
 
 " FZF config
+let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'window': 'below ' . string(&lines * 0.3) . 'split' }
 let g:fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
 let g:fzf_colors =
@@ -143,6 +145,9 @@ let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
 let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
 
+" emmet-vim config
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""

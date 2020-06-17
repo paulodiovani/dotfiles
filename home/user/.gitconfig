@@ -6,16 +6,25 @@
   ci = commit
   co = checkout
   st = status
-  diffvim = -c core.pager=/usr/share/vim/vim81/macros/less.sh diff --no-color
-  logvim = -c core.pager=/usr/share/vim/vim81/macros/less.sh log --no-color
-  history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
-  pr-history = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --date=short origin/master..
+  logpretty = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
+  diffvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh diff --no-color
+  logvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh log --no-color
+  showvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh show --no-color
+  history = "!f() { \
+    git logpretty $@ | \
+    fzf -e --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; \
+  }; f"
+  history-pr = history origin/master..
   conflicted = !vim +'packadd conflicted | Conflicted'
 [credential]
   helper = gnome-keyring
 [core]
   editor = vim
   excludesfile = ~/.gitignore
-  pager = less -XFR -x4
+  # pager = less -XFR -x4
+  pager = bat --style=numbers --color=always
 [blame]
   date = short
+[user]
+  email = paulo@diovani.com
+  name = Paulo Diovani
