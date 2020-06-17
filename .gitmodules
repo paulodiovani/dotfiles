@@ -55,3 +55,6 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "home/user/.vim/pack/plugins/start/ale"]
+	path = home/user/.vim/pack/plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
