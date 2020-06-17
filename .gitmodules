@@ -10,9 +10,6 @@
 [submodule "home/user/.vim/pack/plugins/start/tcomment"]
 	path = home/user/.vim/pack/plugins/start/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "home/user/.vim/pack/plugins/start/syntastic"]
-	path = home/user/.vim/pack/plugins/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "home/user/.vim/pack/plugins/opt/tmuxline"]
 	path = home/user/.vim/pack/plugins/opt/tmuxline
 	url = https://github.com/edkolev/tmuxline.vim.git
