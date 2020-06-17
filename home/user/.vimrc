@@ -120,24 +120,6 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 let g:indentLine_char = '▏'
 " let g:indentLine_conceallevel = 0
 
-" Syntastic config
-if exists("*SyntasticStatuslineFlag")
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-endif
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npx eslint'
-
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_ruby_rubocop_exec = '/home/diovani/.rbenv/shims/rubocop'
-
 " Vim Fugitive Github Browse on (almos) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 
