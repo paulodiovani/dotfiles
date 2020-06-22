@@ -10,11 +10,12 @@
   diffvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh diff --no-color
   logvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh log --no-color
   showvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh show --no-color
-  history = "!f() { \
-    git logpretty $@ | \
-    fzf -e --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; \
-  }; f"
+  history = "!f() { git logpretty $@ | fzf -e --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
   history-pr = history origin/master..
+  branch-switch = !git branch | fzf --ansi | xargs git co
+  bs = branch-switch
+  branch-delete = !git branch | fzf --ansi -m | xargs git branch -d
+  bd = branch-delete
   conflicted = !vim +'packadd conflicted | Conflicted'
 [credential]
   helper = gnome-keyring
