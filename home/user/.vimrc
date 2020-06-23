@@ -14,6 +14,7 @@ set guioptions -=T     " hide toolbar
 set mouse=""            " disable mouse support
 set nu                  " add line numbers
 set ruler               " show cursor position
+" set splitbelow          " split below
 set title               " show filename on title bar
 set titlestring=%t      " show only filename
 set t_vb=               " no
@@ -135,6 +136,9 @@ let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
+" open terminal below
+cnoremap term bel term
+
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
@@ -167,27 +171,15 @@ inoremap <Leader><F12> <C-o>:pop<CR>
 
 " Toggles
 
-" show/hide indentline
-nmap <Leader>! :IndentLinesToggle<CR>
-nmap <Leader>1 :IndentLinesToggle<CR>
-" show/hide marks
-nmap <Leader>@ :SignatureToggle<CR>
-nmap <Leader>2 :SignatureToggle<CR>
-" show/hide line numbers
-nmap <Leader># :set invnumber<CR>
-nmap <Leader>3 :set invnumber<CR>
-" show/hide hidden chars
-nmap <Leader>$ :set list!<CR>
-nmap <Leader>4 :set list!<CR>
-" toggle search highlight
-noremap <Leader>% :set hlsearch!<CR>
-noremap <Leader>5 :set hlsearch!<CR>
-" toggle ALE linting
-noremap <Leader>^ :ALEToggle<CR>
-noremap <Leader>6 :ALEToggle<CR>
-" writeroom keymap (see functions section)
-noremap <silent><Leader>) :call WriteRoomToggle()<CR>
-noremap <silent><Leader>0 :call WriteRoomToggle()<CR>
+nmap <Leader>1 :IndentLinesToggle<CR>       " show/hide indentline
+nmap <Leader>2 :SignatureToggle<CR>         " show/hide marks
+nmap <Leader>3 :set invnumber<CR>           " show/hide line numbers
+nmap <Leader>4 :set list!<CR>               " show/hide hidden chars
+nmap <Leader>5 :set hlsearch!<CR>           " toggle search highlight
+nmap <Leader>6 :ALEToggle<CR>               " toggle ALE linting
+nmap <silent><Leader>0 :call WriteRoomToggle()<CR>  " writeroom mode
+" show all toggles
+nmap <silent><Leader><Backspace> :for n in [1,2,3,4,5,6,7,8,9,0] \| exec 'map <Leader>' . n \| endfor<CR>
 
 " go to next/prev marks
 nnoremap m] ]`
