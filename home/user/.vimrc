@@ -19,6 +19,7 @@ set titlestring=%t      " show only filename
 set t_vb=               " no
 "set termencoding=utf8   " all files are utf8set nobackup
 "set nobackup            " don't write ~* backup files
+set history=500         " number of items to keep in history
 set foldmethod=manual   " folding (manual, indent, syntax, expr, marker, diff)
 "set tw=80               " text width
 set bs=2                " same as :set backspace=indent,eol,start
