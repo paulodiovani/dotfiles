@@ -181,12 +181,12 @@ nmap <Leader>4 :set list!<CR>
 " toggle search highlight
 noremap <Leader>% :set hlsearch!<CR>
 noremap <Leader>5 :set hlsearch!<CR>
-" writeroom keymap (see functions section)
-noremap <silent><Leader>^ :call WriteRoomToggle()<CR>
-noremap <silent><Leader>6 :call WriteRoomToggle()<CR>
 " toggle ALE linting
-noremap <Leader>& :ALEToggle<CR>
-noremap <Leader>7 :ALEToggle<CR>
+noremap <Leader>^ :ALEToggle<CR>
+noremap <Leader>6 :ALEToggle<CR>
+" writeroom keymap (see functions section)
+noremap <silent><Leader>) :call WriteRoomToggle()<CR>
+noremap <silent><Leader>0 :call WriteRoomToggle()<CR>
 
 " go to next/prev marks
 nnoremap m] ]`
@@ -199,6 +199,7 @@ map <Leader>. :lnext<CR>
 
 " navigate in windows
 noremap <Leader>w <C-w>p
+noremap <Leader>o <C-w>o
 " navigate in tabs
 noremap <Leader><PageUp> :tabprev<CR>
 noremap <Leader><PageDown> :tabnext<CR>
