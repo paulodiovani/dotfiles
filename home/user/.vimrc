@@ -144,42 +144,34 @@ cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw 
 
 " Map <F*> keys...
 
-" Rename/Move
-map <expr> <F2> ':Move ' . expand('%')
-" remove <CR>/^M from line endings
-map <F3> :%s/\r//g<CR>
-" shuffle text content (to hide sentitive data)
-map <F8> ggVGg?
-" fold/unfold with F9/*{{{*/
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf}}}
-" enable/disable paste mode with F10
-map <F10> :set paste!<CR>:set paste?<CR>
+map <expr><F2> ':Move ' . expand('%')                " rename/move
+map <F3> :%s/\r//g<CR>                         " remove <CR>/^M from line endings
+map <F4> ggVGg?                                " shuffle text content (to hide sentitive data)
+map <F5> :throw 'No run command defined.'<CR>  " run command
+map <F10> :set paste!<CR>:set paste?<CR>        " enable/disable paste mode with F10
 set pastetoggle=<F10>
-
-" open definition (using ctags) in new buffer
-noremap <F12> <C-]>
+noremap <F12> <C-]>                                 " open definition (using ctags) in new buffer
 noremap g<F12> g<C-]>
 inoremap <F12> <C-o><C-]>
-" open definition (using ctags) in new tab
-" noremap <F12> <C-w><C-]><C-w>T
-" inoremap <F12> <C-o><C-w><C-]><C-w>T
 noremap <Leader><F12> :pop<CR>
 inoremap <Leader><F12> <C-o>:pop<CR>
 
 " Toggles
 
-nmap <Leader>1 :IndentLinesToggle<CR>       " show/hide indentline
-nmap <Leader>2 :SignatureToggle<CR>         " show/hide marks
-nmap <Leader>3 :set invnumber<CR>           " show/hide line numbers
-nmap <Leader>4 :set list!<CR>               " show/hide hidden chars
-nmap <Leader>5 :set hlsearch!<CR>           " toggle search highlight
-nmap <Leader>6 :ALEToggle<CR>               " toggle ALE linting
-nmap <silent><Leader>0 :call WriteRoomToggle()<CR>  " writeroom mode
-" show all toggles
-nmap <silent><Leader><Backspace> :for n in [1,2,3,4,5,6,7,8,9,0] \| exec 'map <Leader>' . n \| endfor<CR>
+map <Leader>! :IndentLinesToggle<CR>                " <Leader><S-1> show/hide indentline
+map <Leader>@ :SignatureToggle<CR>                  " <Leader><S-2> show/hide marks
+map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide line numbers
+map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
+map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
+map <Leader>^ :ALEToggle<CR>                        " <Leader><S-6> toggle ALE linting
+
+" writeroom mode
+nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
+
+" show all F* keys and toggles
+nmap <silent><Leader><F1> :
+  \ for n in range(2,12) \| exec 'map <F'.n.'>' \| endfor \|
+  \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
 
 " go to next/prev marks
 nnoremap m] ]`
