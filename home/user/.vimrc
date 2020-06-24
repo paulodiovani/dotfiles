@@ -132,12 +132,14 @@ let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
 " emmet-vim config
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
+
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
 " open terminal below
 cnoremap term bel term
+map <Leader>` :terminal<CR>
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
@@ -179,8 +181,8 @@ nnoremap m[ [`
 
 " Location list mappings
 map <Leader>s :lopen<CR>
-map <Leader>, :lprev<CR>
-map <Leader>. :lnext<CR>
+map [l :lprev<CR>
+map ]l :lnext<CR>
 
 " navigate in windows
 noremap <Leader>w <C-w>p
@@ -195,8 +197,8 @@ noremap <Leader><S-PageDown> :tabm +1<CR>
 noremap gb <C-^>
 noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
-noremap <Leader>< :bprev<CR>
-noremap <Leader>> :bnext<CR>
+noremap <Leader>, :bprev<CR>
+noremap <Leader>. :bnext<CR>
 " delete buffer without closing the window
 command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
 noremap <Leader>x :Bdelete<CR>
@@ -211,9 +213,9 @@ cnoremap <S-Insert> <C-R>"
 imap <S-Tab> <C-o><<
 
 " open netrw/Explore (similar to NERDTree)
-command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args>| endif
+command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
 command! DrawerCwd execute 'Drawer' getcwd()
-command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:h") | normal n
+command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
 map <C-k><C-b> :DrawerCwd<CR>
 map <Leader>d :DrawerCwd<CR>
 map <C-k><C-f> :DrawerFind<CR>
@@ -253,11 +255,11 @@ command! HexdumpReverse %!xxd -r
 function! WriteRoomToggle()
   let l:name = '_writeroom_'
   if bufwinnr(l:name) > 0
-    wincmd o
+    only
   else
     let l:width = (&columns - &textwidth) / 5
-    execute 'topleft' l:width . 'vsplit +setlocal\ nobuflisted' l:name | wincmd p
-    execute 'botright' l:width . 'vsplit +setlocal\ nobuflisted' l:name | wincmd p
+    execute 'vert topleft' l:width . 'sview +setlocal\ nobuflisted' l:name | wincmd p
+    execute 'vert botright' l:width . 'sview +setlocal\ nobuflisted' l:name | wincmd p
     endif
 endfunction
 
