@@ -11,7 +11,7 @@ alias expand='expand -t4'
 alias vimless='/usr/share/vim/vim82/macros/less.sh'
 
 # search files with preview
-alias files='fzf --preview="bat --style=numbers --color=always {}"'
+alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
 
 # aliases for common commands
 alias bx='bundle exec'
@@ -21,8 +21,8 @@ alias dc='docker-compose'
 alias sudo='sudo '
 alias noglob='noglob '
 
-# make linux better
-alias please='sudo '
+# make linux more polite
+alias please='sudo'
 
 # git command overrides
 git() {
