@@ -176,13 +176,15 @@ nmap <silent><Leader><F1> :
   \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
 
 " go to next/prev marks
-nnoremap m] ]`
-nnoremap m[ [`
+nnoremap ]m ]`
+nnoremap [m [`
 
-" Location list mappings
-map <Leader>s :lopen<CR>
-map [l :lprev<CR>
-map ]l :lnext<CR>
+" List ALE offenses (open location list)
+map <Leader>a :lopen<CR>
+
+"navigate in ALE offences
+map [a :ALEPrevious<CR>
+map ]a :ALENext<CR>
 
 " navigate in windows
 noremap <Leader>w <C-w>p
