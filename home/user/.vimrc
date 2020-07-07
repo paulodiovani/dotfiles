@@ -175,9 +175,11 @@ nmap <silent><Leader><F1> :
   \ for n in range(2,12) \| exec 'map <F'.n.'>' \| endfor \|
   \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
 
-" go to next/prev marks
+" go to next/prev marks, folds
 nnoremap ]m ]`
 nnoremap [m [`
+nnoremap [z zk
+nnoremap ]z zj
 
 " List ALE offenses (open location list)
 map <Leader>a :lopen<CR>
@@ -208,11 +210,12 @@ noremap <Leader>x :Bdelete<CR>
 " close current window
 noremap <Leader>q :q<CR>
 
-" past in command (:) with Shift + Insert
-cnoremap <S-Insert> <C-R>"
-
 " outdent with Shift+Tab
 imap <S-Tab> <C-o><<
+
+" git (fugitive) maps
+map <Leader>gd :Gdiffsplit<CR>
+map <Leader>gb :Gblame<CR>
 
 " open netrw/Explore (similar to NERDTree)
 command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
