@@ -203,33 +203,30 @@ noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
 noremap <Leader>, :bprev<CR>
 noremap <Leader>. :bnext<CR>
-" delete buffer without closing the window
-command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
-noremap <Leader>x :Bdelete<CR>
 
+" delete buffer without closing the window
+noremap <Leader>x :Bdelete<CR>
 " close current window
 noremap <Leader>q :q<CR>
 
 " outdent with Shift+Tab
 imap <S-Tab> <C-o><<
+" create new file in same dir
+map <expr><C-n> ':New ' . expand('%:h') . '/'
+" search and replace
+map <C-f> yiw:%s/<C-r>"//g<Left><Left>
 
 " git (fugitive) maps
 map <Leader>gd :Gdiffsplit<CR>
 map <Leader>gb :Gblame<CR>
 
 " open netrw/Explore (similar to NERDTree)
-command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
-command! DrawerCwd execute 'Drawer' getcwd()
-command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
-map <C-k><C-b> :DrawerCwd<CR>
 map <Leader>d :DrawerCwd<CR>
-map <C-k><C-f> :DrawerFind<CR>
 map <Leader>f :DrawerFind<CR>
 
 " fzf and ripgrep maps
 
 " list files/git files
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
 map <C-p> :Ctrlp<CR>
 map <Leader>p :Ctrlp<CR>
 map <Leader>P :Ctrlp<CR>
@@ -249,6 +246,19 @@ noremap <Leader>: yiw:<Space><C-r>"<Home>
 """""""""""""""""""""""""""
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
+
+command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
+
+command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
+
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+
+" file drawer
+command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
+command! DrawerCwd execute 'Drawer' getcwd()
+command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
+
+" hextdump / reverse
 command! Hexdump %!xxd
 command! HexdumpReverse %!xxd -r
 
