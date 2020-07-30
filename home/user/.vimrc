@@ -66,7 +66,7 @@ endif
 
 " FZF config
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'window': 'below ' . string(&lines * 0.3) . 'split' }
+let g:fzf_layout = { 'window': 'botright ' . string(&lines * 0.3) . 'split' }
 let g:fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -198,6 +198,7 @@ noremap <Leader><PageDown> :tabnext<CR>
 noremap <Leader><S-PageUp> :tabm -1<CR>
 noremap <Leader><S-PageDown> :tabm +1<CR>
 " navigate in buffers
+noremap <C-B> :ls<CR>:b<Space>
 noremap gb <C-^>
 noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
