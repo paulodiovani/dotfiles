@@ -137,6 +137,9 @@ let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
+" disable ex mode access on Q
+nnoremap Q <nop>
+
 " open terminal below
 cnoremap term bel term
 map <Leader>` :terminal<CR>
