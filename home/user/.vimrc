@@ -11,32 +11,33 @@ set guifont=Source\ Code\ Pro\ Regular\ 11
 set guioptions -=T     " hide toolbar
 
 " General config
-set mouse=""            " disable mouse support
-set nu                  " add line numbers
-set ruler               " show cursor position
-" set splitbelow          " split below
-set title               " show filename on title bar
-set titlestring=%t      " show only filename
-set t_vb=               " no
-"set termencoding=utf8   " all files are utf8set nobackup
-"set nobackup            " don't write ~* backup files
-set history=500         " number of items to keep in history
-set foldmethod=manual   " folding (manual, indent, syntax, expr, marker, diff)
-"set tw=80               " text width
-set bs=2                " same as :set backspace=indent,eol,start
-set sm                  " color matching braces/parenthesis
-set ai cindent sw=2     " indentation
-"set is ic              " search
-set hlsearch            " highlight search
-set expandtab           " convert tabs to spaces
-set ts=2 sts=2 sw=2     " TAB width
-set hidden              " Allow unsaved hidden buffers
-set noequalalways       " Do not resize windows on close
-" set noautoindent
+"set noautoindent
+"set splitbelow                      " split below
+"set is ic                           " search
+"set nobackup                        " don't write ~* backup files
+"set termencoding=utf8               " all files are utf8set
+"set tw=80                           " text width
+set ai cindent sw=2                 " indentation
+set bs=2                            " same as :set backspace=indent,eol,start
+set conceallevel=0                  " do not conceal characters
+set expandtab                       " convert tabs to spaces
+set foldmethod=manual               " folding (manual, indent, syntax, expr, marker, diff)
+set hidden                          " Allow unsaved hidden buffers
+set history=500                     " number of items to keep in history
+set hlsearch                        " highlight search
 set listchars=tab:▸\ ,eol:¬,space:. " custom symbols for hidden characters
-set sessionoptions-=options  " do not save options in sessions
-set path+=**            " search subfolders (find, ...)
-set conceallevel=0      " do not conceal characters
+set mouse=""                        " disable mouse support
+set noequalalways                   " Do not resize windows on close
+set nu                              " add line numbers
+set path+=**                        " search subfolders (find, ...)
+set ruler                           " show cursor position
+set sessionoptions-=options         " do not save options in sessions
+set showcmd                         " show command in statubar
+set sm                              " color matching braces/parenthesis
+set t_vb=                           " no
+set title                           " show filename on title bar
+set titlestring=%t                  " show only filename
+set ts=2 sts=2 sw=2                 " TAB width
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
