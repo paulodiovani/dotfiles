@@ -283,6 +283,22 @@ function! WriteRoomToggle()
     endif
 endfunction
 
+" keep previously yanked texts in 1-9 registers
+" https://vi.stackexchange.com/a/26883/26095
+function! SaveLastReg()
+  if v:event['regname']==""
+    if v:event['operator']=='y'
+      for i in range(8,1,-1)
+        execute "let @".string(i+1)." = @". string(i)
+      endfor
+      if exists("g:last_yank")
+        let @1=g:last_yank
+      endif
+      let g:last_yank=@"
+    endif
+  endif
+endfunction
+
 " auto save/load sessions, unless already opened
 function! IsCurrentSess()
   let l:lines = readfile(getcwd() . '/Session.lock')
@@ -317,6 +333,10 @@ endfunction
 
 augroup FileTypes
   autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+augroup END
+
+augroup YankStore
+  autocmd TextYankPost * call SaveLastReg()
 augroup END
 
 augroup SessMngr
