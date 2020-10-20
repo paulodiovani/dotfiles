@@ -134,6 +134,12 @@ let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
+" ALE (Ascynchronous Linter Engine) config
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'ruby': ['rubocop']
+\}
+
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -219,7 +225,8 @@ imap <S-Tab> <C-o><<
 " create new file in same dir
 map <expr><C-n> ':New ' . expand('%:h') . '/'
 " search and replace
-map <C-f> yiw:%s/<C-r>"//g<Left><Left>
+nmap <C-f> yiw:%s/<C-r>"//g<Left><Left>
+vmap <C-f> :%s///g<Left><Left><Left>
 
 " git (fugitive) maps
 map <Leader>gd :Gdiffsplit<CR>
@@ -243,10 +250,12 @@ map <Leader>T :Tags<CR>
 " list lines (current buffer)
 map <Leader>l :BLines<CR>
 map <Leader>L :Lines<CR>
-" ripgrep search word under cursor
+" ripgrep search word under cursor, or selected
 noremap <Leader>rg yiw:Rg <C-r>"
-" paste word under cursor in command mode
+vnoremap <Leader>rg y:Rg <C-r>"
+" paste word under cursor, or selected, in command mode
 noremap <Leader>: yiw:<Space><C-r>"<Home>
+vnoremap <Leader>: y:<Space><C-r>"<Home>
 
 """""""""""""""""""""""""""
 " CUSTOM COMMANDS SECTION "
