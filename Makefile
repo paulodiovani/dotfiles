@@ -39,7 +39,7 @@ submodules:
 		sm_url=$$(git config --file .gitmodules --get $$submodule.url);		\
 		if [ -d $(HOME)/$$sm_path ]; then									\
 			cd $(HOME)/$$sm_path;											\
-			git pull;														\
+			git pull --depth 1;												\
 			cd -;															\
 		else																\
 			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;					\
