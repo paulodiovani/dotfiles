@@ -22,7 +22,7 @@
 [submodule "home/user/.vim/pack/syntax/opt/elixir"]
 	path = home/user/.vim/pack/syntax/opt/elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "home/user/.vim/pack/plugins/lightline"]
+[submodule "home/user/.vim/pack/plugins/start/lightline"]
 	path = home/user/.vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
 [submodule "home/user/.vim/pack/plugins/start/eunuch"]
