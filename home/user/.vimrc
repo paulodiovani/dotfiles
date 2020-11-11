@@ -136,6 +136,7 @@ let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
 " ALE (Ascynchronous Linter Engine) config
+set omnifunc=ale#completion#OmniFunc
 let g:ale_fixers = {
 \ 'javascript': ['eslint'],
 \ 'ruby': ['rubocop']
@@ -163,11 +164,6 @@ map <F4> ggVGg?                                " shuffle text content (to hide s
 map <F5> :throw 'No run command defined.'<CR>  " run command
 map <F10> :set paste!<CR>:set paste?<CR>        " enable/disable paste mode with F10
 set pastetoggle=<F10>
-noremap <F12> <C-]>                                 " open definition (using ctags) in new buffer
-noremap g<F12> g<C-]>
-inoremap <F12> <C-o><C-]>
-noremap <Leader><F12> :pop<CR>
-inoremap <Leader><F12> <C-o>:pop<CR>
 
 " Toggles
 
@@ -198,6 +194,13 @@ map <Leader>a :lopen<CR>
 "navigate in ALE offences
 map [a :ALEPrevious<CR>
 map ]a :ALENext<CR>
+
+" ALE Completion and go to definition
+" must install language servers (e.g. typescript, solagraph...)
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
+map <F12> :ALEGoToDefinition<CR>
+inoremap <F12> <C-o>:ALEGoToDefinition<CR>
 
 " navigate in windows
 noremap <Leader>w <C-w>p
