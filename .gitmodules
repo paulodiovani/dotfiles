@@ -58,3 +58,9 @@
 [submodule "home/user/.vim/pack/plugins/start/ale"]
 	path = home/user/.vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule "home/user/.vim/pack/syntax/start/js"]
+	path = home/user/.vim/pack/syntax/start/js
+	url = https://github.com/yuezk/vim-js.git
+[submodule "home/user/.vim/pack/syntax/start/jsx-pretty"]
+	path = home/user/.vim/pack/syntax/start/jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
