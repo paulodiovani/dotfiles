@@ -38,13 +38,20 @@ submodules:
 		sm_path=$${sm_path#$(FROMHOME)/};											\
 		sm_url=$$(git config --file .gitmodules --get $$submodule.url);				\
 		sm_branch=$$(git config --file .gitmodules --get $$submodule.branch);		\
+		echo;																		\
 		if [ -d $(HOME)/$$sm_path ]; then											\
+			echo "Updating repository $(HOME)/$$sm_path";							\
 			cd $(HOME)/$$sm_path;													\
-			git pull --depth 1;														\
+			branch=$$(git rev-parse --abbrev-ref HEAD | cut -d- -f1-2);				\
+			git fetch --depth 1;													\
+			git reset --hard origin/$$branch;										\
+			git clean -fdx;															\
 			cd -;																	\
 		elif [ ! -z "$$sm_branch" ]; then											\
+			echo "Cloning new repository in $(HOME)/$$sm_path @ $$sm_branch";		\
 			git clone --depth 1 --branch $$sm_branch $$sm_url $(HOME)/$$sm_path;	\
 		else																		\
+			echo "Cloning new repository in $(HOME)/$$sm_path";						\
 			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;							\
 		fi																			\
 	done
