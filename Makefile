@@ -46,7 +46,7 @@ submodules:
 			git fetch --depth 1;													\
 			git reset --hard origin/$$branch;										\
 			git clean -fdx;															\
-			cd -;																	\
+			cd - > /dev/null;														\
 		elif [ ! -z "$$sm_branch" ]; then											\
 			echo "Cloning new repository in $(HOME)/$$sm_path @ $$sm_branch";		\
 			git clone --depth 1 --branch $$sm_branch $$sm_url $(HOME)/$$sm_path;	\
