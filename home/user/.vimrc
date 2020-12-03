@@ -250,6 +250,8 @@ map <Leader>T :Tags<CR>
 " list lines (current buffer)
 map <Leader>l :BLines<CR>
 map <Leader>L :Lines<CR>
+" list marks
+map <Leader>m :Marks<CR>
 " ripgrep search word under cursor, or selected
 noremap <Leader>rg yiw:Rg <C-r>"
 vnoremap <Leader>rg y:Rg <C-r>"
