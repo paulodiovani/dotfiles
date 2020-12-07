@@ -19,3 +19,6 @@ Session.lock
 
 # direnv allow per directory rc file
 .envrc
+
+# project-specific .vimrc
+.vimrc
