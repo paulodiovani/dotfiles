@@ -239,10 +239,10 @@ map <Leader>f :DrawerFind<CR>
 
 " fzf and ripgrep maps
 
-" list files/git files
+" list git files/files
 map <C-p> :Ctrlp<CR>
 map <Leader>p :Ctrlp<CR>
-map <Leader>P :Ctrlp<CR>
+map <Leader>P :Files<CR>
 " list buffers
 map <Leader>b :Buffers<CR>
 " list tags (current buffer / all)
