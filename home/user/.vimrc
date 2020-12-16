@@ -221,6 +221,7 @@ noremap <Leader>. :bnext<CR>
 
 " delete buffer without closing the window
 noremap <Leader>x :Bdelete<CR>
+noremap <Leader>X :Bdelete!<CR>
 " close current window
 noremap <Leader>q :q<CR>
 
@@ -267,7 +268,7 @@ vnoremap <Leader>: y:<Space><C-r>"<Home>
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
 
-command! Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete# | else | bdelete | endif
+command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete<bang># | else | bdelete<bang> | endif
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
