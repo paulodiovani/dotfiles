@@ -28,6 +28,7 @@
   pager = bat --style=numbers --color=always
 [blame]
   date = short
-[user]
-  email = paulo@diovani.com
-  name = Paulo Diovani
+[pull]
+  rebase = false
+[init]
+  defaultBranch = main
