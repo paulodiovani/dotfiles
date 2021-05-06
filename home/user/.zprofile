@@ -4,8 +4,8 @@ export EDITOR=vim
 # Change pager to LESS (for psql, etc)
 export PAGER="less -S"
 
-#~/bin
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+# ~/.local/bin
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # rbenv init
 export RBENV_DIR="$HOME/.rbenv"
