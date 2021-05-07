@@ -359,7 +359,6 @@ augroup SessMngr
   let IsStdIn = 0
   autocmd!
   autocmd StdinReadPost * let IsStdIn = 1
-  autocmd VimLeave * NERDTreeClose
   autocmd VimLeave * call SaveSess()
   autocmd VimEnter * nested if !argc() && !IsStdIn | call RestoreSess() | endif
 augroup END
