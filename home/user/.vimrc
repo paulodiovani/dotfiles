@@ -137,8 +137,11 @@ let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
 " ALE (Ascynchronous Linter Engine) config
 set omnifunc=ale#completion#OmniFunc
+let g:ale_linters_ignore = {'typescript': ['tslint']}
 let g:ale_fixers = {
+\ 'json': ['prettier'],
 \ 'javascript': ['eslint'],
+\ 'typescript': ['eslint'],
 \ 'ruby': ['rubocop']
 \}
 
