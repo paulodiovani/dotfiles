@@ -144,6 +144,7 @@ let g:ale_fixers = {
 \ 'typescript': ['eslint'],
 \ 'ruby': ['rubocop']
 \}
+let g:ale_hover_to_preview = 1
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
@@ -204,6 +205,11 @@ inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
 map <F12> :ALEGoToDefinition<CR>
 inoremap <F12> <C-o>:ALEGoToDefinition<CR>
+
+" ALE docs in preview window open/close
+map <F9> :ALEHover<CR>
+inoremap <F9> <C-o>:ALEHover<CR>
+map <Leader>z <C-w>z
 
 " navigate in windows
 noremap <Leader>w <C-w>p
