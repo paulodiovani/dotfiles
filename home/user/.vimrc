@@ -128,8 +128,10 @@ let g:indentLine_char = '▏'
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 
 " interestingwords colors
-let g:interestingWordsGUIColors = ['#808080', '#008080', '#800080', '#000080', '#808000', '#800000']
-let g:interestingWordsTermColors = ['8', '6', '5', '4', '3', '1']
+let g:interestingWordsGUIColors = ['#800000', '#008000', '#808000', '#000080', '#800080', '#008080',
+                                 \ '#c0c0c0', '#808080', '#ff0000', '#00ff00', '#ffff00', '#0000ff']
+let g:interestingWordsTermColors = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+let g:interestingWordsRandomiseColors = 1
 
 " emmet-vim config
 let g:user_emmet_leader_key='<C-e>'
