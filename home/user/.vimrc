@@ -358,6 +358,7 @@ endfunction
 
 augroup FileTypes
   autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+  autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 augroup END
 
 augroup YankStore
