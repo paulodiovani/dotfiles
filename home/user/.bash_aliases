@@ -15,7 +15,7 @@ alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
 
 # aliases for common commands
 alias bx='bundle exec'
-alias dc='docker-compose'
+alias dc='docker compose'
 
 # make aliases work with sudo and noglob
 alias sudo='sudo '
