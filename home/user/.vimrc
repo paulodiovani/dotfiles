@@ -124,7 +124,7 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 let g:indentLine_char = '▏'
 " let g:indentLine_conceallevel = 0
 
-" Vim Fugitive Github Browse on (almos) any domain
+" Vim fugitive/hubarb Github Browse on (almost) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
 
 " interestingwords colors
@@ -246,7 +246,7 @@ vmap <C-f> :%s///g<Left><Left><Left>
 
 " git (fugitive) maps
 map <Leader>gd :Gdiffsplit<CR>
-map <Leader>gb :Gblame<CR>
+map <Leader>gb :Git blame<CR>
 
 " open netrw/Explore (similar to NERDTree)
 map <Leader>d :DrawerCwd<CR>
