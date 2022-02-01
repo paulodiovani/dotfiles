@@ -64,3 +64,6 @@
 [submodule "home/user/.vim/pack/syntax/start/jsx-pretty"]
 	path = home/user/.vim/pack/syntax/start/jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "home/user/.vim/pack/syntax/start/graphql"]
+	path = home/user/.vim/pack/syntax/start/graphql
+	url = https://github.com/jparise/vim-graphql.git
