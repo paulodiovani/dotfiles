@@ -47,7 +47,7 @@ ZSH_THEME="../../.oh-my-zsh-agnoster-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux docker docker-compose pass)
+plugins=(aws docker docker-compose git kubectl pass tmux)
 
 # Autostart tmux but initiates new session
 ZSH_TMUX_AUTOSTART="true"
