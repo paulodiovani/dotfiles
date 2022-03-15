@@ -6,3 +6,6 @@ export PAGER="less -S"
 
 # ~/.local/bin
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+
+# asdf init
+. /opt/asdf-vm/asdf.sh
