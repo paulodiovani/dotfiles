@@ -24,6 +24,9 @@ alias noglob='noglob '
 # make linux more polite
 alias please='sudo'
 
+# switch aws profiles from ~/.aws/credentials
+alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo export AWS_PROFILE={} | source /dev/stdin"
+
 # git command overrides
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
