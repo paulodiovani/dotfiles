@@ -6,9 +6,9 @@ nmap <Space> \
 """"""""""""""""""""
 
 " GUI settings (gvim only)
-set guifont=Source\ Code\ Pro\ Regular\ 11
+" set guifont=Source\ Code\ Pro\ Regular\ 11
 " set guioptions -=m     " hide menu
-set guioptions -=T     " hide toolbar
+" set guioptions -=T     " hide toolbar
 
 " General config
 "set noautoindent
@@ -68,7 +68,7 @@ endif
 
 " FZF config
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'window': 'botright ' . string(&lines * 0.3) . 'split' }
+let g:fzf_layout = { 'window': 'botright 15new' }
 let g:fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
