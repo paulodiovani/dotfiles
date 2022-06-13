@@ -156,10 +156,6 @@ let g:ale_hover_to_preview = 1
 " disable ex mode access on Q
 nnoremap Q <nop>
 
-" open terminal below
-cnoremap term bel term
-map <Leader>` :terminal<CR>
-
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
@@ -188,6 +184,9 @@ nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
 nmap <silent><Leader><F1> :
   \ for n in range(2,12) \| exec 'map <F'.n.'>' \| endfor \|
   \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
+
+" open terminal
+map <Leader>` :terminal<CR>
 
 " go to next/prev marks, folds
 nnoremap ]m ]`
