@@ -17,8 +17,13 @@ Session.vim
 Session.lock
 *~
 
+# project-specific .vimrc
+.exrc
+.nvimrc
+.vimrc
+
 # direnv allow per directory rc file
 .envrc
 
-# project-specific .vimrc
-.vimrc
+# asdf verions config
+.tool-versions

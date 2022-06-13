@@ -22,7 +22,7 @@
 [credential]
   helper = gnome-keyring
 [core]
-  editor = vim
+  editor = nvim +\"normal $\"
   excludesfile = ~/.gitignore
   # pager = less -XFR -x4
   pager = bat --style=numbers --color=always
