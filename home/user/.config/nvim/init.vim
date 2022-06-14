@@ -6,38 +6,13 @@ source ~/.vimrc
 """"""""""""""""""""
 " SETTINGS SECTION "
 """"""""""""""""""""
+lua require('config')
 
 " Open terminal in split window below
 command! -nargs=* Terminal :bel split | terminal <args>
 
 " LSP config
 set omnifunc=v:lua.vim.lsp.omnifunc
-
-" Linter config (nvim-lint)
-lua << EOF
-  vim.diagnostic.config({ virtual_text = false })
-  require('lint').linters_by_ft = {
-    json = {'prettier'},
-    javascript = {'eslint'},
-    typescript = {'eslint'},
-    ruby = {'rubocop'}
-  }
-EOF
-
-" LSP config
-lua << EOF
-  require("nvim-lsp-installer").setup {
-    automatic_installation = true
-  }
-
-  local lspconfig = require('lspconfig')
-  lspconfig.bashls.setup {}
-  lspconfig.html.setup {}
-  lspconfig.sumneko_lua.setup {}
-  lspconfig.solargraph.setup {}
-  lspconfig.tsserver.setup {}
-  lspconfig.vimls.setup {}
-EOF
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
