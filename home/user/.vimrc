@@ -183,13 +183,6 @@ nnoremap [m [`
 nnoremap [z zk
 nnoremap ]z zj
 
-" ALE Completion and go to definition
-" must install language servers (e.g. typescript, solagraph...)
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-x><C-o>
-" map <F12> :ALEGoToDefinition<CR>
-" inoremap <F12> <C-o>:ALEGoToDefinition<CR>
-
 " close preview window
 map <Leader>z <C-w>z
 
