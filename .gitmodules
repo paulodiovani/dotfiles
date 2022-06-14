@@ -55,9 +55,6 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "home/user/.vim/pack/plugins/start/ale"]
-	path = home/user/.vim/pack/plugins/start/ale
-	url = https://github.com/dense-analysis/ale.git
 [submodule "home/user/.vim/pack/syntax/start/js"]
 	path = home/user/.vim/pack/syntax/start/js
 	url = https://github.com/yuezk/vim-js.git
@@ -67,3 +64,9 @@
 [submodule "home/user/.vim/pack/syntax/start/graphql"]
 	path = home/user/.vim/pack/syntax/start/graphql
 	url = https://github.com/jparise/vim-graphql.git
+[submodule "home/user/.vim/pack/plugins/start/lint"]
+	path = home/user/.vim/pack/plugins/start/lint
+	url = git@github.com:mfussenegger/nvim-lint.git
+[submodule "home/user/.vim/pack/plugins/start/lspconfig"]
+	path = home/user/.vim/pack/plugins/start/lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git

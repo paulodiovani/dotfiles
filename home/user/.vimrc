@@ -138,17 +138,6 @@ let g:interestingWordsRandomiseColors = 1
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
-" ALE (Ascynchronous Linter Engine) config
-set omnifunc=ale#completion#OmniFunc
-let g:ale_linters_ignore = {'typescript': ['tslint']}
-let g:ale_fixers = {
-\ 'json': ['prettier'],
-\ 'javascript': ['eslint'],
-\ 'typescript': ['eslint'],
-\ 'ruby': ['rubocop']
-\}
-let g:ale_hover_to_preview = 1
-
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -175,7 +164,7 @@ map <Leader>@ :SignatureToggle<CR>                  " <Leader><S-2> show/hide ma
 map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide line numbers
 map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
 map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
-map <Leader>^ :ALEToggle<CR>                        " <Leader><S-6> toggle ALE linting
+" map <Leader>^ :ALEToggle<CR>                        " <Leader><S-6> toggle ALE linting
 
 " writeroom mode
 nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
@@ -194,23 +183,14 @@ nnoremap [m [`
 nnoremap [z zk
 nnoremap ]z zj
 
-" List ALE offenses (open location list)
-map <Leader>a :lopen<CR>
-
-"navigate in ALE offences
-map [a :ALEPrevious<CR>
-map ]a :ALENext<CR>
-
 " ALE Completion and go to definition
 " must install language servers (e.g. typescript, solagraph...)
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
-map <F12> :ALEGoToDefinition<CR>
-inoremap <F12> <C-o>:ALEGoToDefinition<CR>
+" map <F12> :ALEGoToDefinition<CR>
+" inoremap <F12> <C-o>:ALEGoToDefinition<CR>
 
-" ALE docs in preview window open/close
-map <F9> :ALEHover<CR>
-inoremap <F9> <C-o>:ALEHover<CR>
+" close preview window
 map <Leader>z <C-w>z
 
 " navigate in windows
