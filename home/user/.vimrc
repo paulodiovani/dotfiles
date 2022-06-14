@@ -107,14 +107,14 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
-      \   'gitbranch': "\ue0a0 %{fugitive#head()}",
+      \   'gitbranch': "\ue0a0 %{fugitive#Head()}",
       \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
       \ },
       \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
       \ 'component_type': { 'buffers': 'tabsel' },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help" && &readonly)',
-      \   'gitbranch': '(exists("*fugitive#head") && "" != fugitive#head())',
+      \   'gitbranch': '(exists("*fugitive#Head") && "" != fugitive#Head())',
       \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
       \ },
       \ }
@@ -283,7 +283,7 @@ command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? 'GFiles' : 'Files'
 
 " file drawer
 command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
