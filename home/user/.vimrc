@@ -39,6 +39,7 @@ set t_vb=                           " no
 set title                           " show filename on title bar
 set titlestring=%t                  " show only filename
 set ts=2 sts=2 sw=2                 " TAB width
+set completeopt=menu                " Show only menu for completion (no preview)
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
