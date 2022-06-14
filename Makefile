@@ -3,7 +3,7 @@ BINFILES := $(wildcard $(FROMHOME)/bin/*)
 SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
 DOTFILES := $(wildcard $(FROMHOME)/\.[^\.]*)
 DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
-PACKAGES = awk git tmux vim zsh
+PACKAGES = awk git fzf neovim ripgrep tmux vim zsh
 
 # .PHONY: all
 
