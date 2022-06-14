@@ -5,6 +5,8 @@ nmap <Space> \
 " SETTINGS SECTION "
 """"""""""""""""""""
 
+" Note: for neovim specic configurations, check ~/.config/nvim/init.vim
+
 " GUI settings (gvim only)
 " set guifont=Source\ Code\ Pro\ Regular\ 11
 " set guioptions -=m     " hide menu
