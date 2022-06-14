@@ -33,20 +33,26 @@ lua << EOF
   local lspconfig = require('lspconfig')
   lspconfig.bashls.setup {}
   lspconfig.html.setup {}
+  lspconfig.sumneko_lua.setup {}
   lspconfig.solargraph.setup {}
   lspconfig.tsserver.setup {}
+  lspconfig.vimls.setup {}
 EOF
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
+" toggles
+map <Leader>^ :lua toggle_diagnostics()<CR>         " <Leader><S-6> toggle diagnostics visibility
+
 " navigate in diagnostics
 map [a :lua vim.diagnostic.goto_prev()<CR>
 map ]a :lua vim.diagnostic.goto_next()<CR>
 
-" open current diacnostic in float window
+" open diacnostic in float window / location list
 map <Leader>a :lua vim.diagnostic.open_float()<CR>
+map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
 " open LSP definition
 map <F9> :lua vim.lsp.buf.hover()<CR>
