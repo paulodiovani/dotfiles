@@ -5,7 +5,6 @@
 -- Linter config (nvim-lint)
 vim.diagnostic.config({ virtual_text = false })
 require('lint').linters_by_ft = {
-  json = {'prettier'},
   javascript = {'eslint'},
   typescript = {'eslint'},
   ruby = {'ruby'}
