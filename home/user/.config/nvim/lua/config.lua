@@ -8,11 +8,11 @@ require('lint').linters_by_ft = {
   json = {'prettier'},
   javascript = {'eslint'},
   typescript = {'eslint'},
-  ruby = {'rubocop'}
+  ruby = {'ruby'}
 }
 
 -- LSP config
-require("nvim-lsp-installer").setup {
+require('nvim-lsp-installer').setup {
   automatic_installation = true
 }
 
