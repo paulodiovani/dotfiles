@@ -12,9 +12,7 @@ require('lint').linters_by_ft = {
 }
 
 -- LSP config
-require('nvim-lsp-installer').setup {
-  automatic_installation = true
-}
+require('nvim-lsp-installer').setup {}
 
 local lspconfig = require('lspconfig')
 lspconfig.bashls.setup {}
