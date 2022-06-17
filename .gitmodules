@@ -19,9 +19,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
 	path = home/user/.vim/pack/plugins/opt/conflicted
 	url = https://github.com/christoomey/vim-conflicted.git
-[submodule "home/user/.vim/pack/syntax/opt/elixir"]
-	path = home/user/.vim/pack/syntax/opt/elixir
-	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule "home/user/.vim/pack/plugins/start/lightline"]
 	path = home/user/.vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
@@ -40,9 +37,6 @@
 [submodule "home/user/.vim/pack/plugins/start/lightline-bufferline"]
 	path = home/user/.vim/pack/plugins/start/lightline-bufferline
 	url = https://github.com/mengelbrecht/lightline-bufferline.git
-[submodule "home/user/.vim/pack/syntax/opt/coffee-script"]
-	path = home/user/.vim/pack/syntax/opt/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "home/user/.vim/pack/plugins/start/fzf"]
 	path = home/user/.vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
@@ -55,18 +49,12 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "home/user/.vim/pack/syntax/start/js"]
-	path = home/user/.vim/pack/syntax/start/js
-	url = https://github.com/yuezk/vim-js.git
-[submodule "home/user/.vim/pack/syntax/start/jsx-pretty"]
-	path = home/user/.vim/pack/syntax/start/jsx-pretty
-	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
-[submodule "home/user/.vim/pack/syntax/start/graphql"]
-	path = home/user/.vim/pack/syntax/start/graphql
-	url = https://github.com/jparise/vim-graphql.git
 [submodule "home/user/.vim/pack/plugins/start/lint"]
 	path = home/user/.vim/pack/plugins/start/lint
 	url = git@github.com:mfussenegger/nvim-lint.git
 [submodule "home/user/.vim/pack/plugins/start/lspconfig"]
 	path = home/user/.vim/pack/plugins/start/lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "home/user/.vim/pack/syntax/start/graphql"]
+	path = home/user/.vim/pack/syntax/start/graphql
+	url = https://github.com/jparise/vim-graphql.git
