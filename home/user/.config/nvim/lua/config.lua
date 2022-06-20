@@ -15,8 +15,15 @@ require('lint').linters_by_ft = {
 -- LSP config
 local lspconfig = require('lspconfig')
 lspconfig.bashls.setup {}
-lspconfig.html.setup {}
-lspconfig.sumneko_lua.setup {}
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+}
 lspconfig.solargraph.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.vimls.setup {}
