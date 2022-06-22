@@ -41,11 +41,16 @@ inoremap <F12> <C-o>:lua vim.lsp.buf.definition()<CR>
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
 
+" use <Escape> to go back to normal mode in terminal
+tnoremap <Esc> <C-\><C-n>
+
 """""""""""""""""""
 " AUTOCMD SECTION "
 """""""""""""""""""
 
-" Close terminal buffer alongside window with <Leader>q
+" force close terminal buffer with <Leader>x
+autocmd TermOpen term://* map <buffer> <Leader>x :bd!<CR>
+" close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
 
 " Run linters
