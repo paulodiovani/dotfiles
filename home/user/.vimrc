@@ -38,8 +38,8 @@ set sessionoptions-=options         " do not save options in sessions
 set showcmd                         " show command in statubar
 set sm                              " color matching braces/parenthesis
 set t_vb=                           " no
-set title                           " show filename on title bar
-set titlestring=%t                  " show only filename
+" set title                           " show filename on title bar
+" set titlestring=%t                  " show only filename
 set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu                " Show only menu for completion (no preview)
 
