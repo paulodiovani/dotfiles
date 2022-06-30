@@ -8,9 +8,6 @@ source ~/.vimrc
 """"""""""""""""""""
 lua require('config')
 
-" Open terminal in split window below
-command! -nargs=* Terminal :bel split | terminal <args>
-
 " LSP config
 set omnifunc=v:lua.vim.lsp.omnifunc
 
@@ -43,6 +40,18 @@ inoremap <C-@> <C-x><C-o>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
+
+"""""""""""""""""""""""""""
+" CUSTOM COMMANDS SECTION "
+"""""""""""""""""""""""""""
+
+" Open terminal in split window below
+command! -nargs=* Terminal :bel split | terminal <args>
+
+" file drawer (using nvim-tree)
+command! -nargs=? Drawer lua drawer_open(<f-args>)
+command! DrawerCwd execute 'Drawer' getcwd()
+command! DrawerFind lua drawer_find()
 
 """""""""""""""""""
 " AUTOCMD SECTION "

@@ -58,3 +58,9 @@
 [submodule "home/user/.vim/pack/syntax/start/graphql"]
 	path = home/user/.vim/pack/syntax/start/graphql
 	url = https://github.com/jparise/vim-graphql.git
+[submodule "home/user/.config/nvim/pack/plugins/start/web-devicons"]
+	path = home/user/.config/nvim/pack/plugins/start/web-devicons
+	url = https://github.com/kyazdani42/nvim-web-devicons.git
+[submodule "home/user/.config/nvim/pack/plugins/start/tree"]
+	path = home/user/.config/nvim/pack/plugins/start/tree
+	url = https://github.com/kyazdani42/nvim-tree.lua.git

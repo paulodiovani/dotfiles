@@ -261,7 +261,7 @@ command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p')
 command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? 'GFiles' : 'Files'
 
 " file drawer
-command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
+command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args> | else | 1 wincmd w | Explore <args> | endif
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
 
