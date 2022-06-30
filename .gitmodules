@@ -51,10 +51,10 @@
 	url = https://github.com/mattn/emmet-vim.git
 [submodule "home/user/.vim/pack/plugins/start/lint"]
 	path = home/user/.config/nvim/pack/plugins/start/lint
-	url = git@github.com:mfussenegger/nvim-lint.git
+	url = https://github.com/mfussenegger/nvim-lint.git
 [submodule "home/user/.vim/pack/plugins/start/lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/lspconfig
-	url = git@github.com:neovim/nvim-lspconfig.git
+	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "home/user/.vim/pack/syntax/start/graphql"]
 	path = home/user/.vim/pack/syntax/start/graphql
 	url = https://github.com/jparise/vim-graphql.git
