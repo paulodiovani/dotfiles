@@ -1,6 +1,13 @@
+-- luacheck: ignore vim
+
 ----------------------
 -- SETTINGS SECTION --
 ----------------------
+
+-- diagnostics config
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 -- nvim-tree and icons config
 require('nvim-web-devicons').setup({
@@ -21,16 +28,6 @@ nvim_tree.setup({
   },
 })
 
--- Linter config (nvim-lint)
-vim.diagnostic.config({ virtual_text = false })
-require('lint').linters_by_ft = {
-  javascript = {'eslint'},
-  javascriptreact = {'eslint'},
-  typescript = {'eslint'},
-  typescriptreact = {'eslint'},
-  ruby = {'ruby'},
-}
-
 -- LSP config
 local lspconfig = require('lspconfig')
 lspconfig.bashls.setup {}
@@ -46,6 +43,26 @@ lspconfig.sumneko_lua.setup {
 lspconfig.solargraph.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.vimls.setup {}
+
+-- Linters and other stuff (null-ls)
+local null_ls = require('null-ls')
+null_ls.setup({
+  sources = {
+    -- diagnostics
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.diagnostics.luacheck,
+    null_ls.builtins.diagnostics.rubocop,
+    null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.diagnostics.stylelint,
+    null_ls.builtins.diagnostics.yamllint,
+    -- formatting
+    null_ls.builtins.formatting.eslint,
+    null_ls.builtins.formatting.json_tool,
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.rubocop,
+    null_ls.builtins.formatting.stylelint,
+  },
+})
 
 ------------------------------
 -- CUSTOM FUNCTIONS SECTION --
@@ -100,7 +117,7 @@ function _G.drawer_find(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   if not view.is_visible() then
-    drawer_open()
+    _G.drawer_open()
   end
 
   nvim_tree.find_file(false, bufnr, false)

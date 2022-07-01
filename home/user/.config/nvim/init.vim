@@ -53,6 +53,9 @@ command! -nargs=? Drawer lua drawer_open(<f-args>)
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind lua drawer_find()
 
+" format code
+command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting()' | else | exec 'lua vim.lsp.buf.formatting()' | endif
+
 """""""""""""""""""
 " AUTOCMD SECTION "
 """""""""""""""""""
@@ -61,6 +64,3 @@ command! DrawerFind lua drawer_find()
 autocmd TermOpen term://* map <buffer> <Leader>x :bd!<CR>
 " close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
-
-" Run linters
-autocmd BufReadPost,BufWritePost * lua require('lint').try_lint()

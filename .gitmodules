@@ -49,9 +49,6 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "home/user/.vim/pack/plugins/start/lint"]
-	path = home/user/.config/nvim/pack/plugins/start/lint
-	url = https://github.com/mfussenegger/nvim-lint.git
 [submodule "home/user/.vim/pack/plugins/start/lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
@@ -64,3 +61,9 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/tree"]
 	path = home/user/.config/nvim/pack/plugins/start/tree
 	url = https://github.com/kyazdani42/nvim-tree.lua.git
+[submodule "home/user/.config/nvim/pack/plugins/start/null-ls"]
+	path = home/user/.config/nvim/pack/plugins/start/null-ls
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim.git
+[submodule "home/user/.config/nvim/pack/modules/start/plenary"]
+	path = home/user/.config/nvim/pack/modules/start/plenary
+	url = https://github.com/nvim-lua/plenary.nvim.git
