@@ -17,6 +17,14 @@ require('nvim-web-devicons').setup({
 local nvim_tree = require('nvim-tree')
 nvim_tree.setup({
   disable_netrw = true,
+  actions = {
+    open_file = {
+      resize_window = false,
+      -- window_picker = {
+      --   enable = false,
+      -- },
+    },
+  },
   filters = {
     custom = {
       '^\\.git'
