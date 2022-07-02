@@ -52,9 +52,6 @@
 [submodule "home/user/.vim/pack/plugins/start/lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "home/user/.vim/pack/syntax/start/graphql"]
-	path = home/user/.vim/pack/syntax/start/graphql
-	url = https://github.com/jparise/vim-graphql.git
 [submodule "home/user/.config/nvim/pack/plugins/start/web-devicons"]
 	path = home/user/.config/nvim/pack/plugins/start/web-devicons
 	url = https://github.com/kyazdani42/nvim-web-devicons.git
@@ -67,3 +64,6 @@
 [submodule "home/user/.config/nvim/pack/modules/start/plenary"]
 	path = home/user/.config/nvim/pack/modules/start/plenary
 	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "home/user/.config/nvim/pack/plugins/start/treesitter"]
+	path = home/user/.config/nvim/pack/syntax/start/treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git

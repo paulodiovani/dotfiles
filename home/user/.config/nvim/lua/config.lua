@@ -9,6 +9,22 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
+-- treesitter config
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    'javascript',
+    'json',
+    'markdown',
+    'ruby',
+    'scss',
+    'tsx',
+    'typescript',
+  },
+  highlight = {
+    enable = true,
+  },
+})
+
 -- nvim-tree and icons config
 require('nvim-web-devicons').setup({
   default = true,
