@@ -7,7 +7,7 @@ if [ "$1" == "--bat" ]; then
   PAGER='bat --style=numbers --color=always'
   shift
 elif [ "$1" == "--vim" ]; then
-  PAGER=/usr/share/vim/vim82/macros/less.sh
+  PAGER=/usr/share/nvim/runtime/macros/less.sh
   NC=--no-color
   shift
 else
