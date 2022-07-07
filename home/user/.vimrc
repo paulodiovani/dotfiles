@@ -60,7 +60,9 @@ set background=dark     " background color (light|dark)
 let g:one_allow_italics = 1
 colorscheme one
 " hide vertical split separator
-hi VertSplit guifg=bg guibg=NONE gui=NONE
+" hi VertSplit guifg=bg guibg=NONE gui=NONE
+" hide NonText character
+highlight NonText guifg=bg
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
@@ -280,7 +282,11 @@ function! WriteRoomToggle()
   if bufwinnr(l:name) > 0
     only
   else
-    let l:width = (&columns - &textwidth) / 5
+    let l:min_columns = 130
+    let l:width = (&columns - 130) / 2
+    if l:width < 0
+      return
+    end
     execute 'vert topleft' l:width . 'sview +setlocal\' l:params l:name | wincmd p
     execute 'vert botright' l:width . 'sview +setlocal\' l:params l:name | wincmd p
     endif
