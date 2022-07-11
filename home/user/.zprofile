@@ -8,5 +8,5 @@ export PAGER="less -S"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # asdf init and config
-. /opt/asdf-vm/asdf.sh
-eval "$(direnv hook zsh)"
+[ -d "/opt/asdf-vm" ] && . /opt/asdf-vm/asdf.sh
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
