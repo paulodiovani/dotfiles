@@ -7,9 +7,9 @@
   co = checkout
   st = status
   logpretty = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
-  diffvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh diff --no-color
-  logvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh log --no-color
-  showvim = -c core.pager=/usr/share/vim/vim82/macros/less.sh show --no-color
+  diffvim = -c core.pager=/usr/share/nvim/runtime/macros/less.sh diff --no-color
+  logvim = -c core.pager=/usr/share/nvim/runtime/macros/less.sh log --no-color
+  showvim = -c core.pager=/usr/share/nvim/runtime/macros/less.sh show --no-color
   history = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
   history-pr = history origin/master..
   branch-switch = !git branch | fzf --ansi | xargs git co
@@ -18,11 +18,11 @@
   bd = branch-delete
   branch-delete-merged = !git branch --no-color | grep -v master | xargs git branch -d
   bdm = branch-delete-merged
-  conflicted = !vim +'packadd conflicted | Conflicted'
+  conflicted = !nvim +'packadd conflicted | Conflicted'
 [credential]
   helper = gnome-keyring
 [core]
-  editor = vim
+  editor = nvim +\"normal $\"
   excludesfile = ~/.gitignore
   # pager = less -XFR -x4
   pager = bat --style=numbers --color=always

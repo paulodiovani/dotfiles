@@ -7,8 +7,11 @@ alias mv='mv -i'
 alias less='less -S -x4'
 alias expand='expand -t4'
 
-# vim less (user vim as less for syntax highlight)
-alias vimless='/usr/share/vim/vim82/macros/less.sh'
+# use neovim
+alias vim='nvim'
+
+# vim less (user nvim as less for syntax highlight)
+alias vimless='/usr/share/nvim/runtime/macros/less.sh'
 
 # search files with preview
 alias files='fzf -m --preview="bat --style=numbers --color=always {}"'

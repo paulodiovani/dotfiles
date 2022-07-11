@@ -19,9 +19,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/vim-conflicted"]
 	path = home/user/.vim/pack/plugins/opt/conflicted
 	url = https://github.com/christoomey/vim-conflicted.git
-[submodule "home/user/.vim/pack/syntax/opt/elixir"]
-	path = home/user/.vim/pack/syntax/opt/elixir
-	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule "home/user/.vim/pack/plugins/start/lightline"]
 	path = home/user/.vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
@@ -40,9 +37,6 @@
 [submodule "home/user/.vim/pack/plugins/start/lightline-bufferline"]
 	path = home/user/.vim/pack/plugins/start/lightline-bufferline
 	url = https://github.com/mengelbrecht/lightline-bufferline.git
-[submodule "home/user/.vim/pack/syntax/opt/coffee-script"]
-	path = home/user/.vim/pack/syntax/opt/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "home/user/.vim/pack/plugins/start/fzf"]
 	path = home/user/.vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
@@ -55,15 +49,21 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "home/user/.vim/pack/plugins/start/ale"]
-	path = home/user/.vim/pack/plugins/start/ale
-	url = https://github.com/dense-analysis/ale.git
-[submodule "home/user/.vim/pack/syntax/start/js"]
-	path = home/user/.vim/pack/syntax/start/js
-	url = https://github.com/yuezk/vim-js.git
-[submodule "home/user/.vim/pack/syntax/start/jsx-pretty"]
-	path = home/user/.vim/pack/syntax/start/jsx-pretty
-	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
-[submodule "home/user/.vim/pack/syntax/start/graphql"]
-	path = home/user/.vim/pack/syntax/start/graphql
-	url = https://github.com/jparise/vim-graphql.git
+[submodule "home/user/.vim/pack/plugins/start/lspconfig"]
+	path = home/user/.config/nvim/pack/plugins/start/lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "home/user/.config/nvim/pack/plugins/start/web-devicons"]
+	path = home/user/.config/nvim/pack/plugins/start/web-devicons
+	url = https://github.com/kyazdani42/nvim-web-devicons.git
+[submodule "home/user/.config/nvim/pack/plugins/start/tree"]
+	path = home/user/.config/nvim/pack/plugins/start/tree
+	url = https://github.com/kyazdani42/nvim-tree.lua.git
+[submodule "home/user/.config/nvim/pack/plugins/start/null-ls"]
+	path = home/user/.config/nvim/pack/plugins/start/null-ls
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim.git
+[submodule "home/user/.config/nvim/pack/modules/start/plenary"]
+	path = home/user/.config/nvim/pack/modules/start/plenary
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "home/user/.config/nvim/pack/plugins/start/treesitter"]
+	path = home/user/.config/nvim/pack/syntax/start/treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git

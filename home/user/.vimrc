@@ -5,10 +5,12 @@ nmap <Space> \
 " SETTINGS SECTION "
 """"""""""""""""""""
 
+" Note: for neovim specic configurations, check ~/.config/nvim/init.vim
+
 " GUI settings (gvim only)
-set guifont=Source\ Code\ Pro\ Regular\ 11
+" set guifont=Source\ Code\ Pro\ Regular\ 11
 " set guioptions -=m     " hide menu
-set guioptions -=T     " hide toolbar
+" set guioptions -=T     " hide toolbar
 
 " General config
 "set noautoindent
@@ -36,9 +38,10 @@ set sessionoptions-=options         " do not save options in sessions
 set showcmd                         " show command in statubar
 set sm                              " color matching braces/parenthesis
 set t_vb=                           " no
-set title                           " show filename on title bar
-set titlestring=%t                  " show only filename
+" set title                           " show filename on title bar
+" set titlestring=%t                  " show only filename
 set ts=2 sts=2 sw=2                 " TAB width
+set completeopt=menu                " Show only menu for completion (no preview)
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -46,6 +49,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+if isdirectory(".git") | let g:netrw_list_hide = netrw_gitignore#Hide() | endif
 
 " syntax and color scheme
 set termguicolors       " enable true color support
@@ -56,7 +60,9 @@ set background=dark     " background color (light|dark)
 let g:one_allow_italics = 1
 colorscheme one
 " hide vertical split separator
-hi VertSplit guifg=bg guibg=NONE gui=NONE
+" hi VertSplit guifg=bg guibg=NONE gui=NONE
+" hide NonText character
+highlight NonText guifg=bg
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
@@ -68,7 +74,7 @@ endif
 
 " FZF config
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'window': 'botright ' . string(&lines * 0.3) . 'split' }
+let g:fzf_layout = { 'window': 'botright 15new' }
 let g:fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -106,14 +112,14 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
-      \   'gitbranch': "\ue0a0 %{fugitive#head()}",
+      \   'gitbranch': "\ue0a0 %{fugitive#Head()}",
       \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
       \ },
       \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
       \ 'component_type': { 'buffers': 'tabsel' },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help" && &readonly)',
-      \   'gitbranch': '(exists("*fugitive#head") && "" != fugitive#head())',
+      \   'gitbranch': '(exists("*fugitive#Head") && "" != fugitive#Head())',
       \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
       \ },
       \ }
@@ -137,27 +143,12 @@ let g:interestingWordsRandomiseColors = 1
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
-" ALE (Ascynchronous Linter Engine) config
-set omnifunc=ale#completion#OmniFunc
-let g:ale_linters_ignore = {'typescript': ['tslint']}
-let g:ale_fixers = {
-\ 'json': ['prettier'],
-\ 'javascript': ['eslint'],
-\ 'typescript': ['eslint'],
-\ 'ruby': ['rubocop']
-\}
-let g:ale_hover_to_preview = 1
-
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
 " disable ex mode access on Q
 nnoremap Q <nop>
-
-" open terminal below
-cnoremap term bel term
-map <Leader>` :terminal<CR>
 
 " aliases to prevent typos in close commands
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
@@ -178,7 +169,6 @@ map <Leader>@ :SignatureToggle<CR>                  " <Leader><S-2> show/hide ma
 map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide line numbers
 map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
 map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
-map <Leader>^ :ALEToggle<CR>                        " <Leader><S-6> toggle ALE linting
 
 " writeroom mode
 nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
@@ -188,29 +178,16 @@ nmap <silent><Leader><F1> :
   \ for n in range(2,12) \| exec 'map <F'.n.'>' \| endfor \|
   \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
 
+" open terminal
+map <Leader>` :terminal<CR>
+
 " go to next/prev marks, folds
 nnoremap ]m ]`
 nnoremap [m [`
 nnoremap [z zk
 nnoremap ]z zj
 
-" List ALE offenses (open location list)
-map <Leader>a :lopen<CR>
-
-"navigate in ALE offences
-map [a :ALEPrevious<CR>
-map ]a :ALENext<CR>
-
-" ALE Completion and go to definition
-" must install language servers (e.g. typescript, solagraph...)
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-x><C-o>
-map <F12> :ALEGoToDefinition<CR>
-inoremap <F12> <C-o>:ALEGoToDefinition<CR>
-
-" ALE docs in preview window open/close
-map <F9> :ALEHover<CR>
-inoremap <F9> <C-o>:ALEHover<CR>
+" close preview window
 map <Leader>z <C-w>z
 
 " navigate in windows
@@ -283,10 +260,10 @@ command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? 'GFiles' : 'Files'
 
 " file drawer
-command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args>| else | 1 wincmd w | Explore <args> | endif
+command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args> | else | 1 wincmd w | Explore <args> | endif
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
 
@@ -300,13 +277,18 @@ command! HexdumpReverse %!xxd -r
 
 " use a smaller viewport
 function! WriteRoomToggle()
+  let l:params = 'buftype=nofile\ bufhidden=wipe\ nomodifiable\ nobuflisted\ noswapfile\ nocursorline\ nocursorcolumn\ nonumber\ norelativenumber\ noruler\ nolist\ noshowmode\ noshowcmd'
   let l:name = '_writeroom_'
   if bufwinnr(l:name) > 0
     only
   else
-    let l:width = (&columns - &textwidth) / 5
-    execute 'vert topleft' l:width . 'sview +setlocal\ nobuflisted' l:name | wincmd p
-    execute 'vert botright' l:width . 'sview +setlocal\ nobuflisted' l:name | wincmd p
+    let l:min_columns = 130
+    let l:width = (&columns - 130) / 2
+    if l:width < 0
+      return
+    end
+    execute 'vert topleft' l:width . 'sview +setlocal\' l:params l:name | wincmd p
+    execute 'vert botright' l:width . 'sview +setlocal\' l:params l:name | wincmd p
     endif
 endfunction
 
