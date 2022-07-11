@@ -13,7 +13,7 @@ all: install config
 
 install: sudo install_archlinux
 
-config: dotfiles binfiles submodules
+config: dotfiles submodules
 
 sudo:
 	@sudo echo 'Sudo available!' \
@@ -27,10 +27,6 @@ install_archlinux:
 
 dotfiles:
 	cp -vru $(DOTFILES) $(HOME)/
-
-binfiles:
-	mkdir -p $(HOME)/bin/
-	cp -vu $(BINFILES) $(HOME)/bin/
 
 submodules:
 	for submodule in $(SUBMODULES); do												\
