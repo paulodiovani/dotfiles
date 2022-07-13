@@ -61,6 +61,6 @@ command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting()' | 
 """""""""""""""""""
 
 " force close terminal buffer with <Leader>x
-autocmd TermOpen term://* map <buffer> <Leader>x :bd!<CR>
+autocmd TermOpen term://* map <buffer> <Leader>x :Bdelete!<CR>
 " close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
