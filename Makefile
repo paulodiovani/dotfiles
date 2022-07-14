@@ -1,9 +1,7 @@
 FROMHOME = home/user
 BINFILES := $(wildcard $(FROMHOME)/bin/*)
 SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
-DOTFILES := $(wildcard $(FROMHOME)/\.[^\.]*)
-DOTFILES := $(filter-out $(SUBMODULES), $(DOTFILES))
-PACKAGES = awk git fzf neovim ripgrep tmux vim zsh
+PACKAGES = awk base-devel git fzf neovim ripgrep rsync tmux zsh
 
 # .PHONY: all
 
@@ -13,7 +11,7 @@ all: install config
 
 install: sudo install_archlinux
 
-config: dotfiles binfiles submodules
+config: dotfiles submodules
 
 sudo:
 	@sudo echo 'Sudo available!' \
@@ -26,11 +24,7 @@ install_archlinux:
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
 dotfiles:
-	cp -vru $(DOTFILES) $(HOME)/
-
-binfiles:
-	mkdir -p $(HOME)/bin/
-	cp -vu $(BINFILES) $(HOME)/bin/
+	rsync -amv $(FROMHOME)/ $(HOME)
 
 submodules:
 	for submodule in $(SUBMODULES); do												\

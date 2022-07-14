@@ -6,6 +6,10 @@ source ~/.vimrc
 """"""""""""""""""""
 " SETTINGS SECTION "
 """"""""""""""""""""
+" Disable Netrw
+" let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+" Require lua conf
 lua require('config')
 
 " LSP config
@@ -61,6 +65,6 @@ command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting()' | 
 """""""""""""""""""
 
 " force close terminal buffer with <Leader>x
-autocmd TermOpen term://* map <buffer> <Leader>x :bd!<CR>
+autocmd TermOpen term://* map <buffer> <Leader>x :Bdelete!<CR>
 " close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
