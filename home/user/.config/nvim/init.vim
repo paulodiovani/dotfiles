@@ -14,6 +14,7 @@ lua require('config')
 
 " LSP config
 set omnifunc=v:lua.vim.lsp.omnifunc
+set tagfunc=v:lua.vim.lsp.tagfunc
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
