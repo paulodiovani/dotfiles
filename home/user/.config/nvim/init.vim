@@ -27,7 +27,7 @@ map <Leader>^ :lua toggle_diagnostics()<CR>         " <Leader><S-6> toggle diagn
 map [a :lua vim.diagnostic.goto_prev()<CR>
 map ]a :lua vim.diagnostic.goto_next()<CR>
 
-" open diacnostic in float window / location list
+" open diagnostic in float window / location list
 map <Leader>a :lua vim.diagnostic.open_float()<CR>
 map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
