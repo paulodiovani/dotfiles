@@ -1,4 +1,4 @@
--- luacheck: ignore vim
+-- luacheck: globals vim
 
 ----------------------
 -- SETTINGS SECTION --
@@ -53,19 +53,10 @@ nvim_tree.setup({
 
 -- LSP config
 local lspconfig = require('lspconfig')
-lspconfig.bashls.setup {}
-lspconfig.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
-}
-lspconfig.solargraph.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.vimls.setup {}
+local servers = { 'bashls', 'sumneko_lua', 'solargraph', 'tsserver', 'vimls' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({})
+end
 
 -- Linters and other stuff (null-ls)
 local null_ls = require('null-ls')
