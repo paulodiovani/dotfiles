@@ -21,7 +21,7 @@ nmap <Space> \
 "set tw=80                           " text width
 set ai cindent sw=2                 " indentation
 set bs=2                            " same as :set backspace=indent,eol,start
-set conceallevel=0                  " do not conceal characters
+" set conceallevel=0                  " do not conceal characters
 set expandtab                       " convert tabs to spaces
 set exrc                            " source .vimrc files in project dirs
 set foldmethod=manual               " folding (manual, indent, syntax, expr, marker, diff)
@@ -129,6 +129,7 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 " indentline config
 let g:indentLine_char = '▏'
 " let g:indentLine_conceallevel = 0
+let g:indentLine_fileTypeExclude = ['markdown']
 
 " Vim fugitive/hubarb Github Browse on (almost) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
