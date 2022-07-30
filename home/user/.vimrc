@@ -129,7 +129,7 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 " indentline config
 let g:indentLine_char = '▏'
 " let g:indentLine_conceallevel = 0
-let g:indentLine_fileTypeExclude = ['markdown']
+" let g:indentLine_fileTypeExclude = ['markdown']
 
 " Vim fugitive/hubarb Github Browse on (almost) any domain
 let g:github_enterprise_urls = ['[-_\.a-zA-Z0-9]\+']
@@ -342,7 +342,8 @@ endfunction
 """""""""""""""""""
 
 augroup FileTypes
-  autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+  autocmd BufNewFile,BufRead *.md setlocal conceallevel=0
+  autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
 augroup END
 
 augroup YankStore
