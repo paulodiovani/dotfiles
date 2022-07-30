@@ -61,7 +61,12 @@ nvim_tree.setup({
 local lspconfig = require('lspconfig')
 local servers = { 'bashls', 'sumneko_lua', 'solargraph', 'tsserver', 'vimls' }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({})
+  lspconfig[lsp].setup({
+    on_attach = function(_, bufnr)
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+    end
+  })
 end
 
 -- Linters and other stuff (null-ls)
