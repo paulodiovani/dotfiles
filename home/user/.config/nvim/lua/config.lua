@@ -69,6 +69,7 @@ local null_ls = require('null-ls')
 null_ls.setup({
   sources = {
     -- diagnostics
+    null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.diagnostics.luacheck,
     null_ls.builtins.diagnostics.rubocop,
@@ -77,10 +78,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.yamllint,
     -- formatting
     null_ls.builtins.formatting.eslint,
-    null_ls.builtins.formatting.json_tool.with({
-      extra_args = { '--indent=2' },
-    }),
-    -- null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.json_tool.with({ extra_args = { '--indent=2' } }),
     null_ls.builtins.formatting.rubocop,
     null_ls.builtins.formatting.stylelint,
   },
