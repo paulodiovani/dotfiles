@@ -67,3 +67,12 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/treesitter"]
 	path = home/user/.config/nvim/pack/syntax/start/treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "home/user/.config/nvim/pack/plugins/start/coq"]
+	path = home/user/.config/nvim/pack/plugins/start/coq
+	url = https://github.com/ms-jpq/coq_nvim.git
+[submodule "home/user/.config/nvim/pack/plugins/start/coq.artifacts"]
+	path = home/user/.config/nvim/pack/plugins/start/coq.artifacts
+	url = https://github.com/ms-jpq/coq.artifacts.git
+[submodule "home/user/.config/nvim/pack/plugins/start/coq.thirdparty"]
+	path = home/user/.config/nvim/pack/plugins/start/coq.thirdparty
+	url = https://github.com/ms-jpq/coq.thirdparty.git

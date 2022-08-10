@@ -57,11 +57,25 @@ nvim_tree.setup({
   },
 })
 
--- LSP config
+-- LSP and Snippets config
 local lspconfig = require('lspconfig')
+
+vim.g.coq_settings = {
+  auto_start = true,
+  completion = { always = false },
+  display = { icons = { mode = 'none' } },
+  keymap = {
+    manual_complete = '<C-Space>', -- Will replace omnifunc
+    jump_to_mark = '<C-h>',
+  },
+}
+
+local coq = require('coq')
+
 local servers = { 'bashls', 'sumneko_lua', 'solargraph', 'tsserver', 'vimls' }
+
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
+  lspconfig[lsp].setup( coq.lsp_ensure_capabilities({
     on_attach = function(_, bufnr)
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -78,7 +92,7 @@ for _, lsp in ipairs(servers) do
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
     end
-  })
+  }))
 end
 
 -- Linters and other stuff (null-ls)
