@@ -31,10 +31,6 @@ map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 map <F9> :lua vim.lsp.buf.hover()<CR>
 inoremap <F9> <C-o>:lua vim.lsp.buf.hover()<CR>
 
-" go to definition
-map <F12> :lua vim.lsp.buf.definition()<CR>
-inoremap <F12> <C-o>:lua vim.lsp.buf.definition()<CR>
-
 " code completion with omni function
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>

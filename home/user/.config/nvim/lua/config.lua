@@ -63,8 +63,20 @@ local servers = { 'bashls', 'sumneko_lua', 'solargraph', 'tsserver', 'vimls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = function(_, bufnr)
+      -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
     end
   })
 end
