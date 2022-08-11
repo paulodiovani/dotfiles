@@ -89,6 +89,7 @@ for _, lsp in ipairs(servers) do
       vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<Leader><F2>', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
     end
