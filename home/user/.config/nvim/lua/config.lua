@@ -61,7 +61,7 @@ nvim_tree.setup({
 local lspconfig = require('lspconfig')
 
 vim.g.coq_settings = {
-  auto_start = true,
+  auto_start = 'shut-up',
   completion = { always = false },
   display = { icons = { mode = 'none' } },
   keymap = {
