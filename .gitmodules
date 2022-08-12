@@ -67,3 +67,9 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/treesitter"]
 	path = home/user/.config/nvim/pack/syntax/start/treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "home/user/.config/nvim/pack/plugins/start/lua-snip"]
+	path = home/user/.config/nvim/pack/plugins/start/lua-snip
+	url = https://github.com/L3MON4D3/LuaSnip.git
+[submodule "home/user/.config/nvim/pack/snippets/start/friendly-snippets"]
+	path = home/user/.config/nvim/pack/snippets/start/friendly-snippets
+	url = https://github.com/rafamadriz/friendly-snippets.git
