@@ -35,6 +35,13 @@ inoremap <F9> <C-o>:lua vim.lsp.buf.hover()<CR>
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
 
+" LuaSnip mappsings
+" press <Tab> to expand or jump in a snippet.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
 

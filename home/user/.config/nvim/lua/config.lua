@@ -69,7 +69,7 @@ for _, lsp in ipairs(servers) do
 
       -- Mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
       vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
@@ -81,10 +81,15 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+-- LuaSnip config
+require('luasnip.loaders.from_vscode').lazy_load()
+
 -- Linters and other stuff (null-ls)
 local null_ls = require('null-ls')
 null_ls.setup({
   sources = {
+    -- completion
+    null_ls.builtins.completion.luasnip,
     -- diagnostics
     null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.diagnostics.eslint,
