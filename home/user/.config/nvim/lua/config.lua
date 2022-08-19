@@ -18,6 +18,7 @@ vim.diagnostic.config({
 -- treesitter config
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
+    'bash',
     'javascript',
     'json',
     'markdown',
