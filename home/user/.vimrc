@@ -341,6 +341,13 @@ endfunction
 " AUTOCMD SECTION "
 """""""""""""""""""
 
+" unmap ft plugin maps
+augroup UnMaps
+  autocmd!
+  autocmd FileType ruby unmap <buffer>]m
+  autocmd FileType ruby unmap <buffer>[m
+augroup END
+
 augroup FileTypes
   autocmd BufNewFile,BufRead *.md setlocal conceallevel=0
   autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
