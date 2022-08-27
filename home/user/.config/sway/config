@@ -24,7 +24,9 @@ set $menu swaymsg exec -- wofi --allow-images --show drun
 set $lockcmd swaylock -f --image=$background 
 
 ### Output configuration
-#
+set $primary-output HDMI-A-1
+set $secondary-output eDP-1
+
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg $background fill
@@ -35,9 +37,9 @@ output * bg $background fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 scale 1.25
-output eDP-1 resolution 1920x1080 position 0 216
-output HDMI-A-1 resolution 1920x1080 position 1536 0
+output $secondary-output scale 1.25
+output $secondary-output resolution 1920x1080 position 0 216
+output $primary-output resolution 1920x1080 position 1536 0
 
 ### Idle configuration
 #
@@ -136,6 +138,18 @@ input type:touchpad {
 #
 # Workspaces:
 #
+    # Attach workspaces to outputs
+    workspace 1 output $primary-output
+    workspace 2 output $primary-output
+    workspace 3 output $primary-output
+    workspace 4 output $primary-output
+    workspace 5 output $primary-output
+    workspace 6 output $primary-output
+    workspace 7 output $primary-output
+    workspace 8 output $primary-output
+    workspace 9 output $primary-output
+    workspace 0 output $secondary-output
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -146,7 +160,7 @@ input type:touchpad {
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+0 workspace number 0
 
     bindsym Ctrl+Alt+$right workspace next
     bindsym Ctrl+Alt+$left workspace prev
