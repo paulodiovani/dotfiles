@@ -13,18 +13,22 @@ set $left h
 set $down j
 set $up k
 set $right l
+# Wallpaper
+set $background ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu swaymsg exec -- wofi --allow-images --show drun
+# Lock command
+set $lock swaylock -f --image=$background
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg fill
+output * bg $background fill
 
 #
 # Example configuration:
@@ -33,6 +37,8 @@ output * bg ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output eDP-1 scale 1.25
+output eDP-1 resolution 1920x1080 position 0 216
+output HDMI-A-1 resolution 1920x1080 position 1536 0
 
 ### Idle configuration
 #
@@ -46,6 +52,10 @@ output eDP-1 scale 1.25
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+  timeout 300 $lock \
+  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  before-sleep $lock
 
 ### Input configuration
 #
@@ -82,6 +92,7 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym --release Super_L exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -93,8 +104,12 @@ input type:touchpad {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # Lock screen
+    bindsym $mod+Alt+l exec $lock
+
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 #
 # Moving around:
 #
@@ -133,6 +148,12 @@ input type:touchpad {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
+    bindsym Ctrl+Alt+$right workspace next
+    bindsym Ctrl+Alt+$left workspace prev
+    bindsym Ctrl+Alt+Right workspace next
+    bindsym Ctrl+Alt+Left workspace prev
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -144,6 +165,11 @@ input type:touchpad {
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
+
+    bindsym Ctrl+Alt+Shift+$right move container to workspace next, workspace next
+    bindsym Ctrl+Alt+Shift+$left move container to workspace prev, workspace prev
+    bindsym Ctrl+Alt+Shift+Right move container to workspace next, workspace next
+    bindsym Ctrl+Alt+Shift+Left move container to workspace prev, workspace prev
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
