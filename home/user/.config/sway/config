@@ -21,8 +21,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu swaymsg exec -- wofi --allow-images --show drun
-# Lock command
-set $lock swaylock -f --image=$background
+set $lockcmd swaylock -f --image=$background 
 
 ### Output configuration
 #
@@ -53,9 +52,9 @@ output HDMI-A-1 resolution 1920x1080 position 1536 0
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-  timeout 300 $lock \
+  timeout 300 'swaymsg exec \$lockcmd' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep $lock
+  before-sleep 'swaymsg exec \$lockcmd'
 
 ### Input configuration
 #
@@ -92,7 +91,7 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym --release Super_L exec $menu
+    # bindsym --release Super_L exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -105,7 +104,7 @@ input type:touchpad {
     bindsym $mod+Shift+c reload
 
     # Lock screen
-    bindsym $mod+Alt+l exec $lock
+    bindsym $mod+Alt+l exec $lockcmd
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -261,4 +260,4 @@ bar swaybar_command waybar
 default_border pixel 1
 default_floating_border normal 1
 
-include /etc/sway/config.d/*
+include /eac/sway/config.d/*
