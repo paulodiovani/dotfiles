@@ -20,7 +20,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu swaymsg exec -- wofi --allow-images --show drun
+set $menu swaymsg exec -- wofi --insensitive --allow-images --show drun
 set $lockcmd swaylock -f --image=$background 
 
 ### Output configuration
@@ -93,8 +93,7 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+Escape exec $menu
-    # bindsym --release Super_L exec $menu
+    bindsym --release Super_L exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -199,6 +198,15 @@ input type:touchpad {
     bindsym XF86AudioPrev exec playerctl previous
     bindsym XF86Search exec $menu
 
+    # Toggle control center
+    bindsym $mod+Shift+n exec swaync-client -t -sw
+
+    # Show clipboard
+    bindsym Ctrl+F1 exec clipman pick -t wofi --histpath="~/.cache/clipman.json"
+
+    # Show emoji selector
+    bindsym Ctrl+F2 exec emote
+
 #
 # Layout stuff:
 #
@@ -261,9 +269,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Toggle control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
-
 #
 # Status Bar:
 #
@@ -300,5 +305,11 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 # Notification Daemon
 exec swaync
+
+# Clipboard manager <Ctrl>F1
+exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json" >> /tmp/clipman-log.txt 2>&1 &
+
+# Emoji selector daemon <Ctrl>F1
+exec emote
 
 include /eac/sway/config.d/*
