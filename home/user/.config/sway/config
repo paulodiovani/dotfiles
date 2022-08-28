@@ -300,6 +300,10 @@ default_floating_border normal 1
 # Startup commands and apps
 #
 
+# Change split layout (v/h) depending on window size
+# https://github.com/nwg-piotr/autotiling
+exec autotiling
+
 # Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
