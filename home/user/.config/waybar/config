@@ -1,3 +1,4 @@
+// vi: ft=jsonc
 {
     // "layer": "top", // Waybar at top layer
     // "position": "top", // Waybar position (top|bottom|left|right)
@@ -11,7 +12,7 @@
     // Modules configuration
     "sway/workspaces": {
       "disable-scroll": true,
-      "all-outputs": false,
+      "all-outputs": false
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -26,7 +27,7 @@
     "clock": {
         // "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%Y-%m-%d %H:%M}",
+        "format": "{: %B %d   %H:%M}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -63,7 +64,8 @@
       "format-connected": " {num_connections}",
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}" 
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "on-click": "blueberry"
     },
     "battery": {
         "states": {

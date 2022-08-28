@@ -185,6 +185,19 @@ input type:touchpad {
     bindsym Ctrl+Alt+Shift+Left move container to workspace prev, workspace prev
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Special keys
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86Search exec $menu
+
 #
 # Layout stuff:
 #
@@ -247,6 +260,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 #
 # Status Bar:
 #
@@ -273,5 +289,15 @@ bar swaybar_command waybar
 #
 default_border pixel 1
 default_floating_border normal 1
+
+#
+# Startup commands and apps
+#
+
+# Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Notification Daemon
+exec swaync
 
 include /eac/sway/config.d/*
