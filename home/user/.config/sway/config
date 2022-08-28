@@ -93,6 +93,7 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+Escape exec $menu
     # bindsym --release Super_L exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -139,6 +140,7 @@ input type:touchpad {
 # Workspaces:
 #
     # Attach workspaces to outputs
+    workspace 0 output $secondary-output
     workspace 1 output $primary-output
     workspace 2 output $primary-output
     workspace 3 output $primary-output
@@ -148,9 +150,9 @@ input type:touchpad {
     workspace 7 output $primary-output
     workspace 8 output $primary-output
     workspace 9 output $primary-output
-    workspace 0 output $secondary-output
 
     # Switch to workspace
+    bindsym $mod+0 workspace number 0
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
@@ -160,7 +162,6 @@ input type:touchpad {
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 0
 
     bindsym Ctrl+Alt+$right workspace next
     bindsym Ctrl+Alt+$left workspace prev
@@ -168,6 +169,7 @@ input type:touchpad {
     bindsym Ctrl+Alt+Left workspace prev
 
     # Move focused container to workspace
+    bindsym $mod+Shift+0 move container to workspace number 10
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
     bindsym $mod+Shift+3 move container to workspace number 3
@@ -177,7 +179,6 @@ input type:touchpad {
     bindsym $mod+Shift+7 move container to workspace number 7
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
 
     bindsym Ctrl+Alt+Shift+$right move container to workspace next, workspace next
     bindsym Ctrl+Alt+Shift+$left move container to workspace prev, workspace prev
@@ -222,7 +223,7 @@ input type:touchpad {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    # bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
