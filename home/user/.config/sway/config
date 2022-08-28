@@ -89,7 +89,7 @@ input type:touchpad {
     bindsym $mod+Insert exec $term
 
     # Kill focused window
-    bindsym $mod+q kill
+    bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -200,6 +200,15 @@ input type:touchpad {
 
     # Toggle control center
     bindsym $mod+Shift+n exec swaync-client -t -sw
+
+    # Dropdown terminal
+    set $ddterm-id alacritty-dropdown
+    set $ddterm alacritty --class $ddterm-id
+    for_window [app_id="$ddterm-id"] move container to scratchpad
+    exec $ddterm
+    bindsym Ctrl+Escape scratchpad show, \
+      resize set 100ppt 40ppt, \
+      move position 0 0
 
     # Show clipboard
     bindsym Ctrl+F1 exec clipman pick -t wofi --histpath="~/.cache/clipman.json"
