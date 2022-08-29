@@ -213,6 +213,18 @@ input type:touchpad {
     # Show emoji selector
     bindsym Ctrl+F2 exec emote
 
+    # Screenshots
+    set $screenshot ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+    # take screenshot of currently focused output
+    bindsym --release Print exec IMG="$screenshot" && grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $IMG && wl-copy < $IMG
+    # take screenshot of selected window
+    # bindsym Ctrl+Print exec IMG="$screenshot" && grim -g "$(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp -o)" $IMG && sl-copy < $IMG
+    # take screenshot of rectangular are
+    bindsym Shift+Print exec IMG="$screenshot" && grim -g "$(slurp)" $IMG && wl-copy < $IMG
+    # copy selected color to clipboard
+    bindsym Alt+Print exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | awk -F ' ' 'NR==2 {print $3}' | tr -d '\n' | wl-copy
+
+
 #
 # Layout stuff:
 #
