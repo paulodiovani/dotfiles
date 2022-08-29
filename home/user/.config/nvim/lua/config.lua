@@ -71,6 +71,7 @@ for _, lsp in ipairs(servers) do
       -- Mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
       vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
       vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)

@@ -27,10 +27,6 @@ map ]a :lua vim.diagnostic.goto_next()<CR>
 map <Leader>a :lua vim.diagnostic.open_float()<CR>
 map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
-" open LSP definition
-map <F9> :lua vim.lsp.buf.hover()<CR>
-inoremap <F9> <C-o>:lua vim.lsp.buf.hover()<CR>
-
 " code completion with omni function
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>

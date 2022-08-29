@@ -156,12 +156,16 @@ cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw 
 
 " Map <F*> keys...
 
-map <expr><F2> ':Move ' . expand('%')                " rename/move
-map <F3> :%s/\r//g<CR>                         " remove <CR>/^M from line endings
-map <F4> ggVGg?                                " shuffle text content (to hide sentitive data)
-map <F5> :throw 'No run command defined.'<CR>  " run command
-map <F10> :set paste!<CR>:set paste?<CR>        " enable/disable paste mode with F10
+map <expr><F2> ':Move ' . expand('%')               " rename/move
+map <F3> :%s/\r//g<CR>                              " remove <CR>/^M from line endings
+map <F4> ggVGg?                                     " shuffle text content (to hide sentitive data)
+map <F5> :throw 'No run command defined.'<CR>       " run command
+map <F9> :ptjump<CR>                                " open definition (using ctags) in preview window
+map <leader><F9> <C-o>:ptjump<CR>
+map <F10> :set paste!<CR>:set paste?<CR>            " enable/disable paste mode with F10
 set pastetoggle=<F10>
+noremap <F12> <C-]>                                 " open definition (using ctags) in new buffer
+inoremap <F12> <C-o><C-]>
 
 " Toggles
 
