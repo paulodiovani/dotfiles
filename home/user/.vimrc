@@ -5,7 +5,7 @@ nmap <Space> \
 " SETTINGS SECTION "
 """"""""""""""""""""
 
-" Note: for neovim specic configurations, check ~/.config/nvim/init.vim
+" Note: for neovim specific configurations, check ~/.config/nvim/init.vim
 
 " GUI settings (gvim only)
 " set guifont=Source\ Code\ Pro\ Regular\ 11
@@ -35,7 +35,7 @@ set nu                              " add line numbers
 set path+=**                        " search subfolders (find, ...)
 set ruler                           " show cursor position
 set sessionoptions-=options         " do not save options in sessions
-set showcmd                         " show command in statubar
+set showcmd                         " show command in statusbar
 set sm                              " color matching braces/parenthesis
 set t_vb=                           " no
 " set title                           " show filename on title bar
@@ -156,6 +156,11 @@ cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw 
 
 " Map <F*> keys...
 
+" show all F* keys and toggles
+nmap <silent><Leader><F1> :
+  \ for n in range(2,12) \| exec 'map <F'.n.'>' \| exec 'map <Leader><F'.n.'>' \| endfor \|
+  \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
+
 map <expr><F2> ':Move ' . expand('%')               " rename/move
 map <F3> :%s/\r//g<CR>                              " remove <CR>/^M from line endings
 map <F4> ggVGg?                                     " shuffle text content (to hide sentitive data)
@@ -164,8 +169,8 @@ map <F9> :ptjump<CR>                                " open definition (using cta
 map <leader><F9> <C-o>:ptjump<CR>
 map <F10> :set paste!<CR>:set paste?<CR>            " enable/disable paste mode with F10
 set pastetoggle=<F10>
-noremap <F12> <C-]>                                 " open definition (using ctags) in new buffer
-inoremap <F12> <C-o><C-]>
+map <F12> <C-]>                                     " open definition (using ctags) in new buffer
+imap <F12> <C-o><C-]>
 
 " Toggles
 
@@ -177,11 +182,6 @@ map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle searc
 
 " writeroom mode
 nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
-
-" show all F* keys and toggles
-nmap <silent><Leader><F1> :
-  \ for n in range(2,12) \| exec 'map <F'.n.'>' \| endfor \|
-  \ for n in split('!@#$%^&*()', '\zs') \| exec 'map <Leader>'.n \| endfor<CR>
 
 " open terminal
 map <Leader>` :terminal<CR>
