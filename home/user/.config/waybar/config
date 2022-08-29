@@ -27,7 +27,9 @@
     "clock": {
         // "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{: %B %d   %H:%M}"
+        "format": "{: %B %d   %H:%M}",
+        // show notifications on click
+        "on-click": "swaync-client -t -sw"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

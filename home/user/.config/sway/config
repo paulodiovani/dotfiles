@@ -196,7 +196,7 @@ input type:touchpad {
     bindsym XF86Search exec $menu
 
     # Toggle control center
-    bindsym $mod+Shift+n exec swaync-client -t -sw
+    bindsym $mod+n exec swaync-client -t -sw
 
     # Dropdown terminal
     set $ddterm-id alacritty-dropdown
