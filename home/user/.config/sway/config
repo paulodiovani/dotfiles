@@ -1,7 +1,5 @@
 # Default config for sway
 #
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -13,15 +11,13 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Wallpaper
-set $background ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu swaymsg exec -- wofi --insensitive --allow-images --show drun
-set $lockcmd swaylock -f --image=$background 
+set $lockcmd swaylock -f
 
 ### Output configuration
 set $primary-output HDMI-A-1
@@ -29,7 +25,7 @@ set $secondary-output eDP-1
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg $background fill
+output * bg ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg fill
 
 #
 # Example configuration:
@@ -326,4 +322,4 @@ exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json
 # Emoji selector daemon <Ctrl>F1
 exec emote
 
-include /eac/sway/config.d/*
+include ~/.config/sway/config.d/*
