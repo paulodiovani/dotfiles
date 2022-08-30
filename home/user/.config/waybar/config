@@ -7,7 +7,7 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["clock#calendar", "clock"],
+    "modules-center": ["clock#calendar", "clock", "custom/notifications"],
     "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "custom/poweroff"],
     // Modules configuration
     "sway/workspaces": {
@@ -32,9 +32,22 @@
     },
     "clock": {
         // "timezone": "America/Sao_Paulo",
-        "format": "{: %H:%M}",
-        // show notifications on click
-        "on-click": "swaync-client -t -sw"
+        "format": "{: %H:%M}"
+    },
+    "custom/notifications": {
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "",
+        "none": "",
+        "dnd-notification": "",
+        "dnd-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

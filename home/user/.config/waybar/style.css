@@ -26,13 +26,13 @@ window#waybar {
 }
 
 #workspaces button.focused {
-  color: #c9545d;
-  border-top: 2px solid #c9545d;
+  color: #bc7cd8;
+  border-top: 2px solid #7F29A5;
 }
 
 #mode {
   background: #64727D;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid #7F29A5;
 }
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
