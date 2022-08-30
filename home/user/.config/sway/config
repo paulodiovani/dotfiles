@@ -314,6 +314,11 @@ bar swaybar_command waybar
 default_border pixel 1
 default_floating_border normal 1
 
+# Move windows on open
+for_window [title=^Calendar$] floating enable, exec ~/.local/bin/sway_move top-center
+for_window [title=^GlobalProtect$] floating enable, exec ~/.local/bin/sway_move top-right
+for_window [class=^zoom$ title=^zoom$ window_type=unknown] floating enable
+
 #
 # Startup commands and apps
 #
