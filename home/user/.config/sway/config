@@ -185,15 +185,15 @@ input type:touchpad {
     # We just use 1-10 as the default.
 
     # Special keys
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
+    bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 2%+
+    bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+    bindsym XF86AudioNext exec --no-startup-id playerctl next
+    bindsym XF86AudioPrev exec --no-startup-id playerctl previous
     bindsym XF86Search exec $menu
 
     # Toggle control center
@@ -220,6 +220,8 @@ input type:touchpad {
     set $grimcolor grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | awk -F ' ' 'NR==2 {print $3}' | tr -d '\n'
     # take screenshot of currently focused output
     bindsym --release Print exec IMG="$screenshot" && $grimshot --notify save output $IMG && wl-copy < $IMG
+    # take screenshot of active window
+    bindsym $mod+Print exec IMG="$screenshot" && $grimshot --notify save active $IMG && sl-copy < $IMG
     # take screenshot of selected window
     bindsym Ctrl+Print exec IMG="$screenshot" && $grimshot --notify save window $IMG && sl-copy < $IMG
     # take screenshot of rectangular are
@@ -317,10 +319,18 @@ bar swaybar_command waybar
 default_border pixel 1
 default_floating_border normal 1
 
+# Inhibit idle when fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+# Inhibit idle when zoom window is visible
+for_window [class="^zoom$"] inhibit_idle visible
+
 # Move windows on open
-for_window [title=^Calendar$] floating enable, exec ~/.local/bin/sway_move top-center
-for_window [title=^GlobalProtect$] floating enable, exec ~/.local/bin/sway_move top-right
-for_window [class=^zoom$ title=^zoom$ window_type=unknown] floating enable
+for_window [title="^Calendar$"] floating enable, exec ~/.local/bin/sway_move top-center
+for_window [title="^GlobalProtect$"] floating enable, exec ~/.local/bin/sway_move top-right
+# Fix Zoom s*it notifications
+for_window [title="^(Z|z)oom$"] floating enable
+for_window [title="^Zoom (.*)(Account|Meeting)$"] floating disable
 
 #
 # Startup commands and apps
