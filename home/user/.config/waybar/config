@@ -47,7 +47,8 @@
       "exec": "swaync-client -swb",
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
-      "escape": true
+      "escape": true,
+      "tooltip": false
     },
     "pulseaudio": {
         "scroll-step": 2, // %, can be a float
@@ -95,7 +96,8 @@
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        // "format-plugged": "{capacity}% ",
+        "format-plugged": "",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
