@@ -51,7 +51,9 @@ output $primary-output resolution 1920x1080 position 1536 0
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
   timeout 300 'swaymsg exec \$lockcmd' \
-  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  timeout 600 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+  timeout 1800 'systemctl suspend' \
   before-sleep 'swaymsg exec \$lockcmd'
 
 ### Input configuration
