@@ -50,7 +50,7 @@
       "escape": true
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 2, // %, can be a float
         "format": "{icon}{format_source}",
         "format-bluetooth": "{icon}{format_source}",
         "format-bluetooth-muted": " {icon}{format_source}",
@@ -81,7 +81,7 @@
      	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
       "format": "",
       "format-disabled": "", // an empty format will hide the module
-      "format-connected": " {num_connections}",
+      "format-connected": "<sup>{num_connections}</sup>",
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
