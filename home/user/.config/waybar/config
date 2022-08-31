@@ -7,7 +7,7 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["clock#calendar", "clock", "custom/notifications"],
+    "modules-center": ["clock#calendar", "clock", "clock#2", "custom/notifications"],
     "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "custom/poweroff"],
     // Modules configuration
     "sway/workspaces": {
@@ -31,8 +31,12 @@
         "on-click": "yad --calendar --text= --date-format=%Y-%m-%d --title=Calendar --no-buttons --on-top --close-on-unfocus | tr -d '\n' | wl-copy"
     },
     "clock": {
-        // "timezone": "America/Sao_Paulo",
-        "format": "{: %H:%M}"
+        "timezone": "America/Sao_Paulo",
+        "format": "{: %H:%M} BRT"
+    },
+    "clock#2": {
+        "timezone": "America/Los_Angeles",
+        "format": "{: %I:%M%p %Z}"
     },
     "custom/notifications": {
       "format": "{icon}",
