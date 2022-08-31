@@ -202,13 +202,14 @@ input type:touchpad {
     bindsym $mod+n exec swaync-client -t -sw
 
     # Dropdown terminal
-    set $ddterm-id alacritty-dropdown
-    set $ddterm alacritty --class $ddterm-id
-    for_window [app_id="$ddterm-id"] move container to scratchpad
-    exec $ddterm
-    bindsym Ctrl+Escape scratchpad show, \
+    set $ddterm-id dropdown-terminal
+    set $ddterm $term --class $ddterm-id
+    for_window [app_id="$ddterm-id"] floating enable, \
       resize set 100ppt 40ppt, \
-      move position 0 0
+      move position 0 0, \
+      move to scratchpad
+    exec $ddterm
+    bindsym Ctrl+Escape scratchpad show
 
     # Show clipboard
     bindsym Ctrl+F1 exec clipman pick -t wofi --histpath="~/.cache/clipman.json"

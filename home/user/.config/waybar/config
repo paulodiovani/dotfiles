@@ -28,7 +28,7 @@
         // "timezone": "America/Sao_Paulo",
         "format": "{: %B %d}",
         // show notifications on click
-        "on-click": "zenity --calendar --title=Calendar --text= --date-format=%Y-%m-%d | tr -d '\n' | wl-copy"
+        "on-click": "yad --calendar --title=Calendar --text= --date-format=%Y-%m-%d | tr -d '\n' | wl-copy"
     },
     "clock": {
         // "timezone": "America/Sao_Paulo",
