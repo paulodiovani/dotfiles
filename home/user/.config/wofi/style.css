@@ -1,0 +1,31 @@
+/* base16-wofi (https://sr.ht/~knezi/base16-wofi)
+ * Base16 wofi template by knezi
+ * Nebula scheme by Gabriel Fontes (https://github.com/Misterio77) */
+
+window {
+	background-color: #22273b;
+	color: #a4a6a9;
+}
+
+/* #entry:nth-child(odd) { */
+/* 	background-color: #22273b; */
+/* } */
+/*  */
+/* #entry:nth-child(even) { */
+/* 	background-color: #414f60; */
+/* } */
+
+#entry:selected {
+	/* background-color: #5a8380; */
+	background-color: #414f60;
+}
+
+#input {
+	background-color: #414f60;
+	color: #87888b;
+	border-color: #5a8380;
+}
+
+#input:focus {
+	border-color: #4f9062;
+}
