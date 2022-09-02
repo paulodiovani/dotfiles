@@ -32,3 +32,8 @@
   rebase = false
 [init]
   defaultBranch = main
+[include]
+  path = ./.gitconfiguser
+  # User config
+  # git config -f ~/.gitconfiguser user.email "you@example.com"
+  # git config -f ~/.gitconfiguser user.name "Your Name"
