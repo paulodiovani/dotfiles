@@ -226,9 +226,9 @@ input type:touchpad {
     # take screenshot of currently focused output
     bindsym --release Print exec IMG="$screenshot" && $grimshot --notify save output $IMG && wl-copy < $IMG
     # take screenshot of active window
-    bindsym $mod+Print exec IMG="$screenshot" && $grimshot --notify save active $IMG && sl-copy < $IMG
+    bindsym $mod+Print exec IMG="$screenshot" && $grimshot --notify save active $IMG && wl-copy < $IMG
     # take screenshot of selected window
-    bindsym Ctrl+Print exec IMG="$screenshot" && $grimshot --notify save window $IMG && sl-copy < $IMG
+    bindsym Ctrl+Print exec IMG="$screenshot" && $grimshot --notify save window $IMG && wl-copy < $IMG
     # take screenshot of rectangular are
     bindsym Shift+Print exec IMG="$screenshot" && $grimshot --notify save area $IMG && wl-copy < $IMG
     # copy selected color to clipboard
