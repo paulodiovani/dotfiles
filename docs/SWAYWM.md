@@ -29,6 +29,12 @@ wf-recorder
 awk
 jq
 
+# gtk theme settings
+lxappearance
+
+# gtk auth window
+polkit-gnome
+
 # screenshare tools
 pipewire
 pipewire-media-session
@@ -42,12 +48,15 @@ blueberry
 pavucontrol
 pcmanfm-gtk3
 yad
-```
 
 ## Utility scripts
 
-```bash
 /usr/share/sway/scripts/grimshot
 ~/.local/bin/sway-move
 ~/.local/bin/wlprop
 ```
+
+# References
+
+- https://www.reddit.com/r/kde/comments/m1sc21/timeshift_doesnt_use_the_global_theme_and_cursor/
+- https://www.reddit.com/r/swaywm/comments/gl391h/how_do_you_configure_themes_in_sway/
