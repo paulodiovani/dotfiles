@@ -360,4 +360,7 @@ exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json
 # Emoji selector daemon <Ctrl>F1
 exec emote
 
+# Polkit user agent (sudo gtk auth window)
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 include ~/.config/sway/config.d/*
