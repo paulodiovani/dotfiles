@@ -336,6 +336,8 @@ bar swaybar_command waybar
 #
 default_border pixel 1
 default_floating_border normal 1
+gaps inner 3
+smart_gaps on
 
 # Inhibit idle when fullscreen
 for_window [class="^.*"] inhibit_idle fullscreen
