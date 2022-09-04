@@ -7,10 +7,10 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+# set $left h
+# set $down j
+# set $up k
+# set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
@@ -118,7 +118,7 @@ client.background       $base07
     bindsym $mod+Shift+c reload
 
     # Lock screen
-    bindsym $mod+Alt+l exec $lockcmd
+    bindsym $mod+l exec $lockcmd
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -128,10 +128,10 @@ client.background       $base07
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    # bindsym $mod+$left focus left
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
+    # bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -139,10 +139,10 @@ client.background       $base07
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+    # bindsym $mod+Shift+$up move up
+    # bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -176,8 +176,8 @@ client.background       $base07
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
 
-    bindsym Ctrl+Alt+$right workspace next
-    bindsym Ctrl+Alt+$left workspace prev
+    # bindsym Ctrl+Alt+$right workspace next
+    # bindsym Ctrl+Alt+$left workspace prev
     bindsym Ctrl+Alt+Right workspace next
     bindsym Ctrl+Alt+Left workspace prev
 
@@ -194,8 +194,8 @@ client.background       $base07
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
 
-    bindsym Ctrl+Alt+Shift+$right move container to workspace next, workspace next
-    bindsym Ctrl+Alt+Shift+$left move container to workspace prev, workspace prev
+    # bindsym Ctrl+Alt+Shift+$right move container to workspace next, workspace next
+    # bindsym Ctrl+Alt+Shift+$left move container to workspace prev, workspace prev
     bindsym Ctrl+Alt+Shift+Right move container to workspace next, workspace next
     bindsym Ctrl+Alt+Shift+Left move container to workspace prev, workspace prev
     # Note: workspaces can have any name you want, not just numbers.
@@ -293,10 +293,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    # bindsym $left resize shrink width 10px
+    # bindsym $down resize grow height 10px
+    # bindsym $up resize shrink height 10px
+    # bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
