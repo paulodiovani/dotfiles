@@ -8,6 +8,7 @@ WIP
 
 ```bash
 # base: wm, bar, lock, notification, etc
+azote
 sway
 swaybg
 swayidle

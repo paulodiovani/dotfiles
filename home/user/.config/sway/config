@@ -25,7 +25,6 @@ set $secondary-output eDP-1
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/Pictures/Wallpapers/Othercide-wallpaper-001.jpg fill
 
 #
 # Example configuration:
@@ -359,12 +358,15 @@ for_window [title="^Zoom (.*)(Account|Meeting)$"] floating disable
 # Startup commands and apps
 #
 
+# Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 # Change split layout (v/h) depending on window size
 # https://github.com/nwg-piotr/autotiling
 exec autotiling
 
-# Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# wallpaper settings by azote
+exec ~/.azotebg
 
 # Notification Daemon
 exec swaync
