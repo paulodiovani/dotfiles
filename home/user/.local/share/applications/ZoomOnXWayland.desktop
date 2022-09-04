@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Zoom on Sway
+Name=Zoom on XWayland
 Comment=Zoom Video Conference
-Exec=env XDG_SESSION_TYPE=wayland XDG_SESSION_DESKTOP=GNOME XDG_CURRENT_DESKTOP=GNOME /usr/bin/zoom %U
+Exec=env -u WAYLAND_DISPLAY /usr/bin/zoom %U
 Icon=Zoom
 Terminal=false
 Type=Application
@@ -10,4 +10,4 @@ Categories=Network;Application;
 StartupWMClass=zoom
 MimeType=x-scheme-handler/zoommtg;x-scheme-handler/zoomus;x-scheme-handler/tel;x-scheme-handler/callto;x-scheme-handler/zoomphonecall;application/x-zoom
 X-KDE-Protocols=zoommtg;zoomus;tel;callto;zoomphonecall;
-Name[en_US]=Zoom on Sway
+Name[en_US]=Zoom on XWayland
