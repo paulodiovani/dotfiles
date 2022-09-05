@@ -218,18 +218,20 @@ client.background       $base07
     # Dropdown terminal
     set $ddterm-id dropdown-terminal
     set $ddterm $term --class $ddterm-id
-    for_window [app_id="$ddterm-id"] floating enable, \
-      resize set 100ppt 40ppt, \
-      move position 0 0, \
+    for_window [app_id="$ddterm-id"] {
+      floating enable
+      resize set 100ppt 40ppt
+      move position 0 0
       move to scratchpad
-    exec $ddterm
-    bindsym Ctrl+Escape scratchpad show
+      scratchpad show
+    }
+    bindsym Ctrl+Escape exec swaymsg scratchpad show || $ddterm
 
     # Show clipboard
     bindsym Ctrl+F1 exec clipman pick -t wofi --histpath="~/.cache/clipman.json"
 
     # Show emoji selector
-    bindsym Ctrl+F2 exec emote
+    bindsym Ctrl+F2 exec wofi-emoji
 
     # Screenshots
     set $screenshot ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
@@ -359,7 +361,7 @@ for_window [title="^Zoom (.*)(Account|Meeting)$"] floating disable
 #
 
 # Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Change split layout (v/h) depending on window size
 # https://github.com/nwg-piotr/autotiling

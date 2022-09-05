@@ -17,6 +17,7 @@ swaync
 waybar
 wlogout
 wofi
+xorg-xwayland
 
 # scripts
 autotiling
@@ -53,6 +54,7 @@ yad
 ## Utility scripts
 
 /usr/share/sway/scripts/grimshot
+wofi-emoji
 ~/.local/bin/sway-move
 ~/.local/bin/wlprop
 ```
