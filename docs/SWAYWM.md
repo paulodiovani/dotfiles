@@ -32,7 +32,7 @@ awk
 jq
 
 # gtk theme settings
-lxappearance
+nwg-look-bin
 
 # gtk auth window
 polkit-gnome
