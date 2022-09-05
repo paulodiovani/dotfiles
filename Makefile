@@ -23,8 +23,8 @@ install_archlinux:
 	|| echo "OPS! This is no Arch Linux, you'll have to install these manually: $(PACKAGES)" \
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
-dotfiles:
-	rsync -amv $(FROMHOME)/ $(HOME)
+dotfiles: submodules_deinit
+	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
 submodules:
 	for submodule in $(SUBMODULES); do												\
@@ -49,3 +49,6 @@ submodules:
 			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;							\
 		fi																			\
 	done
+
+submodules_deinit:
+	git submodule deinit --all --force > /dev/null 2>&1
