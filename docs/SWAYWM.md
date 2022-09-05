@@ -12,7 +12,7 @@ azote
 sway
 swaybg
 swayidle
-swaylock
+swaylock-effects
 swaync
 waybar
 wlogout
