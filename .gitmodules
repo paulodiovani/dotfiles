@@ -1,9 +1,6 @@
 [submodule "home/user/.oh-my-zsh"]
 	path = home/user/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "home/user/.vim/pack/colors/start/vim-one"]
-	path = home/user/.vim/pack/colors/start/one
-	url = https://github.com/rakr/vim-one.git
 [submodule "home/user/.vim/pack/plugins/start/editorconfig"]
 	path = home/user/.vim/pack/plugins/start/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
