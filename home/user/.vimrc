@@ -102,7 +102,7 @@ let g:fzf_colors =
 set laststatus=2
 set showtabline=2
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': substitute(g:colors_name, '-', '_', 'g'),
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ 'active': {
