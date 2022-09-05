@@ -73,3 +73,6 @@
 [submodule "home/user/.vim/pack/colors/opt/base16-lightline"]
 	path = home/user/.vim/pack/colors/start/base16-lightline
 	url = https://github.com/mike-hearn/base16-vim-lightline.git
+[submodule "home/user/.config/base16-fzf"]
+	path = home/user/.config/base16-fzf
+	url = https://github.com/base16-project/base16-fzf.git
