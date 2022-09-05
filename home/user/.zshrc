@@ -53,7 +53,6 @@ plugins=(asdf git man tmux docker kubectl aws heroku)
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 ZSH_TMUX_FIXTERM="true"
-ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 # Allow tmux set title
 #DISABLE_AUTO_TITLE="true"
 
@@ -80,7 +79,7 @@ source ~/.zsh_local_history.sh
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
