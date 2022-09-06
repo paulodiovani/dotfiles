@@ -265,7 +265,6 @@ client.background       $base07
     # copy selected color to clipboard
     bindsym Alt+Print exec $grimcolor | wl-copy
 
-
 #
 # Layout stuff:
 #
@@ -368,6 +367,8 @@ for_window [title="^Zoom (.*)(Account|Meeting)$"] inhibit_idle visible
 # Move windows on open
 for_window [title="^Calendar$"] floating enable, exec ~/.local/bin/sway_move top-center
 for_window [title="^GlobalProtect$"] floating enable, exec ~/.local/bin/sway_move top-right
+for_window [app_id="pavucontrol"] floating enable, exec ~/.local/bin/sway_move top-right
+for_window [app_id="blueberry.py"] floating enable, exec ~/.local/bin/sway_move top-right
 
 # Fix Zoom s*it notifications
 for_window [title="^(Z|z)oom$"] floating enable
