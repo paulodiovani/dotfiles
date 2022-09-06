@@ -39,6 +39,10 @@ playerctl
 # gtk theme settings
 nwg-look-bin
 
+# gt2 theme for qt5
+qt5-styleplugins
+qt6gtk2
+
 # gtk auth window
 polkit-gnome
 
