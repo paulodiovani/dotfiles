@@ -102,35 +102,52 @@ let g:fzf_colors =
 set laststatus=2
 set showtabline=2
 let g:lightline = {
-      \ 'colorscheme': substitute(g:colors_name, '-', '_', 'g'),
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-      \ 'active': {
-      \   'left': [['mode', 'paste' ],
-      \            ['gitbranch', 'readonly', 'relativepath', 'conflicted', 'modified']],
-      \ },
-      \ 'inactive': {
-      \   'left': [['filename', 'conflicted']],
-      \ },
-      \ 'tabline': {
-      \   'left': [['buffers']],
-      \   'right': [['close'], ['tabs']],
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
-      \   'gitbranch': "\ue0a0 %{fugitive#Head()}",
-      \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
-      \ },
-      \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
-      \ 'component_type': { 'buffers': 'tabsel' },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help" && &readonly)',
-      \   'gitbranch': '(exists("*fugitive#Head") && "" != fugitive#Head())',
-      \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
-      \ },
-      \ }
+  \ 'colorscheme': substitute(g:colors_name, '-', '_', 'g'),
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+  \ 'active': {
+  \   'left': [['mode', 'paste' ],
+  \            ['gitbranch', 'readonly', 'relativepath', 'conflicted', 'modified']],
+  \ },
+  \ 'inactive': {
+  \   'left': [['filename', 'conflicted']],
+  \ },
+  \ 'tabline': {
+  \   'left': [['buffers']],
+  \   'right': [['close'], ['tabs']],
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&filetype=="help" ? "" : &readonly ? "\ue0a2" : ""}',
+  \   'gitbranch': "\ue0a0 %{fugitive#Head()}",
+  \   'conflicted': "\u22b6 %{exists('*ConflictedVersion') ? ConflictedVersion() : ''}",
+  \ },
+  \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+  \ 'component_type': { 'buffers': 'tabsel' },
+  \ 'component_visible_condition': {
+  \   'readonly': '(&filetype!="help" && &readonly)',
+  \   'gitbranch': '(exists("*fugitive#Head") && "" != fugitive#Head())',
+  \   'conflicted': '(exists("*ConflictedVersion") && "" != ConflictedVersion())',
+  \ },
+  \ }
 let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#unnamed      = '[No Name]'
+
+" tmuxline config
+" #H  Hostname of local host
+" #I  Current window index
+" #P  Current pane index
+" #S  Session name
+" #T  Current pane title
+" #W  Current window name
+" #   A literal ‘#’
+let g:tmuxline_preset = {
+  \'a'      : '#S',
+  \'win'    : ['#I', '#W'],
+  \'cwin'   : ['#F', '#W'],
+  \'y'      : '%a %H:%M',
+  \'z'      : '#(CUTE_BATTERY_INDICATOR=1 ~/.local/bin/battery)',
+  \'options': { 'status-justify': 'left' }
+  \}
 
 " indentline config
 let g:indentLine_char = '▏'
