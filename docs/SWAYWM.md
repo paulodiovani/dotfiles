@@ -8,6 +8,7 @@ WIP
 
 ```bash
 # base: wm, bar, lock, notification, etc
+avizo
 azote
 sway
 swaybg
@@ -29,7 +30,11 @@ wf-recorder
 
 # utilities
 awk
+brightnessctl
 jq
+pactl
+pamixer
+playerctl
 
 # gtk theme settings
 nwg-look-bin
