@@ -142,8 +142,8 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 " #   A literal ‘#’
 let g:tmuxline_preset = {
   \'a'      : '#S',
-  \'win'    : ['#I', '#W'],
-  \'cwin'   : ['#F', '#W'],
+  \'win'    : ['#I', '$TITLE_STRING'],
+  \'cwin'   : ['#F', '$TITLE_STRING'],
   \'y'      : '%a %H:%M',
   \'z'      : '#(CUTE_BATTERY_INDICATOR=1 ~/.local/bin/battery)',
   \'options': { 'status-justify': 'left' }
