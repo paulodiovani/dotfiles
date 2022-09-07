@@ -1,54 +1,34 @@
 FROMHOME = home/user
-BINFILES := $(wildcard $(FROMHOME)/bin/*)
-SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
 PACKAGES = awk base-devel git fzf neovim ripgrep rsync tmux zsh
 
-# .PHONY: all
+.DEFAULT_GOAL := help
 
 .NOTPARALLEL:
 
-all: install config
+help: ## Print help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-install: sudo install_archlinux
+all: install config ## Install packages and copy confir files to $HOME
 
-config: dotfiles submodules
+install: sudo install_archlinux ## Install packages
 
-sudo:
+config: submodules dotfiles ## Fetch submodules and copy config files
+
+sudo: ## Check for sudo command
 	@sudo echo 'Sudo available!' \
 	|| echo "ALERT! sudo not available! You must install the following packages manually: $(PACKAGES)"
 
-install_archlinux:
+install_archlinux: ## Install packages in Arch Linux
 	@command -v pacman > /dev/null \
 	&& sudo pacman -Sy --noconfirm $(PACKAGES) \
 	|| echo "OPS! This is no Arch Linux, you'll have to install these manually: $(PACKAGES)" \
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
-dotfiles: submodules_deinit
+dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
-submodules:
-	for submodule in $(SUBMODULES); do												\
-		sm_path=$$(git config --file .gitmodules --get $$submodule.path);			\
-		sm_path=$${sm_path#$(FROMHOME)/};											\
-		sm_url=$$(git config --file .gitmodules --get $$submodule.url);				\
-		sm_branch=$$(git config --file .gitmodules --get $$submodule.branch);		\
-		echo;																		\
-		if [ -d $(HOME)/$$sm_path ]; then											\
-			echo "Updating repository $(HOME)/$$sm_path";							\
-			cd $(HOME)/$$sm_path;													\
-			branch=$$(git rev-parse --abbrev-ref HEAD | cut -d- -f1-2);				\
-			git fetch --depth 1;													\
-			git reset --hard origin/$$branch;										\
-			git clean -fdx;															\
-			cd - > /dev/null;														\
-		elif [ ! -z "$$sm_branch" ]; then											\
-			echo "Cloning new repository in $(HOME)/$$sm_path @ $$sm_branch";		\
-			git clone --depth 1 --branch $$sm_branch $$sm_url $(HOME)/$$sm_path;	\
-		else																		\
-			echo "Cloning new repository in $(HOME)/$$sm_path";						\
-			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;							\
-		fi																			\
-	done
+submodules: ## Init and fetch git submodules
+	git submodule update --init --depth=1
 
-submodules_deinit:
-	git submodule deinit --all --force > /dev/null 2>&1
+submodules_deinit: ## Deinit git submodules
+	git submodule deinit --all --force

@@ -9,12 +9,12 @@ Mostly for `$HOME`
 ```bash
 git clone --depth 1 https://github.com/paulodiovani/dot-files.git
 cd dot-files
-make
+make all
 ```
 
 This install required packages (Arch Linux, only), copy the config files and clone submodules into respective directories.
 
-Read the `Makefile` for more details.
+Run `make help` or read the `Makefile` for more details.
 
 ## Supported distros
 
