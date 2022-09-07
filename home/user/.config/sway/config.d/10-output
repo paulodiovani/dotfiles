@@ -1,0 +1,33 @@
+# vi: ft=i3config
+#
+### Output configuration
+set $primary-output HDMI-A-1
+set $secondary-output eDP-1
+
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output $secondary-output scale 1.25
+output $secondary-output resolution 1920x1080 position 0 216
+output $primary-output resolution 1920x1080 position 1536 0
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+#
+# Workspaces:
+#
+    # Attach workspaces to outputs
+    workspace 0 output $secondary-output
+    workspace 1 output $primary-output
+    workspace 2 output $primary-output
+    workspace 3 output $primary-output
+    workspace 4 output $primary-output
+    workspace 5 output $primary-output
+    workspace 6 output $primary-output
+    workspace 7 output $primary-output
+    workspace 8 output $primary-output
+    workspace 9 output $primary-output

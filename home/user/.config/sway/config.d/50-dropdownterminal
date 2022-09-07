@@ -1,0 +1,13 @@
+# vi: ft=i3config
+#
+# Dropdown terminal
+set $ddterm-id dropdown-terminal
+set $ddterm $term --class $ddterm-id
+for_window [app_id="$ddterm-id"] {
+  floating enable
+  resize set 100ppt 40ppt
+  move position 0 0
+  move to scratchpad
+  scratchpad show
+}
+bindsym Ctrl+Escape exec swaymsg scratchpad show || $ddterm
