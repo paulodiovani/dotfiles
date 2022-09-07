@@ -1,6 +1,4 @@
 FROMHOME = home/user
-BINFILES := $(wildcard $(FROMHOME)/bin/*)
-SUBMODULES := $(shell git config --file .gitmodules --name-only --get-regexp path | sed s/\.path$$//g)
 PACKAGES = awk base-devel git fzf neovim ripgrep rsync tmux zsh
 
 # .PHONY: all
@@ -23,32 +21,11 @@ install_archlinux:
 	|| echo "OPS! This is no Arch Linux, you'll have to install these manually: $(PACKAGES)" \
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
-dotfiles: submodules_deinit
+dotfiles:
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
 submodules:
-	for submodule in $(SUBMODULES); do												\
-		sm_path=$$(git config --file .gitmodules --get $$submodule.path);			\
-		sm_path=$${sm_path#$(FROMHOME)/};											\
-		sm_url=$$(git config --file .gitmodules --get $$submodule.url);				\
-		sm_branch=$$(git config --file .gitmodules --get $$submodule.branch);		\
-		echo;																		\
-		if [ -d $(HOME)/$$sm_path ]; then											\
-			echo "Updating repository $(HOME)/$$sm_path";							\
-			cd $(HOME)/$$sm_path;													\
-			branch=$$(git rev-parse --abbrev-ref HEAD | cut -d- -f1-2);				\
-			git fetch --depth 1;													\
-			git reset --hard origin/$$branch;										\
-			git clean -fdx;															\
-			cd - > /dev/null;														\
-		elif [ ! -z "$$sm_branch" ]; then											\
-			echo "Cloning new repository in $(HOME)/$$sm_path @ $$sm_branch";		\
-			git clone --depth 1 --branch $$sm_branch $$sm_url $(HOME)/$$sm_path;	\
-		else																		\
-			echo "Cloning new repository in $(HOME)/$$sm_path";						\
-			git clone --depth 1 $$sm_url $(HOME)/$$sm_path;							\
-		fi																			\
-	done
+	git submodule update --init --depth=1
 
 submodules_deinit:
-	git submodule deinit --all --force > /dev/null 2>&1
+	git submodule deinit --all --force
