@@ -397,9 +397,6 @@ exec avizo-service
 # Clipboard manager <Ctrl>F1
 exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json" >> /tmp/clipman-log.txt 2>&1 &
 
-# Emoji selector daemon <Ctrl>F1
-exec emote
-
 # Polkit user agent (sudo gtk auth window)
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
