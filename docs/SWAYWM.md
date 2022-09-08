@@ -20,6 +20,9 @@ wlogout
 wofi
 xorg-xwayland
 
+# output configuration
+nwg-displays
+
 # scripts
 autotiling
 
@@ -58,17 +61,19 @@ alacrity
 blueberry
 pavucontrol
 pcmanfm-gtk3
+wofi-emoji
 yad
 
 ## Utility scripts
 
 /usr/share/sway/scripts/grimshot
-wofi-emoji
 ~/.local/bin/sway-move
 ~/.local/bin/wlprop
 ```
 
 # References
 
+- https://github.com/Madic-/Sway-DE
+- https://nwg-piotr.github.io/nwg-shell/
 - https://www.reddit.com/r/kde/comments/m1sc21/timeshift_doesnt_use_the_global_theme_and_cursor/
 - https://www.reddit.com/r/swaywm/comments/gl391h/how_do_you_configure_themes_in_sway/
