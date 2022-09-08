@@ -13,6 +13,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu swaymsg exec -- wofi --insensitive --allow-images --show drun
+set $drawer swaymsg exec -- nwg-drawer
 
 # Use Waybar as status
 bar swaybar_command waybar

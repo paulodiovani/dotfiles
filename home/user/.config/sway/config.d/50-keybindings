@@ -19,7 +19,7 @@
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym --release Super_L exec $menu
+    bindsym --release Super_L exec $drawer
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

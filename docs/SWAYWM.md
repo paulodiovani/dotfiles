@@ -8,28 +8,34 @@ WIP
 
 ```bash
 # base: wm, bar, lock, notification, etc
-avizo
-azote
 sway
 swaybg
 swayidle
 swaylock-effects
-swaync
 waybar
-wlogout
-wofi
 xorg-xwayland
 
-# output configuration
+# notifications
+avizo
+swaync
+
+# app drawer, launcher, logout menu
+nwg-drawer
+wofi
+wofi-emoji
+wlogout
+
+# settings
+azote
 nwg-displays
+nwg-look-bin
+
+# gt2 theme for qt5
+qt5-styleplugins
+qt6gtk2
 
 # scripts
 autotiling
-
-# screenshot and recorder
-grim
-slurp
-wf-recorder
 
 # utilities
 awk
@@ -39,15 +45,13 @@ pactl
 pamixer
 playerctl
 
-# gtk theme settings
-nwg-look-bin
-
-# gt2 theme for qt5
-qt5-styleplugins
-qt6gtk2
-
 # gtk auth window
 polkit-gnome
+
+# screenshot and recorder
+grim
+slurp
+wf-recorder
 
 # screenshare tools
 pipewire
@@ -61,7 +65,6 @@ alacrity
 blueberry
 pavucontrol
 pcmanfm-gtk3
-wofi-emoji
 yad
 
 ## Utility scripts
