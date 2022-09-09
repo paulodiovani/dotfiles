@@ -102,7 +102,7 @@ export PAGER="less -S -x4"
 
 # Fuzzy search command and options
 export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS='--no-mouse --bind="F12:toggle-preview"'
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --no-mouse --bind='F12:toggle-preview'"
 
 # Bat theme
-export BAT_THEME="OneHalfDark"
+# export BAT_THEME="OneHalfDark"
