@@ -62,7 +62,6 @@ window#waybar {
 }
 
 #network.disconnected {
-    background: #f53c3c;
 }
 
 #pulseaudio {
