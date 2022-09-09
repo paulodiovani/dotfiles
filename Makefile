@@ -1,5 +1,5 @@
 FROMHOME = home/user
-PACKAGES = awk base-devel git fzf neovim ripgrep rsync tmux zsh
+PACKAGES = awk base-devel git fzf neovim neovim-vim-compat ripgrep rsync tmux xxd-standalone zsh
 
 .DEFAULT_GOAL := help
 
