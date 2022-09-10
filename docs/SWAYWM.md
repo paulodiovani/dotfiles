@@ -20,9 +20,8 @@ avizo
 swaync
 
 # app drawer, launcher, logout menu
-nwg-drawer
-wofi
-wofi-emoji
+rofi-lbonn-wayland
+rofi-emoji
 wlogout
 
 # settings
@@ -44,6 +43,7 @@ jq
 pactl
 pamixer
 playerctl
+wl-clipboard
 
 # gtk auth window
 polkit-gnome

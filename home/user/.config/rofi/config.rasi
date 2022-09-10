@@ -1,0 +1,7 @@
+configuration {
+  modes: [ combi,drun,run,emoji ];
+  combi-modes: [ drun, run ];
+  show-icons: true;
+}
+
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"

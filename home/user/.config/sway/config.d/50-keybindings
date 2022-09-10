@@ -19,8 +19,6 @@
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    # Open app drawer
-    bindsym --release Super_L exec $drawer
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -103,10 +101,10 @@
     bindsym $mod+n exec swaync-client -t -sw
 
     # Show clipboard
-    bindsym Ctrl+F1 exec clipman pick -t wofi --histpath="~/.cache/clipman.json"
+    bindsym Ctrl+F1 exec clipman pick -t rofi --histpath="~/.cache/clipman.json"
 
     # Show emoji selector
-    bindsym Ctrl+F2 exec wofi-emoji
+    bindsym Ctrl+F2 exec rofi -modi emoji -show emoji -emoji-format '{emoji} <span weight="bold">{name}</span>[ <span size="small">({keywords})</span>]'
 
 #
 # Layout stuff:
