@@ -35,6 +35,7 @@ qt6gtk2
 
 # scripts
 autotiling
+sworkstyle
 
 # utilities
 awk

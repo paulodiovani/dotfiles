@@ -11,6 +11,9 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CU
 # https://github.com/nwg-piotr/autotiling
 exec autotiling
 
+# Show app icons on workspace buttons
+exec sworkstyle &> /tmp/sworkstyle.log
+
 # wallpaper settings by azote
 exec ~/.azotebg
 
