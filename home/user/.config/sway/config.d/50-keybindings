@@ -30,6 +30,24 @@
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # Show clipboard
+    set $rofi-clipboard clipman pick -t rofi --histpath="~/.cache/clipman.json"
+    bindsym $mod+F1 exec $rofi-clipboard
+    bindsym Ctrl+F1 exec $rofi-clipboard
+
+    # Show emoji selector
+    set $rofi-emoji rofi -modi emoji -show emoji -emoji-format '{emoji} <span weight="bold">{name}</span>[ <span size="small">({keywords})</span>]'
+    bindsym $mod+F2 exec $rofi-emoji
+    bindsym Ctrl+F2 exec $rofi-emoji
+
+    # Show calculator
+    set $rofi-calc rofi -show calc -modi calc -no-show-match -no-sort | tr -d '\\n' | wl-copy
+    bindsym $mod+F3 exec $rofi-calc
+    bindsym Ctrl+F3 exec $rofi-calc
+
+    # Toggle notification center
+    bindsym $mod+n exec swaync-client -t -sw
+
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Shift+e exec wlogout -p layer-shell
@@ -96,17 +114,6 @@
     bindsym Ctrl+Alt+Shift+Left move container to workspace prev, workspace prev
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-
-    # Toggle control center
-    bindsym $mod+n exec swaync-client -t -sw
-
-    # Show clipboard
-    bindsym $mod+F1 exec clipman pick -t rofi --histpath="~/.cache/clipman.json"
-    bindsym Ctrl+F1 exec clipman pick -t rofi --histpath="~/.cache/clipman.json"
-
-    # Show emoji selector
-    bindsym $mod+F2 exec rofi -modi emoji -show emoji -emoji-format '{emoji} <span weight="bold">{name}</span>[ <span size="small">({keywords})</span>]'
-    bindsym Ctrl+F2 exec rofi -modi emoji -show emoji -emoji-format '{emoji} <span weight="bold">{name}</span>[ <span size="small">({keywords})</span>]'
 
 #
 # Layout stuff:

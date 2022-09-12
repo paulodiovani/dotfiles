@@ -20,8 +20,9 @@ avizo
 swaync
 
 # app drawer, launcher, logout menu
-rofi-lbonn-wayland
+rofi-calc
 rofi-emoji
+rofi-lbonn-wayland
 wlogout
 
 # settings
