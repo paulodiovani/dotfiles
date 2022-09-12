@@ -28,6 +28,9 @@ dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
 submodules: ## Init and fetch git submodules
+	git submodule update --init --depth=1
+
+submodules_update: ## Init and fetch git submodules
 	git submodule update --init --remote --depth=1
 
 submodules_deinit: ## Deinit git submodules
