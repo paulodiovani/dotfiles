@@ -40,6 +40,7 @@ sworkstyle
 # utilities
 awk
 brightnessctl
+clipman
 jq
 pactl
 pamixer
