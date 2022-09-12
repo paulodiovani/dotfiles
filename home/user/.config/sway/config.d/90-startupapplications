@@ -5,7 +5,7 @@
 #
 
 # Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
 
 # Change split layout (v/h) depending on window size
 # https://github.com/nwg-piotr/autotiling
