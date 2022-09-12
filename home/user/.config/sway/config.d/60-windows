@@ -16,10 +16,26 @@ for_window [title="^(Z|z)oom$"] inhibit_idle visible
 for_window [title="^Zoom (.*)(Account|Meeting)$"] inhibit_idle visible
 
 # Move windows on open
-for_window [title="^Calendar$"] floating enable, exec ~/.local/bin/sway_move top-center
+for_window [title="^Calendar$"] {
+  floating enable
+  resize set width 100ppt
+  move position 0 0
+  resize set width 340px
+}
+
+for_window [app_id="pavucontrol"] {
+  floating enable
+  resize set width 50ppt height 50ppt
+  move position 50ppt 0
+}
+
+for_window [app_id="blueberry.py"] {
+  floating enable
+  resize set width 50ppt height 50ppt
+  move position 50ppt 0
+}
+
 for_window [title="^GlobalProtect$"] floating enable, exec ~/.local/bin/sway_move top-right
-for_window [app_id="pavucontrol"] floating enable, exec ~/.local/bin/sway_move top-right
-for_window [app_id="blueberry.py"] floating enable, exec ~/.local/bin/sway_move top-right
 
 # Fix Zoom s*it notifications
 for_window [title="^(Z|z)oom$"] floating enable
