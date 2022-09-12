@@ -35,7 +35,12 @@ for_window [app_id="blueberry.py"] {
   move position 50ppt 0
 }
 
-for_window [title="^GlobalProtect$"] floating enable, exec ~/.local/bin/sway_move top-right
+for_window [title="^GlobalProtect$"] {
+  floating enable
+  move position 100ppt 0
+  # move 100px more than window width
+  move left 400px
+}
 
 # Fix Zoom s*it notifications
 for_window [title="^(Z|z)oom$"] floating enable
