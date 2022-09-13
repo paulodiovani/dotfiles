@@ -98,6 +98,8 @@ null_ls.setup({
     -- formatting
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.json_tool.with({ extra_args = { '--indent=2' } }),
+    null_ls.builtins.formatting.prettier.with({ filetypes = { 'html', 'markdown' } }),
+    null_ls.builtins.formatting.prettier.with({ filetypes = { 'jsonc' }, extra_args = { '--parser=json' } }),
     null_ls.builtins.formatting.rubocop,
     null_ls.builtins.formatting.stylelint,
   },
