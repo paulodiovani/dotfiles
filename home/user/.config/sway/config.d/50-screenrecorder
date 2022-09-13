@@ -1,0 +1,14 @@
+# vi: ft=i3config
+#
+# Screenshots
+set $recording ${HOME}/Videos/Recordings/$(date +%Y-%m-%d_%H-%M-%S).mp4
+set $recorder wf-recorder
+set $recorder-stop killall -s INT $recorder
+
+set $area-grab slurp
+set $output-grab swaymsg -t get_outputs | jq -r '.[] | select(.focused)' | jq -r '.name'
+
+# Record current focused output
+bindsym Ctrl+Alt+R exec $recorder-stop || $recorder -o "$($output-grab)" -f $recording
+# Record selected area
+bindsym Ctrl+Alt+Shift+R exec $recorder-stop || $recorder -g "$($area-grab)" -f $recording
