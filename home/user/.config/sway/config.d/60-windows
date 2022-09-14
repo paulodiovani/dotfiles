@@ -12,10 +12,13 @@ for_window [class="^.*"] inhibit_idle fullscreen
 for_window [app_id="^.*"] inhibit_idle fullscreen
 
 # Inhibit idle when zoom window is visible
-for_window [title="^(Z|z)oom$"] inhibit_idle visible
-for_window [title="^Zoom (.*)(Account|Meeting)$"] inhibit_idle visible
+for_window [app_id="zoom"] inhibit_idle visible
 
+#
 # Move windows on open
+#
+
+# Center calendar
 for_window [title="^Calendar$"] {
   floating enable
   resize set width 100ppt
@@ -23,25 +26,34 @@ for_window [title="^Calendar$"] {
   resize set width 340px
 }
 
+# Move pavucontrol to top left
 for_window [app_id="pavucontrol"] {
   floating enable
   resize set width 50ppt height 50ppt
   move position 50ppt 0
 }
 
+# Move blueberry to top left
 for_window [app_id="blueberry.py"] {
   floating enable
   resize set width 50ppt height 50ppt
   move position 50ppt 0
 }
 
+# move to below system tray
 for_window [title="^GlobalProtect$"] {
   floating enable
   move position 100ppt 0
-  # move 100px more than window width
   move left 400px
 }
 
+# Center zoom toolbar
+for_window [app_id="zoom" title="as_toolbar"] {
+  floating enable
+  move position 50ppt 0
+  move left 402
+}
+
 # Fix Zoom s*it notifications
-for_window [title="^(Z|z)oom$"] floating enable
-for_window [title="^Zoom (.*)(Account|Meeting)$"] floating disable
+for_window [app_id="zoom"] floating enable
+for_window [app_id="zoom" title="^Zoom (.*)(Account|Meeting)$"] floating disable
