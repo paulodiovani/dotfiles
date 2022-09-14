@@ -1,0 +1,30 @@
+#vi: ft=i3config
+
+#
+# Startup commands and apps
+#
+
+# Update dbus with wayland/sway env vars (required for screen share/record to xdg-desktop-portal)
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
+
+# Change split layout (v/h) depending on window size
+# https://github.com/nwg-piotr/autotiling
+exec autotiling
+
+# Show app icons on workspace buttons
+exec sworkstyle &> /tmp/sworkstyle.log
+
+# wallpaper settings by azote
+exec ~/.azotebg
+
+# Notification Daemon
+exec swaync
+
+# media notifications
+exec avizo-service
+
+# Clipboard manager <Ctrl>F1
+exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json" >> /tmp/clipman-log.txt 2>&1 &
+
+# Polkit user agent (sudo gtk auth window)
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

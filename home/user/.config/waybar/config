@@ -1,0 +1,136 @@
+// vi: ft=jsonc
+{
+  // "layer": "top", // Waybar at top layer
+  // "position": "top", // Waybar position (top|bottom|left|right)
+  // "height": 20, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 4, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": [
+    "clock#calendar",
+    "clock",
+    "clock#2",
+    "custom/notifications"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/recorder",
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "battery",
+    "custom/poweroff"
+  ],
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "sway/window": {
+    "format": "{title}"
+  },
+  "clock#calendar": {
+    // "timezone": "America/Sao_Paulo",
+    "format": "{: %B %d}",
+    // show notifications on click
+    "on-click": "yad --calendar --title=Calendar --width=340 --text=Calendar --date-format=%Y-%m-%d --no-buttons --on-top --close-on-unfocus | tr -d '\n' | wl-copy"
+  },
+  "clock": {
+    "timezone": "America/Sao_Paulo",
+    "format": "{: %H:%M} BRT"
+  },
+  "clock#2": {
+    "timezone": "America/Los_Angeles",
+    "format": "{: %I:%M%p %Z}"
+  },
+  "custom/notifications": {
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "",
+      "none": "",
+      "dnd-notification": "",
+      "dnd-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+    "tooltip": false
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/recorder": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "echo ''",
+    "tooltip": "false",
+    "exec-if": "pgrep 'wf-recorder'",
+    "on-click": "killall -s INT wf-recorder"
+  },
+  "pulseaudio": {
+    "scroll-step": 2, // %, can be a float
+    "format": "{icon}{format_source}",
+    "format-bluetooth": "{icon}{format_source}",
+    "format-bluetooth-muted": " {icon}{format_source}",
+    "format-muted": "{format_source}",
+    // "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "swaymsg [app_id=pavucontrol] kill || pavucontrol --tab 5"
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "",
+    "format-ethernet": "",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format": "",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": "<sup>{num_connections}</sup>",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "swaymsg [app_id=blueberry.py] kill || blueberry"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    // "format-plugged": "{capacity}% ",
+    "format-plugged": "",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "custom/poweroff": {
+    "format": "",
+    "on-click": "wlogout -p layer-shell",
+    "tooltip": false
+  }
+}

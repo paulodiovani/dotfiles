@@ -1,0 +1,47 @@
+# vi: ft=i3config
+#
+# Window configuration
+#
+default_border pixel 1
+default_floating_border normal 1
+gaps inner 3
+smart_gaps on
+
+# Inhibit idle when fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Inhibit idle when zoom window is visible
+for_window [title="^(Z|z)oom$"] inhibit_idle visible
+for_window [title="^Zoom (.*)(Account|Meeting)$"] inhibit_idle visible
+
+# Move windows on open
+for_window [title="^Calendar$"] {
+  floating enable
+  resize set width 100ppt
+  move position 0 0
+  resize set width 340px
+}
+
+for_window [app_id="pavucontrol"] {
+  floating enable
+  resize set width 50ppt height 50ppt
+  move position 50ppt 0
+}
+
+for_window [app_id="blueberry.py"] {
+  floating enable
+  resize set width 50ppt height 50ppt
+  move position 50ppt 0
+}
+
+for_window [title="^GlobalProtect$"] {
+  floating enable
+  move position 100ppt 0
+  # move 100px more than window width
+  move left 400px
+}
+
+# Fix Zoom s*it notifications
+for_window [title="^(Z|z)oom$"] floating enable
+for_window [title="^Zoom (.*)(Account|Meeting)$"] floating disable

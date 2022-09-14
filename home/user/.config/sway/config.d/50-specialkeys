@@ -1,0 +1,15 @@
+# vi: ft=i3config
+#
+# Special keys
+bindsym XF86AudioRaiseVolume exec volumectl -u up 5%
+bindsym XF86AudioLowerVolume exec volumectl -u down 5%
+bindsym XF86AudioMute exec volumectl toggle-mute
+bindsym XF86AudioMicMute exec volumectl -m toggle-mute
+
+bindsym XF86MonBrightnessUp exec lightctl up 5%
+bindsym XF86MonBrightnessDown exec lightctl down 5%
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86Search exec $menu

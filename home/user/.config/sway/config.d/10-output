@@ -1,0 +1,27 @@
+# vi: ft=i3config
+
+#
+### Output configuration
+#
+
+# include configuration from nwg-displays
+include ~/.config/sway/outputs
+
+# set name aliases
+set $laptop-output eDP-1
+set $external-output HDMI-A-1
+
+#
+# Workspaces:
+#
+# Attach workspaces to outputs
+workspace 0 output $laptop-output
+workspace 1 output $external-output
+workspace 2 output $external-output
+workspace 3 output $external-output
+workspace 4 output $external-output
+workspace 5 output $external-output
+workspace 6 output $external-output
+workspace 7 output $external-output
+workspace 8 output $external-output
+workspace 9 output $external-output

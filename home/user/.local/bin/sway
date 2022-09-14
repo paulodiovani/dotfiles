@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Session
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+# Wayland stuff
+export MOZ_ENABLE_WAYLAND=1
+# export QT_QPA_PLATFORM=wayland
+# export SDL_VIDEODRIVER=wayland
+# export _JAVA_AWT_WM_NONREPARENTING=1
+
+# QT theme and scaling
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORMTHEME=gtk2
+
+#exec sway $@
+
+#
+# If you use systemd and want sway output to go to the journal, use this
+# instead of the `exec sway $@` above:
+#
+exec systemd-cat --identifier=sway /usr/bin/sway $@
