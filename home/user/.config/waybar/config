@@ -115,13 +115,12 @@
   },
   "battery": {
     "states": {
-      "good": 75,
+      // "good": 95,
       "warning": 30,
       "critical": 15
     },
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
-    "format-charging-good": "", // hide icon at 75%
     // "format-plugged": "{capacity}% ",
     "format-plugged": "",
     "format-alt": "{time} {icon}",
