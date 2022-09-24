@@ -22,3 +22,7 @@ input type:touchpad {
   tap enabled
   middle_emulation enabled
 }
+
+input type:pointer {
+  pointer_accel 0.5
+}
