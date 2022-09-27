@@ -52,7 +52,8 @@ let g:netrw_winsize = 25
 if isdirectory(".git") | let g:netrw_list_hide = netrw_gitignore#Hide() | endif
 
 " syntax and color scheme
-if &t_Co == 256
+" if &t_Co == 256 "for vim only
+if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
   set termguicolors       " enable true color support
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " tmux true color support
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " tmux true color support
