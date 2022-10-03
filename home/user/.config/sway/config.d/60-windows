@@ -7,9 +7,12 @@ default_floating_border normal 1
 gaps inner 3
 smart_gaps on
 
+# Identify xwayland windows
+for_window [shell="xwayland"] title_format "%title [%shell]"
+
 # Inhibit idle when fullscreen
-for_window [class="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
 
 # Inhibit idle when zoom window is visible
 for_window [app_id="zoom"] inhibit_idle visible
