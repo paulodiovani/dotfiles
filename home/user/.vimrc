@@ -58,9 +58,11 @@ if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " tmux true color support
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " tmux true color support
 endif
+
 syntax on
 set background=dark     " background color (light|dark)
 let g:one_allow_italics = 1
+
 colorscheme base16-onedark " default colorscheme
 if exists('$BASE16_THEME') && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
   let base16colorspace=256
