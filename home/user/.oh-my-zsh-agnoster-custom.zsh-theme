@@ -219,7 +219,7 @@ prompt_status() {
 
   [[ ${#symbols[@]} -eq 0 ]] && symbols+=$(shell_emoji)
   # [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
-  [[ -n "$symbols" ]] && prompt_segment 236 default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment "" "" "$symbols"
 }
 
 ## Main prompt
