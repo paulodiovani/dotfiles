@@ -11,6 +11,7 @@
   logvim = -c core.pager=/usr/share/nvim/runtime/macros/less.sh log --no-color
   showvim = -c core.pager=/usr/share/nvim/runtime/macros/less.sh show --no-color
   history = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
+  history-checkout = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
   history-pr = history origin/master..
   branch-switch = !git branch | fzf --ansi | xargs git co
   bs = branch-switch
