@@ -62,7 +62,7 @@ ZSH_TMUX_FIXTERM="true"
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.zsh_local_history.sh
+source "$HOME/.zsh_local_history.sh"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -78,8 +78,8 @@ source ~/.zsh_local_history.sh
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+  . "$HOME/.bash_aliases"
 fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -93,16 +93,3 @@ fi
 
 # change tab width
 tabs -4
-
-# text editor
-export EDITOR=vim
-
-# change pager to LESS (for psql, etc)
-export PAGER="less -S -x4"
-
-# Fuzzy search command and options
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --no-mouse --bind='F12:toggle-preview'"
-
-# Bat theme
-# export BAT_THEME="OneHalfDark"
