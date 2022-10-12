@@ -63,10 +63,10 @@ syntax on
 set background=dark     " background color (light|dark)
 let g:one_allow_italics = 1
 
-colorscheme base16-onedark " default colorscheme
-if exists('$BASE16_THEME') && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+" set base16 theme
+if filereadable(expand("$HOME/.config/base16-project/set_theme.vim"))
   let base16colorspace=256
-  colorscheme base16-$BASE16_THEME
+  source $HOME/.config/base16-project/set_theme.vim
 endif
 
 " hide vertical split separator

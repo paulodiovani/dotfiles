@@ -30,5 +30,8 @@ dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 submodules: ## Init and fetch git submodules
 	git submodule update --init --depth=1
 
+submodules_update: ## Init and fetch git submodules
+	git submodule update --init --remote --depth=1
+
 submodules_deinit: ## Deinit git submodules
 	git submodule deinit --all --force
