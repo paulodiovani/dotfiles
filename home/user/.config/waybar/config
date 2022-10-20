@@ -31,7 +31,12 @@
     "format": "<span style=\"italic\">{}</span>"
   },
   "sway/window": {
-    "format": "{title} {shell}"
+    "format": "{title} {shell}",
+    "rewrite": {
+      "(.*) xdg_shell": "$1",
+      "(.*) (xwayland)": "$1 [$2]",
+      "(.*)": "$1"
+    }
   },
   "clock#calendar": {
     // "timezone": "America/Sao_Paulo",
