@@ -14,6 +14,9 @@ for_window [shell="xwayland"] title_format "%title [%shell]"
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
+# Make QRuler always float
+for_window [app_id="org.azdrums.qruler"] floating enable
+
 # Inhibit idle when zoom window is visible
 for_window [app_id="zoom"] inhibit_idle visible
 
@@ -43,7 +46,7 @@ for_window [app_id="blueberry.py"] {
   move position 50ppt 0
 }
 
-# move to below system tray
+# move GlobalProtext to below system tray
 for_window [title="^GlobalProtect$"] {
   floating enable
   move position 100ppt 0
