@@ -3,7 +3,7 @@
 input="$1"
 output="${2:-${input%.*}.gif}"
 start_time=00:00:01
-height=ih/2                   # input height halved , can replace with pixils .
+height=ih/1                   # input height halved , can replace with pixils .
 width=-2                      # keeps aspect ratio . can replace with pixils .
 fps=5                        # frames per a second .
 max_colors=32
