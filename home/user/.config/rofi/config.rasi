@@ -1,5 +1,5 @@
 configuration {
-  modes: [ combi,drun,run,emoji,filebrowser,calc ];
+  modes: [ combi,emoji,filebrowser,calc ];
   combi-modes: [ drun, run ];
   show-icons: true;
 
