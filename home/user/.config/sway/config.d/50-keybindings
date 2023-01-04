@@ -41,7 +41,7 @@
     bindsym Ctrl+F2 exec $rofi-emoji
 
     # Show calculator
-    set $rofi-calc rofi -show calc -modi calc -no-show-match -no-sort | tr -d '\\n' | wl-copy
+    set $rofi-calc rofi -show calc -no-show-match -no-sort | tr -d '\\n' | wl-copy
     bindsym $mod+F3 exec $rofi-calc
     bindsym Ctrl+F3 exec $rofi-calc
 

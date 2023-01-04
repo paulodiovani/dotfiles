@@ -1,7 +1,10 @@
 configuration {
-  modes: [ combi,drun,run,emoji ];
+  modes: [ combi,drun,run,emoji,filebrowser,calc ];
   combi-modes: [ drun, run ];
   show-icons: true;
+
+  kb-mode-next: "Shift+Right,Control+Tab,Super+Tab";
+  kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Super+ISO_Left_Tab";
 }
 
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
