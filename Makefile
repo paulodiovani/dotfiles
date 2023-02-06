@@ -20,7 +20,7 @@ sudo: ## Check for sudo command
 
 install_archlinux: ## Install packages in Arch Linux
 	@command -v pacman > /dev/null \
-	&& sudo pacman -Sy --noconfirm $(PACKAGES) \
+	&& sudo pacman -Sy --needed --noconfirm $(PACKAGES) \
 	|| echo "OPS! This is no Arch Linux, you'll have to install these manually: $(PACKAGES)" \
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
