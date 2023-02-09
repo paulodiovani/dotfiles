@@ -7,6 +7,9 @@ default_floating_border normal 1
 gaps inner 3
 smart_gaps on
 
+# hide border when only one window
+hide_edge_borders --i3 smart
+
 # Identify xwayland windows
 for_window [shell="xwayland"] title_format "%title [%shell]"
 

@@ -11,6 +11,9 @@ include ~/.config/sway/outputs
 set $laptop-output eDP-1
 set $external-output HDMI-A-1
 
+# make sure we use a tile layout
+workspace_layout default
+
 #
 # Workspaces:
 #
