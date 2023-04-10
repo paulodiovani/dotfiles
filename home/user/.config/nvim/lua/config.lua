@@ -60,7 +60,7 @@ nvim_tree.setup({
 
 -- LSP config
 local lspconfig = require('lspconfig')
-local servers = { 'bashls', 'sumneko_lua', 'solargraph', 'tsserver', 'vimls' }
+local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = function(_, bufnr)
