@@ -47,7 +47,7 @@ command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind lua drawer_find()
 
 " format code
-command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting()' | else | exec 'lua vim.lsp.buf.formatting()' | endif
+command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting()' | else | exec 'lua vim.lsp.buf.format()' | endif
 
 """""""""""""""""""
 " AUTOCMD SECTION "
