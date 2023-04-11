@@ -38,6 +38,8 @@ require('nvim-web-devicons').setup({
 })
 
 local nvim_tree = require('nvim-tree')
+local nvim_tree_api = require('nvim-tree.api')
+
 nvim_tree.setup({
   actions = {
     open_file = {
@@ -139,13 +141,13 @@ function _G.drawer_open(path)
   path = path or vim.fn.getcwd()
 
   if view.is_visible() then
-    nvim_tree.focus()
-    nvim_tree.change_dir(path)
+    nvim_tree_api.tree.focus()
+    nvim_tree_api.tree.change_dir { path }
     return
   end
 
   if vim.fn.winnr('$') == 1 then
-    nvim_tree.open(path)
+    nvim_tree_api.tree.open { path }
     return
   end
 
@@ -161,6 +163,5 @@ function _G.drawer_find(bufnr)
     _G.drawer_open()
   end
 
-  nvim_tree.find_file(false, bufnr, false)
-  nvim_tree.focus()
+  nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
 end
