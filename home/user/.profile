@@ -10,5 +10,8 @@ export PAGER="less -S"
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --no-mouse --bind='F12:toggle-preview'"
 
+# Change NPM PREFIX
+export NPM_CONFIG_PREFIX=~/.local
+
 # ~/.local/bin
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
