@@ -15,6 +15,8 @@
   ],
   "modules-right": [
     "tray",
+    "cpu",
+    "memory",
     "custom/recorder",
     "pulseaudio",
     "bluetooth",
@@ -72,6 +74,16 @@
     // "icon-size": 21,
     "spacing": 10
   },
+  "cpu": {
+    "interval": 10,
+    "format": "{}% ",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": "{}% ",
+    "max-length": 10
+  },
   "custom/recorder": {
     "format": "{}",
     "interval": 1,
@@ -102,9 +114,9 @@
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "",
-    "format-ethernet": "",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-ethernet": "",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
