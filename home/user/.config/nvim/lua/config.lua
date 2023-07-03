@@ -124,17 +124,6 @@ function _G.toggle_diagnostics()
   end
 end
 
--- open nvim-tree in current buffer
-local function drawer_in_place(path)
-  local core = require('nvim-tree.core')
-  local view = require('nvim-tree.view')
-  local renderer = require('nvim-tree.renderer')
-
-  core.init(path)
-  view.open_in_current_win { hijack_current_buf = false, resize = false }
-  renderer.draw()
-end
-
 -- open nvim-tree on the left or leftmost window
 function _G.drawer_open(path)
   local view = require('nvim-tree.view')
@@ -152,7 +141,7 @@ function _G.drawer_open(path)
   end
 
   vim.api.nvim_command('1 wincmd w')
-  drawer_in_place(path)
+  nvim_tree_api.tree.open { path, current_window = true }
 end
 
 function _G.drawer_find(bufnr)
