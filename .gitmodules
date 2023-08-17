@@ -76,3 +76,6 @@
 [submodule "home/user/.tmux/plugins/base16-tmux"]
 	path = home/user/.tmux/plugins/base16-tmux
 	url = https://github.com/base16-project/base16-tmux.git
+[submodule "home/user/.config/nvim/pack/github/start/copilot.vim"]
+	path = home/user/.config/nvim/pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim
