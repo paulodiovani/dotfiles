@@ -12,6 +12,9 @@ let g:loaded_netrwPlugin = 1
 " Require lua conf
 lua require('config')
 
+" Disable GitHub Copilot autocompletion on type
+" let g:copilot_enabled = 0
+
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -30,6 +33,9 @@ map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 " code completion with omni function
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
+
+" Github copilot mappings
+imap <silent><script><expr> <C-y> copilot#Accept("\<CR>")
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
