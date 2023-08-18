@@ -28,8 +28,8 @@ map <Leader>a :lua vim.diagnostic.open_float()<CR>
 map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
 " code completion with omni function
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-x><C-o>
+" inoremap <C-Space> <C-x><C-o>
+" inoremap <C-@> <C-x><C-o>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>

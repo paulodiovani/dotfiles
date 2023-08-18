@@ -1,5 +1,13 @@
 -- luacheck: globals vim
 
+-- GitHub Copilot config
+require('copilot').setup({
+  suggestion = { enabled = false, auto_trigger = false },
+  panel = { enabled = false },
+})
+
+require('copilot_cmp').setup()
+
 -- Set up nvim-cmp.
 local cmp = require 'cmp'
 
@@ -35,6 +43,7 @@ cmp.setup({
     { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
+    { name = 'copilot' },
   }, {
     { name = 'buffer' },
   })

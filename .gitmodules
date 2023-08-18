@@ -97,3 +97,9 @@
 [submodule "home/user/.config/nvim/pack/completion/start/cmp-luasnip"]
 	path = home/user/.config/nvim/pack/completion/start/cmp-luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
+[submodule "home/user/.config/nvim/pack/github/start/copilot.lua"]
+	path = home/user/.config/nvim/pack/github/start/copilot.lua
+	url = https://github.com/zbirenbaum/copilot.lua
+[submodule "home/user/.config/nvim/pack/completion/start/copilot-cmp"]
+	path = home/user/.config/nvim/pack/completion/start/copilot-cmp
+	url = https://github.com/zbirenbaum/copilot-cmp
