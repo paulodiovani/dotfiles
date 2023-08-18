@@ -2,7 +2,9 @@
 
 -- GitHub Copilot config
 require('copilot').setup({
-  suggestion = { enabled = false, auto_trigger = false },
+  -- Set enable = true until this bug is fixed:
+  -- https://github.com/zbirenbaum/copilot-cmp/issues/10
+  suggestion = { enabled = true, auto_trigger = false },
   panel = { enabled = false },
 })
 
