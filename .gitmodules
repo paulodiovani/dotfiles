@@ -76,3 +76,24 @@
 [submodule "home/user/.tmux/plugins/base16-tmux"]
 	path = home/user/.tmux/plugins/base16-tmux
 	url = https://github.com/tinted-theming/base16-tmux.git
+[submodule "home/user/.config/nvim/pack/completion/start/cmp-nvim-lsp"]
+	path = home/user/.config/nvim/pack/completion/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "home/user/.config/nvim/pack/completion/start/cmp-buffer"]
+	path = home/user/.config/nvim/pack/completion/start/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer
+[submodule "home/user/.config/nvim/pack/completion/start/cmp-path"]
+	path = home/user/.config/nvim/pack/completion/start/cmp-path
+	url = https://github.com/hrsh7th/cmp-path
+[submodule "home/user/.config/nvim/pack/completion/start/cmp-cmdline"]
+	path = home/user/.config/nvim/pack/completion/start/cmp-cmdline
+	url = https://github.com/hrsh7th/cmp-cmdline
+[submodule "home/user/.config/nvim/pack/completion/start/nvim-cmp"]
+	path = home/user/.config/nvim/pack/completion/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "home/user/.config/nvim/pack/completion/start/luasnip"]
+	path = home/user/.config/nvim/pack/completion/start/luasnip
+	url = https://github.com/L3MON4D3/LuaSnip
+[submodule "home/user/.config/nvim/pack/completion/start/cmp-luasnip"]
+	path = home/user/.config/nvim/pack/completion/start/cmp-luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip
