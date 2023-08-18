@@ -103,3 +103,6 @@
 [submodule "home/user/.config/nvim/pack/completion/start/copilot-cmp"]
 	path = home/user/.config/nvim/pack/completion/start/copilot-cmp
 	url = https://github.com/zbirenbaum/copilot-cmp
+[submodule "home/user/.config/nvim/pack/completion/start/lspkind"]
+	path = home/user/.config/nvim/pack/completion/start/lspkind
+	url = https://github.com/onsails/lspkind.nvim

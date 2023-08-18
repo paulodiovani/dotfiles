@@ -105,3 +105,14 @@ for _, lsp in ipairs(servers) do
     end
   })
 end
+
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      maxwidth = 50,
+      ellipsis_char = '...',
+    })
+  }
+}
