@@ -17,6 +17,7 @@ local cmp = require 'cmp'
 cmp.setup({
   completion = {
     autocomplete = false,
+    completeopt = 'menu',
   },
   snippet = {
     -- REQUIRED - you must specify a snippet engine
