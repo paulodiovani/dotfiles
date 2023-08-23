@@ -12,6 +12,13 @@ require('copilot_cmp').setup()
 
 -- Set up nvim-cmp.
 local cmp = require 'cmp'
+local cmp_config_default = require('cmp.config.default')()
+local copilot_prioritize = require('copilot_cmp.comparators').prioritize
+
+-- move copilot down
+local copilot_reverse_prioritize = function(entry1, entry2)
+  return not copilot_prioritize(entry1, entry2)
+end
 
 ---@cast cmp -nil
 cmp.setup({
@@ -48,7 +55,10 @@ cmp.setup({
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-  })
+  }),
+  sorting = {
+    comparators = table.insert(cmp_config_default.sorting.comparators, 1, copilot_reverse_prioritize),
+  },
 })
 
 -- Set configuration for specific filetype.
