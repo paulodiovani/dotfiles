@@ -1,5 +1,34 @@
 -- luacheck: globals vim
 
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require('lspconfig')
+local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({
+    capabilities = capabilities,
+
+    on_attach = function(_, bufnr)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+    end
+  })
+end
+
 -- GitHub Copilot config
 require('copilot').setup({
   -- Set enable = true until this bug is fixed:
@@ -14,6 +43,7 @@ require('copilot_cmp').setup()
 local cmp = require 'cmp'
 local cmp_config_default = require('cmp.config.default')()
 local copilot_prioritize = require('copilot_cmp.comparators').prioritize
+local lspkind = require('lspkind')
 
 -- move copilot down
 local copilot_reverse_prioritize = function(entry1, entry2)
@@ -59,6 +89,25 @@ cmp.setup({
   sorting = {
     comparators = table.insert(cmp_config_default.sorting.comparators, 1, copilot_reverse_prioritize),
   },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      -- mode = 'symbol_text',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      menu = {
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        luasnip = '[LuaSnip]',
+        nvim_lua = '[Lua]',
+        latex_symbols = '[Latex]',
+        copilot = '[Copilot]',
+      },
+      symbol_map = {
+        Copilot = '',
+      },
+    })
+  }
 })
 
 -- Set configuration for specific filetype.
@@ -88,55 +137,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
-    capabilities = capabilities,
-
-    on_attach = function(_, bufnr)
-      -- Enable completion triggered by <c-x><c-o>
-      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
-
-      -- Mappings.
-      -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local bufopts = { noremap=true, silent=true, buffer=bufnr }
-      vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-    end
-  })
-end
-
-local lspkind = require('lspkind')
-cmp.setup {
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol',
-      -- mode = 'symbol_text',
-      maxwidth = 50,
-      ellipsis_char = '...',
-      menu = {
-        buffer = '[Buffer]',
-        nvim_lsp = '[LSP]',
-        luasnip = '[LuaSnip]',
-        nvim_lua = '[Lua]',
-        latex_symbols = '[Latex]',
-        copilot = '[Copilot]',
-      },
-      symbol_map = {
-        Copilot = '',
-      },
-    })
-  }
-}
