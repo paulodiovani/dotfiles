@@ -64,9 +64,9 @@ set background=dark     " background color (light|dark)
 let g:one_allow_italics = 1
 
 " set base16 theme
-if filereadable(expand("$HOME/.config/base16-project/set_theme.vim"))
+if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
   let base16colorspace=256
-  source $HOME/.config/base16-project/set_theme.vim
+  source $HOME/.config/tinted-theming/set_theme.vim
 endif
 
 " hide vertical split separator
