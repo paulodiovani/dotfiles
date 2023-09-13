@@ -72,12 +72,13 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'copilot' },
     { name = 'luasnip' }, -- For luasnip users.
-    { name = 'buffer' },
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
+    { name = 'copilot' },
+  },{
+    { name = 'buffer' },
   }),
   sorting = {
     comparators = {
