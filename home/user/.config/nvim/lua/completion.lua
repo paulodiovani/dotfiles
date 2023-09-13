@@ -41,13 +41,15 @@ require('copilot_cmp').setup()
 
 -- Set up nvim-cmp.
 local cmp = require 'cmp'
-local cmp_config_default = require('cmp.config.default')()
-local copilot_prioritize = require('copilot_cmp.comparators').prioritize
 local lspkind = require('lspkind')
 
 -- move copilot down
 local copilot_reverse_prioritize = function(entry1, entry2)
-  return not copilot_prioritize(entry1, entry2)
+  if entry1.copilot and not entry2.copilot then
+    return false
+  elseif entry2.copilot and not entry1.copilot then
+    return true
+  end
 end
 
 ---@cast cmp -nil
@@ -79,15 +81,27 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
     { name = 'copilot' },
+    { name = 'luasnip' }, -- For luasnip users.
     { name = 'buffer' },
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }),
   sorting = {
-    comparators = table.insert(cmp_config_default.sorting.comparators, 1, copilot_reverse_prioritize),
+    comparators = {
+      -- copilot_reverse_prioritize,
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      -- cmp.config.compare.scopes,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      -- cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    }
   },
   formatting = {
     format = lspkind.cmp_format({
