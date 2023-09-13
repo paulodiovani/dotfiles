@@ -43,15 +43,6 @@ require('copilot_cmp').setup()
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
--- move copilot down
-local copilot_reverse_prioritize = function(entry1, entry2)
-  if entry1.copilot and not entry2.copilot then
-    return false
-  elseif entry2.copilot and not entry1.copilot then
-    return true
-  end
-end
-
 ---@cast cmp -nil
 cmp.setup({
   completion = {
@@ -90,7 +81,6 @@ cmp.setup({
   }),
   sorting = {
     comparators = {
-      -- copilot_reverse_prioritize,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       -- cmp.config.compare.scopes,
