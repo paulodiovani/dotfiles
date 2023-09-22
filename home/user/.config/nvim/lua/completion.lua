@@ -88,8 +88,8 @@ cmp.setup({
         -- they way you will only jump inside the snippet region
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      -- elseif has_words_before() then
-      --   cmp.complete()
+        -- elseif has_words_before() then
+        --   cmp.complete()
       else
         fallback()
       end
@@ -161,9 +161,34 @@ cmp.setup({
 --   })
 -- })
 
+local cmdlineMapping = {
+  ['<Tab>'] = {
+    c = function()
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        cmp.complete()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      end
+    end,
+  },
+  ['<S-Tab>'] = {
+    c = function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        cmp.complete()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      end
+    end,
+  },
+}
+
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline(cmdlineMapping),
   sources = {
     { name = 'buffer' }
   }
@@ -171,7 +196,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline(cmdlineMapping),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
