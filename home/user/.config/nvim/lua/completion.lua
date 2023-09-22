@@ -58,7 +58,7 @@ local lspkind = require('lspkind')
 cmp.setup({
   completion = {
     autocomplete = false,
-    completeopt = 'menu',
+    completeopt = table.concat(vim.opt.completeopt:get(), ","),
   },
   snippet = {
     -- REQUIRED - you must specify a snippet engine
