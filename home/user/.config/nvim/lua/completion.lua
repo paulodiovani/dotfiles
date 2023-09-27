@@ -114,6 +114,7 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'copilot' },
   }, {
+    { name = 'copilot' },
     { name = 'buffer' },
   }),
   sorting = {
