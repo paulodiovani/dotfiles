@@ -185,6 +185,33 @@ local cmdlineMapping = {
       end
     end,
   },
+  ['<Down>'] = {
+    c = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+  },
+  ['<Up>'] = {
+    c = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+  },
+  ['<Esc>'] = {
+    c = function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, true, true), 'n', true)
+      end
+    end,
+  }
 }
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
