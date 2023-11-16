@@ -31,9 +31,6 @@
 [submodule "home/user/.vim/pack/plugins/start/lightline-bufferline"]
 	path = home/user/.vim/pack/plugins/start/lightline-bufferline
 	url = https://github.com/mengelbrecht/lightline-bufferline.git
-[submodule "home/user/.vim/pack/plugins/start/fzf"]
-	path = home/user/.vim/pack/plugins/start/fzf
-	url = https://github.com/junegunn/fzf.vim.git
 [submodule "home/user/.vim/pack/plugins/start/indentline"]
 	path = home/user/.vim/pack/plugins/start/indentline
 	url = https://github.com/Yggdroot/indentLine.git
@@ -109,3 +106,9 @@
 [submodule "home/user/.config/nvim/pack/completion/opt/friendly-snippets"]
 	path = home/user/.config/nvim/pack/completion/start/friendly-snippets
 	url = https://github.com/rafamadriz/friendly-snippets.git
+[submodule "home/user/.vim/pack/plugins/start/fzf"]
+	path = home/user/.vim/pack/plugins/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "home/user/.vim/pack/plugins/start/fzf.vim"]
+	path = home/user/.vim/pack/plugins/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
