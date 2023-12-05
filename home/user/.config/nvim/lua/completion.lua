@@ -33,7 +33,19 @@ end
 require('copilot').setup({
   -- Set enable = true until this bug is fixed:
   -- https://github.com/zbirenbaum/copilot-cmp/issues/10
-  suggestion = { enabled = true, auto_trigger = false },
+  suggestion = {
+    enabled = true,
+    auto_trigger = false,
+    debounce = 75,
+    keymap = {
+      accept = "<M-l>",
+      accept_word = false,
+      accept_line = false,
+      next = "<M-]>",
+      prev = "<M-[>",
+      dismiss = "<C-]>",
+    },
+  },
   panel = { enabled = false },
 })
 
