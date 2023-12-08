@@ -43,6 +43,7 @@ set t_vb=                           " no
 set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu,menuone,noinsert " Show only menu for completion (no preview)
 set pumheight=20                    " Maximum menu heigh
+set rtp+=/opt/homebrew/opt/fzf      " fzf homebrew init
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
