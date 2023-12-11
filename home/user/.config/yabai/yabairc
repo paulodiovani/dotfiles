@@ -14,7 +14,7 @@
 # global settings
 yabai -m config                                 \
     mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
+    focus_follows_mouse          autofocus      \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          on             \
@@ -29,13 +29,13 @@ yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  12             \
-    bottom_padding               12             \
-    left_padding                 12             \
-    right_padding                12             \
+    top_padding                  00             \
+    bottom_padding               00             \
+    left_padding                 00             \
+    right_padding                00             \
     window_gap                   06             \
     layout                       bsp            \
-    mouse_modifier               fn             \
+    mouse_modifier               cmd            \
     mouse_action1                move           \
     mouse_action2                resize         \
     mouse_drop_action            swap
