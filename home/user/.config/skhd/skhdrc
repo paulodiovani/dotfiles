@@ -157,7 +157,9 @@ shift + cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # toggle sticky(+float), picture-in-picture
 # alt - p : yabai -m window --toggle sticky --toggle pip
 
-# CUSTOM
+###################
+# CUSTOM BINDINGS #
+###################
 
 # open terminal
-cmd - return : open -n /Applications/Alacritty.app
+cmd - return : open -na /Applications/Alacritty.app
