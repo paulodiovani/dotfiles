@@ -39,4 +39,8 @@ yabai -m config                                 \
     mouse_action2                resize         \
     mouse_drop_action            swap
 
+# fix Zoom shitty menus and notifications
+yabai -m rule --add app="zoom.us" manage=off
+yabai -m rule --add app="zoom.us" title="(Account|Chat|Meeting|Participants)" manage=on
+
 echo "yabai configuration loaded.."
