@@ -39,6 +39,9 @@ yabai -m config                                 \
     mouse_action2                resize         \
     mouse_drop_action            swap
 
+# focus on pinentry window
+yabai -m rule --add app="pinentry" mouse_follows_focus=on
+
 # fix Zoom shitty menus and notifications
 yabai -m rule --add app="zoom.us" manage=off
 yabai -m rule --add app="zoom.us" title="(Account|Chat|Meeting|Participants)" manage=on
