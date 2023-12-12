@@ -163,3 +163,18 @@ shift + cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # open terminal
 cmd - return : open -na /Applications/Alacritty.app
+
+# allow using Ctrl key as Cmd
+ctrl - k : skhd -k "cmd - k"
+ctrl - l : skhd -k "cmd - l"
+ctrl - r : skhd -k "cmd - r"
+ctrl - t : skhd -k "cmd - t"
+ctrl - w : skhd -k "cmd - w"
+shift + ctrl - p : skhd -k "shift + cmd - p"
+shift + ctrl - t : skhd -k "shift + cmd - t"
+
+# do not override keybindings in terminal
+.blacklist [
+  "alacritty"
+  "terminal"
+]
