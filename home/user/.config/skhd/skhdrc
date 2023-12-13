@@ -170,11 +170,16 @@ shift + cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 cmd - return : open -na /Applications/Alacritty.app
 
 # allow using Ctrl key as Cmd
+ctrl - a : skhd -k "cmd - a"
+ctrl - c : skhd -k "cmd - c"
 ctrl - k : skhd -k "cmd - k"
 ctrl - l : skhd -k "cmd - l"
 ctrl - r : skhd -k "cmd - r"
 ctrl - t : skhd -k "cmd - t"
+ctrl - v : skhd -k "cmd - v"
 ctrl - w : skhd -k "cmd - w"
+ctrl - x : skhd -k "cmd - x"
+ctrl - z : skhd -k "cmd - z"
 shift + ctrl - p : skhd -k "shift + cmd - p"
 shift + ctrl - t : skhd -k "shift + cmd - t"
 
