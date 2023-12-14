@@ -11,6 +11,12 @@ ctrl - c [
   "safari" : skhd -k "cmd - c"
 ]
 
+ctrl - f [
+  "firefox" : skhd -k "cmd - f"
+  "google chrome" : skhd -k "cmd - f"
+  "safari" : skhd -k "cmd - f"
+]
+
 ctrl - k [
   "firefox" : skhd -k "cmd - k"
   "google chrome" : skhd -k "cmd - k"
