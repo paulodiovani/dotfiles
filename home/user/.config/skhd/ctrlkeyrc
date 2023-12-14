@@ -1,72 +1,72 @@
 # allow using Ctrl key as Cmd
 ctrl - a [
-  "chrome" : skhd -k "cmd - a"
   "firefox" : skhd -k "cmd - a"
+  "google chrome" : skhd -k "cmd - a"
   "safari" : skhd -k "cmd - a"
 ]
 
 ctrl - c [
-  "chrome" : skhd -k "cmd - c"
   "firefox" : skhd -k "cmd - c"
+  "google chrome" : skhd -k "cmd - c"
   "safari" : skhd -k "cmd - c"
 ]
 
 ctrl - k [
-  "chrome" : skhd -k "cmd - k"
   "firefox" : skhd -k "cmd - k"
+  "google chrome" : skhd -k "cmd - k"
   "safari" : skhd -k "cmd - k"
 ]
 
 ctrl - l [
-  "chrome" : skhd -k "cmd - l"
   "firefox" : skhd -k "cmd - l"
+  "google chrome" : skhd -k "cmd - l"
   "safari" : skhd -k "cmd - l"
 ]
 
 ctrl - r [
-  "chrome" : skhd -k "cmd - r"
   "firefox" : skhd -k "cmd - r"
+  "google chrome" : skhd -k "cmd - r"
   "safari" : skhd -k "cmd - r"
 ]
 
 ctrl - t [
-  "chrome" : skhd -k "cmd - t"
   "firefox" : skhd -k "cmd - t"
+  "google chrome" : skhd -k "cmd - t"
   "safari" : skhd -k "cmd - t"
 ]
 
 ctrl - v [
-  "chrome" : skhd -k "cmd - v"
   "firefox" : skhd -k "cmd - v"
+  "google chrome" : skhd -k "cmd - v"
   "safari" : skhd -k "cmd - v"
 ]
 
 ctrl - w [
-  "chrome" : skhd -k "cmd - w"
   "firefox" : skhd -k "cmd - w"
+  "google chrome" : skhd -k "cmd - w"
   "safari" : skhd -k "cmd - w"
 ]
 
 ctrl - x [
-  "chrome" : skhd -k "cmd - x"
   "firefox" : skhd -k "cmd - x"
+  "google chrome" : skhd -k "cmd - x"
   "safari" : skhd -k "cmd - x"
 ]
 
 ctrl - z [
-  "chrome" : skhd -k "cmd - z"
   "firefox" : skhd -k "cmd - z"
+  "google chrome" : skhd -k "cmd - z"
   "safari" : skhd -k "cmd - z"
 ]
 
 shift + ctrl - p [
-  "chrome" : skhd -k "shift + cmd - p"
   "firefox" : skhd -k "shift + cmd - p"
+  "google chrome" : skhd -k "shift + cmd - p"
   "safari" : skhd -k "shift + cmd - p"
 ]
 
 shift + ctrl - t [
-  "chrome" : skhd -k "shift + cmd - t"
   "firefox" : skhd -k "shift + cmd - t"
+  "google chrome" : skhd -k "shift + cmd - t"
   "safari" : skhd -k "shift + cmd - t"
 ]
