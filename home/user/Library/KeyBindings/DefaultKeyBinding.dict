@@ -1,3 +1,8 @@
+// Use linux/window like keybindings for document/word navigation
+//
+// sources:
+//  - https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
+//  - https://damieng.com/blog/2015/04/24/make-home-end-keys-behave-like-windows-on-mac-os-x/
 {
   "\UF729"  = moveToBeginningOfParagraph:;                    // home
   "\UF72B"  = moveToEndOfParagraph:;                          // end
@@ -11,4 +16,6 @@
   "^$\UF702" = moveWordLeftAndModifySelection:;               // ctrl-shift-left
   "^\UF703" = moveWordRight:;                                 // ctrl-right
   "^$\UF703" = moveWordRightAndModifySelection:;              // ctrl-shift-right
+  "^\U7F" = deleteWordBackward:;                              // ctrl-backspace
+  "^\UF728" = deleteWordForward:;                             // ctrl-delete
 }
