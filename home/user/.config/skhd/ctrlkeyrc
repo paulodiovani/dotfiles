@@ -29,6 +29,12 @@ ctrl - l [
   "safari" : skhd -k "cmd - l"
 ]
 
+ctrl - n [
+  "firefox" : skhd -k "cmd - n"
+  "google chrome" : skhd -k "cmd - n"
+  "safari" : skhd -k "cmd - n"
+]
+
 ctrl - r [
   "firefox" : skhd -k "cmd - r"
   "google chrome" : skhd -k "cmd - r"
