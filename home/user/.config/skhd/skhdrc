@@ -181,9 +181,6 @@ ctrl - escape : WINDOW_ID=$(yabai -m query --windows | jq -e '.[] | select(.titl
                   (yabai -m window "$WINDOW_ID" --minimize && yabai -m window mouse --focus);           \
                 fi;                                                                                     \
 
-
-
-
 # open spotlight
 cmd - d : skhd -k "cmd - space"
 

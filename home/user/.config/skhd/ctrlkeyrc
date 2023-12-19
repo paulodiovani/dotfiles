@@ -1,4 +1,9 @@
-# allow using Ctrl key as Cmd
+# use ctrl key as cmd for raycast f* keybindings
+ctrl - f1 : skhd -k "cmd - f1"
+ctrl - f2 : skhd -k "cmd - f2"
+ctrl - f3 : skhd -k "cmd - f3"
+
+# use ctrl key as cmd for common actions
 ctrl - a [
   "firefox" : skhd -k "cmd - a"
   "google chrome" : skhd -k "cmd - a"
