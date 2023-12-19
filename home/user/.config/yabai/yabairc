@@ -42,6 +42,9 @@ yabai -m config                                 \
 # focus on pinentry window
 yabai -m rule --add app="pinentry" mouse_follows_focus=on
 
+# make raycast (settings) float
+yabai -m rule --add app="Raycast" manage=off
+
 # fix Zoom shitty menus and notifications
 yabai -m rule --add app="zoom.us" manage=off
 yabai -m rule --add app="zoom.us" title="(Account|Chat|Meeting|Participants)" manage=on
