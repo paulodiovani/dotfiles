@@ -3,6 +3,7 @@
 // sources:
 //  - https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
 //  - https://damieng.com/blog/2015/04/24/make-home-end-keys-behave-like-windows-on-mac-os-x/
+//  - https://apple.stackexchange.com/a/446850/146745
 {
   "\UF729"  = moveToBeginningOfParagraph:;                    // home
   "\UF72B"  = moveToEndOfParagraph:;                          // end
@@ -18,4 +19,5 @@
   "^$\UF703" = moveWordRightAndModifySelection:;              // ctrl-shift-right
   "^\U7F" = deleteWordBackward:;                              // ctrl-backspace
   "^\UF728" = deleteWordForward:;                             // ctrl-delete
+  "^/" = "noop:";                                             // ctrl-slash stops beep
 }

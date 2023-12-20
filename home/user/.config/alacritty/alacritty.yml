@@ -863,6 +863,9 @@ key_bindings:
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
 
+  # Map ctrl + / to ctrl + _
+  - { key: Slash, mods: Control, chars: "\x1f" }
+
 #debug:
   # Display the time it takes to redraw each frame.
   #render_timer: false
