@@ -169,12 +169,17 @@ shift + cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 ###################
 
 # open terminal
-cmd - return : open -na /Applications/Alacritty.app
+# cmd - return : open -na /Applications/Alacritty.app
+cmd - return : pgrep -x alacritty > /dev/null && \
+               alacritty msg create-window || \
+               open -na /Applications/Alacritty.app
 
 # dropdown terminal (aka "quade mode")
 # see additional config in ~/.config/yabai/yabairc
 ctrl - escape : WINDOW_ID=$(yabai -m query --windows | jq -e '.[] | select(.title=="ddterm") | .id');   \
                 if [ -z "$WINDOW_ID" ]; then                                                            \
+                  pgrep -x alacritty > /dev/null &&                                                     \
+                  alacritty msg create-window --title "ddterm" ||                                       \
                   open -na /Applications/Alacritty.app --args --title "ddterm";                         \
                 else                                                                                    \
                   yabai -m window "$WINDOW_ID" --deminimize "$WINDOW_ID" --space mouse --focus ||       \
