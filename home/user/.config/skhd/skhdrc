@@ -176,7 +176,8 @@ cmd - return : pgrep -x alacritty > /dev/null && \
 
 # dropdown terminal (aka "quade mode")
 # see additional config in ~/.config/yabai/yabairc
-ctrl - escape : WINDOW_TITLE="ddterm";                                                                                      \
+ctrl - escape : skhd -k "cmd - escape"
+cmd - escape : WINDOW_TITLE="ddterm";                                                                                       \
                 WINDOW_ID=$(yabai -m query --windows | jq -e ".[] | select(.title==\"$WINDOW_TITLE\") | .id");              \
                 if [ -z "$WINDOW_ID" ]; then                                                                                \
                   pgrep -x alacritty > /dev/null &&                                                                         \
