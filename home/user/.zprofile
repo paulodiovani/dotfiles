@@ -17,6 +17,3 @@ export BAT_THEME=base16-256
 # asdf init and config
 [ -d "/opt/asdf-vm" ] && . /opt/asdf-vm/asdf.sh
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"
-
-# homebrew config
-[ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
