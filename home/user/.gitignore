@@ -25,5 +25,9 @@ Session.lock
 # direnv allow per directory rc file
 .envrc
 
+# ignores .env by default
+.env
+.env.local
+
 # asdf verions config
 .tool-versions
