@@ -2,6 +2,7 @@
 ctrl - f1 : skhd -k "cmd - f1"
 ctrl - f2 : skhd -k "cmd - f2"
 ctrl - f3 : skhd -k "cmd - f3"
+ctrl - f4 : skhd -k "cmd - f4"
 
 # use ctrl key as cmd for common actions
 ctrl - f5 [
