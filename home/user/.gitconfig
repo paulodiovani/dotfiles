@@ -7,9 +7,9 @@
   co = checkout
   st = status
   logpretty = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=short
-  diffvim = -c core.pager=/opt/homebrew/share/nvim/runtime/macros/less.sh diff --no-color
-  logvim = -c core.pager=/opt/homebrew/share/nvim/runtime/macros/less.sh log --no-color
-  showvim = -c core.pager=/opt/homebrew/share/nvim/runtime/macros/less.sh show --no-color
+  diffvim = -c core.pager=vimless diff --no-color
+  logvim = -c core.pager=vimless log --no-color
+  showvim = -c core.pager=vimless show --no-color
   history = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
   history-checkout = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
   hc = history-checkout
