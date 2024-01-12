@@ -14,12 +14,14 @@ ctrl - f5 [
 ctrl - a [
   "firefox" : skhd -k "cmd - a"
   "google chrome" : skhd -k "cmd - a"
+  "insomnia" : skhd -k "cmd - a"
   "safari" : skhd -k "cmd - a"
 ]
 
 ctrl - c [
   "firefox" : skhd -k "cmd - c"
   "google chrome" : skhd -k "cmd - c"
+  "insomnia" : skhd -k "cmd - c"
   "safari" : skhd -k "cmd - c"
 ]
 
@@ -62,6 +64,7 @@ ctrl - t [
 ctrl - v [
   "firefox" : skhd -k "cmd - v"
   "google chrome" : skhd -k "cmd - v"
+  "insomnia" : skhd -k "cmd - v"
   "safari" : skhd -k "cmd - v"
 ]
 
@@ -80,6 +83,7 @@ ctrl - x [
 ctrl - z [
   "firefox" : skhd -k "cmd - z"
   "google chrome" : skhd -k "cmd - z"
+  "insomnia" : skhd -k "cmd - z"
   "safari" : skhd -k "cmd - z"
 ]
 
