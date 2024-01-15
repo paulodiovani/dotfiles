@@ -1,0 +1,19 @@
+# dropdown terminal (aka "quade mode")
+# see additional config in ~/.config/yabai/yabairc
+ctrl - escape : skhd -k "cmd - escape"
+cmd - escape : WINDOW_TITLE="ddterm";                                                                                       \
+                WINDOW_ID=$(yabai -m query --windows | jq -e ".[] | select(.title==\"$WINDOW_TITLE\") | .id");              \
+                if [ -z "$WINDOW_ID" ]; then                                                                                \
+                  pgrep -x alacritty > /dev/null &&                                                                         \
+                  alacritty msg create-window --title "$WINDOW_TITLE" ||                                                    \
+                  open -na /Applications/Alacritty.app --args --title "$WINDOW_TITLE";                                      \
+                else                                                                                                        \
+                  DISTANCE=$(yabai -m query --windows --window "$WINDOW_ID" | jq -e '[ .frame.y, .frame.h ] | add');        \
+                  if [ "$DISTANCE" -gt 0 ]; then                                                                            \
+                    yabai -m window "$WINDOW_ID" --move abs:0:-"$DISTANCE" --layer below --focus mouse;                     \
+                  else                                                                                                      \
+                    yabai -m window "$WINDOW_ID" --space mouse --move abs:0:0 --grid "10:1:0:0:1:4" --layer above --focus;  \
+                  fi;                                                                                                       \
+                fi;                                                                                                         \
+
+
