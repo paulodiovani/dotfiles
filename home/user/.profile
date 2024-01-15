@@ -23,13 +23,7 @@ esac
 # ~/.local/bin
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
-if [ "$(uname -s)" = "Darwin" ]; then
-  # autojump config (Mac OSX)
-  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-  # homebrew config
-  [ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  # postgresql libs
-  [ -d "/opt/homebrew/opt/libpq/bin" ] && export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+# os-specific profile
+if [ -f "$HOME/.config/os-config/.profile" ]; then
+  . "$HOME/.config/os-config/.profile"
 fi
