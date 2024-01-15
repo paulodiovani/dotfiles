@@ -1,4 +1,6 @@
 #! /bin/env sh
+#
+# macOS specific .profile
 
 # autojump config (Mac OSX)
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
