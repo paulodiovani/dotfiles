@@ -16,7 +16,8 @@ lua require('config')
 " MAPPINGS SECTION "
 """"""""""""""""""""
 
-" toggles
+" Toggles
+
 map <Leader>^ :lua toggle_diagnostics()<CR>         " <Leader><S-6> toggle diagnostics visibility
 
 " navigate in diagnostics

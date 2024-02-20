@@ -206,6 +206,7 @@ map <Leader>@ :SignatureToggle<CR>                  " <Leader><S-2> show/hide ma
 map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide line numbers
 map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
 map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
+map <Leader>& :set wrap!<CR>                        " <Leader><S-7> toggle word wrapping
 
 " writeroom mode
 nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
