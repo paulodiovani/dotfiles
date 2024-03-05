@@ -4,6 +4,10 @@ ctrl - f2 : skhd -k "cmd - f2"
 ctrl - f3 : skhd -k "cmd - f3"
 ctrl - f4 : skhd -k "cmd - f4"
 
+f5 [
+  "google chrome" : skhd -k "cmd - r"
+]
+
 # use ctrl key as cmd for common actions
 ctrl - f5 [
   "firefox" : skhd -k "shift + cmd - r"
