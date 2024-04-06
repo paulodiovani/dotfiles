@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$(uname -s)" = "Darwin" ]; then
+  /opt/homebrew/share/nvim/runtime/macros/less.sh "$@"
+else
+  /usr/share/nvim/runtime/macros/less.sh "$@"
+fi

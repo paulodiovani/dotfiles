@@ -1,4 +1,5 @@
 FROMHOME = home/user
+OS = $(shell uname -s | tr '[:upper:]' '[:lower:]')
 PACKAGES = autojump awk base-devel git fzf neovim neovim-vim-compat ripgrep rsync tmux xxd-standalone zsh
 
 .DEFAULT_GOAL := help
@@ -12,7 +13,7 @@ all: install config ## Install packages and copy confir files to $HOME
 
 install: sudo install_archlinux ## Install packages
 
-config: submodules dotfiles ## Fetch submodules and copy config files
+config: submodules dotfiles symlinks ## Fetch submodules and copy config files
 
 sudo: ## Check for sudo command
 	@sudo echo 'Sudo available!' \
@@ -26,6 +27,9 @@ install_archlinux: ## Install packages in Arch Linux
 
 dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
+
+symlinks:
+	(cd ~/.config; ln -sf "$(OS)-config" os-config)
 
 submodules: ## Init and fetch git submodules
 	git submodule update --init --depth=1

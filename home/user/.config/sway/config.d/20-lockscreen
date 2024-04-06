@@ -23,4 +23,4 @@ exec swayidle -w \
   before-sleep 'swaymsg exec \$lockcmd'
 
 # Lock screen
-bindsym $mod+l exec $lockcmd
+bindsym $mod+Shift+l exec $lockcmd

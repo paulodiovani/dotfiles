@@ -22,3 +22,8 @@ esac
 
 # ~/.local/bin
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+
+# os-specific profile
+if [ -f "$HOME/.config/os-config/.profile" ]; then
+  . "$HOME/.config/os-config/.profile"
+fi

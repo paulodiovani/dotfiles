@@ -1,0 +1,58 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.Dict
+
+Use linux/window like keybindings for document/word navigation
+
+Here is a rough cheatsheet for syntax.
+Key Modifiers
+^ : Ctrl
+$ : Shift
+~ : Option (Alt)
+@ : Command (Apple)
+# : Numeric Keypad
+
+Non-Printable Key Codes
+
+Standard
+Up Arrow:     \UF700        Backspace:    \U0008        F1:           \UF704
+Down Arrow:   \UF701        Tab:          \U0009        F2:           \UF705
+Left Arrow:   \UF702        Escape:       \U001B        F3:           \UF706
+Right Arrow:  \UF703        Enter:        \U000A        ...
+Insert:       \UF727        Page Up:      \UF72C
+Delete:       \UF728        Page Down:    \UF72D
+Home:         \UF729        Print Screen: \UF72E
+End:          \UF72B        Scroll Lock:  \UF72F
+Break:        \UF732        Pause:        \UF730
+SysReq:       \UF731        Menu:         \UF735
+Help:         \UF746
+
+OS X
+delete:       \U007F
+
+NOTE: typically the Windows 'Insert' key is mapped to what Macs call 'Help'.
+Regular Mac keyboards don't even have the Insert key, but provide 'Fn' instead,
+which is completely different.
+
+sources:
+ - https://gist.github.com/trusktr/1e5e516df4e8032cbc3d
+ - https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
+ - https://damieng.com/blog/2015/04/24/make-home-end-keys-behave-like-windows-on-mac-os-x/
+ - https://apple.stackexchange.com/a/446850/146745
+*/
+
+{
+  "\UF729"  = moveToBeginningOfParagraph:;                    // home
+  "\UF72B"  = moveToEndOfParagraph:;                          // end
+  "$\UF729" = moveToBeginningOfParagraphAndModifySelection:;  // shift-home
+  "$\UF72B" = moveToEndOfParagraphAndModifySelection:;        // shift-end
+  "^\UF729" = moveToBeginningOfDocument:;                     // ctrl-home
+  "^\UF72B" = moveToEndOfDocument:;                           // ctrl-end
+  "^$\UF729" = moveToBeginningOfDocumentAndModifySelection:;  // ctrl-shift-home
+  "^$\UF72B" = moveToEndOfDocumentAndModifySelection:;        // ctrl-shift-end
+  "^\UF702" = moveWordLeft:;                                  // ctrl-left
+  "^$\UF702" = moveWordLeftAndModifySelection:;               // ctrl-shift-left
+  "^\UF703" = moveWordRight:;                                 // ctrl-right
+  "^$\UF703" = moveWordRightAndModifySelection:;              // ctrl-shift-right
+  "^\U7F" = deleteWordBackward:;                              // ctrl-backspace
+  "^\UF728" = deleteWordForward:;                             // ctrl-delete
+  "^/" = "noop:";                                             // ctrl-slash stops beep
+}
