@@ -2,10 +2,10 @@
 #
 # Screenshots
 set $screenshot ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
-set $grimshot /usr/share/sway/scripts/grimshot
+set $grimshot grimshot
 set $grimcolor grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | awk -F ' ' 'NR==2 {print $3}' | tr -d '\n'
 # take screenshot of currently focused output
-bindsym --release Print exec IMG="$screenshot" && $grimshot --notify save output $IMG && wl-copy < $IMG
+bindsym Print exec IMG="$screenshot" && $grimshot --notify save output $IMG && wl-copy < $IMG
 # take screenshot of active window
 bindsym $mod+Print exec IMG="$screenshot" && $grimshot --notify save active $IMG && wl-copy < $IMG
 # take screenshot of selected window

@@ -72,7 +72,7 @@ yad
 
 ## Utility scripts
 
-/usr/share/sway/scripts/grimshot
+grimshot
 ~/.local/bin/wlprop
 ```
 
