@@ -1,4 +1,4 @@
-import = ["/home/diovani/.config/os-config/alacritty/alacritty.toml"]
+import = ["~/.config/os-config/alacritty/alacritty.toml"]
 
 [env]
 TERM = "xterm-256color"
