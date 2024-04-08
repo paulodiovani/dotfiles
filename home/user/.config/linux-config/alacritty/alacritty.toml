@@ -1,6 +1,9 @@
 [font]
 size = 11.0
 
+[font.normal]
+family = "monospace"
+
 [[hints.enabled]]
 command = "xdg-open"
 post_processing = true
