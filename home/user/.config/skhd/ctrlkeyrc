@@ -19,6 +19,7 @@ ctrl - a [
   "firefox" : skhd -k "cmd - a"
   "google chrome" : skhd -k "cmd - a"
   "insomnia" : skhd -k "cmd - a"
+  "numi" : skhd -k "cmd - a"
   "safari" : skhd -k "cmd - a"
 ]
 
@@ -26,6 +27,7 @@ ctrl - c [
   "firefox" : skhd -k "cmd - c"
   "google chrome" : skhd -k "cmd - c"
   "insomnia" : skhd -k "cmd - c"
+  "numi" : skhd -k "cmd - c"
   "safari" : skhd -k "cmd - c"
 ]
 
@@ -69,6 +71,7 @@ ctrl - v [
   "firefox" : skhd -k "cmd - v"
   "google chrome" : skhd -k "cmd - v"
   "insomnia" : skhd -k "cmd - v"
+  "numi" : skhd -k "cmd - v"
   "safari" : skhd -k "cmd - v"
 ]
 
@@ -81,6 +84,8 @@ ctrl - w [
 ctrl - x [
   "firefox" : skhd -k "cmd - x"
   "google chrome" : skhd -k "cmd - x"
+  "insomnia" : skhd -k "cmd - x"
+  "numi" : skhd -k "cmd - x"
   "safari" : skhd -k "cmd - x"
 ]
 
@@ -88,6 +93,7 @@ ctrl - z [
   "firefox" : skhd -k "cmd - z"
   "google chrome" : skhd -k "cmd - z"
   "insomnia" : skhd -k "cmd - z"
+  "numi" : skhd -k "cmd - z"
   "safari" : skhd -k "cmd - z"
 ]
 
