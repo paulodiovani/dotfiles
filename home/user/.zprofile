@@ -13,7 +13,3 @@ export BASE16_FZF_PATH=$HOME/.config/base16-fzf
 
 # bat theme
 export BAT_THEME=base16-256
-
-# asdf init and config
-[ -d "/opt/asdf-vm" ] && . /opt/asdf-vm/asdf.sh
-command -v direnv > /dev/null && eval "$(direnv hook zsh)"
