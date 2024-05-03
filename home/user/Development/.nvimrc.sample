@@ -1,0 +1,38 @@
+" vi: ft=vim
+
+" Sample project/directory .nvimrc with custom commands and mappings.
+"
+" Copy one or more of these lines to a project .nvimrc to be able to run
+" :Test with <F5> or :TestInspect with <Leader><F5>
+
+" Dependency: Open terminal in split window below
+command! -nargs=* Terminal :bel split | terminal <args>
+
+" Test mappings
+map <F5> :Test % <CR>
+map <Leader><F5> :TestInspect %<CR>
+
+" rspec tests
+command! -nargs=1 Test Terminal bundle exec rspec <args>
+
+" node tests with yarn
+command! -nargs=1 Test Terminal yarn test --no-coverage %
+
+" run with different reporter
+command! -nargs=1 Test Terminal npm run test:runner -- -R spec <args>
+" run in band (single process) in jest
+command! -nargs=1 Test Terminal npm run test:runner -- -i <args>
+
+" workspace tests (e.g. packages/name/)
+command! -nargs=1 Test Terminal cd <args>:h:h; npm test <args>
+command! -nargs=1 Test Terminal cd <args>:h:h; npm run unit <args>
+
+" workspace tests on different paths (e.g. api/, modules/name/,
+" packages/subpackages/name/)
+command! -nargs=1 Test Terminal cd <args>:h:h; cd $(while true; do ls package.json > /dev/null 2>&1 && pwd && break || cd ..; done); yarn test <args>:t
+
+" Run tests for current file in inspect mode
+command! -nargs=1 TestInspect Terminal node inspect ./node_modules/jest/bin/jest.js --runInBand <args>
+command! -nargs=1 TestInspect Terminal cd <args>:h:h; node inspect ./node_modules/.bin/jest -i <args>
+command! -nargs=1 TestInspect Terminal npm run test:runner -- -R spec inspect <args>
+command! -nargs=1 TestInspect Terminal node inspect ./node_modules/.bin/jest -i <args>
