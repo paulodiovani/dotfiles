@@ -5,8 +5,13 @@
 " Copy one or more of these lines to a project .nvimrc to be able to run
 " :Test with <F5> or :TestInspect with <Leader><F5>
 
-" Dependency: Open terminal in split window below
-command! -nargs=* Terminal :bel split | terminal <args>
+" Dependencies:
+" add these to  ~/.vimrc or ~/.config/nvim/init.vim
+"
+" source .(n)vimrc files in project dirs
+"set exrc
+" Open terminal in split window below
+"command! -nargs=* Terminal :bel split | terminal <args>
 
 " Test mappings
 map <F5> :Test % <CR>
