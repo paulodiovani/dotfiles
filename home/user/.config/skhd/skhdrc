@@ -76,9 +76,10 @@
 
 # open terminal
 # cmd - return : open -na /Applications/Alacritty.app
-cmd - return : pgrep -x alacritty > /dev/null && \
-               alacritty msg create-window || \
-               open -na /Applications/Alacritty.app
+# cmd - return : pgrep -x alacritty > /dev/null && \
+#                alacritty msg create-window || \
+#                open -na /Applications/Alacritty.app
+cmd - return : open -na /Applications/Kitty.app --args --single-instance
 
 # open spotlight
 cmd - d : skhd -k "cmd - space"
