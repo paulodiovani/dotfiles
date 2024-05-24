@@ -43,6 +43,7 @@ set t_vb=                           " no
 set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu,menuone,noinsert " Show only menu for completion (no preview)
 set pumheight=20                    " Maximum menu heigh
+" set fillchars=vert:\                " use space as vertical split
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -71,9 +72,13 @@ if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
 endif
 
 " hide vertical split separator
-" hi VertSplit guifg=bg guibg=NONE gui=NONE
+" highlight VertSplit ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
+highlight WinSeparator ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
+" hide floating windows borders
+highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+" highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE
 " hide NonText character
-highlight NonText guifg=bg
+highlight NonText guifg=bg ctermfg=bg
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
