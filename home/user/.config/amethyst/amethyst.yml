@@ -332,3 +332,5 @@ restore-layouts-on-launch: true
 # true to display some optional debug information in the layout HUD (default false).
 debug-layout-info: false
 
+# Hide amethyst icon from menubar
+hide-menu-bar-icon: true
