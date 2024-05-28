@@ -84,6 +84,10 @@ cmd - return : open -na /Applications/Kitty.app --args --single-instance
 # open spotlight
 cmd - d : skhd -k "cmd - space"
 
+# disable some annoying macos shortcuts
+cmd - h :  true
+cmd - q : true
+
 # load extra configs
 .load "ctrlkeyrc"
 # .load "ddtermrc"
