@@ -1,3 +1,4 @@
+CPUS = $(shell nproc --all || echo 4)
 FROMHOME = home/user
 OS = $(shell uname -s | tr '[:upper:]' '[:lower:]')
 PACKAGES = autojump awk base-devel git fzf neovim neovim-vim-compat ripgrep rsync tmux xxd-standalone zsh
@@ -28,14 +29,14 @@ install_archlinux: ## Install packages in Arch Linux
 dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
-symlinks:
+symlinks: ## Create os-specific symlinks
 	(cd ~/.config; ln -sf "$(OS)-config" os-config)
 
 submodules: ## Init and fetch git submodules
-	git submodule update --init --depth=1
+	git submodule update --init --depth=1 --jobs=$(CPUS)
 
-submodules_update: ## Init and fetch git submodules
-	git submodule update --init --remote --depth=1
+submodules_update: ## Update git submodules
+	git submodule update --init --remote --depth=1 --jobs=$(CPUS)
 
 submodules_deinit: ## Deinit git submodules
 	git submodule deinit --all --force
