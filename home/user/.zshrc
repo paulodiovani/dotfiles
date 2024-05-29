@@ -49,9 +49,11 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(asdf direnv git man tmux docker kubectl aws heroku)
 
-# Autostart tmux but initiates new session
+# Autostart tmux
 ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_AUTOCONNECT="false"
+# Reconnect to unattached session, if any
+ZSH_TMUX_AUTOCONNECT="$([[ -n $(tmux list-sessions -f "#{==:#{session_attached},0}") ]] && echo 'true' || echo 'false')"
+# Set term to screen or screen-256color based on current terminal support
 ZSH_TMUX_FIXTERM="true"
 # Allow tmux set title
 #DISABLE_AUTO_TITLE="true"
