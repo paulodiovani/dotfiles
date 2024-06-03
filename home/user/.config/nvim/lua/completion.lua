@@ -66,6 +66,16 @@ end
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
+-- avoid copiloting injecting completions at first position
+-- https://github.com/zbirenbaum/copilot-cmp/issues/88#issuecomment-1960619171
+local copilot_reverse_prioritize = function(entry1, entry2)
+  if entry1.source.name == 'copilot' and entry2.source.name ~= 'copilot' then
+    return false
+  elseif entry2.copilot == 'copilot' and entry1.source.name ~= 'copilot' then
+    return true
+  end
+end
+
 ---@cast cmp -nil
 cmp.setup({
   completion = {
@@ -116,8 +126,8 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-
   }),
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
@@ -129,8 +139,10 @@ cmp.setup({
     { name = 'copilot' },
     { name = 'buffer' },
   }),
+
   sorting = {
     comparators = {
+      copilot_reverse_prioritize,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       -- cmp.config.compare.scopes,
