@@ -1,9 +1,14 @@
 -- luacheck: globals vim
 
+-- setup mason
+require('mason').setup()
+require('mason-lspconfig').setup()
+
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
+
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
