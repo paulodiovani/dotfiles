@@ -1,38 +1,42 @@
 -- luacheck: globals vim
 
--- setup mason
-require('mason').setup()
-require('mason-lspconfig').setup()
-
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
+local servers = { 'bashls', 'lua_ls', 'vimls' }
 
+-- setup mason
+require('mason').setup()
+require('mason-lspconfig').setup({
+  automatically_installation = true,
+  ensure_installed = servers,
+  -- Set up server auto setup
+  handlers = {
+    function(server_name)  -- default handler (optional)
+      lspconfig[server_name].setup({
+        capabilities = capabilities,
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
-    capabilities = capabilities,
+        on_attach = function(_, bufnr)
+          -- Enable completion triggered by <c-x><c-o>
+          vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+          vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
 
-    on_attach = function(_, bufnr)
-      -- Enable completion triggered by <c-x><c-o>
-      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
-
-      -- Mappings.
-      -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-    end
-  })
-end
+          -- Mappings.
+          -- See `:help vim.lsp.*` for documentation on any of the below functions
+          local bufopts = { noremap = true, silent = true, buffer = bufnr }
+          vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
+          vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
+          vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
+          vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+          vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+          vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+        end
+      })
+    end,
+  },
+})
 
 -- GitHub Copilot config
 require('copilot').setup({
