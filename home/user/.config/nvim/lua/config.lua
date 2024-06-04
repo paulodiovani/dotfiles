@@ -60,30 +60,6 @@ nvim_tree.setup({
   },
 })
 
--- Linters and other stuff (null-ls)
-local null_ls = require('null-ls')
-null_ls.setup({
-  sources = {
-    -- diagnostics
-    null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.erb_lint,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.diagnostics.luacheck,
-    null_ls.builtins.diagnostics.rubocop,
-    null_ls.builtins.diagnostics.shellcheck,
-    null_ls.builtins.diagnostics.stylelint,
-    null_ls.builtins.diagnostics.yamllint,
-    -- formatting
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'html', 'markdown' } }),
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'jsonc' }, extra_args = { '--parser=json' } }),
-    null_ls.builtins.formatting.erb_format,
-    null_ls.builtins.formatting.eslint,
-    null_ls.builtins.formatting.json_tool.with({ extra_args = { '--indent=2' } }),
-    null_ls.builtins.formatting.rubocop,
-    null_ls.builtins.formatting.stylelint,
-  },
-})
-
 ------------------------------
 -- CUSTOM FUNCTIONS SECTION --
 ------------------------------
