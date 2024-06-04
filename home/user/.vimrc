@@ -79,6 +79,11 @@ highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE
 " highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE
 " hide NonText character
 highlight NonText guifg=bg ctermfg=bg
+" make line numbers bg transparent
+highlight LineNr guibg=none
+" set non-current window a different bg
+highlight NormalNC guibg=#24282f
+highlight NvimTreeNormalNC guibg=#24282f
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
