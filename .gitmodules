@@ -118,6 +118,3 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/mason-lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/mason-lspconfig
 	url = https://github.com/williamboman/mason-lspconfig.nvim.git
-[submodule "home/user/.config/nvim/pack/plugins/start/mason-null-ls"]
-	path = home/user/.config/nvim/pack/plugins/start/mason-null-ls
-	url = https://github.com/jay-babu/mason-null-ls.nvim.git

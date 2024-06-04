@@ -38,34 +38,6 @@ require('mason-lspconfig').setup({
   },
 })
 
--- Linters and other stuff (null-ls)
-local null_ls = require('null-ls')
-null_ls.setup({
-  sources = {
-    -- diagnostics
-    null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.luacheck,
-    null_ls.builtins.diagnostics.shellcheck,
-    -- formatting
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'html', 'markdown' } }),
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'jsonc' }, extra_args = { '--parser=json' } }),
-    null_ls.builtins.formatting.json_tool.with({ extra_args = { '--indent=2' } }),
-  },
-})
-
--- auto install/setup null-ls sources
-require("mason-null-ls").setup({
-  automatic_installation = true,
-  ensure_installed = {},
-  methods = {
-    diagnostics = true,
-    formatting = true,
-    code_actions = false,
-    completion = false,
-    hover = false,
-  },
-})
-
 -- GitHub Copilot config
 require('copilot').setup({
   -- Set enable = true until this bug is fixed:
