@@ -34,6 +34,9 @@ map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
 " Open Copilot Panel
 map <Leader>cp :Copilot panel<CR>>""
+" Open Copilot Chat below
+command! -nargs=* CopilotChatBelow :bel split | CopilotChat <args>
+map <Leader>cc :CopilotChatBelow<CR>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>

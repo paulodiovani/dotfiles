@@ -60,6 +60,12 @@ require('copilot').setup({
 
 require('copilot_cmp').setup()
 
+require('CopilotChat').setup({
+  window = {
+    layout = 'replace',
+  }
+})
+
 -- Set up luasnip
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
