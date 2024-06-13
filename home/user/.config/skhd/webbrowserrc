@@ -6,11 +6,10 @@ f5 [
 ctrl - f5 [
   "firefox" : skhd -k "shift + cmd - r"
   "google chrome" : skhd -k "shift + cmd - r"
-  "safari" : skhd -k "shift + cmd - r"
 ]
 
 # (re)open tab in new window
 shift + ctrl - n [
-  "firefox" : skhd -k "ctrl - l | shift - enter"
+  "firefox" : skhd -k "cmd - l | shift - enter"
   "google chrome" : skhd -k "ctrl - l" && sleep 0.1 && skhd -k "shift - return"
 ]

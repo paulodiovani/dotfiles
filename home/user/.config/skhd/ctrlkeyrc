@@ -7,78 +7,91 @@ ctrl - f4 : skhd -k "cmd - f4"
 # use ctrl key as cmd for common actions
 ctrl - a [
   * : skhd -k "cmd - a"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - c [
   * : skhd -k "cmd - c"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - f [
   * : skhd -k "cmd - f"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - k [
   * : skhd -k "cmd - k"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - l [
   * : skhd -k "cmd - l"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - n [
   * : skhd -k "cmd - n"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - r [
   * : skhd -k "cmd - r"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - t [
   * : skhd -k "cmd - t"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 shift + ctrl - t [
   * : skhd -k "shift + cmd - t"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - v [
   * : skhd -k "cmd - v"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - w [
   * : skhd -k "cmd - w"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - x [
   * : skhd -k "cmd - x"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
 
 ctrl - z [
   * : skhd -k "cmd - z"
+  "alacritty" ~
   "kitty" ~
   "terminal" ~
 ]
