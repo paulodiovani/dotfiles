@@ -60,9 +60,6 @@ nvim_tree.setup({
   },
 })
 
--- Mini Pairs setuo
-require('mini.pairs').setup()
-
 -- Linters and other stuff (null-ls)
 local null_ls = require('null-ls')
 null_ls.setup({

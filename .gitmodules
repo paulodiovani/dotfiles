@@ -121,6 +121,3 @@
 [submodule "home/user/.config/nvim/pack/github/start/copilot-chat"]
 	path = home/user/.config/nvim/pack/github/start/copilot-chat
 	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim.git
-[submodule "home/user/.config/nvim/pack/plugins/start/mini-pairs"]
-	path = home/user/.config/nvim/pack/plugins/start/mini-pairs
-	url = https://github.com/echasnovski/mini.pairs.git
