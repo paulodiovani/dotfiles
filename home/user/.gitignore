@@ -31,3 +31,6 @@ Session.lock
 
 # asdf verions config
 .tool-versions
+
+# codespell config
+.codespellrc
