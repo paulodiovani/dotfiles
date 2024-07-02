@@ -95,3 +95,6 @@ fi
 
 # change tab width
 tabs -4
+
+# exit, so other tools won't mess with the configs
+return
