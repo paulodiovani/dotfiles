@@ -5,8 +5,8 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local servers = { 'bashls', 'lua_ls', 'vimls' }
 
-local function config_server(server_name)
-  lspconfig[server_name].setup({
+local function config_server(server_name, extra_config)
+  local config = {
     capabilities = capabilities,
 
     on_attach = function(_, bufnr)
@@ -26,7 +26,13 @@ local function config_server(server_name)
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
     end
-  })
+  }
+
+  for k,v in pairs(extra_config or {}) do
+    config[k] = v
+  end
+
+  lspconfig[server_name].setup(config)
 end
 
 -- setup global installed servers
@@ -40,10 +46,25 @@ require('mason-lspconfig').setup({
   ensure_installed = servers,
   -- Set up server auto setup
   handlers = {
-    config_server, -- default handler (optional)
+    -- default handler (optional)
+    config_server,
+
+    -- fix java-language-server bad argument error
+    -- https://github.com/georgewfraser/java-language-server/issues/267
+    ['java_language_server'] = function()
+      config_server('java_language_server', {
+        handlers = {
+          ['client/registerCapability'] = function(err, result, ctx, config)
+            local registration = {
+              registrations = { result },
+            }
+            return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
+          end
+        },
+      })
+    end,
   },
 })
-
 
 -- GitHub Copilot config
 require('copilot').setup({
