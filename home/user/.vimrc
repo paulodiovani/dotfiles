@@ -44,6 +44,7 @@ set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu,menuone,noinsert " Show only menu for completion (no preview)
 set pumheight=20                    " Maximum menu heigh
 " set fillchars=vert:\                " use space as vertical split
+set signcolumn=number               " show signs in number column
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
