@@ -19,13 +19,8 @@ vim.diagnostic.config({
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
-    'javascript',
     'json',
     'markdown',
-    'ruby',
-    'scss',
-    'tsx',
-    'typescript',
   },
   highlight = {
     enable = true,
