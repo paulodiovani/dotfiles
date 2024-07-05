@@ -28,7 +28,7 @@ local function config_server(server_name, extra_config)
     end
   }
 
-  for k,v in pairs(extra_config or {}) do
+  for k, v in pairs(extra_config or {}) do
     config[k] = v
   end
 
@@ -63,6 +63,25 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+
+    ['rust_analyzer'] = function()
+      config_server('rust_analyzer', {
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+              loadOutDirsFromCheck = true,
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+      })
+    end,
+
   },
 })
 
