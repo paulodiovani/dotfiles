@@ -2,13 +2,6 @@
 #docker-compose.yml
 docker-compose.override.yml
 
-# override npm rules per project
-.npmrc
-
-# ruby tools
-.byebug_history
-rakelib
-
 # ctags file
 tags
 
@@ -34,3 +27,13 @@ Session.lock
 
 # codespell config
 .codespellrc
+
+# override npm rules per project
+.npmrc
+
+# ruby tools
+.byebug_history
+rakelib
+
+# gradle + kotlin artifacts
+kls_database.db
