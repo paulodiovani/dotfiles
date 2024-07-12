@@ -37,3 +37,9 @@ rakelib
 
 # gradle + kotlin artifacts
 kls_database.db
+
+# eclipse / jdtls build files
+**/bin/**/*.class
+.classpath
+.project
+.settings

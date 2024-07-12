@@ -64,6 +64,32 @@ require('mason-lspconfig').setup({
       })
     end,
 
+    ['jdtls'] = function()
+      config_server('jdtls', {
+        -- force using asdf shim as java executable
+        cmd = {
+          'jdtls',
+          '--java-executable', vim.fn.expand('$HOME/.asdf/shims/java'),
+          '-configuration', vim.fn.expand('$HOME/.cache/jdtls/config'),
+          '-data', vim.fn.expand('$HOME/.cache/jdtls/workspace'),
+        },
+
+        settings = {
+          java = {
+            autobuild = {
+              enabled = false,
+            },
+
+            gradle = {
+              buildServer = {
+                enabled = true,
+              },
+            },
+          },
+        },
+      })
+    end,
+
     ['rust_analyzer'] = function()
       config_server('rust_analyzer', {
         settings = {
