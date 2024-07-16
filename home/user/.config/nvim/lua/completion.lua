@@ -9,6 +9,11 @@ local function config_server(server_name, extra_config)
   local config = {
     capabilities = capabilities,
 
+    handlers = {
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+    },
+
     on_attach = function(_, bufnr)
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -59,7 +64,7 @@ require('mason-lspconfig').setup({
               registrations = { result },
             }
             return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
-          end
+          end,
         },
       })
     end,
@@ -107,7 +112,6 @@ require('mason-lspconfig').setup({
         },
       })
     end,
-
   },
 })
 
@@ -343,3 +347,7 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = "rounded",
+-- })

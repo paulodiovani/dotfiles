@@ -85,8 +85,16 @@ highlight LineNr guibg=none
 " set non-current window a different bg
 highlight NormalNC guibg=#24282f
 highlight NvimTreeNormalNC guibg=#24282f
+" set color of float borders
+highlight link FloatBorder LineNr
 " fix issue with diagnostics windows (or the theme)
 highlight! link NormalFloat Float
+" remove text background in diagnostics windows
+highlight ErrorFloat guibg=NONE
+highlight WarningFloat guibg=NONE
+highlight InfoFloat guibg=NONE
+highlight HintFloat guibg=NONE
+highlight OkFloat guibg=NONE
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
