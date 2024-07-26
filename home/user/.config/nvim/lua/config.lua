@@ -54,6 +54,13 @@ nvim_tree.setup({
     width = '20%',
     side = 'left',
   },
+  experimental = {
+    actions = {
+      open_file = {
+        relative_path = true,
+      },
+    },
+  },
 })
 
 -- Linters and other stuff (null-ls)
