@@ -3,11 +3,16 @@
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'bashls', 'lua_ls', 'solargraph', 'tsserver', 'vimls' }
+local servers = { 'bashls', 'lua_ls', 'vimls' }
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
+local function config_server(server_name, extra_config)
+  local config = {
     capabilities = capabilities,
+
+    handlers = {
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+    },
 
     on_attach = function(_, bufnr)
       -- Enable completion triggered by <c-x><c-o>
@@ -26,8 +31,89 @@ for _, lsp in ipairs(servers) do
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
     end
-  })
+  }
+
+  for k, v in pairs(extra_config or {}) do
+    config[k] = v
+  end
+
+  lspconfig[server_name].setup(config)
 end
+
+-- setup global installed servers
+-- config_server('solargraph')
+-- config_server('rust_analyzer')
+
+-- setup mason
+require('mason').setup()
+require('mason-lspconfig').setup({
+  automatically_installation = true,
+  ensure_installed = servers,
+  -- Set up server auto setup
+  handlers = {
+    -- default handler (optional)
+    config_server,
+
+    -- fix java-language-server bad argument error
+    -- https://github.com/georgewfraser/java-language-server/issues/267
+    ['java_language_server'] = function()
+      config_server('java_language_server', {
+        handlers = {
+          ['client/registerCapability'] = function(err, result, ctx, config)
+            local registration = {
+              registrations = { result },
+            }
+            return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
+          end,
+        },
+      })
+    end,
+
+    ['jdtls'] = function()
+      config_server('jdtls', {
+        -- force using asdf shim as java executable
+        cmd = {
+          'jdtls',
+          '--java-executable', vim.fn.expand('$HOME/.asdf/shims/java'),
+          '-configuration', vim.fn.expand('$HOME/.cache/jdtls/config'),
+          '-data', vim.fn.expand('$HOME/.cache/jdtls/workspace'),
+        },
+
+        settings = {
+          java = {
+            autobuild = {
+              enabled = false,
+            },
+
+            gradle = {
+              buildServer = {
+                enabled = true,
+              },
+            },
+          },
+        },
+      })
+    end,
+
+    ['rust_analyzer'] = function()
+      config_server('rust_analyzer', {
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+              loadOutDirsFromCheck = true,
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
+})
 
 -- GitHub Copilot config
 require('copilot').setup({
@@ -50,6 +136,12 @@ require('copilot').setup({
 })
 
 require('copilot_cmp').setup()
+
+require('CopilotChat').setup({
+  window = {
+    layout = 'replace',
+  }
+})
 
 -- Set up luasnip
 local luasnip = require('luasnip')
@@ -255,3 +347,7 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = "rounded",
+-- })

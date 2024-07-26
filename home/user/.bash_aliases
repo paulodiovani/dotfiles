@@ -3,6 +3,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Use cd -P to expand symlinks to full paths
+alias cdp='cd -P'
+
 # scrollable less and tabwidth=4
 alias less='less -S -x4'
 alias expand='expand -t4'

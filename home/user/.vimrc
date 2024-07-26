@@ -44,6 +44,7 @@ set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu,menuone,noinsert " Show only menu for completion (no preview)
 set pumheight=20                    " Maximum menu heigh
 " set fillchars=vert:\                " use space as vertical split
+set signcolumn=number               " show signs in number column
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -84,6 +85,16 @@ highlight LineNr guibg=none
 " set non-current window a different bg
 highlight NormalNC guibg=#24282f
 highlight NvimTreeNormalNC guibg=#24282f
+" set color of float borders
+highlight link FloatBorder LineNr
+" fix issue with diagnostics windows (or the theme)
+highlight! link NormalFloat Float
+" remove text background in diagnostics windows
+highlight ErrorFloat guibg=NONE
+highlight WarningFloat guibg=NONE
+highlight InfoFloat guibg=NONE
+highlight HintFloat guibg=NONE
+highlight OkFloat guibg=NONE
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
@@ -303,7 +314,7 @@ command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
-command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? 'GFiles' : 'Files'
+command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? "execute 'GFiles ' . getcwd()" : 'Files'
 
 " file drawer
 command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args> | else | 1 wincmd w | Explore <args> | endif

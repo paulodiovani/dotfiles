@@ -4,107 +4,94 @@ ctrl - f2 : skhd -k "cmd - f2"
 ctrl - f3 : skhd -k "cmd - f3"
 ctrl - f4 : skhd -k "cmd - f4"
 
-f5 [
-  "google chrome" : skhd -k "cmd - r"
-]
-
 # use ctrl key as cmd for common actions
-ctrl - f5 [
-  "firefox" : skhd -k "shift + cmd - r"
-  "google chrome" : skhd -k "shift + cmd - r"
-  "safari" : skhd -k "shift + cmd - r"
-]
-
 ctrl - a [
-  "firefox" : skhd -k "cmd - a"
-  "google chrome" : skhd -k "cmd - a"
-  "insomnia" : skhd -k "cmd - a"
-  "numi" : skhd -k "cmd - a"
-  "safari" : skhd -k "cmd - a"
+  * : skhd -k "cmd - a"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - c [
-  "firefox" : skhd -k "cmd - c"
-  "google chrome" : skhd -k "cmd - c"
-  "insomnia" : skhd -k "cmd - c"
-  "numi" : skhd -k "cmd - c"
-  "safari" : skhd -k "cmd - c"
+  * : skhd -k "cmd - c"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - f [
-  "firefox" : skhd -k "cmd - f"
-  "google chrome" : skhd -k "cmd - f"
-  "safari" : skhd -k "cmd - f"
+  * : skhd -k "cmd - f"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - k [
-  "firefox" : skhd -k "cmd - k"
-  "google chrome" : skhd -k "cmd - k"
-  "safari" : skhd -k "cmd - k"
+  * : skhd -k "cmd - k"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - l [
-  "firefox" : skhd -k "cmd - l"
-  "google chrome" : skhd -k "cmd - l"
-  "safari" : skhd -k "cmd - l"
+  * : skhd -k "cmd - l"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - n [
-  "firefox" : skhd -k "cmd - n"
-  "google chrome" : skhd -k "cmd - n"
-  "safari" : skhd -k "cmd - n"
+  * : skhd -k "cmd - n"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - r [
-  "firefox" : skhd -k "cmd - r"
-  "google chrome" : skhd -k "cmd - r"
-  "safari" : skhd -k "cmd - r"
+  * : skhd -k "cmd - r"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 ctrl - t [
-  "firefox" : skhd -k "cmd - t"
-  "google chrome" : skhd -k "cmd - t"
-  "safari" : skhd -k "cmd - t"
-]
-
-ctrl - v [
-  "firefox" : skhd -k "cmd - v"
-  "google chrome" : skhd -k "cmd - v"
-  "insomnia" : skhd -k "cmd - v"
-  "numi" : skhd -k "cmd - v"
-  "safari" : skhd -k "cmd - v"
-]
-
-ctrl - w [
-  "firefox" : skhd -k "cmd - w"
-  "google chrome" : skhd -k "cmd - w"
-  "safari" : skhd -k "cmd - w"
-]
-
-ctrl - x [
-  "firefox" : skhd -k "cmd - x"
-  "google chrome" : skhd -k "cmd - x"
-  "insomnia" : skhd -k "cmd - x"
-  "numi" : skhd -k "cmd - x"
-  "safari" : skhd -k "cmd - x"
-]
-
-ctrl - z [
-  "firefox" : skhd -k "cmd - z"
-  "google chrome" : skhd -k "cmd - z"
-  "insomnia" : skhd -k "cmd - z"
-  "numi" : skhd -k "cmd - z"
-  "safari" : skhd -k "cmd - z"
-]
-
-shift + ctrl - p [
-  "firefox" : skhd -k "shift + cmd - p"
-  "google chrome" : skhd -k "shift + cmd - p"
-  "safari" : skhd -k "shift + cmd - p"
+  * : skhd -k "cmd - t"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]
 
 shift + ctrl - t [
-  "firefox" : skhd -k "shift + cmd - t"
-  "google chrome" : skhd -k "shift + cmd - t"
-  "safari" : skhd -k "shift + cmd - t"
+  * : skhd -k "shift + cmd - t"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
+]
+
+ctrl - v [
+  * : skhd -k "cmd - v"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
+]
+
+ctrl - w [
+  * : skhd -k "cmd - w"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
+]
+
+ctrl - x [
+  * : skhd -k "cmd - x"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
+]
+
+ctrl - z [
+  * : skhd -k "cmd - z"
+  "alacritty" ~
+  "kitty" ~
+  "terminal" ~
 ]

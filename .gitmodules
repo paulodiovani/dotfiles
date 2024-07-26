@@ -112,3 +112,12 @@
 [submodule "home/user/.vim/pack/plugins/start/fzf.vim"]
 	path = home/user/.vim/pack/plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "home/user/.config/nvim/pack/plugins/start/mason"]
+	path = home/user/.config/nvim/pack/plugins/start/mason
+	url = https://github.com/williamboman/mason.nvim.git
+[submodule "home/user/.config/nvim/pack/plugins/start/mason-lspconfig"]
+	path = home/user/.config/nvim/pack/plugins/start/mason-lspconfig
+	url = https://github.com/williamboman/mason-lspconfig.nvim.git
+[submodule "home/user/.config/nvim/pack/github/start/copilot-chat"]
+	path = home/user/.config/nvim/pack/github/start/copilot-chat
+	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim.git

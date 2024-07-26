@@ -9,6 +9,7 @@ vim.diagnostic.config({
   virtual_text = false,
   float = {
     header = false,
+    border = 'rounded',
     format = function(diagnostic)
       return string.format('%s\n\n%s: %s', diagnostic.message, diagnostic.source, diagnostic.code)
     end,
@@ -19,13 +20,8 @@ vim.diagnostic.config({
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
-    'javascript',
     'json',
     'markdown',
-    'ruby',
-    'scss',
-    'tsx',
-    'typescript',
   },
   highlight = {
     enable = true,
@@ -69,7 +65,6 @@ null_ls.setup({
     null_ls.builtins.diagnostics.erb_lint,
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.diagnostics.luacheck,
-    null_ls.builtins.diagnostics.rubocop,
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.stylelint,
     null_ls.builtins.diagnostics.yamllint,
@@ -79,7 +74,6 @@ null_ls.setup({
     null_ls.builtins.formatting.erb_format,
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.json_tool.with({ extra_args = { '--indent=2' } }),
-    null_ls.builtins.formatting.rubocop,
     null_ls.builtins.formatting.stylelint,
   },
 })

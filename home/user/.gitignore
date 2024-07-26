@@ -2,13 +2,6 @@
 #docker-compose.yml
 docker-compose.override.yml
 
-# override npm rules per project
-.npmrc
-
-# ruby tools
-.byebug_history
-rakelib
-
 # ctags file
 tags
 
@@ -31,3 +24,22 @@ Session.lock
 
 # asdf verions config
 .tool-versions
+
+# codespell config
+.codespellrc
+
+# override npm rules per project
+.npmrc
+
+# ruby tools
+.byebug_history
+rakelib
+
+# gradle + kotlin artifacts
+kls_database.db
+
+# eclipse / jdtls build files
+**/bin/**/*.class
+.classpath
+.project
+.settings
