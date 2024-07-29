@@ -121,3 +121,6 @@
 [submodule "home/user/.config/nvim/pack/github/start/copilot-chat"]
 	path = home/user/.config/nvim/pack/github/start/copilot-chat
 	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim.git
+[submodule "home/user/.vim/pack/plugins/start/test"]
+	path = home/user/.vim/pack/plugins/start/test
+	url = https://github.com/vim-test/vim-test.git
