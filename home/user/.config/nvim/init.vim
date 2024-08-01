@@ -6,12 +6,17 @@ source ~/.vimrc
 """"""""""""""""""""
 " SETTINGS SECTION "
 """"""""""""""""""""
+
+set jumpoptions-=unload             " Do not unload buffers with bdelete
+                                    " (https://github.com/neovim/neovim/pull/29347)
+set foldmethod=expr                 " enable fold for treesitter
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                    " Disable folding at startup.
+
 " Disable Netrw
 " let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
-" Do not unload buffers with bdelete
-" (https://github.com/neovim/neovim/pull/29347)
-set jumpoptions-=unload
+
 " Require lua conf
 lua require('config')
 

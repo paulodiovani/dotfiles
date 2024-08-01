@@ -24,7 +24,8 @@ set bs=2                            " same as :set backspace=indent,eol,start
 " set conceallevel=0                  " do not conceal characters
 set expandtab                       " convert tabs to spaces
 set exrc                            " source .vimrc files in project dirs
-set foldmethod=manual               " folding (manual, indent, syntax, expr, marker, diff)
+set foldmethod=syntax               " folding (manual, indent, syntax, expr, marker, diff)
+" set foldlevelstart=999              " do not fold anything at BufEnter
 set hidden                          " Allow unsaved hidden buffers
 set history=5000                    " number of items to keep in history
 set hlsearch                        " highlight search
