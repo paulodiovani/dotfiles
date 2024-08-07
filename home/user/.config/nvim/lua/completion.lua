@@ -112,6 +112,19 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+
+    ['sorbet'] = function()
+      config_server('sorbet', {
+        cmd = {
+          'srb', 'tc',
+          '--lsp',
+          '--typed', 'true',
+          '--enable-all-experimental-lsp-features',
+          '--disable-watchman',
+          '--dir=' .. vim.fn.getcwd()
+        },
+      })
+    end,
   },
 })
 
