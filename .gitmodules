@@ -121,3 +121,6 @@
 [submodule "home/user/.vim/pack/plugins/start/test"]
 	path = home/user/.vim/pack/plugins/start/test
 	url = https://github.com/vim-test/vim-test.git
+[submodule "home/user/.config/nvim/pack/plugins/start/none-ls"]
+	path = home/user/.config/nvim/pack/plugins/start/none-ls
+	url = https://github.com/nvimtools/none-ls.nvim.git
