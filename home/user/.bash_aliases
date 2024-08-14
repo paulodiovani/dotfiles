@@ -42,3 +42,6 @@ git() {
     command git "$@"
   fi
 }
+
+# os-specific aliases
+[ -f "$HOME/.config/os-config/.bash_aliases" ] && . "$HOME/.config/os-config/.bash_aliases"
