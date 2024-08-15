@@ -199,6 +199,7 @@ function! TerminalStrategy(cmd)
 endfunction
 let test#custom_strategies = {'terminal': function('TerminalStrategy')}
 let test#strategy = "terminal"
+let test#ruby#minitest#options = '--verbose'
 
 """"""""""""""""""""
 " MAPPINGS SECTION "
