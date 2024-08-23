@@ -73,8 +73,6 @@ local function config_server(server_name, extra_config)
       hover.register(LSPServerHover(server_name))
       -- vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
       vim.keymap.set({ 'n', 'i' }, '<F9>', hover.hover)
-      vim.keymap.set({ 'n', 'i' }, '<C-p>', function() hover.hover_switch('previous') end)
-      vim.keymap.set({ 'n', 'i' }, '<C-n>', function() hover.hover_switch('next') end)
 
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
