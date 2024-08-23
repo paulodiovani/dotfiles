@@ -2,6 +2,8 @@
 local util = vim.lsp.util
 local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
 
+-- Hover provider for LSP servers with custom names
+-- Based on https://github.com/SichangHe/.config/blob/23803ef973f097fc44dce5fa1500efbad2a3f2e9/nvim/lua/hovering.lua
 local LSPServerHover = function(server_name)
   return {
     name = string.format('LSP[%s]', server_name),
