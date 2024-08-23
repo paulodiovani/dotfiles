@@ -1,4 +1,46 @@
 -- luacheck: globals vim
+local util = vim.lsp.util
+local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
+
+local LSPServerHover = function(server_name)
+  return {
+    name = string.format('LSP[%s]', server_name),
+    priority = 1002, -- above diagnostics
+
+    enabled = function(bufnr)
+      return #get_clients({ bufnr = bufnr, name = server_name, method = 'textDocument/hover' }) > 0
+    end,
+
+    execute = function(opts, done)
+      local params = util.make_position_params()
+      local client = get_clients({ bufnr = opts.bufnr, name = server_name, method = 'textDocument/hover' })[1]
+
+      client.request('textDocument/hover', params, function(err, result)
+        if result and result.contents and result.contents.value then
+          local value = result.contents.value
+          done({ lines = vim.split(value, '\n', true), filetype = 'markdown' })
+        else
+          print(err)
+          done()
+        end
+      end)
+    end,
+  }
+end
+
+-- setup hover
+local hover = require('hover')
+hover.setup({
+  init = function()
+    -- require('hover.providers.lsp')
+    require('hover.providers.diagnostic')
+  end,
+  preview_opts = {
+    border = 'rounded',
+  },
+  preview_window = false,
+  title = true,
+})
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -25,7 +67,13 @@ local function config_server(server_name, extra_config)
       vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
       vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+
+      hover.register(LSPServerHover(server_name))
+      -- vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', hover.hover)
+      vim.keymap.set({ 'n', 'i' }, '<C-p>', function() hover.hover_switch('previous') end)
+      vim.keymap.set({ 'n', 'i' }, '<C-n>', function() hover.hover_switch('next') end)
+
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
