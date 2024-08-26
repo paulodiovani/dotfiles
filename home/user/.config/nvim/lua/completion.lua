@@ -116,11 +116,6 @@ require('mason-lspconfig').setup({
     ['sorbet'] = function()
       config_server('sorbet', {
         autostart = false,
-        cmd = {
-          'srb', 'tc',
-          '--lsp',
-          '--disable-watchman',
-        },
       })
     end,
   },
