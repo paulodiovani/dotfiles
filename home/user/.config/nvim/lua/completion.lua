@@ -38,12 +38,16 @@ local registerHoverLSP = function(server_name)
       local client = get_clients({ bufnr = opts.bufnr, name = server_name, method = 'textDocument/hover' })[1]
 
       client.request('textDocument/hover', params, function(err, result)
-        if result and result.contents and result.contents.value then
-          local value = result.contents.value
-          done({ lines = vim.split(value, '\n', true), filetype = 'markdown' })
-        else
+        if err then
           print(err)
-          done()
+        end
+
+        if result and result.contents then
+          local lines = util.convert_input_to_markdown_lines(result.contents)
+          if not vim.tbl_isempty(lines) then
+            done{lines=lines, filetype="markdown"}
+            return
+          end
         end
       end)
     end,
