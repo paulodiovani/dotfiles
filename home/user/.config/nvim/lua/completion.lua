@@ -112,6 +112,12 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+
+    ['sorbet'] = function()
+      config_server('sorbet', {
+        autostart = false,
+      })
+    end,
   },
 })
 
