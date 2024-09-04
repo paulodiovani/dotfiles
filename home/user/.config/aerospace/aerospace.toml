@@ -116,6 +116,9 @@ cmd-shift-down = 'move down'
 cmd-shift-up = 'move up'
 cmd-shift-right = 'move right'
 
+alt-shift-right = ['move-node-to-monitor right', 'focus-monitor right']
+alt-shift-left = ['move-node-to-monitor left', 'focus-monitor left']
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 # cmd-shift-minus = 'resize smart -50'
 # cmd-shift-equal = 'resize smart +50'
@@ -161,19 +164,18 @@ cmd-9 = 'workspace 9'
 ctrl-alt-shift-left = ['move-node-to-workspace prev', 'workspace prev']
 ctrl-alt-shift-right = ['move-node-to-workspace next', 'workspace next']
 
-cmd-shift-backtick = 'move-node-to-workspace 0'
-cmd-shift-1 = 'move-node-to-workspace 1'
-cmd-shift-2 = 'move-node-to-workspace 2'
-cmd-shift-3 = 'move-node-to-workspace 3'
-cmd-shift-4 = 'move-node-to-workspace 4'
-cmd-shift-5 = 'move-node-to-workspace 5'
-cmd-shift-6 = 'move-node-to-workspace 6'
-cmd-shift-7 = 'move-node-to-workspace 7'
-cmd-shift-8 = 'move-node-to-workspace 8'
-cmd-shift-9 = 'move-node-to-workspace 9'
+cmd-shift-backtick = ['move-node-to-workspace 0', 'workspace 0']
+cmd-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+cmd-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+cmd-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+cmd-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+cmd-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+cmd-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+cmd-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+cmd-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
 cmd-shift-c = 'reload-config'
-
 cmd-r = 'mode resize'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
