@@ -21,7 +21,7 @@ start-at-login = true
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
 # Give normalizations a chance and enable them back.
-enable-normalization-flatten-containers = false
+enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -121,13 +121,16 @@ cmd-shift-right = 'move right'
 # cmd-shift-equal = 'resize smart +50'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-cmd-shift-h = 'split horizontal'
-cmd-shift-v = 'split vertical'
+# https://nikitabobko.github.io/AeroSpace/commands#join-with
+cmd-shift-h = 'join-with up'
+cmd-shift-v = 'join-with left'
+cmd-shift-e = '''exec-and-forget if [ $(expr $(aerospace list-windows --workspace focused | wc -l) % 2) -eq 0 ]; then
+  aerospace join-with up;
+else
+  aerospace join-with left;
+fi
+'''
 cmd-shift-f = 'fullscreen'
-
-# cmd-s = 'layout v_accordion' # 'layout stacking' in i3
-# cmd-w = 'layout h_accordion' # 'layout tabbed' in i3
-cmd-shift-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
