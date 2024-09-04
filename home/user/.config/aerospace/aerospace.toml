@@ -155,8 +155,8 @@ cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-ctrl-alt-shift-left = 'move-node-to-workspace prev'
-ctrl-alt-shift-right = 'move-node-to-workspace next'
+ctrl-alt-shift-left = ['move-node-to-workspace prev', 'workspace prev']
+ctrl-alt-shift-right = ['move-node-to-workspace next', 'workspace next']
 
 cmd-shift-backtick = 'move-node-to-workspace 0'
 cmd-shift-1 = 'move-node-to-workspace 1'
