@@ -17,8 +17,12 @@ after-startup-command = []
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+# i3 doesn't have "normalizations" feature that why we disable them here.
+# But the feature is very helpful.
+# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
+# Give normalizations a chance and enable them back.
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
@@ -43,6 +47,7 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -83,6 +88,9 @@ outer.right =      0
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
+cmd-h = [] # Disable "hide application"
+cmd-alt-h = [] # Disable "hide others"
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
 # alt-enter = '''exec-and-forget osascript -e '
@@ -113,16 +121,13 @@ cmd-shift-right = 'move right'
 # cmd-shift-equal = 'resize smart +50'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-# cmd-h = 'split horizontal'
-# cmd-v = 'split vertical'
-cmd-h = 'join-with horizontal'
-cmd-v = 'join-with vertical'
+cmd-shift-h = 'split horizontal'
+cmd-shift-v = 'split vertical'
+cmd-shift-f = 'fullscreen'
 
-cmd-f = 'fullscreen'
-
-cmd-s = 'layout v_accordion' # 'layout stacking' in i3
-cmd-w = 'layout h_accordion' # 'layout tabbed' in i3
-cmd-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+# cmd-s = 'layout v_accordion' # 'layout stacking' in i3
+# cmd-w = 'layout h_accordion' # 'layout tabbed' in i3
+cmd-shift-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
@@ -135,6 +140,9 @@ cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 # alt-a = 'focus parent'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+ctrl-alt-left = 'workspace prev'
+ctrl-alt-right = 'workspace next'
+
 cmd-backtick = 'workspace 0'
 cmd-1 = 'workspace 1'
 cmd-2 = 'workspace 2'
@@ -147,6 +155,9 @@ cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+ctrl-alt-shift-left = 'move-node-to-workspace prev'
+ctrl-alt-shift-right = 'move-node-to-workspace next'
+
 cmd-shift-backtick = 'move-node-to-workspace 0'
 cmd-shift-1 = 'move-node-to-workspace 1'
 cmd-shift-2 = 'move-node-to-workspace 2'
@@ -171,10 +182,10 @@ cmd-r = 'mode resize'
 cmd-shift-semicolon = 'mode service'
 
 [mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
+left = 'resize width -50'
+up = 'resize height +50'
+down = 'resize height -50'
+right = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
 cmd-r = 'mode main'
@@ -189,8 +200,3 @@ backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
-
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
