@@ -176,7 +176,7 @@ cmd-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
 cmd-shift-c = 'reload-config'
-cmd-r = 'mode resize'
+cmd-shift-r = 'mode resize'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 # alt-tab = 'workspace-back-and-forth'
