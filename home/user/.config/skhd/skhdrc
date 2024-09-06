@@ -86,8 +86,8 @@ cmd - d : skhd -k "cmd - space"
 
 # disable some annoying macos shortcuts
 # cmd - h : true
-cmd - q : true
-shift + cmd - q : true
+# cmd - q : true
+# shift + cmd - q : true
 cmd - tab : true
 
 # load extra configs
