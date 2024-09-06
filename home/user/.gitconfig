@@ -33,7 +33,8 @@
 [init]
   defaultBranch = main
 [include]
-  path = ./.gitconfiguser
-  # User config
-  # git config -f ~/.gitconfiguser user.email "you@example.com"
-  # git config -f ~/.gitconfiguser user.name "Your Name"
+  path = .config/os-config/.gitconfig
+[include]
+  # git config -f ~/.config/.gitconfiguser user.email "you@example.com"
+  # git config -f ~/.config/.gitconfiguser user.name "Your Name"
+  path = .config/.gitconfiguser
