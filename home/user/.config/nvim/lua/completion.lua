@@ -61,9 +61,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local servers = { 'bashls', 'lua_ls', 'vimls' }
 
--- use bundle for ruby servers, when available
-require('lspconfig-bundler').setup()
-
 local function config_server(server_name, extra_config)
   local config = {
     capabilities = capabilities,

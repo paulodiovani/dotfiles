@@ -127,6 +127,3 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/hover"]
 	path = home/user/.config/nvim/pack/plugins/start/hover
 	url = https://github.com/lewis6991/hover.nvim.git
-[submodule "home/user/.config/nvim/pack/plugins/start/lspconfig-bundler"]
-	path = home/user/.config/nvim/pack/plugins/start/lspconfig-bundler
-	url = https://github.com/mihyaeru21/nvim-lspconfig-bundler.git
