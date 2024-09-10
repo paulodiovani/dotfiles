@@ -1,5 +1,5 @@
 " let mapleader = "\\"
-nmap <Space> \
+map <Space> \
 
 """"""""""""""""""""
 " SETTINGS SECTION "
