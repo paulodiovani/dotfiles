@@ -245,7 +245,7 @@ map <Leader>& :set wrap!<CR>                        " <Leader><S-7> toggle word 
 nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
 
 " open terminal
-map <Leader>` :terminal<CR>
+map <Leader>` :Terminal<CR>
 
 " go to next/prev marks, folds
 nnoremap ]m ]`
@@ -256,8 +256,9 @@ nnoremap ]z zj
 " close preview window
 map <Leader>z <C-w>z
 
-" navigate in windows
+" navigate to previous window
 noremap <Leader>w <C-w>p
+" close other windows
 noremap <Leader>o <C-w>o
 " navigate in tabs
 noremap <Leader><PageUp> :tabprev<CR>
@@ -285,7 +286,7 @@ imap <S-Tab> <C-o><<
 map <expr><C-n> ':New ' . expand('%:h') . '/'
 " search and replace
 nmap <C-f> yiw:%s/<C-r>"//g<Left><Left>
-vmap <C-f> :%s///g<Left><Left><Left>
+vmap <C-f> :s///g<Left><Left><Left>
 
 " git (fugitive) maps
 map <Leader>gd :Gdiffsplit<CR>
