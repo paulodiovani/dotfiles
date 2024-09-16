@@ -14,9 +14,9 @@
   history-checkout = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
   hc = history-checkout
   history-pr = history origin/master..
-  branch-switch = !git branch | fzf --ansi | xargs git co
+  branch-switch = !git branch | fzf --ansi --delimiter=".\\ " --preview='git logpretty {2}' | xargs git co
   bs = branch-switch
-  branch-delete = !git branch | fzf --ansi -m | xargs git branch -d
+  branch-delete = !git branch | fzf --ansi -m --delimiter=".\\ " --preview='git logpretty {2}' | xargs git branch -d
   bd = branch-delete
   branch-delete-merged = !git branch --no-color | grep -v master | xargs git branch -d
   bdm = branch-delete-merged
