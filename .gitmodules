@@ -127,3 +127,6 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/hover"]
 	path = home/user/.config/nvim/pack/plugins/start/hover
 	url = https://github.com/lewis6991/hover.nvim.git
+[submodule "home/user/.config/nvim/pack/debugger/start/dap"]
+	path = home/user/.config/nvim/pack/debugger/start/dap
+	url = https://github.com/mfussenegger/nvim-dap.git
