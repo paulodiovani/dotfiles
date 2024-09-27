@@ -10,8 +10,8 @@
   diffvim = -c core.pager=vimless diff --no-color
   logvim = -c core.pager=vimless log --no-color
   showvim = -c core.pager=vimless show --no-color
-  history = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
-  history-checkout = "!f() { git logpretty $@ | fzf --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
+  history = "!f() { git logpretty $@ | fzf --no-sort --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
+  history-checkout = "!f() { git logpretty $@ | fzf --no-sort --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
   hc = history-checkout
   history-pr = history origin/master..
   branch-switch = !git branch | fzf --ansi --delimiter=".\\ " --preview='git logpretty {2}' | xargs git co
