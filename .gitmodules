@@ -42,7 +42,8 @@
 	url = https://github.com/mattn/emmet-vim.git
 [submodule "home/user/.config/nvim/pack/plugins/start/lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
+	url = https://github.com/paulodiovani/nvim-lspconfig.git
+	branch = bugfix/find-closest-kotlin-root
 [submodule "home/user/.config/nvim/pack/plugins/start/web-devicons"]
 	path = home/user/.config/nvim/pack/plugins/start/web-devicons
 	url = https://github.com/kyazdani42/nvim-web-devicons.git
