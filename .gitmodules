@@ -40,7 +40,7 @@
 [submodule "home/user/.vim/pack/plugins/start/emmet"]
 	path = home/user/.vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule "home/user/.vim/pack/plugins/start/lspconfig"]
+[submodule "home/user/.config/nvim/pack/plugins/start/lspconfig"]
 	path = home/user/.config/nvim/pack/plugins/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "home/user/.config/nvim/pack/plugins/start/web-devicons"]
