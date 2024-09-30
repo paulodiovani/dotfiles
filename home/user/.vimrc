@@ -273,6 +273,9 @@ noremap <Leader><Left> :bprev<CR>
 noremap <Leader><Right> :bnext<CR>
 noremap <Leader>, :bprev<CR>
 noremap <Leader>. :bnext<CR>
+" navigate to older/newer cursor position
+nnoremap <A-Left> <C-O>
+nnoremap <A-Right> <C-I>
 
 " delete buffer without closing the window
 noremap <Leader>x :Bdelete<CR>
