@@ -30,7 +30,7 @@ dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
 	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
 
 symlinks: ## Create os-specific symlinks
-	(cd ~/.config; ln -sfh "$(OS)-config" os-config)
+	(cd ~/.config; rm -f os-config; ln -sfv "$(OS)-config" os-config)
 
 submodules: ## Init and fetch git submodules
 	git submodule update --init --depth=1 --jobs=$(CPUS)
