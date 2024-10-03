@@ -91,8 +91,9 @@ local function config_server(server_name, extra_config)
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
 
-      -- override LspInfo command
+      -- override lsp commands
       vim.api.nvim_create_user_command('LspInfo', 'Checkhealth lspconfig', { force = true })
+      vim.api.nvim_create_user_command('LspLog', function() vim.cmd(string.format('above split view %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path())) end, { force = true })
     end
   }
 

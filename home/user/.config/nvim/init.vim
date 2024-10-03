@@ -53,7 +53,7 @@ tnoremap <Esc> <C-\><C-n>
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
 
-" Open terminal in split window below
+" open terminal in split window below
 command! -nargs=* Terminal :bel split | terminal <args>
 
 " file drawer (using nvim-tree)
@@ -62,9 +62,10 @@ command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind lua drawer_find()
 
 " open checkhealth in an unlisted window above
-command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | setlocal bufhidden=wipe nomodifiable nobuflisted noswapfile nocursorline nocursorcolumn nonumber norelativenumber noruler nolist noshowmode noshowcmd | file <args>\ health
-" override LspInfo command (also in completion.lua)
+command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | file <args>\ health | setlocal bufhidden=wipe nomodifiable nobuflisted
+" override lsp commands to not open in tab (also in completion.lua)
 command! LspInfo Checkhealth lspconfig
+command! LspLog lua vim.cmd(string.format('above split view %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
 
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
