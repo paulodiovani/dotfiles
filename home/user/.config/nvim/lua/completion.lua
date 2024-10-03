@@ -117,6 +117,46 @@ require('mason-lspconfig').setup({
     -- default handler (optional)
     config_server,
 
+    -- temporary fix language server root_path when using multi build projects
+    -- until this is merged: https://github.com/neovim/nvim-lspconfig/pull/3321
+    -- or the issue (https://github.com/fwcd/kotlin-language-server/issues/559) is fixed another way
+    ['kotlin_language_server'] = function()
+      local lsp_util = require('lspconfig.util')
+
+      local root_files = {
+        'build.gradle', -- Gradle
+        'build.gradle.kts', -- Gradle
+        'settings.gradle', -- Gradle (multi-project)
+        'settings.gradle.kts', -- Gradle (multi-project)
+        'pom.xml', -- Maven
+        'build.xml', -- Ant
+      }
+
+      local function root_pattern(...)
+        local patterns = lsp_util.tbl_flatten { ... }
+        return function(startpath)
+          startpath = lsp_util.strip_archive_subpath(startpath)
+          local match = lsp_util.search_ancestors(startpath, function(path)
+            for _, pattern in ipairs(patterns) do
+              for _, p in ipairs(vim.fn.glob(lsp_util.path.join(lsp_util.path.escape_wildcards(path), pattern), true, true)) do
+                if lsp_util.path.exists(p) then
+                  return path
+                end
+              end
+            end
+          end)
+
+          if match ~= nil then
+            return match
+          end
+        end
+      end
+
+      config_server('kotlin_language_server', {
+        root_dir = root_pattern(unpack(root_files)),
+      })
+    end,
+
     -- fix java-language-server bad argument error
     -- https://github.com/georgewfraser/java-language-server/issues/267
     ['java_language_server'] = function()
