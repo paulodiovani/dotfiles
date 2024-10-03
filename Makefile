@@ -27,7 +27,7 @@ install_archlinux: ## Install packages in Arch Linux
 	&& echo "Note that other distros are not supported and some configs may not work, use at your own risk."
 
 dotfiles: ## Copy config files (a.k.a. dot files) to $HOME
-	rsync -amv --cvs-exclude $(FROMHOME)/ $(HOME)
+	rsync -amv --cvs-exclude --exclude=.git $(FROMHOME)/ $(HOME)
 
 symlinks: ## Create os-specific symlinks
 	(cd ~/.config; rm -f os-config; ln -sfv "$(OS)-config" os-config)
