@@ -90,6 +90,9 @@ local function config_server(server_name, extra_config)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+
+      -- override LspInfo command
+      vim.api.nvim_create_user_command('LspInfo', 'Checkhealth lspconfig', { force = true })
     end
   }
 
