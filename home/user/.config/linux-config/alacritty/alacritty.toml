@@ -1,7 +1,8 @@
 [font]
-size = 11.0
+size = 10.0
 
 [font.normal]
+# See home/user/.config/fontconfig/fonts.conf
 family = "monospace"
 
 [[hints.enabled]]
