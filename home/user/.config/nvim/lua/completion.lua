@@ -93,7 +93,7 @@ local function config_server(server_name, extra_config)
 
       -- override lsp commands
       vim.api.nvim_create_user_command('LspInfo', 'Checkhealth lspconfig', { force = true })
-      vim.api.nvim_create_user_command('LspLog', function() vim.cmd(string.format('above split view %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path())) end, { force = true })
+      vim.api.nvim_create_user_command('LspLog', function() vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path())) end, { force = true })
     end
   }
 

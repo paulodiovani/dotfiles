@@ -65,7 +65,7 @@ command! DrawerFind lua drawer_find()
 command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | file <args>\ health | setlocal bufhidden=wipe nomodifiable nobuflisted
 " override lsp commands to not open in tab (also in completion.lua)
 command! LspInfo Checkhealth lspconfig
-command! LspLog lua vim.cmd(string.format('above split view %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
+command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
 
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
