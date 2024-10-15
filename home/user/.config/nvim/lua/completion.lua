@@ -71,6 +71,9 @@ local function config_server(server_name, extra_config)
     },
 
     on_attach = function(_, bufnr)
+      -- Setup LSP Saga
+      require('lspsaga').setup({})
+
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
@@ -84,7 +87,8 @@ local function config_server(server_name, extra_config)
 
       registerHoverLSP(server_name)
       -- vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F9>', hover.hover)
+      -- vim.keymap.set({ 'n', 'i' }, '<F9>', hover.hover)
+      vim.keymap.set({'n', 'i'}, '<F9>', '<cmd>Lspsaga hover_doc<CR>')
 
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
