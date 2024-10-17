@@ -49,10 +49,26 @@ nvim_tree.setup({
       -- },
     },
   },
+  diagnostics = {
+    enable = false,
+  },
+  filesystem_watchers = {
+    ignore_dirs = {
+      "build",
+      "dist",
+      "node_modules",
+      "target",
+      "vendor",
+    },
+  },
   filters = {
     custom = {
       '^\\.git$'
-    }
+    },
+    dotfiles = true,
+  },
+  git = {
+    enable = false,
   },
   view = {
     width = '20%',
@@ -65,6 +81,11 @@ nvim_tree.setup({
       },
     },
   },
+  -- custom mappings
+  on_attach = function(bufnr)
+    nvim_tree_api.config.mappings.default_on_attach(bufnr)
+    vim.keymap.set("n", "?", nvim_tree_api.tree.toggle_help, { buffer = bufnr, noremap = true, silent = true, nowait = true })
+  end,
 })
 
 -- Linters and other stuff (null-ls)
