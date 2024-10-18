@@ -47,7 +47,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf direnv man tmux gcloud)
+plugins=(asdf direnv gcloud man rust tmux)
 
 # Autostart tmux
 ZSH_TMUX_AUTOSTART="true"
