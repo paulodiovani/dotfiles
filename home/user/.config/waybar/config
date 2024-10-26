@@ -6,11 +6,14 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/window"
+  ],
   "modules-center": [
     "clock#calendar",
     "clock",
-    "clock#2",
     "custom/notifications"
   ],
   "modules-right": [
@@ -25,6 +28,8 @@
     "custom/poweroff"
   ],
   // Modules configuration
+
+  // Left modules
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false
@@ -40,19 +45,41 @@
       "(.*)": "$1"
     }
   },
+
+  // Center modules
   "clock#calendar": {
-    // "timezone": "America/Sao_Paulo",
-    "format": "{: %B %d}",
+    "timezone": "America/Sao_Paulo",
+    "format": " {:%B %d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 4,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      },
+      "actions":  {
+        "on-click": "shift_reset",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    }
     // show notifications on click
-    "on-click": "yad --calendar --title=Calendar --width=340 --text=Calendar --date-format=%Y-%m-%d --no-buttons --on-top --close-on-unfocus | tr -d '\n' | wl-copy"
+    // "on-click": "yad --calendar --title=Calendar --width=340 --text=Calendar --date-format=%Y-%m-%d --no-buttons --on-top --close-on-unfocus | tr -d '\n' | wl-copy"
   },
   "clock": {
-    "timezone": "America/Sao_Paulo",
-    "format": "{: %H:%M} BRT"
-  },
-  "clock#2": {
-    "timezone": "America/Los_Angeles",
-    "format": "{: %I:%M%p %Z}"
+    "format": " {:%H:%M %Z}",
+    "tooltip-format": "{tz_list}",
+    "timezones": [
+      "America/Sao_Paulo",
+      "America/Los_Angeles",
+      "America/Toronto",
+      "Etc/UTC"
+    ]
   },
   "custom/notifications": {
     "format": "{icon}",
@@ -70,6 +97,8 @@
     "escape": true,
     "tooltip": false
   },
+
+  // Right modules
   "tray": {
     // "icon-size": 21,
     "spacing": 10
@@ -107,7 +136,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "swaymsg [app_id=pavucontrol] kill || pavucontrol --tab 5"
   },
@@ -143,7 +176,13 @@
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "custom/poweroff": {
     "format": "",

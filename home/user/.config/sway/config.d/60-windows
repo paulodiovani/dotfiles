@@ -28,12 +28,12 @@ for_window [app_id="zoom"] inhibit_idle visible
 #
 
 # Center calendar
-for_window [title="^Calendar$"] {
-  floating enable
-  resize set width 100ppt
-  move position 0 0
-  resize set width 340px
-}
+# for_window [title="^Calendar$"] {
+#   floating enable
+#   resize set width 100ppt
+#   move position 0 0
+#   resize set width 340px
+# }
 
 # Move pavucontrol to top left
 for_window [app_id="pavucontrol"] {
