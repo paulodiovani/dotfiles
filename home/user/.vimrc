@@ -193,16 +193,6 @@ let g:interestingWordsRandomiseColors = 1
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
-" vim-test config
-function! TerminalStrategy(cmd)
-  exec 'Terminal ' . a:cmd
-endfunction
-let test#custom_strategies = {'terminal': function('TerminalStrategy')}
-let test#strategy = "terminal"
-let test#ruby#minitest#options = '--verbose'
-let test#ruby#rspec#options = '--format doc'
-let test#python#pytest#options = '--verbosity=1'
-
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -223,8 +213,6 @@ nmap <silent><Leader><F1> :
 map <expr><F2> ':Move ' . expand('%')               " rename/move
 map <F3> :%s/\r//g<CR>                              " remove <CR>/^M from line endings
 map <F4> ggVGg?                                     " shuffle text content (to hide sentitive data)
-map <F5> :TestFile<CR>                              " run tests for current file
-map <leader><F5> :TestNearest<CR>                   " run tests nearest to cursor
 map <F6> :throw 'No run command defined.'<CR>       " run command
 map <F9> :ptjump<CR>                                " open definition (using ctags) in preview window
 map <leader><F9> <C-o>:ptjump<CR>
@@ -440,6 +428,9 @@ augroup END
 
 " disable unsafe commands in project-specific .vimrc files
 set secure
+
+" other config files
+source ~/.config/vim/vim-test.vim
 
 " os-specific settings
 source ~/.config/os-config/.vimrc
