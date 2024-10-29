@@ -1,4 +1,5 @@
-" syntax and color scheme
+" configure vim syntax and colorscheme
+
 " if &t_Co == 256 "for vim only
 if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
   set termguicolors       " enable true color support
