@@ -55,48 +55,6 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 if isdirectory(".git") | let g:netrw_list_hide = netrw_gitignore#Hide() | endif
 
-" syntax and color scheme
-" if &t_Co == 256 "for vim only
-if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
-  set termguicolors       " enable true color support
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " tmux true color support
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " tmux true color support
-endif
-
-syntax on
-set background=dark     " background color (light|dark)
-let g:one_allow_italics = 1
-
-" set base16 theme
-if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
-  let base16colorspace=256
-  source $HOME/.config/tinted-theming/set_theme.vim
-endif
-
-" hide vertical split separator
-" highlight VertSplit ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
-highlight WinSeparator ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
-" hide floating windows borders
-highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-" highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE
-" hide NonText character
-highlight NonText guifg=bg ctermfg=bg
-" make line numbers bg transparent
-highlight LineNr guibg=none
-" set non-current window a different bg
-highlight NormalNC guibg=#24282f
-highlight NvimTreeNormalNC guibg=#24282f
-" set color of float borders
-highlight link FloatBorder LineNr
-" fix issue with diagnostics windows (or the theme)
-highlight! link NormalFloat Float
-" remove text background in diagnostics windows
-highlight ErrorFloat guibg=NONE
-highlight WarningFloat guibg=NONE
-highlight InfoFloat guibg=NONE
-highlight HintFloat guibg=NONE
-highlight OkFloat guibg=NONE
-
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
 	execute "set <xUp>=\e[1;*A"
@@ -193,15 +151,6 @@ let g:interestingWordsRandomiseColors = 1
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='iv'  " enable only in insert and visual modes
 
-" vim-test config
-function! TerminalStrategy(cmd)
-  exec 'Terminal ' . a:cmd
-endfunction
-let test#custom_strategies = {'terminal': function('TerminalStrategy')}
-let test#strategy = "terminal"
-let test#ruby#minitest#options = '--verbose'
-let test#python#pytest#options = '--verbosity=1'
-
 """"""""""""""""""""
 " MAPPINGS SECTION "
 """"""""""""""""""""
@@ -240,9 +189,6 @@ map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide li
 map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
 map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
 map <Leader>& :set wrap!<CR>                        " <Leader><S-7> toggle word wrapping
-
-" writeroom mode
-nmap <silent><Leader><BS> :call WriteRoomToggle()<CR>
 
 " open terminal
 map <Leader>` :Terminal<CR>
@@ -348,67 +294,6 @@ command! HexdumpReverse %!xxd -r
 " FUNCTIONS SECTION "
 """""""""""""""""""""
 
-" use a smaller viewport
-function! WriteRoomToggle()
-  let l:params = 'buftype=nofile\ bufhidden=wipe\ nomodifiable\ nobuflisted\ noswapfile\ nocursorline\ nocursorcolumn\ nonumber\ norelativenumber\ noruler\ nolist\ noshowmode\ noshowcmd'
-  let l:name = '_writeroom_'
-  if bufwinnr(l:name) > 0
-    only
-  else
-    let l:min_columns = 130
-    let l:width = (&columns - 130) / 2
-    if l:width < 0
-      return
-    end
-    execute 'vert topleft' l:width . 'sview +setlocal\' l:params l:name | wincmd p
-    execute 'vert botright' l:width . 'sview +setlocal\' l:params l:name | wincmd p
-    endif
-endfunction
-
-" keep previously yanked texts in 1-9 registers
-" https://vi.stackexchange.com/a/26883/26095
-function! SaveLastReg()
-  if v:event['regname']==""
-    if v:event['operator']=='y'
-      for i in range(8,1,-1)
-        execute "let @".string(i+1)." = @". string(i)
-      endfor
-      if exists("g:last_yank")
-        let @1=g:last_yank
-      endif
-      let g:last_yank=@"
-    endif
-  endif
-endfunction
-
-" auto save/load sessions, unless already opened
-function! IsCurrentSess()
-  let l:lines = readfile(getcwd() . '/Session.lock')
-  return get(l:lines, 0) == getpid()
-endfunction
-
-function! SaveSess()
-  " write session only if exists
-  if filewritable(getcwd() . '/Session.vim') && IsCurrentSess()
-    execute 'mksession!' getcwd() . '/Session.vim'
-    " remove lock file
-    call delete(getcwd() . '/Session.lock')
-  endif
-endfunction
-
-function! RestoreSess()
-  " restore session exists and not yet opened (no Session.lock)
-  if filereadable(getcwd() . '/Session.vim') && !filewritable(getcwd() . '/Session.lock')
-    " create a (pseudo) lockfile with the current session pid
-    call writefile([getpid()], getcwd() . '/Session.lock', 's')
-    " source session file
-    execute 'so' getcwd() . '/Session.vim'
-    " open buffers in new tabs
-    " execute 'tab sball'
-  endif
-endfunction
-
-
 """""""""""""""""""
 " AUTOCMD SECTION "
 """""""""""""""""""
@@ -425,20 +310,15 @@ augroup FileTypes
   autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
 augroup END
 
-augroup YankStore
-  autocmd TextYankPost * call SaveLastReg()
-augroup END
-
-augroup SessMngr
-  let IsStdIn = 0
-  autocmd!
-  autocmd StdinReadPost * let IsStdIn = 1
-  autocmd VimLeave * call SaveSess()
-  autocmd VimEnter * nested if !argc() && !IsStdIn | call RestoreSess() | endif
-augroup END
-
 " disable unsafe commands in project-specific .vimrc files
 set secure
+
+" other config files
+source ~/.config/vim/session_manager.vim
+source ~/.config/vim/syntax.vim
+source ~/.config/vim/vim-test.vim
+source ~/.config/vim/writeroom.vim
+source ~/.config/vim/yank_history.vim
 
 " os-specific settings
 source ~/.config/os-config/.vimrc
