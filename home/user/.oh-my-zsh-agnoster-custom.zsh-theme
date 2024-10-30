@@ -206,20 +206,27 @@ shell_emoji() {
   echo ${icon_list[$RANDOM % ${#icon_list[@]} + 1]}
 }
 
-# Status:
-# - was there an error
-# - am I root
-# - are there background jobs?
+# Status
+# for details check
+#   man zshmisc
 prompt_status() {
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && [[ $RETVAL -ne 130 ]] && [[ $RETVAL -ne 148 ]] && symbols+="%{%F{red}%} ✘"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙ "
+  # show emoji
+  symbol="%(5l..$(shell_emoji))"
 
-  [[ ${#symbols[@]} -eq 0 ]] && symbols+=$(shell_emoji)
-  # [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
-  [[ -n "$symbols" ]] && prompt_segment "" "" "$symbols"
+  # show a yellow ⚠︎ if privileged
+  symbol="%(!.%F{yellow}⚠︎.${symbol})"
+
+  # show a cog if there are any background jobs
+  symbol="%(1j.%F{cyan}⚙.${symbol})"
+
+  # show ✘ if last return value is not
+  #   0 success
+  # 130 ctrl-c
+  # 146 ctrl-z (macos)
+  # 148 ctrl-z (linux)
+  symbol="%(0?.${symbol}.%(130?.${symbol}.%(146?.${symbol}.%(148?.${symbol}.%F{red}✘ ))))"
+
+  prompt_segment "" "" "$symbol"
 }
 
 ## Main prompt
