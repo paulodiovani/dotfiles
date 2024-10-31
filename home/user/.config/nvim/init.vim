@@ -40,6 +40,9 @@ map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 " inoremap <C-Space> <C-x><C-o>
 " inoremap <C-@> <C-x><C-o>
 
+" Show code actions
+map <Leader>ca :CodeAction<CR>
+
 " Open Copilot Panel
 map <Leader>cp :Copilot panel<CR>>""
 " Open Copilot Chat below
@@ -52,6 +55,9 @@ tnoremap <Esc> <C-\><C-n>
 """""""""""""""""""""""""""
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
+
+" show code actions
+command! -range CodeAction lua vim.lsp.buf.code_action()
 
 " open terminal in split window below
 command! -nargs=* Terminal :bel split | terminal <args>
