@@ -95,7 +95,6 @@ null_ls.setup({
     -- diagnostics
     null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.diagnostics.erb_lint,
-    null_ls.builtins.diagnostics.ltrs,
     null_ls.builtins.diagnostics.stylelint,
     null_ls.builtins.diagnostics.yamllint,
     -- formatting
@@ -103,8 +102,6 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier.with({ filetypes = { 'json', 'jsonc' }, extra_args = { '--parser=json' } }),
     null_ls.builtins.formatting.erb_format,
     null_ls.builtins.formatting.stylelint,
-    -- code actions
-    null_ls.builtins.code_actions.ltrs,
   },
 })
 
