@@ -13,8 +13,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 [ -d "/opt/homebrew/opt/libpq/bin" ] && export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # llvm and clang
-if [ -d "/opt/homebrew/opt/llvm" ]; then
-  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-fi
+# if [ -d "/opt/homebrew/opt/llvm" ]; then
+#   export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+#   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+#   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+# fi
