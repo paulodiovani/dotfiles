@@ -1,6 +1,10 @@
 [font]
 size = 14.0
 
+# deprecated, use this instead:
+# defaults -currentHost write -g AppleFontSmoothing -int 0
+# use_thin_strokes = true
+
 [font.normal]
 family = "SauceCodePro Nerd Font Mono"
 
