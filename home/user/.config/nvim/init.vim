@@ -46,7 +46,7 @@ map <Leader>ca :CodeAction<CR>
 " Open Copilot Panel
 map <Leader>cp :Copilot panel<CR>>""
 " Open Copilot Chat below
-command! -nargs=* CopilotChatBelow :bel split | CopilotChat <args>
+command! -range CopilotChatBelow :bel split | CopilotChatOpen
 map <Leader>cc :CopilotChatBelow<CR>
 
 " use <Escape> to go back to normal mode in terminal

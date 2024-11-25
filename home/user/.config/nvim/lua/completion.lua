@@ -259,6 +259,7 @@ require('CopilotChat').setup({
     layout = 'replace',
   }
 })
+require("CopilotChat.integrations.cmp").setup()
 
 -- Set up luasnip
 local luasnip = require('luasnip')
