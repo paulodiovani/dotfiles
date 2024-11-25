@@ -232,35 +232,6 @@ require('mason-lspconfig').setup({
   },
 })
 
--- GitHub Copilot config
-require('copilot').setup({
-  -- Set enable = true until this bug is fixed:
-  -- https://github.com/zbirenbaum/copilot-cmp/issues/10
-  suggestion = {
-    enabled = true,
-    auto_trigger = false,
-    debounce = 75,
-    keymap = {
-      accept = "<M-l>",
-      accept_word = false,
-      accept_line = false,
-      next = "<M-]>",
-      prev = "<M-[>",
-      dismiss = "<C-]>",
-    },
-  },
-  panel = { enabled = false },
-})
-
-require('copilot_cmp').setup()
-
-require('CopilotChat').setup({
-  window = {
-    layout = 'replace',
-  }
-})
-require("CopilotChat.integrations.cmp").setup()
-
 -- Set up luasnip
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()

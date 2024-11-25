@@ -157,4 +157,4 @@ end
 -- INCLUDED CONFIGS --
 ----------------------
 require 'completion'
-
+require 'copilot-config'
