@@ -1,60 +1,6 @@
 -- luacheck: globals vim
--- setup hover
-local hover = require('hover')
-hover.setup({
-  init = function()
-    -- require('hover.providers.lsp')
-    require('hover.providers.diagnostic')
-  end,
-  preview_opts = {
-    border = 'rounded',
-  },
-  preview_window = false,
-  title = true,
-})
-
 local util = vim.lsp.util
 local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
-local registered_providers = {}
-
--- Hover provider for LSP servers with custom names
--- Based on https://github.com/SichangHe/.config/blob/23803ef973f097fc44dce5fa1500efbad2a3f2e9/nvim/lua/hovering.lua
--- @param server_name
-local registerHoverLSP = function(server_name)
-  if registered_providers[server_name] then
-    return
-  end
-
-  registered_providers[server_name] = {
-    name = string.format('LSP[%s]', server_name),
-    priority = 1002,   -- above diagnostics
-
-    enabled = function(bufnr)
-      return #get_clients({ bufnr = bufnr, name = server_name, method = 'textDocument/hover' }) > 0
-    end,
-
-    execute = function(opts, done)
-      local params = util.make_position_params()
-      local client = get_clients({ bufnr = opts.bufnr, name = server_name, method = 'textDocument/hover' })[1]
-
-      client.request('textDocument/hover', params, function(err, result)
-        if err then
-          print(err)
-        end
-
-        if result and result.contents then
-          local lines = util.convert_input_to_markdown_lines(result.contents)
-          if not vim.tbl_isempty(lines) then
-            done{lines=lines, filetype="markdown"}
-            return
-          end
-        end
-      end)
-    end,
-  }
-
-  hover.register(registered_providers[server_name])
-end
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -82,9 +28,7 @@ local function config_server(server_name, extra_config)
       vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
 
-      registerHoverLSP(server_name)
-      -- vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F9>', hover.hover)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
 
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
