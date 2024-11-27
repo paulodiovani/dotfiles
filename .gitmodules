@@ -124,9 +124,6 @@
 [submodule "home/user/.config/nvim/pack/plugins/start/none-ls"]
 	path = home/user/.config/nvim/pack/plugins/start/none-ls
 	url = https://github.com/nvimtools/none-ls.nvim.git
-[submodule "home/user/.config/nvim/pack/plugins/start/hover"]
-	path = home/user/.config/nvim/pack/plugins/start/hover
-	url = https://github.com/lewis6991/hover.nvim.git
 [submodule "home/user/.vim/pack/plugins/opt/linediff"]
 	path = home/user/.vim/pack/plugins/opt/linediff
 	url = https://github.com/AndrewRadev/linediff.vim.git
