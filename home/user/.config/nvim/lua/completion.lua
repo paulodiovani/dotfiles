@@ -162,12 +162,6 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    ['solargraph'] = function()
-      config_server('solargraph', {
-        cmd = {vim.fn.expand('$HOME/.asdf/shims/solargraph'), 'stdio'},
-      })
-    end,
-
     ['sorbet'] = function()
       config_server('sorbet', {
         autostart = false,
