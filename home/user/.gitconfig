@@ -13,7 +13,8 @@
   history = "!f() { git logpretty $@ | fzf --no-sort --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' --bind='enter:execute(gitshowcommit --vim {})'; }; f"
   history-checkout = "!f() { git logpretty $@ | fzf --no-sort --ansi --layout=reverse-list --preview='gitshowcommit --bat {}' | grep -o -w -E '[[:alnum:]]+' | head -1 | xargs git checkout; }; f"
   hc = history-checkout
-  history-pr = history origin/master..
+  # history-pr = history origin/main..[branch]
+  history-pr = !git history "$(git remote show origin | grep 'HEAD branch' | awk '{print $3}').."
   branch-switch = !git branch | fzf --ansi --delimiter=".\\ " --preview='git logpretty {2}' | xargs git co
   bs = branch-switch
   branch-delete = !git branch | fzf --ansi -m --delimiter=".\\ " --preview='git logpretty {2}' | xargs git branch -d
