@@ -142,6 +142,14 @@ require('mason-lspconfig').setup({
       })
     end,
 
+    ['ruff_lsp'] = function()
+      config_server('ruff_lsp', {
+        on_attach = function(client)
+          client.server_capabilities.hoverProvider = false
+        end,
+      })
+    end,
+
     ['rust_analyzer'] = function()
       config_server('rust_analyzer', {
         settings = {
