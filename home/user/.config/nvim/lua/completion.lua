@@ -1,6 +1,4 @@
 -- luacheck: globals vim
-local util = vim.lsp.util
-local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -49,10 +47,6 @@ local function config_server(server_name, extra_config)
 
   lspconfig[server_name].setup(config)
 end
-
--- setup global installed servers
--- config_server('solargraph')
--- config_server('rust_analyzer')
 
 -- setup mason
 require('mason').setup()
@@ -389,7 +383,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "rounded",
--- })
