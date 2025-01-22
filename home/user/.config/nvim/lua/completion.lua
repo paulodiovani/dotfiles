@@ -1,5 +1,6 @@
 -- luacheck: globals vim
-local lsp_hover_all = require('lsp_hover_all')
+local util = vim.lsp.util
+local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -11,7 +12,7 @@ local function config_server(server_name, extra_config)
     capabilities = capabilities,
 
     handlers = {
-      ['textDocument/hover'] = vim.lsp.with(lsp_hover_all, { border = 'rounded' }),
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
       ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
     },
 
