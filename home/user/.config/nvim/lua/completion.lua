@@ -11,11 +11,6 @@ local function config_server(server_name, extra_config)
   local config = {
     capabilities = capabilities,
 
-    handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-    },
-
     on_attach = function(_, bufnr)
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -28,7 +23,14 @@ local function config_server(server_name, extra_config)
       vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
 
-      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+      -- default: K
+      vim.keymap.set({ 'n' }, 'K', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
+
+      local close_events = { "CursorMoved", "InsertEnter", "InsertLeave", "BufLeave", "BufWinLeave", "WinScrolled" }
+      vim.keymap.set({ 'i' }, '<C-k>', function()
+        vim.lsp.buf.signature_help({ border = 'rounded', close_events = close_events, focusable = false })
+      end, bufopts)
 
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
