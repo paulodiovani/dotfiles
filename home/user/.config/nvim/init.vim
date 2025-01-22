@@ -46,8 +46,8 @@ map <Leader>ca :CodeAction<CR>
 " Open Copilot Panel
 map <Leader>cp :Copilot panel<CR>>""
 " Open Copilot Chat below
-command! -range CopilotChatBelow :bel split | CopilotChatOpen
-map <Leader>cc :CopilotChatBelow<CR>
+command! -range CopilotChatRight :lua copilot_chat_right()
+map <Leader>cc :CopilotChatRight<CR>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>

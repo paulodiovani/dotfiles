@@ -23,7 +23,8 @@ require('copilot').setup({
 require('copilot_cmp').setup()
 
 -- Configure Copilot Chat
-require('CopilotChat').setup({
+local copilot_chat = require('CopilotChat')
+copilot_chat.setup({
   window = {
     layout = 'replace',
   }
@@ -31,3 +32,22 @@ require('CopilotChat').setup({
 
 -- Enable cmp completion for Copilot Chat window
 require("CopilotChat.integrations.cmp").setup()
+
+-- open copilot chat in the rightmost window
+function _G.copilot_chat_right()
+  if vim.fn.winnr('$') <= 2 then
+    local min_columns = 130
+    local width = (vim.o.columns - min_columns) / 2
+
+    if width < 55 then
+      width = 55
+    end
+
+    vim.api.nvim_command('vert rightbel ' .. width .. ' split')
+    copilot_chat.open()
+    return
+  end
+
+  vim.api.nvim_command('$ wincmd w')
+  copilot_chat.open()
+end
