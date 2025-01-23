@@ -11,7 +11,7 @@ alias less='less -S -x4'
 alias expand='expand -t4'
 
 # vim less (user nvim as less for syntax highlight)
-alias vimless='/usr/share/nvim/runtime/macros/less.sh'
+alias vimless='/usr/share/nvim/runtime/scripts/less.sh'
 
 # search files with preview
 alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
