@@ -275,7 +275,7 @@ vnoremap <Leader>: y:<Space><C-r>"<Home>
 " Open terminal below
 command! -nargs=* Terminal :bel terminal <args>
 
-command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | bprev | bdelete<bang># | else | bdelete<bang> | endif
+command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | b# | bdelete<bang># | else | bdelete<bang> | endif
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
