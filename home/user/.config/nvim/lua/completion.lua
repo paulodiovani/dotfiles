@@ -18,7 +18,8 @@ local function config_server(server_name, extra_config)
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
+      -- <F12> mapped to <C-]> (tagfunc) in .vimrc
+      -- vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts) -- opens quicklist if results > 1
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
 
       -- default: K
