@@ -1,4 +1,5 @@
 -- luacheck: globals vim
+require('lua-utils')
 
 ----------------------
 -- SETTINGS SECTION --
@@ -10,8 +11,16 @@ vim.diagnostic.config({
   float = {
     header = false,
     border = 'rounded',
+    source = true,
     format = function(diagnostic)
-      return string.format('%s\n\n%s: %s', diagnostic.message, diagnostic.source, diagnostic.code)
+      local source = diagnostic.source or 'lsp'
+      local href = safe_get(diagnostic, 'user_data', 'lsp', 'codeDescription', 'href')
+        or (
+          diagnostic.code
+            and string.format('https://google.com/search?q=%s+%s', diagnostic.source or '', diagnostic.code)
+          or ''
+        )
+      return string.format('%s\n[%s] %s', diagnostic.message, source, href)
     end,
   },
 })
