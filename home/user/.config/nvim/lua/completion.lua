@@ -175,7 +175,6 @@ require('mason-lspconfig').setup({
           'srb', 'tc',
           '--lsp',
           '--disable-watchman',
-          vim.fn.getcwd()
         },
       })
     end,
