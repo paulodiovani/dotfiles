@@ -186,8 +186,8 @@ cmd-shift-c = 'reload-config'
 # alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-cmd-shift-r = 'mode resize'
-cmd-shift-semicolon = 'mode service'
+alt-shift-r = 'mode resize'
+alt-shift-semicolon = 'mode service'
 
 [mode.resize.binding]
 left = 'resize width -50'
