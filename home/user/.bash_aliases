@@ -46,5 +46,13 @@ git() {
   fi
 }
 
+gradle() {
+  if [ -f ./gradlew ]; then
+    ./gradlew "$@"
+  else
+    command gradle "$@"
+  fi
+}
+
 # os-specific aliases
 [ -f "$HOME/.config/os-config/.bash_aliases" ] && . "$HOME/.config/os-config/.bash_aliases"
