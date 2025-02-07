@@ -45,9 +45,8 @@ map <Leader>ca :CodeAction<CR>
 
 " Open Copilot Panel
 map <Leader>cp :Copilot panel<CR>>""
-" Open Copilot Chat below
-command! -range CopilotChatBelow :bel split | CopilotChatOpen
-map <Leader>cc :CopilotChatBelow<CR>
+" Open Copilot Chat right
+map <Leader>cc :CopilotChatRight<CR>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -75,6 +74,21 @@ command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=w
 
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
+
+" open copilot chat on the rightmost window, or split
+command! -range CopilotChatRight :call CopilotChatRight()
+function! CopilotChatRight()
+  let l:width = winwidth(winnr('$'))
+
+  if winnr('$') > 1
+    $ wincmd c
+    exec 'botright vert ' .. width .. 'split'
+  else
+    botright vert split
+  endif
+
+  CopilotChatOpen
+endfunction
 
 """""""""""""""""""
 " AUTOCMD SECTION "
