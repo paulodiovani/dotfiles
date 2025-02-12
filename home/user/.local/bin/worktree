@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+#
+# This scripts creates or manages git worktrees based
+# on project directories and create symbolic links to
+# make it easier to reach them.
+
+# env vars
+BASE_BRANCH=main
+PROJECTS_ROOT=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir | xargs dirname)")
+WORKTREES_ROOT=${WORKTREES_ROOT:-"$PROJECTS_ROOT/.worktrees"}
+
+# local variables
+branch=""
+path=""
+sparse=0
+
+display_help() {
+  echo "Creates a git worktree and symlink based on path."
+  echo "  read https://git-scm.com/docs/git-worktree for details."
+  echo
+  echo "Usage: worktree [-v] [-s] [-b branch_name] path"
+  echo "       worktree [-v] -r path"
+  echo "       worktree [-v] -l"
+  echo
+  echo "  -h: Display this help"
+  echo "  -b: Set branch name, instead of default"
+  echo "  -l: List worktrees"
+  echo "  -r: Remove a worktree"
+  echo "  -s: Make a sparse checkout (read https://git-scm.com/docs/git-sparse-checkout)"
+  echo "  -v: Verbose output "
+}
+
+get_worktree_dir() {
+  path=$1
+  project_dir=$(basename "$(git rev-parse --show-toplevel)")
+  worktree_dir="$WORKTREES_ROOT/$project_dir-${path//\//-}"
+
+  echo "$worktree_dir"
+}
+
+list_worktrees() {
+  git worktree list
+}
+
+add_worktree() {
+  path=$1
+  worktree_dir=$(get_worktree_dir "$path")
+  worktree_name=$(basename "$worktree_dir")
+
+  echo "Adding worktree for $path to the following dir:"
+  echo "  $worktree_dir."
+  echo
+
+  command="git worktree add"
+  if [ -z "$branch" ]; then
+    branch="$worktree_name"
+  fi
+
+  command="$command -b $branch"
+  command="$command $worktree_dir $BASE_BRANCH"
+  
+  eval "$command"
+  (cd "$PROJECTS_ROOT" && ln -s "$worktree_dir/$path" "$worktree_name")
+
+  if [ "$sparse" -eq "1" ]; then
+    (cd "$worktree_dir" && git sparse-checkout set "$path")
+  fi
+
+  echo
+  echo "Worktree created! CD into its directory with:"
+  echo "  cd $PROJECTS_ROOT/$worktree_name"
+  echo
+  echo "You might need to run \`dev up\` for it."
+  echo
+  echo "Note that some scripts requires an entire path (not a symink) to work,"
+  echo "  you can dereference the path with \`cd -P .\`".
+}
+
+remove_worktree() {
+  path=$1
+  worktree_dir=$(get_worktree_dir "$path")
+  worktree_name=$(basename "$worktree_dir")
+
+  (cd "$PROJECTS_ROOT" && rm -f "$worktree_name")
+  git worktree remove "$worktree_dir" &&
+  echo "Worktree $worktree_dir removed!" &&
+  git branch -d "$worktree_name"
+}
+
+# Parse command line options.
+while getopts ":hb:lr:sv" opt; do
+  case ${opt} in
+    h )
+      display_help
+      exit 0
+      ;;
+    b )
+      branch=$OPTARG
+      ;;
+    l)
+      git worktree list
+      exit 0
+      ;;
+    r)
+      path=$OPTARG
+      remove_worktree "$path"
+      exit 0
+      ;;
+    s)
+      sparse=1
+      ;;
+    v)
+      set -x
+      ;;
+    \? )
+      display_help
+      exit 1
+      ;;
+  esac
+done
+
+# Shift off the options and optional --.
+shift $((OPTIND -1))
+
+# The remaining parameters are the positional parameters.
+path=$1
+
+if [ -z "$path" ]; then
+  echo "ERROR! Argument 'path' is required."
+  echo
+  display_help
+  exit 1
+fi
+
+## default action
+add_worktree "$path"
