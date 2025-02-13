@@ -105,7 +105,13 @@ prompt_git() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue $PRIMARY_FG ' %~ '
+  prompt_segment blue $PRIMARY_FG ' %F%c%f '
+}
+
+# Emoji for prompt line
+shell_emoji() {
+  icon_list=(👽 👾 🐙 🍄 🥑 🎃 🤔 🐧 💣 🎲)
+  echo ${icon_list[$RANDOM % ${#icon_list[@]} + 1]}
 }
 
 # Status:
@@ -113,18 +119,28 @@ prompt_dir() {
 # - am I root
 # - are there background jobs?
 prompt_status() {
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
+  local symbol
+  # show emoji
+  symbol="%(5l..$(shell_emoji))"
 
-  [[ -n "$symbols" ]] && prompt_segment $PRIMARY_FG default " $symbols "
+  # show a yellow ⚠︎ if privileged
+  symbol="%(!.%F{yellow}$LIGHTNING.${symbol})"
+
+  # show a cog if there are any background jobs
+  symbol="%(1j.%F{cyan}$GEAR.${symbol})"
+
+  # show a cross if last return value is not
+  #   0 success
+  # 130 ctrl-c
+  # 146 ctrl-z (macos)
+  # 148 ctrl-z (linux)
+  symbol="%(0?.${symbol}.%(130?.${symbol}.%(146?.${symbol}.%(148?.${symbol}.%F{red}$CROSS ))))"
+
+  prompt_segment $PRIMARY_FG default " $symbol "
 }
 
 ## Main prompt
 prompt_agnoster_main() {
-  RETVAL=$?
   CURRENT_BG='NONE'
   prompt_status
   prompt_context
