@@ -29,6 +29,9 @@
 
 CURRENT_BG='NONE'
 PRIMARY_FG=black
+PRIMARY_BG=cyan
+GIT_BG=blue
+ALERT_BG=yellow
 
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
@@ -74,41 +77,22 @@ prompt_context() {
   local user=`whoami`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
+    prompt_segment $PRIMARY_FG default " %(!.%{%F{$ALERT_BG}%}.)$user@%m "
   fi
 }
 
 # Git: branch/detached head, dirty status
 prompt_git() {
-  local color ref
-  is_dirty() {
-    test -n "$(git status --porcelain --ignore-submodules)"
-  }
-  ref="$vcs_info_msg_0_"
-  if [[ -n "$ref" ]]; then
-    if is_dirty; then
-      color=yellow
-      ref="${ref} $PLUSMINUS"
-    else
-      color=green
-      ref="${ref} "
-    fi
-    if [[ "${ref/.../}" == "$ref" ]]; then
-      ref="$BRANCH $ref"
-    else
-      ref="$DETACHED ${ref/.../}"
-    fi
-    prompt_segment $color $PRIMARY_FG
-    print -Pn " $ref"
-  fi
+  print -n "%k%F{$CURRENT_BG}\$(git_prompt_info)$SEGMENT_SEPARATOR"
+  CURRENT_BG=''
 }
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue $PRIMARY_FG ' %F%c%f '
+  prompt_segment $PRIMARY_BG $PRIMARY_FG ' %F%c%f '
 }
 
-# Emoji for prompt line
+# Emoji to help distinguish prompts
 shell_emoji() {
   icon_list=(👽 👾 🐙 🍄 🥑 🎃 🤔 🐧 💣 🎲)
   echo ${icon_list[$RANDOM % ${#icon_list[@]} + 1]}
@@ -123,11 +107,11 @@ prompt_status() {
   # show emoji
   symbol="%(5l..$(shell_emoji))"
 
-  # show a yellow ⚠︎ if privileged
-  symbol="%(!.%F{yellow}$LIGHTNING.${symbol})"
+  # show a $ALERT_BG ⚠︎ if privileged
+  symbol="%(!.%F{$ALERT_BG}$LIGHTNING.${symbol})"
 
   # show a cog if there are any background jobs
-  symbol="%(1j.%F{cyan}$GEAR.${symbol})"
+  symbol="%(1j.%F{$GIT_BG}$GEAR.${symbol})"
 
   # show a cross if last return value is not
   #   0 success
@@ -149,23 +133,13 @@ prompt_agnoster_main() {
   prompt_end
 }
 
-prompt_agnoster_precmd() {
-  vcs_info
-  PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
-}
+# ZSH Git variables
+# used by git_prompt_info
+ZSH_THEME_GIT_PROMPT_PREFIX="$(CURRENT_BG=$PRIMARY_BG prompt_segment $GIT_BG $PRIMARY_FG $BRANCH) "
+ZSH_THEME_GIT_PROMPT_SUFFIX="$(CURRENT_BG='NONE' prompt_segment '' $GIT_BG)"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $PLUSMINUS"
+ZSH_THEME_GIT_PROMPT_CLEAN=" "
 
-prompt_agnoster_setup() {
-  autoload -Uz add-zsh-hook
-  autoload -Uz vcs_info
-
-  prompt_opts=(cr subst percent)
-
-  add-zsh-hook precmd prompt_agnoster_precmd
-
-  zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:*' check-for-changes false
-  zstyle ':vcs_info:git*' formats '%b'
-  zstyle ':vcs_info:git*' actionformats '%b (%a)'
-}
-
-prompt_agnoster_setup "$@"
+# set prompt
+PROMPT="$(prompt_agnoster_main) "
+RPROMPT=""
