@@ -29,13 +29,13 @@
 
 CURRENT_BG='NONE'
 PRIMARY_FG=black
-PRIMARY_BG=cyan
-GIT_BG=blue
-ALERT_BG=yellow
+PRIMARY_BG=blue
+ALERT_FG=yellow
+GIT_BG=cyan
 
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
-PLUSMINUS="\u00b1"
+PLUSMINUS="%B\u00b1%b"
 BRANCH="\ue0a0"
 DETACHED="\u27a6"
 CROSS="\u2718"
@@ -77,7 +77,7 @@ prompt_context() {
   local user=`whoami`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    prompt_segment $PRIMARY_FG default " %(!.%{%F{$ALERT_BG}%}.)$user@%m "
+    prompt_segment $PRIMARY_FG default " %(!.%{%F{$ALERT_FG}%}.)$user@%m "
   fi
 }
 
@@ -107,8 +107,8 @@ prompt_status() {
   # show emoji
   symbol="%(5l..$(shell_emoji))"
 
-  # show a $ALERT_BG ⚠︎ if privileged
-  symbol="%(!.%F{$ALERT_BG}$LIGHTNING.${symbol})"
+  # show a $ALERT_FG ⚠︎ if privileged
+  symbol="%(!.%F{$ALERT_FG}$LIGHTNING.${symbol})"
 
   # show a cog if there are any background jobs
   symbol="%(1j.%F{$GIT_BG}$GEAR.${symbol})"
@@ -137,7 +137,7 @@ prompt_agnoster_main() {
 # used by git_prompt_info
 ZSH_THEME_GIT_PROMPT_PREFIX="$(CURRENT_BG=$PRIMARY_BG prompt_segment $GIT_BG $PRIMARY_FG $BRANCH) "
 ZSH_THEME_GIT_PROMPT_SUFFIX="$(CURRENT_BG='NONE' prompt_segment '' $GIT_BG)"
-ZSH_THEME_GIT_PROMPT_DIRTY=" $PLUSMINUS"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $(CURRENT_BG='NONE' prompt_segment $GIT_BG $ALERT_FG $PLUSMINUS)"
 ZSH_THEME_GIT_PROMPT_CLEAN=" "
 
 # set prompt
