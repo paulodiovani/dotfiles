@@ -68,9 +68,6 @@ command! DrawerFind lua drawer_find()
 
 " open checkhealth in an unlisted window above
 command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | file <args>\ health | setlocal bufhidden=wipe nomodifiable nobuflisted
-" override lsp commands to not open in tab (also in completion.lua)
-command! LspInfo Checkhealth lspconfig
-command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
 
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
@@ -98,3 +95,7 @@ endfunction
 autocmd TermOpen term://* map <buffer> <Leader>x :Bdelete!<CR>
 " close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
+
+" override lsp commands to not open in tab (also in completion.lua)
+autocmd VimEnter * command! LspInfo Checkhealth lspconfig
+autocmd VimEnter * command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
