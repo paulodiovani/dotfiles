@@ -178,6 +178,15 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+
+    ['ts_ls'] = function()
+      config_server('ts_ls', {
+        init_options = {
+          hostInfo = "neovim",
+          maxTsServerMemory = 8192,
+        },
+      })
+    end,
   },
 })
 
