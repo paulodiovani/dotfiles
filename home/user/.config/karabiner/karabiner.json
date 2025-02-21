@@ -105,6 +105,29 @@
                         ]
                     },
                     {
+                        "description": "PC Style ccedil Ç",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "mandatory": ["right_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "lazy": false,
+                                        "modifiers": ["right_option"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Home key to the beginning of the line (Control + a)",
                         "manipulators": [
                             {
