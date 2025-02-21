@@ -127,9 +127,6 @@ cmd-shift-down = 'move down'
 cmd-shift-up = 'move up'
 cmd-shift-right = 'move right'
 
-alt-shift-right = ['move-node-to-monitor right', 'focus-monitor right']
-alt-shift-left = ['move-node-to-monitor left', 'focus-monitor left']
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 # cmd-shift-minus = 'resize smart -50'
 # cmd-shift-equal = 'resize smart +50'
