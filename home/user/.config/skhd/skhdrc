@@ -80,9 +80,9 @@
 # xattr -d com.apple.quarantine /opt/homebrew/Caskroom/alacritty/*/Alacritty.app
 # source: https://superuser.com/questions/526920/how-to-remove-quarantine-from-file-permissions-in-os-x
 # cmd - return : open -na /Applications/Alacritty.app
-cmd - return : pgrep -x alacritty > /dev/null && \
-               alacritty msg create-window || \
-               open -na /Applications/Alacritty.app
+# cmd - return : pgrep -x alacritty > /dev/null && \
+#                alacritty msg create-window || \
+#                open -na /Applications/Alacritty.app
 
 # alternatively, use Kitty
 # cmd - return : open -na /Applications/Kitty.app --args --single-instance
