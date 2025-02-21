@@ -94,10 +94,8 @@ cmd - d : skhd -k "cmd - space"
 # cmd - h : true
 # cmd - q : true
 # shift + cmd - q : true
-cmd - tab : true
+# cmd - tab : true
 
 # load extra configs
-.load "ctrlkeyrc"
-.load "webbrowserrc"
 # .load "ddtermrc"
 # .load "yabairc"

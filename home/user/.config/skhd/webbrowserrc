@@ -1,9 +1,0 @@
-# Refresh / force refresh
-f5 [
-  "google chrome" : skhd -k "cmd - r"
-]
-
-ctrl - f5 [
-  "firefox" : skhd -k "shift + cmd - r"
-  "google chrome" : skhd -k "shift + cmd - r"
-]
