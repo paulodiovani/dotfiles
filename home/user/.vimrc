@@ -231,8 +231,8 @@ noremap <Leader>q :q<CR>
 imap <S-Tab> <C-o><<
 " create new file in same dir
 map <expr><C-n> ':New ' . expand('%:h') . '/'
-" search and replace
-nmap <C-f> yiw:%s/<C-r>"//g<Left><Left>
+" search and replace, use f register
+nmap <C-f> "fyiw:%s/<C-r>f//g<Left><Left>
 vmap <C-f> :s///g<Left><Left><Left>
 
 " git (fugitive) maps
