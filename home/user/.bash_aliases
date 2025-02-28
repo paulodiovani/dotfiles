@@ -37,7 +37,7 @@ alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo ex
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
     command git push --force-with-lease
-  elif [[ $1 == 'diff' || $1 == 'log' || $1 == 'show' ]]; then
+  elif [[ $1 == 'diff' ]]; then
     cmd=$1
     shift
     command git "${cmd}vim" $@
