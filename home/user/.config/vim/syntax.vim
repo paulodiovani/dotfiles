@@ -13,16 +13,14 @@ let g:one_allow_italics = 1
 
 " set base16 theme
 if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
-  let base16colorspace=256
+  let base16_colorspace=256
   source $HOME/.config/tinted-theming/set_theme.vim
 endif
 
 " hide vertical split separator
-" highlight VertSplit ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
 highlight WinSeparator ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
 " hide floating windows borders
 highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-" highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE
 " hide NonText character
 highlight NonText guifg=bg ctermfg=bg
 " make line numbers bg transparent
