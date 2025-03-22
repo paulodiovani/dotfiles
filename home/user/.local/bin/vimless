@@ -3,5 +3,5 @@
 if [ "$(uname -s)" = "Darwin" ]; then
   /opt/homebrew/share/nvim/runtime/scripts/less.sh "$@"
 else
-  /usr/share/nvim/runtime/scripts/less.sh "$@"
+  /usr/share/nvim/runtime/macros/less.sh "$@"
 fi
