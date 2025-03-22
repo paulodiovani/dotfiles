@@ -28,6 +28,7 @@ highlight LineNr guibg=none
 " set non-current window a different bg
 highlight NormalNC guibg=#24282f
 highlight NvimTreeNormalNC guibg=#24282f
+highlight EndOfBuffer guibg=#24282f " not the best choice
 " set color of float borders
 highlight link FloatBorder LineNr
 " fix issue with diagnostics windows (or the theme)
