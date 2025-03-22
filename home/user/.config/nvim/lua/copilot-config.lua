@@ -26,6 +26,7 @@ require('copilot_cmp').setup()
 local copilot_chat = require('CopilotChat')
 local select = require('CopilotChat.select')
 copilot_chat.setup({
+  chat_autocomplete = true,
   context = { 'buffers:listed' },
   selection = function(source)
     return select.visual(source) or select.buffer(source)
@@ -34,6 +35,3 @@ copilot_chat.setup({
     layout = 'replace',
   },
 })
-
--- Enable cmp completion for Copilot Chat window
-require('CopilotChat.integrations.cmp').setup()
