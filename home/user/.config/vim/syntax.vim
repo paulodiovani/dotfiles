@@ -20,25 +20,31 @@ endif
 " THEME OVERRIDES
 
 " hide split separator
-highlight WinSeparator ctermfg=bg ctermbg=NONE cterm=NONE guifg=bg guibg=NONE gui=NONE
-" hide floating windows borders
-highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
 " hide NonText character
-highlight NonText guifg=bg ctermbg=bg
-" make cursor line same bg
-highlight CursorLine guibg=bg ctermbg=bg
-" make line numbers bg transparent
-highlight LineNr guibg=none
-" set color of float borders
-highlight link FloatBorder LineNr
+highlight NonText guifg=bg ctermfg=bg
+" hide cursor line
+highlight CursorLine guibg=NONE ctermbg=NONE
+" make line numbers and sign column bg transparent
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+" set color of float window and borders
+highlight! link FloatBorder LineNr
+highlight Float ctermbg=bg guibg=bg
 " fix issue with diagnostics windows (or the theme)
 highlight! link NormalFloat Float
+" remove end of buffer bg
+highlight EndOfBuffer guibg=NONE
 " remove text background in diagnostics windows
-highlight ErrorFloat guibg=NONE
-highlight WarningFloat guibg=NONE
-highlight InfoFloat guibg=NONE
-highlight HintFloat guibg=NONE
-highlight OkFloat guibg=NONE
+highlight DiagnosticFloatingError guibg=NONE
+highlight DiagnosticFloatingWarn guibg=NONE
+highlight DiagnosticFloatingInfo guibg=NONE
+highlight DiagnosticFloatingHint guibg=NONE
+highlight DiagnosticFloatingOk guibg=NONE
+" NvimTree overrides
+highlight link NvimTreeNormalNC NormalNC
+highlight link NvimTreeLineNr LineNr
+highlight link NvimTreeSignColumn SignColumn
 
 " Function to darken a hex color
 function! DarkenColor(hex, percent)
@@ -54,7 +60,3 @@ let darker_bg = DarkenColor(current_bg, 25)
 
 " Set non-current window a slightly darker bg
 exec 'highlight NormalNC guibg=' .. darker_bg
-exec 'highlight EndOfBufferNC guibg=' .. darker_bg .. ' guifg=' .. darker_bg
-exec 'highlight WinSeparatorNC guibg=' .. darker_bg .. ' guifg=' .. darker_bg
-autocmd WinLeave,BufLeave * setlocal winhighlight=Normal:NormalNC,EndOfBuffer:EndOfBufferNC,WinSeparator:WinSeparatorNC
-autocmd WinEnter,BufEnter * setlocal winhighlight=Normal:Normal,EndOfBuffer:EndOfBuffer,WinSeparator:WinSeparator
