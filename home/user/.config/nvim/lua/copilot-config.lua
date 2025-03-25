@@ -31,8 +31,8 @@ copilot_chat.setup({
       insert = '<Tab>',
     },
     close = {
-      normal = '<Leader>q', -- general window close
-      insert = '<C-c>ccc',  -- some stupid mapping to avoid closing by mistale
+      normal = 'q',
+      insert = '<noop>',
     },
     show_help = {
       normal = '?',
