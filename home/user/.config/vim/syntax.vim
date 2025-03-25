@@ -21,8 +21,6 @@ endif
 
 " hide split separator
 highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
-" hide NonText character
-highlight NonText guifg=bg ctermfg=bg
 " hide cursor line
 highlight CursorLine guibg=NONE ctermbg=NONE
 " make line numbers and sign column bg transparent
