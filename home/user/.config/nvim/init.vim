@@ -72,16 +72,13 @@ command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | f
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
 
-" open copilot chat on the rightmost window, or split
+" replace the rightmost window with copilot, if any
 command! -range CopilotChatRight :call CopilotChatRight()
 function! CopilotChatRight()
-  let l:width = winwidth(winnr('$'))
+  let ccname = 'copulot-chat'
 
-  if winnr('$') > 1
+  if winnr('$') > 1 && bufname('$') != ccname
     $ wincmd c
-    exec 'botright vert ' .. width .. 'split'
-  else
-    botright vert split
   endif
 
   CopilotChatOpen

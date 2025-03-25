@@ -16,7 +16,7 @@ function! WriteRoomToggle()
   else
     " or create writeroom windows
     let l:min_columns = 130
-    let l:width = (&columns - 130) / 2
+    let l:width = (&columns - min_columns) / 2
     if l:width < 0
       return
     end
