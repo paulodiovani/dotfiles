@@ -284,6 +284,7 @@ cmp.setup({
       cmp.config.compare.order,
     }
   },
+
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',

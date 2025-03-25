@@ -24,13 +24,20 @@ require('copilot_cmp').setup()
 
 -- Configure Copilot Chat
 local copilot_chat = require('CopilotChat')
-local select = require('CopilotChat.select')
 copilot_chat.setup({
-  chat_autocomplete = true,
-  context = { 'buffers:listed' },
-  selection = function(source)
-    return select.visual(source) or select.buffer(source)
-  end,
+  chat_autocomplete = false,
+  mappings = {
+    complete = {
+      insert = '<Tab>',
+    },
+    close = {
+      normal = '<Leader>q', -- general window close
+      insert = '<C-c>ccc',  -- some stupid mapping to avoid closing by mistale
+    },
+    show_help = {
+      normal = '?',
+    },
+  },
   window = {
     layout = 'vertical',
     -- width = 0.3,

@@ -80,4 +80,5 @@ end
 ----------------------
 require 'completion'
 require 'copilot-config'
+require 'copilot-chat-completion'
 require 'file-drawer'
