@@ -75,7 +75,7 @@ command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ tim
 " replace the rightmost window with copilot, if any
 command! -range CopilotChatRight :call CopilotChatRight()
 function! CopilotChatRight()
-  let ccname = 'copulot-chat'
+  let ccname = 'copilot-chat'
 
   if winnr('$') > 1 && bufname('$') != ccname
     $ wincmd c

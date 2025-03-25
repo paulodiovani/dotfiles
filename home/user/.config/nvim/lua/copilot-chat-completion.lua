@@ -15,15 +15,18 @@ function source:get_keyword_pattern()
 end
 
 function source:complete(_, callback)
-  local items = copilot_chat.complete_items()
+  local items = copilot_chat.complete_items() or {}
+  local completion_kinds = vim.lsp.protocol.CompletionItemKind
+
   local mapped_items = vim.tbl_map(function(item)
     return {
       label = item.word,
-      kind = vim.lsp.protocol.CompletionItemKind[item.kind] or vim.lsp.protocol.CompletionItemKind.Text,
+      kind = completion_kinds[item.kind] or completion_kinds.Text,
       detail = item.info,
       documentation = item.menu,
     }
   end, items)
+
   callback(mapped_items)
 end
 

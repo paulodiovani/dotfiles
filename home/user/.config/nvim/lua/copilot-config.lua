@@ -32,7 +32,7 @@ copilot_chat.setup({
     },
     close = {
       normal = 'q',
-      insert = '<noop>',
+      insert = '',
     },
     show_help = {
       normal = '?',
