@@ -11,7 +11,7 @@ alias less='less -S -x4'
 alias expand='expand -t4'
 
 # vim less (user nvim as less for syntax highlight)
-alias vimless='/usr/share/nvim/runtime/scripts/less.sh'
+alias vimless='/usr/share/nvim/runtime/macros/less.sh'
 
 # search files with preview
 alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
@@ -37,7 +37,7 @@ alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo ex
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
     command git push --force-with-lease
-  elif [[ $1 == 'diff' || $1 == 'log' || $1 == 'show' ]]; then
+  elif [[ $1 == 'diff' ]]; then
     cmd=$1
     shift
     command git "${cmd}vim" $@

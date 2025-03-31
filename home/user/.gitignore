@@ -43,3 +43,6 @@ kls_database.db
 .classpath
 .project
 .settings
+
+# aider chat files
+.aider*

@@ -46,6 +46,7 @@ set completeopt=menu,menuone,noinsert " Show only menu for completion (no previe
 set pumheight=20                    " Maximum menu heigh
 " set fillchars=vert:\                " use space as vertical split
 set signcolumn=number               " show signs in number column
+set splitright                      " open new split to the right
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -53,7 +54,6 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-if isdirectory(".git") | let g:netrw_list_hide = netrw_gitignore#Hide() | endif
 
 " fix arrow keys when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
@@ -177,7 +177,6 @@ map <F6> :throw 'No run command defined.'<CR>       " run command
 map <F9> :ptjump<CR>                                " open definition (using ctags) in preview window
 map <leader><F9> <C-o>:ptjump<CR>
 map <F10> :set paste!<CR>:set paste?<CR>            " enable/disable paste mode with F10
-set pastetoggle=<F10>
 map <F12> <C-]>                                     " open definition (using ctags) in new buffer
 imap <F12> <C-o><C-]>
 
@@ -233,8 +232,8 @@ noremap <Leader>q :q<CR>
 imap <S-Tab> <C-o><<
 " create new file in same dir
 map <expr><C-n> ':New ' . expand('%:h') . '/'
-" search and replace
-nmap <C-f> yiw:%s/<C-r>"//g<Left><Left>
+" search and replace, use f register
+nmap <C-f> "fyiw:%s/<C-r>f//g<Left><Left>
 vmap <C-f> :s///g<Left><Left><Left>
 
 " git (fugitive) maps

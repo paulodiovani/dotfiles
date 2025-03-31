@@ -1,5 +1,4 @@
 -- luacheck: globals vim
-local lsp_hover_all = require('lsp_hover_all')
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -10,11 +9,6 @@ local function config_server(server_name, extra_config)
   local config = {
     capabilities = capabilities,
 
-    handlers = {
-      ['textDocument/hover'] = vim.lsp.with(lsp_hover_all, { border = 'rounded' }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-    },
-
     on_attach = function(_, bufnr)
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -24,10 +18,18 @@ local function config_server(server_name, extra_config)
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, bufopts)
+      -- <F12> mapped to <C-]> (tagfunc) in .vimrc
+      -- vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts) -- opens quicklist if results > 1
       vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
 
-      vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, bufopts)
+      -- default: K
+      vim.keymap.set({ 'n' }, 'K', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
+      vim.keymap.set({ 'n', 'i' }, '<F9>', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
+
+      local close_events = { "CursorMoved", "InsertEnter", "InsertLeave", "BufLeave", "BufWinLeave", "WinScrolled" }
+      vim.keymap.set({ 'i' }, '<C-k>', function()
+        vim.lsp.buf.signature_help({ border = 'rounded', close_events = close_events, focusable = false })
+      end, bufopts)
 
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
@@ -46,10 +48,6 @@ local function config_server(server_name, extra_config)
 
   lspconfig[server_name].setup(config)
 end
-
--- setup global installed servers
--- config_server('solargraph')
--- config_server('rust_analyzer')
 
 -- setup mason
 require('mason').setup()
@@ -139,14 +137,6 @@ require('mason-lspconfig').setup({
             },
           },
         },
-      })
-    end,
-
-    ['ruff_lsp'] = function()
-      config_server('ruff_lsp', {
-        on_attach = function(client)
-          client.server_capabilities.hoverProvider = false
-        end,
       })
     end,
 
@@ -294,6 +284,7 @@ cmp.setup({
       cmp.config.compare.order,
     }
   },
+
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',
@@ -394,7 +385,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "rounded",
--- })

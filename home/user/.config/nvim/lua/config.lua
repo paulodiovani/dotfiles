@@ -1,4 +1,5 @@
 -- luacheck: globals vim
+require('lua-utils')
 
 ----------------------
 -- SETTINGS SECTION --
@@ -10,8 +11,16 @@ vim.diagnostic.config({
   float = {
     header = false,
     border = 'rounded',
+    source = true,
     format = function(diagnostic)
-      return string.format('%s\n\n%s: %s', diagnostic.message, diagnostic.source, diagnostic.code)
+      local source = diagnostic.source or 'lsp'
+      local href = safe_get(diagnostic, 'user_data', 'lsp', 'codeDescription', 'href')
+        or (
+          diagnostic.code
+            and string.format('https://google.com/search?q=%s+%s', diagnostic.source or '', diagnostic.code)
+          or ''
+        )
+      return string.format('%s\n[%s] %s', diagnostic.message, source, href)
     end,
   },
 })
@@ -30,62 +39,6 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
   },
-})
-
--- nvim-tree and icons config
-require('nvim-web-devicons').setup({
-  default = true,
-})
-
-local nvim_tree = require('nvim-tree')
-local nvim_tree_api = require('nvim-tree.api')
-
-nvim_tree.setup({
-  actions = {
-    open_file = {
-      resize_window = false,
-      -- window_picker = {
-      --   enable = false,
-      -- },
-    },
-  },
-  diagnostics = {
-    enable = false,
-  },
-  filesystem_watchers = {
-    ignore_dirs = {
-      "build",
-      "dist",
-      "node_modules",
-      "target",
-      "vendor",
-    },
-  },
-  filters = {
-    custom = {
-      '^\\.git$'
-    },
-    dotfiles = true,
-  },
-  git = {
-    enable = false,
-  },
-  view = {
-    width = '20%',
-    side = 'left',
-  },
-  experimental = {
-    actions = {
-      open_file = {
-        relative_path = true,
-      },
-    },
-  },
-  -- custom mappings
-  on_attach = function(bufnr)
-    nvim_tree_api.config.mappings.default_on_attach(bufnr)
-    vim.keymap.set("n", "?", nvim_tree_api.tree.toggle_help, { buffer = bufnr, noremap = true, silent = true, nowait = true })
-  end,
 })
 
 -- Linters and other stuff (null-ls)
@@ -122,39 +75,10 @@ function _G.toggle_diagnostics()
   end
 end
 
--- open nvim-tree on the left or leftmost window
-function _G.drawer_open(path)
-  local view = require('nvim-tree.view')
-  path = path or vim.fn.getcwd()
-
-  if view.is_visible() then
-    nvim_tree_api.tree.focus()
-    nvim_tree_api.tree.change_dir { path }
-    return
-  end
-
-  if vim.fn.winnr('$') == 1 then
-    nvim_tree_api.tree.open { path }
-    return
-  end
-
-  vim.api.nvim_command('1 wincmd w')
-  nvim_tree_api.tree.open { path, current_window = true }
-end
-
-function _G.drawer_find(bufnr)
-  local view = require('nvim-tree.view')
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-
-  if not view.is_visible() then
-    _G.drawer_open()
-  end
-
-  nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
-end
-
 ----------------------
 -- INCLUDED CONFIGS --
 ----------------------
 require 'completion'
 require 'copilot-config'
+require 'copilot-chat-completion'
+require 'file-drawer'

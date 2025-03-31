@@ -1,4 +1,3 @@
-import = ["~/.config/os-config/alacritty/alacritty.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -24,3 +23,6 @@ mode = "Vi"
 [window]
 decorations = "none"
 opacity = 0.95
+
+[general]
+import = ["~/.config/os-config/alacritty/alacritty.toml"]

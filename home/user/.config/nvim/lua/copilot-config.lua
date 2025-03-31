@@ -24,16 +24,23 @@ require('copilot_cmp').setup()
 
 -- Configure Copilot Chat
 local copilot_chat = require('CopilotChat')
-local select = require('CopilotChat.select')
 copilot_chat.setup({
-  context = { 'buffers:listed' },
-  selection = function(source)
-    return select.visual(source) or select.buffer(source)
-  end,
+  chat_autocomplete = false,
+  mappings = {
+    complete = {
+      insert = '<Tab>',
+    },
+    close = {
+      normal = 'q',
+      insert = '',
+    },
+    show_help = {
+      normal = '?',
+    },
+  },
   window = {
-    layout = 'replace',
+    layout = 'vertical',
+    -- width = 0.3,
+    width = math.max((vim.o.columns - 130) / 2, vim.o.columns * 0.2),
   },
 })
-
--- Enable cmp completion for Copilot Chat window
-require('CopilotChat.integrations.cmp').setup()
