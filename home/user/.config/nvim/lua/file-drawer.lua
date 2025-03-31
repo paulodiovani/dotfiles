@@ -46,7 +46,7 @@ nvim_tree.setup({
     dotfiles = false,
   },
   git = {
-    enable = false,
+    enable = true,
   },
   view = {
     width = '20%',
