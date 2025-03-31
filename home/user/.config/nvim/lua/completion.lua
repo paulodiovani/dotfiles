@@ -52,7 +52,7 @@ end
 -- setup mason
 require('mason').setup()
 require('mason-lspconfig').setup({
-  automatically_installation = true,
+  automatic_installation = true,
   ensure_installed = servers,
   -- Set up server auto setup
   handlers = {
@@ -62,7 +62,7 @@ require('mason-lspconfig').setup({
     -- temporary fix language server root_path when using multi build projects
     -- until this is merged: https://github.com/neovim/nvim-lspconfig/pull/3321
     -- or the issue (https://github.com/fwcd/kotlin-language-server/issues/559) is fixed another way
-    ['kotlin_language_server'] = function()
+    ['kotlin_language_server'] = function(server_name)
       local lsp_util = require('lspconfig.util')
 
       local root_files = {
@@ -94,15 +94,15 @@ require('mason-lspconfig').setup({
         end
       end
 
-      config_server('kotlin_language_server', {
+      config_server(server_name, {
         root_dir = root_pattern(unpack(root_files)),
       })
     end,
 
     -- fix java-language-server bad argument error
     -- https://github.com/georgewfraser/java-language-server/issues/267
-    ['java_language_server'] = function()
-      config_server('java_language_server', {
+    ['java_language_server'] = function(server_name)
+      config_server(server_name, {
         handlers = {
           ['client/registerCapability'] = function(err, result, ctx, config)
             local registration = {
@@ -114,8 +114,8 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    ['jdtls'] = function()
-      config_server('jdtls', {
+    ['jdtls'] = function(server_name)
+      config_server(server_name, {
         -- force using asdf shim as java executable
         cmd = {
           'jdtls',
@@ -140,8 +140,8 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    ['rust_analyzer'] = function()
-      config_server('rust_analyzer', {
+    ['rust_analyzer'] = function(server_name)
+      config_server(server_name, {
         settings = {
           ['rust-analyzer'] = {
             cargo = {
@@ -159,8 +159,8 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    ['sorbet'] = function()
-      config_server('sorbet', {
+    ['sorbet'] = function(server_name)
+      config_server(server_name, {
         cmd = {
           'srb', 'tc',
           '--lsp',
@@ -169,8 +169,8 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    ['ts_ls'] = function()
-      config_server('ts_ls', {
+    ['ts_ls'] = function(server_name)
+      config_server(server_name, {
         init_options = {
           hostInfo = "neovim",
           maxTsServerMemory = 8192,
