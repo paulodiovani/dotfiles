@@ -40,10 +40,7 @@ highlight DiagnosticFloatingHint guibg=NONE
 highlight DiagnosticFloatingOk guibg=NONE
 
 " NvimTree overrides
-highlight link NvimTreeNormal DarkerBg
+highlight link NvimTreeNormal WriteRoomNormal
 " copilot chat overrides
-highlight! link CopilotChatNormal DarkerBg
+highlight! link CopilotChatNormal WriteRoomNormal
 autocmd BufEnter copilot-chat setlocal winhighlight=Normal:CopilotChatNormal
-
-" create a darker background group
-autocmd VimEnter * let darker_bg = writeroom#get_darker_bg() | exec 'highlight DarkerBg guibg=' .. darker_bg
