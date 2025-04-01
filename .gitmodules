@@ -127,3 +127,6 @@
 [submodule "home/user/.vim/pack/plugins/opt/linediff"]
 	path = home/user/.vim/pack/plugins/opt/linediff
 	url = https://github.com/AndrewRadev/linediff.vim.git
+[submodule "home/user/.vim/pack/plugins/start/writeroom"]
+	path = home/user/.vim/pack/plugins/start/writeroom
+	url = https://github.com/paulodiovani/vim-writeroom.git
