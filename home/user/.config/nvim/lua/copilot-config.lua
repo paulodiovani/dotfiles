@@ -39,8 +39,6 @@ copilot_chat.setup({
     },
   },
   window = {
-    layout = 'vertical',
-    -- width = 0.3,
-    width = math.max((vim.o.columns - 130) / 2, vim.o.columns * 0.2),
+    layout = 'replace',
   },
 })
