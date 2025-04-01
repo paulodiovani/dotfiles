@@ -75,10 +75,15 @@ command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ tim
 " replace the rightmost window with copilot, if any
 command! -range CopilotChatRight :call CopilotChatRight()
 function! CopilotChatRight()
-  let ccname = 'copilot-chat'
+  let l:ccname = 'copilot-chat'
+  let l:ccwins = len(filter(range(1, winnr('$')), 'bufname(winbufnr(v:val)) == l:ccname'))
 
-  if winnr('$') > 1 && bufname('$') != ccname
-    $ wincmd c
+  if l:ccwins == 0
+    if winnr('$') > 2
+      $ wincmd w
+    else
+      exec 'vert' (&columns * 0.25) 'split'
+    endif
   endif
 
   CopilotChatOpen
