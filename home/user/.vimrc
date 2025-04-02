@@ -36,6 +36,7 @@ set nu                              " add line numbers
 set path+=**                        " search subfolders (find, ...)
 set ruler                           " show cursor position
 set sessionoptions-=options         " do not save options in sessions
+set sessionoptions-=blank           " do not save blank buffers in sessions
 set showcmd                         " show command in statusbar
 set sm                              " color matching braces/parenthesis
 set t_vb=                           " no
@@ -227,6 +228,8 @@ noremap <Leader>x :Bdelete<CR>
 noremap <Leader>X :Bdelete!<CR>
 " close current window
 noremap <Leader>q :q<CR>
+" close all windows
+noremap <Leader>Q :qa<CR>
 
 " outdent with Shift+Tab
 imap <S-Tab> <C-o><<
