@@ -61,33 +61,14 @@ command! -range CodeAction lua vim.lsp.buf.code_action()
 " open terminal in split window below
 command! -nargs=* Terminal :bel split | terminal <args>
 
-" file drawer (using nvim-tree)
-command! -nargs=? Drawer lua drawer_open(<f-args>)
-command! DrawerCwd execute 'Drawer' getcwd()
-command! DrawerFind lua drawer_find()
+" Delete buffer, than move to most recent or previous buffer
+command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | if buflisted(bufnr('#')) | b# | else | bprev | endif | bdelete<bang># | else | bdelete<bang> | endif
 
 " open checkhealth in an unlisted window above
 command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | file <args>\ health | setlocal bufhidden=wipe nomodifiable nobuflisted
 
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
-
-" replace the rightmost window with copilot, if any
-command! -range CopilotChatRight :call CopilotChatRight()
-function! CopilotChatRight()
-  let l:ccname = 'copilot-chat'
-  let l:ccwins = len(filter(range(1, winnr('$')), 'bufname(winbufnr(v:val)) == l:ccname'))
-
-  if l:ccwins == 0
-    if winnr('$') > 2
-      $ wincmd w
-    else
-      exec 'vert' (&columns * 0.25) 'split'
-    endif
-  endif
-
-  CopilotChatOpen
-endfunction
 
 """""""""""""""""""
 " AUTOCMD SECTION "
