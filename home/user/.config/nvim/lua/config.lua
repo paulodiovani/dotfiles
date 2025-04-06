@@ -25,38 +25,21 @@ vim.diagnostic.config({
   },
 })
 
--- treesitter config
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    'bash',
-    'json',
-    'lua',
-    'luadoc',
-    'markdown',
-    'vim',
-    'vimdoc',
-  },
-  highlight = {
-    enable = true,
-  },
-})
+-- lazy.nvim setup
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Linters and other stuff (null-ls)
-local null_ls = require('null-ls')
-null_ls.setup({
-  sources = {
-    -- diagnostics
-    null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.erb_lint,
-    null_ls.builtins.diagnostics.stylelint,
-    null_ls.builtins.diagnostics.yamllint,
-    -- formatting
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'html', 'markdown' } }),
-    null_ls.builtins.formatting.prettier.with({ filetypes = { 'json', 'jsonc' }, extra_args = { '--parser=json' } }),
-    null_ls.builtins.formatting.erb_format,
-    null_ls.builtins.formatting.stylelint,
-  },
-})
+require("lazy").setup("plugins")
 
 ------------------------------
 -- CUSTOM FUNCTIONS SECTION --
@@ -78,7 +61,7 @@ end
 ----------------------
 -- INCLUDED CONFIGS --
 ----------------------
-require 'completion'
-require 'copilot-config'
-require 'copilot-chat-completion'
-require 'file-drawer'
+--require 'completion'
+--require 'copilot-config'
+--require 'copilot-chat-completion'
+--require 'file-drawer'
