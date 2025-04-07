@@ -1,7 +1,7 @@
 -- Main plugin configuration
 return {
   -- Core plugins with custom configs
-  { import = "plugins.base16" },       -- Color theme
+  { import = "plugins.colorscheme" },  -- Color theme
   { import = "plugins.treesitter" },   -- Syntax highlighting
   { import = "plugins.completion" },   -- LSP and completion
   { import = "plugins.null-ls" },      -- Additional diagnostics
