@@ -40,7 +40,7 @@ return {
   -- WriteRoom plugin
   {
     "paulodiovani/vim-writeroom",
-    dependencies = { "tinted-theming/base16-vim" },
+    dependencies = { "tinted-theming/tinted-vim" },
     config = function()
       vim.cmd([[
         " hide split separator
