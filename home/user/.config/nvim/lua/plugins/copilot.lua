@@ -6,6 +6,7 @@ return {
     config = function()
       -- GitHub Copilot (lua) config
       require('copilot').setup({
+        copilot_model = 'claude-3.7-sonnet',
         -- Set enable = true until this bug is fixed:
         -- https://github.com/zbirenbaum/copilot-cmp/issues/10
         suggestion = {
@@ -38,6 +39,7 @@ return {
       -- Configure Copilot Chat
       local copilot_chat = require('CopilotChat')
       copilot_chat.setup({
+        model = 'claude-3.7-sonnet',
         chat_autocomplete = false,
         mappings = {
           complete = {
