@@ -1,3 +1,5 @@
+local utils = require('modules.lua-utils')
+
 -- Completion and LSP configuration
 return {
   {
@@ -204,13 +206,6 @@ return {
       local luasnip = require('luasnip')
       require('luasnip.loaders.from_vscode').lazy_load()
 
-      local has_words_before = function()
-        -- luacheck: globals unpack
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
       -- Set up nvim-cmp.
       local cmp = require('cmp')
       local lspkind = require('lspkind')
@@ -415,7 +410,7 @@ return {
           source = true,
           format = function(diagnostic)
             local source = diagnostic.source or 'lsp'
-            local href = safe_get(diagnostic, 'user_data', 'lsp', 'codeDescription', 'href')
+            local href = utils.safe_get(diagnostic, 'user_data', 'lsp', 'codeDescription', 'href')
               or (
                 diagnostic.code
                   and string.format('https://google.com/search?q=%s+%s', diagnostic.source or '', diagnostic.code)
