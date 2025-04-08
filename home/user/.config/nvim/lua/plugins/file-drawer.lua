@@ -2,6 +2,18 @@
 return {
   "kyazdani42/nvim-tree.lua",
   dependencies = { "kyazdani42/nvim-web-devicons" },
+
+  keys = {
+    { '<Leader>d', ':DrawerCwd<CR>', { silent = true } },
+    { '<Leader>f', ':DrawerFind<CR>', { silent = true } },
+  },
+
+  cmd = {
+    'Drawer',
+    'DrawerCwd',
+    'DrawerFind',
+  },
+
   config = function()
     -- nvim-tree and icons config
     require('nvim-web-devicons').setup({
@@ -107,10 +119,6 @@ return {
     vim.api.nvim_create_user_command('DrawerFind', function()
       drawer_find()
     end, {})
-
-    -- Key mappings
-    vim.keymap.set('n', '<Leader>d', ':DrawerCwd<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>f', ':DrawerFind<CR>', { silent = true })
 
     -- ui adjustments
     vim.cmd([[
