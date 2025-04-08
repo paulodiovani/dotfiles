@@ -43,11 +43,6 @@ map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 " Show code actions
 map <Leader>ca :CodeAction<CR>
 
-" Open Copilot Panel
-map <Leader>cp :Copilot panel<CR>>""
-" Open Copilot Chat right
-map <Leader>cc :CopilotChatRight<CR>
-
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -80,5 +75,5 @@ autocmd TermOpen term://* map <buffer> <Leader>x :Bdelete!<CR>
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
 
 " override lsp commands to not open in tab (also in completion.lua)
-autocmd VimEnter * command! LspInfo Checkhealth lspconfig
+autocmd VimEnter * command! LspInfo Checkhealth vim.lsp
 autocmd VimEnter * command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))

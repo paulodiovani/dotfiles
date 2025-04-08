@@ -3,11 +3,15 @@ return {
   -- Fugitive (Git integration)
   {
     "tpope/vim-fugitive",
+    lazy = false, -- always load fugitive
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<Leader>gd", ":Gdiffsplit<CR>", desc = "Git diff", silent = true },
+      { "<Leader>gb", ":Git blame<CR>", desc = "Git blame", silent = true },
+    },
     config = function()
-      -- Key mappings
-      vim.keymap.set('n', '<Leader>gd', ':Gdiffsplit<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>gb', ':Git blame<CR>', { silent = true })
-
       -- Github integration
       vim.g.github_enterprise_urls = {'[-_\\.a-zA-Z0-9]\\+'}
     end
