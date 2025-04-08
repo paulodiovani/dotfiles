@@ -26,6 +26,10 @@ return {
       panel = { enabled = false },
     },
 
+    event = {
+      'InsertEnter',
+    },
+
     keys = {
       { '<Leader>cp', '<Cmd>Copilot panel<CR>', mode = { 'n', 'v' }, desc = 'Copilot Panel' },
     },

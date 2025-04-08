@@ -13,7 +13,7 @@ return {
       'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip',
       'zbirenbaum/copilot-cmp',
-      'zbirenbaum/copilot.lua',
+      -- 'zbirenbaum/copilot.lua', -- loaded on LspAttach
     },
 
     config = function()
