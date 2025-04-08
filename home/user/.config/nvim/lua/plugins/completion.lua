@@ -20,6 +20,8 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
       "rafamadriz/friendly-snippets",
+      "zbirenbaum/copilot.lua",
+      "zbirenbaum/copilot-cmp",
     },
     config = function()
       -- Set up lspconfig.
@@ -58,7 +60,7 @@ return {
             vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
 
             -- override lsp commands
-            vim.api.nvim_create_user_command('LspInfo', 'Checkhealth lspconfig', { force = true })
+            vim.api.nvim_create_user_command('LspInfo', 'Checkhealth vim.lsp', { force = true })
             vim.api.nvim_create_user_command('LspLog', function() vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path())) end, { force = true })
           end
         }
