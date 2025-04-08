@@ -19,8 +19,6 @@ endif
 
 " THEME OVERRIDES
 
-" hide cursor line
-highlight CursorLine guibg=NONE ctermbg=NONE
 " make line numbers and sign column bg transparent
 highlight LineNr ctermbg=NONE guibg=NONE
 highlight SignColumn ctermbg=NONE guibg=NONE
@@ -36,9 +34,3 @@ highlight DiagnosticFloatingWarn guibg=NONE
 highlight DiagnosticFloatingInfo guibg=NONE
 highlight DiagnosticFloatingHint guibg=NONE
 highlight DiagnosticFloatingOk guibg=NONE
-
-" NvimTree overrides
-highlight link NvimTreeNormal WriteRoomNormal
-" copilot chat overrides
-highlight! link CopilotChatNormal WriteRoomNormal
-autocmd BufEnter copilot-chat setlocal winhighlight=Normal:CopilotChatNormal

@@ -84,6 +84,14 @@ return {
       -- Key mappings
       vim.keymap.set('n', '<Leader>cp', ':Copilot panel<CR>>', { silent = true })
       vim.keymap.set('n', '<Leader>cc', ':CopilotChatRight<CR>', { silent = true })
+
+      -- ui adjustments
+      vim.cmd([[
+        " copilot chat theme overrides
+        highlight! link CopilotChatNormal WriteRoomNormal
+        autocmd BufEnter copilot-chat setlocal winhighlight=Normal:CopilotChatNormal
+        autocmd BufEnter copilot-chat setlocal nocursorline
+      ]])
     end,
   }
 }
