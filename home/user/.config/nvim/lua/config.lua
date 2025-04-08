@@ -1,5 +1,5 @@
 -- luacheck: globals vim
-require('lua-utils')
+require('modules.diagnostics')
 
 ----------------------
 -- SETTINGS SECTION --

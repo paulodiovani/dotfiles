@@ -25,7 +25,6 @@ return {
       -- Set up lspconfig.
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require('lspconfig')
-      local servers = { 'bashls', 'lua_ls', 'vimls' }
 
       local function config_server(server_name, extra_config)
         local config = {
@@ -75,7 +74,7 @@ return {
       require('mason').setup()
       require('mason-lspconfig').setup({
         automatic_installation = true,
-        ensure_installed = servers,
+        ensure_installed = { 'bashls', 'lua_ls', 'vimls' },
         -- Set up server auto setup
         handlers = {
           -- default handler (optional)
@@ -420,26 +419,6 @@ return {
           end,
         },
       })
-
-      -- Set up diagnostic toggle function
-      vim.g.diagnostics_active = true
-
-      _G.toggle_diagnostics = function()
-        if vim.g.diagnostics_active then
-          vim.g.diagnostics_active = false
-          vim.diagnostic.hide()
-        else
-          vim.g.diagnostics_active = true
-          vim.diagnostic.show()
-        end
-      end
-
-      -- Mappings
-      vim.keymap.set('n', '<Leader>^', ':lua toggle_diagnostics()<CR>', { silent = true })
-      vim.keymap.set('n', '[a', ':lua vim.diagnostic.goto_prev()<CR>', { silent = true })
-      vim.keymap.set('n', ']a', ':lua vim.diagnostic.goto_next()<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>a', ':lua vim.diagnostic.open_float()<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>A', ':lua vim.diagnostic.setloclist()<CR>', { silent = true })
     end,
   }
 }
