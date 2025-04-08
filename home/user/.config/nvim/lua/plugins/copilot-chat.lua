@@ -6,6 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "zbirenbaum/copilot.lua",
     },
+
     opts = {
       model = 'claude-3.7-sonnet',
       chat_autocomplete = false,
@@ -25,16 +26,19 @@ return {
         layout = 'replace',
       },
     },
+
     keys = {
       { '<Leader>cc', '<Cmd>CopilotChatRight<CR>', mode = { 'n', 'v' }, desc = 'Copilot Chat right window' },
     },
-    cmds = {
+
+    cmd = {
       'CopilotChat',
       'CopilotChatRight',
       'CopilotChatOpen',
       'CopilotChatClose',
       'CopilotChatToggle',
     },
+
     config = function(_, opts)
       -- Configure Copilot Chat
       local copilot_chat = require('CopilotChat')

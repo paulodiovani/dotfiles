@@ -34,13 +34,18 @@ return {
     config = function()
       -- Toggle mapping (from init.vim)
       vim.keymap.set('n', '<Leader>@', ':SignatureToggle<CR>', { silent = true })
-    end
+    end,
   },
 
   -- WriteRoom plugin
   {
     "paulodiovani/vim-writeroom",
     dependencies = { "tinted-theming/tinted-vim" },
+
+    keys = '<Leader><BS>',
+
+    cmd = 'WriteRoomToggle',
+
     config = function()
       vim.cmd([[
         " hide split separator

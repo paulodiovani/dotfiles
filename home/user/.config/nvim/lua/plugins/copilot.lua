@@ -5,6 +5,7 @@ return {
     dependencies = {
       "zbirenbaum/copilot-cmp",
     },
+
     opts = {
       copilot_model = 'claude-3.7-sonnet',
       -- Set enable = true until this bug is fixed:
@@ -24,9 +25,13 @@ return {
       },
       panel = { enabled = false },
     },
+
     keys = {
       { '<Leader>cp', '<Cmd>Copilot panel<CR>', mode = { 'n', 'v' }, desc = 'Copilot Panel' },
     },
+
+    cmd = 'Copilot',
+
     config = function(_, opts)
       require('copilot').setup(opts)
 
