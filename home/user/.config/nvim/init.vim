@@ -12,6 +12,7 @@ set jumpoptions-=unload             " Do not unload buffers with bdelete
 set foldmethod=expr                 " enable fold for treesitter
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable                    " Disable folding at startup.
+set winborder=rounded               " Use rounded borders for all windows
 
 " Disable Netrw
 " let g:loaded_netrw = 1
@@ -37,11 +38,8 @@ map <Leader>a :lua vim.diagnostic.open_float()<CR>
 map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
 " code completion with omni function
-" inoremap <C-Space> <C-x><C-o>
-" inoremap <C-@> <C-x><C-o>
-
-" Show code actions
-map <Leader>ca :CodeAction<CR>
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
 
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -49,9 +47,6 @@ tnoremap <Esc> <C-\><C-n>
 """""""""""""""""""""""""""
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
-
-" show code actions
-command! -range CodeAction lua vim.lsp.buf.code_action()
 
 " open terminal in split window below
 command! -nargs=* Terminal :bel split | terminal <args>

@@ -1,208 +1,22 @@
-local utils = require('modules.lua-utils')
-
--- Completion and LSP configuration
+-- Completion configuration
 return {
   {
-    "neovim/nvim-lspconfig",
+    'hrsh7th/nvim-cmp',
+    lazy = false,
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    }
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
-      "rafamadriz/friendly-snippets",
-      "zbirenbaum/copilot.lua",
-      "zbirenbaum/copilot-cmp",
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'onsails/lspkind.nvim',
+      'rafamadriz/friendly-snippets',
+      'saadparwaiz1/cmp_luasnip',
+      'zbirenbaum/copilot-cmp',
+      'zbirenbaum/copilot.lua',
     },
+
     config = function()
-      -- Set up lspconfig.
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lspconfig = require('lspconfig')
-
-      local function config_server(server_name, extra_config)
-        local config = {
-          capabilities = capabilities,
-
-          on_attach = function(_, bufnr)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-            vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
-
-            -- Mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, bufopts)
-            -- <F12> mapped to <C-]> (tagfunc) in .vimrc
-            -- vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts) -- opens quicklist if results > 1
-            vim.keymap.set('n', '<Leader><F12>', vim.lsp.buf.type_definition, bufopts)
-
-            -- default: K
-            vim.keymap.set({ 'n' }, 'K', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
-            vim.keymap.set({ 'n', 'i' }, '<F9>', function() vim.lsp.buf.hover({ border = 'rounded' }) end, bufopts)
-
-            local close_events = { "CursorMoved", "InsertEnter", "InsertLeave", "BufLeave", "BufWinLeave", "WinScrolled" }
-            vim.keymap.set({ 'i' }, '<C-k>', function()
-              vim.lsp.buf.signature_help({ border = 'rounded', close_events = close_events, focusable = false })
-            end, bufopts)
-
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-            vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-            vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-
-            -- override lsp commands
-            vim.api.nvim_create_user_command('LspInfo', 'Checkhealth vim.lsp', { force = true })
-            vim.api.nvim_create_user_command('LspLog', function() vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path())) end, { force = true })
-          end
-        }
-
-        for k, v in pairs(extra_config or {}) do
-          config[k] = v
-        end
-
-        lspconfig[server_name].setup(config)
-      end
-
-      -- setup mason
-      require('mason').setup()
-      require('mason-lspconfig').setup({
-        automatic_installation = true,
-        ensure_installed = { 'bashls', 'lua_ls', 'vimls' },
-        -- Set up server auto setup
-        handlers = {
-          -- default handler (optional)
-          config_server,
-
-          -- temporary fix language server root_path when using multi build projects
-          -- until this is merged: https://github.com/neovim/nvim-lspconfig/pull/3321
-          -- or the issue (https://github.com/fwcd/kotlin-language-server/issues/559) is fixed another way
-          ['kotlin_language_server'] = function(server_name)
-            local lsp_util = require('lspconfig.util')
-
-            local root_files = {
-              'build.gradle', -- Gradle
-              'build.gradle.kts', -- Gradle
-              'settings.gradle', -- Gradle (multi-project)
-              'settings.gradle.kts', -- Gradle (multi-project)
-              'pom.xml', -- Maven
-              'build.xml', -- Ant
-            }
-
-            local function root_pattern(...)
-              local patterns = lsp_util.tbl_flatten { ... }
-              return function(startpath)
-                startpath = lsp_util.strip_archive_subpath(startpath)
-                local match = lsp_util.search_ancestors(startpath, function(path)
-                  for _, pattern in ipairs(patterns) do
-                    for _, p in ipairs(vim.fn.glob(lsp_util.path.join(lsp_util.path.escape_wildcards(path), pattern), true, true)) do
-                      if lsp_util.path.exists(p) then
-                        return path
-                      end
-                    end
-                  end
-                end)
-
-                if match ~= nil then
-                  return match
-                end
-              end
-            end
-
-            config_server(server_name, {
-              root_dir = root_pattern(unpack(root_files)),
-            })
-          end,
-
-          -- fix java-language-server bad argument error
-          -- https://github.com/georgewfraser/java-language-server/issues/267
-          ['java_language_server'] = function(server_name)
-            config_server(server_name, {
-              handlers = {
-                ['client/registerCapability'] = function(err, result, ctx, config)
-                  local registration = {
-                    registrations = { result },
-                  }
-                  return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
-                end,
-              },
-            })
-          end,
-
-          ['jdtls'] = function(server_name)
-            config_server(server_name, {
-              -- force using asdf shim as java executable
-              cmd = {
-                'jdtls',
-                '--java-executable', vim.fn.expand('$HOME/.asdf/shims/java'),
-                '-configuration', vim.fn.expand('$HOME/.cache/jdtls/config'),
-                '-data', vim.fn.expand('$HOME/.cache/jdtls/workspace'),
-              },
-
-              settings = {
-                java = {
-                  autobuild = {
-                    enabled = false,
-                  },
-
-                  gradle = {
-                    buildServer = {
-                      enabled = true,
-                    },
-                  },
-                },
-              },
-            })
-          end,
-
-          ['rust_analyzer'] = function(server_name)
-            config_server(server_name, {
-              settings = {
-                ['rust-analyzer'] = {
-                  cargo = {
-                    allFeatures = true,
-                    buildScripts = {
-                      enable = true,
-                    },
-                    loadOutDirsFromCheck = true,
-                    procMacro = {
-                      enable = true,
-                    },
-                  },
-                },
-              },
-            })
-          end,
-
-          ['sorbet'] = function(server_name)
-            config_server(server_name, {
-              cmd = {
-                'srb', 'tc',
-                '--lsp',
-                '--disable-watchman',
-              },
-            })
-          end,
-
-          ['ts_ls'] = function(server_name)
-            config_server(server_name, {
-              init_options = {
-                hostInfo = "neovim",
-                maxTsServerMemory = 8192,
-              },
-            })
-          end,
-        },
-      })
-
       -- Set up luasnip
       local luasnip = require('luasnip')
       require('luasnip.loaders.from_vscode').lazy_load()
@@ -322,16 +136,6 @@ return {
         }
       })
 
-      -- Set configuration for specific filetype.
-      -- cmp.setup.filetype('gitcommit', {
-      --   sources = cmp.config.sources({
-      --     -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-      --     { name = 'git' },
-      --   }, {
-      --     { name = 'buffer' },
-      --   })
-      -- })
-
       local cmdlineMapping = {
         ['<Tab>'] = {
           c = function()
@@ -400,26 +204,6 @@ return {
         }, {
           { name = 'cmdline' }
         })
-      })
-
-      -- Diagnostics configuration
-      vim.diagnostic.config({
-        virtual_text = false,
-        float = {
-          header = false,
-          border = 'rounded',
-          source = true,
-          format = function(diagnostic)
-            local source = diagnostic.source or 'lsp'
-            local href = utils.safe_get(diagnostic, 'user_data', 'lsp', 'codeDescription', 'href')
-              or (
-                diagnostic.code
-                  and string.format('https://google.com/search?q=%s+%s', diagnostic.source or '', diagnostic.code)
-                or ''
-              )
-            return string.format('%s\n[%s] %s', diagnostic.message, source, href)
-          end,
-        },
       })
     end,
   }
