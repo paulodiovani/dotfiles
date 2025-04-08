@@ -111,5 +111,11 @@ return {
     -- Key mappings
     vim.keymap.set('n', '<Leader>d', ':DrawerCwd<CR>', { silent = true })
     vim.keymap.set('n', '<Leader>f', ':DrawerFind<CR>', { silent = true })
+
+    -- ui adjustments
+    vim.cmd([[
+      " NvimTree overrides
+      highlight link NvimTreeNormal WriteRoomNormal
+    ]])
   end,
 }

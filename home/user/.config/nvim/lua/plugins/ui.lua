@@ -45,7 +45,8 @@ return {
       vim.cmd([[
         " hide split separator
         " TODO: make part of plugin
-        highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
+        "highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
+        set fillchars+=vert:\ " hide vertical window separator
       ]])
     end,
   }
