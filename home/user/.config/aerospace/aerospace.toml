@@ -133,8 +133,6 @@ cmd-shift-right = 'move right'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
 # https://nikitabobko.github.io/AeroSpace/commands#join-with
-cmd-shift-h = 'join-with up'
-cmd-shift-v = 'join-with left'
 cmd-shift-e = '''exec-and-forget if [ $(expr $(aerospace list-windows --workspace focused | wc -l) % 2) -eq 0 ]; then
   aerospace join-with up;
 else
