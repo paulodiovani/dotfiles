@@ -307,6 +307,9 @@ command! HexdumpReverse %!xxd -r
 " AUTOCMD SECTION "
 """""""""""""""""""
 
+" close quick fix list on enter
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
 " unmap ft plugin maps
 augroup UnMaps
   autocmd!
@@ -321,6 +324,10 @@ augroup END
 
 " disable unsafe commands in project-specific .vimrc files
 set secure
+
+""""""""""""""""""""
+" Included configs "
+""""""""""""""""""""
 
 " other config files
 source ~/.config/vim/session_manager.vim
