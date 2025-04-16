@@ -60,6 +60,9 @@ command! -nargs=? -complete=checkhealth Checkhealth above checkhealth <args> | f
 " format code
 command! -range Format if <range> | exec 'lua vim.lsp.buf.range_formatting({ timeout_ms = 2000 })' | else | exec 'lua vim.lsp.buf.format({ timeout_ms = 2000 })' | endif
 
+" open claude code with a hidden buffer
+command! Claude edit term://claude | setlocal nobuflisted | set ft=claudecode
+
 """""""""""""""""""
 " AUTOCMD SECTION "
 """""""""""""""""""
