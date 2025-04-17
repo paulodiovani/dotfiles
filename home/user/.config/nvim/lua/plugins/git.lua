@@ -27,7 +27,9 @@ return {
 
   -- Git conflict resolution
   {
-    "christoomey/vim-conflicted",
+    -- "christoomey/vim-conflicted",
+    "paulodiovani/vim-conflicted",
+    branch = "fix/hide-non-vim-error",
     dependencies = {
       "tpope/vim-fugitive",
     },
