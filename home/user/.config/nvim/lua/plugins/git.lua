@@ -28,6 +28,9 @@ return {
   -- Git conflict resolution
   {
     "christoomey/vim-conflicted",
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
     cmd = {
       'Conflicted',
     },
