@@ -18,8 +18,18 @@ return {
   },
 
   -- Github integration
-  { "tpope/vim-rhubarb" },
+  {
+    "tpope/vim-rhubarb",
+    cmd = {
+      'GBrowse',
+    },
+  },
 
   -- Git conflict resolution
-  { "christoomey/vim-conflicted" }
+  {
+    "christoomey/vim-conflicted",
+    cmd = {
+      'Conflicted',
+    },
+  }
 }

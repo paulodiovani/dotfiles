@@ -1,6 +1,18 @@
 -- Vim Test configuration
 return {
   "vim-test/vim-test",
+  cmd = {
+    "TestFile",
+    "TestLast",
+    "TestClass",
+    "TestSuite",
+    "TestVisit",
+    "TestNearest",
+  },
+  keys = {
+    { '<F5>' },
+    { '<Leader><F5>' },
+  },
   config = function()
     -- vim-test config
     vim.cmd([[
