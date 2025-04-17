@@ -4,7 +4,7 @@ return {
   dependencies = { "kyazdani42/nvim-web-devicons" },
 
   keys = {
-    { '<Leader>d', ':DrawerCwd<CR>', { silent = true } },
+    { '<Leader>d', ':DrawerCwd<CR>',  { silent = true } },
     { '<Leader>f', ':DrawerFind<CR>', { silent = true } },
   },
 
@@ -43,14 +43,14 @@ return {
       },
       filters = {
         custom = {
-          "^\\.git$",             -- git directory
-          "^build$",              -- build dir (java, kotlin, etc)
-          "^target$",             -- build dir (rust)
-          "^\\.classpath$",       -- eclipse jdtls
+          "^\\.git$",       -- git directory
+          "^build$",        -- build dir (java, kotlin, etc)
+          "^target$",       -- build dir (rust)
+          "^\\.classpath$", -- eclipse jdtls
           "^\\.project$",
           "^\\.settings$",
           "^bin\\/.+\\.class$",
-          "^Session\\.vim$", -- vim session
+          "^Session\\.vim$",  -- vim session
           "^Session\\.lock$", -- vim session
         },
         dotfiles = false,
@@ -72,7 +72,8 @@ return {
       -- custom mappings
       on_attach = function(bufnr)
         nvim_tree_api.config.mappings.default_on_attach(bufnr)
-        vim.keymap.set("n", "?", nvim_tree_api.tree.toggle_help, { buffer = bufnr, noremap = true, silent = true, nowait = true })
+        vim.keymap.set("n", "?", nvim_tree_api.tree.toggle_help,
+          { buffer = bufnr, noremap = true, silent = true, nowait = true })
       end,
     })
 
@@ -83,7 +84,7 @@ return {
 
       if view.is_visible() then
         nvim_tree_api.tree.focus()
-        nvim_tree_api.tree.change_dir { path }
+        nvim_tree_api.tree.change_root(path)
         return
       end
 
