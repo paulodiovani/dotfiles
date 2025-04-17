@@ -10,8 +10,9 @@ return {
     "TestNearest",
   },
   keys = {
-    { '<F5>' },
-    { '<Leader><F5>' },
+    -- also in .vimrc
+    { '<F5>', ':TestFile<CR>', mode = { 'i', 'n', 'v' } },
+    { '<Leader><F5>', ':TestNearest<CR>', mode = { 'i', 'n', 'v' } },
   },
   config = function()
     -- vim-test config
@@ -26,10 +27,6 @@ return {
       let test#ruby#rails#options = '--backtrace'
       let test#ruby#rspec#options = '--format doc'
       let test#python#pytest#options = '--verbosity=2'
-
-      " mappings (in .vimrc)
-      " map <F5> :TestFile<CR>                              " run tests for current file
-      " map <leader><F5> :TestNearest<CR>                   " run tests nearest to cursor
     ]])
   end
 }
