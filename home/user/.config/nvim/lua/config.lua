@@ -26,7 +26,7 @@ require("lazy").setup({
   },
   dev = {
     path = "~/Development/Vim",
-    patterns = { "*" },
+    patterns = { "paulodiovani" },
     fallback = true,
   },
 })
