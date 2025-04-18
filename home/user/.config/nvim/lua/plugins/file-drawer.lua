@@ -124,7 +124,7 @@ return {
     -- ui adjustments
     vim.cmd([[
       " NvimTree overrides
-      highlight link NvimTreeNormal WriteRoomNormal
+      highlight link NvimTreeNormal DarkRoomNormal
     ]])
   end,
 }

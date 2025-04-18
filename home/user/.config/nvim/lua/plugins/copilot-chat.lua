@@ -70,7 +70,7 @@ return {
       -- ui adjustments
       vim.cmd([[
         " copilot chat theme overrides
-        highlight! link CopilotChatNormal WriteRoomNormal
+        highlight! link CopilotChatNormal DarkRoomNormal
         autocmd BufEnter copilot-chat setlocal winhighlight=Normal:CopilotChatNormal
         autocmd BufEnter copilot-chat setlocal nocursorline
       ]])

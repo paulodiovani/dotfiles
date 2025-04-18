@@ -39,12 +39,12 @@ return {
 
   -- WriteRoom plugin
   {
-    "paulodiovani/vim-writeroom",
+    "paulodiovani/vim-darkroom",
     dependencies = { "tinted-theming/tinted-vim" },
 
     keys = '<Leader><BS>',
 
-    cmd = 'WriteRoomToggle',
+    cmd = 'DarkRRoomToggle',
 
     config = function()
       vim.cmd([[
