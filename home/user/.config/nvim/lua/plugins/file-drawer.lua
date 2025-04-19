@@ -1,15 +1,17 @@
 -- File drawer configuration
 return {
   "kyazdani42/nvim-tree.lua",
-  dependencies = { "kyazdani42/nvim-web-devicons" },
+  dependencies = {
+    "kyazdani42/nvim-web-devicons",
+    "paulodiovani/vim-darkroom",
+  },
 
   keys = {
-    { '<Leader>d', ':DrawerCwd<CR>',  { silent = true } },
-    { '<Leader>f', ':DrawerFind<CR>', { silent = true } },
+    { '<Leader>d', ':DarkRoomLeft DrawerCwd<CR>', silent = true },
+    { '<Leader>f', ':DrawerFind<CR>', silent = true },
   },
 
   cmd = {
-    'Drawer',
     'DrawerCwd',
     'DrawerFind',
   },
@@ -77,54 +79,14 @@ return {
       end,
     })
 
-    -- open nvim-tree on the left or leftmost window
-    _G.drawer_open = function(path)
-      local view = require('nvim-tree.view')
-      path = path or vim.fn.getcwd()
-
-      if view.is_visible() then
-        nvim_tree_api.tree.focus()
-        nvim_tree_api.tree.change_root(path)
-        return
-      end
-
-      if vim.fn.winnr('$') == 1 then
-        nvim_tree_api.tree.open { path }
-        return
-      end
-
-      vim.api.nvim_command('1 wincmd w')
-      nvim_tree_api.tree.open { path, current_window = true }
-    end
-
-    _G.drawer_find = function(bufnr)
-      local view = require('nvim-tree.view')
-      bufnr = bufnr or vim.api.nvim_get_current_buf()
-
-      if not view.is_visible() then
-        _G.drawer_open()
-      end
-
-      nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
-    end
-
-    -- Define commands
-    vim.api.nvim_create_user_command('Drawer', function(opts)
-      drawer_open(opts.args ~= "" and opts.args or nil)
-    end, { nargs = '?' })
-
     vim.api.nvim_create_user_command('DrawerCwd', function()
-      drawer_open(vim.fn.getcwd())
+      nvim_tree_api.tree.open({ current_window = true })
     end, {})
 
     vim.api.nvim_create_user_command('DrawerFind', function()
-      drawer_find()
+      local bufnr = vim.api.nvim_get_current_buf()
+      vim.cmd('DarkRoomLeft DrawerCwd')
+      nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
     end, {})
-
-    -- ui adjustments
-    vim.cmd([[
-      " NvimTree overrides
-      highlight link NvimTreeNormal DarkRoomNormal
-    ]])
   end,
 }

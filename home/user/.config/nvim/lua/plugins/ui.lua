@@ -44,9 +44,13 @@ return {
 
     keys = '<Leader><BS>',
 
-    cmd = 'DarkRRoomToggle',
+    cmd = {
+      'DarkRoomLeft',
+      'DarkRoomRight',
+      'DarkRoomToggle',
+    },
 
-    config = function()
+    init = function()
       vim.cmd([[
         " hide split separator
         " TODO: make part of plugin
