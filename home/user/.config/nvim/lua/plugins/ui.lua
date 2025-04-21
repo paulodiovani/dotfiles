@@ -47,6 +47,8 @@ return {
     cmd = {
       'DarkRoomLeft',
       'DarkRoomRight',
+      'DarkRoomReplaceLeft',
+      'DarkRoomReplaceRight',
       'DarkRoomToggle',
     },
 

@@ -48,7 +48,7 @@ set pumheight=20                    " Maximum menu heigh
 " set fillchars=vert:\                " use space as vertical split
 set fillchars=eob:\                 " use space as end of buffer (~) character
 set signcolumn=number               " show signs in number column
-set splitright                      " open new split to the right
+" set splitright                      " open new split to the right
 set nocursorline                    " hide cursorline highlight
 
 " netrw/Explore (almost) like NERDTree
