@@ -13,18 +13,19 @@ return {
       { "<Leader>gdm", ":DarkRoomReplaceLeft Gdiffsplit main<CR>", desc = "Git diff main", silent = true },
       { "<Leader>gb", ":Git blame<CR>", desc = "Git blame", silent = true },
     },
-    config = function()
-      -- Github integration
-      vim.g.github_enterprise_urls = {'[-_\\.a-zA-Z0-9]\\+'}
-    end
   },
 
   -- Github integration
   {
     "tpope/vim-rhubarb",
-    cmd = {
-      'GBrowse',
+    lazy = false, -- always load rhubarb
+    dependencies = {
+      "tpope/vim-fugitive",
     },
+    init = function()
+      -- Github integration
+      vim.g.github_enterprise_urls = {'[-_\\.a-zA-Z0-9]\\+'}
+    end,
   },
 
   -- Git conflict resolution
