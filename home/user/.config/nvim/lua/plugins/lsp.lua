@@ -32,16 +32,30 @@ return {
                   vim.lsp.get_log_path())) end, { force = true })
 
             -- default/common lsp mappings
-            -- vim.keymap.set('i', '<C-s>', lsp_utils.signature_help, { desc = 'LSP: Signature Help' })
-            -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'LSP: Hover' })
-            -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP: Go to Declaration' })
-            -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to Definition' })
-            -- vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
-            -- vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, { desc = 'LSP: Go to Implementation' })
-            -- vim.keymap.set({ 'n', 'i' }, 'grn', vim.lsp.buf.rename, { desc = 'LSP: Rename' })
-            -- vim.keymap.set('n', 'grr', vim.lsp.buf.references, { desc = 'LSP: Find References' })
+            -- source: `help lsp-defaults
+
+            -- - 'omnifunc' is set to |vim.lsp.omnifunc()|, use |i_CTRL-X_CTRL-O| to trigger
+            --   completion.
+            -- - 'tagfunc' is set to |vim.lsp.tagfunc()|. This enables features like
+            --   go-to-definition, |:tjump|, and keymaps like |CTRL-]|, |CTRL-W_]|,
+            --   |CTRL-W_}| to utilize the language server.
+            -- - 'formatexpr' is set to |vim.lsp.formatexpr()|, so you can format lines via
+            --   |gq| if the language server supports it.
+            --   - To opt out of this use |gw| instead of gq, or clear 'formatexpr' on |LspAttach|.
+            -- - |K| is mapped to |vim.lsp.buf.hover()| unless |'keywordprg'| is customized or
+            --   a custom keymap for `K` exists.
+            --
+            --                                           *grr* *gra* *grn* *gri* *i_CTRL-S*
+            -- Some keymaps are created unconditionally when Nvim starts:
+            -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
+            -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
+            -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
+            -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
+            -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
+            -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
 
             -- custom mappings
+            vim.keymap.set('n', 'gD', vim.lsp.buf.definition, { desc = 'LSP: Go to definition' })
             vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition, { desc = 'LSP: Type Definition' })
             vim.keymap.set('n', 'gwa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP: Add Workspace Folder' })
             vim.keymap.set('n', 'gwl', lsp_utils.list_workspace_folders, { desc = 'LSP: List Workspace Folders' })

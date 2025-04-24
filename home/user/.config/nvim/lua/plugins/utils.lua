@@ -4,7 +4,20 @@ return {
   { "editorconfig/editorconfig-vim" },
 
   -- Comment plugin
-  { "tomtom/tcomment_vim" },
+  { "tomtom/tcomment_vim",
+    keys = {
+      { "<C-_><C-_>", "<Cmd>TComment<CR>", mode = { "i", "n", "v" }, desc = "Toggle line or block comment", silent = true },
+    },
+    cmd = {
+      "TComment",
+    },
+    init = function()
+      vim.cmd([[
+        " Disable maps
+        let g:tcomment_maps = 0
+      ]])
+    end,
+  },
 
   -- File operations
   { "tpope/vim-eunuch" },
