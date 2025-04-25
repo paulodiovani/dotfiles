@@ -6,7 +6,9 @@ return {
   -- Comment plugin
   { "tomtom/tcomment_vim",
     keys = {
-      { "<C-_><C-_>", "<Cmd>TComment<CR>", mode = { "i", "n", "v" }, desc = "Toggle line or block comment", silent = true },
+      { "<C-_><C-_>", ":TComment<CR>", mode = "n", desc = "Toggle line comment", silent = true },
+      { "<C-_><C-_>", ":TCommentMaybeInline<CR>", mode = "v", desc = "Toggle multiline comment", silent = true },
+      { "<C-_><C-_>", "<C-o>:TComment<CR>", mode = "i", desc = "Toggle line comment", silent = true },
     },
     cmd = {
       "TComment",
