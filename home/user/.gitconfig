@@ -21,7 +21,7 @@
   bd = branch-delete
   branch-delete-merged = !git branch --no-color | grep -v master | xargs git branch -d
   bdm = branch-delete-merged
-  conflicted = !nvim +'packadd conflicted | Conflicted'
+  conflicted = !nvim +Conflicted
 [core]
   editor = nvim +\"normal $\"
   excludesfile = ~/.gitignore

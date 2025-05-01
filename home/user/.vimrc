@@ -46,8 +46,10 @@ set ts=2 sts=2 sw=2                 " TAB width
 set completeopt=menu,menuone,noinsert " Show only menu for completion (no preview)
 set pumheight=20                    " Maximum menu heigh
 " set fillchars=vert:\                " use space as vertical split
+set fillchars=eob:\                 " use space as end of buffer (~) character
 set signcolumn=number               " show signs in number column
-set splitright                      " open new split to the right
+" set splitright                      " open new split to the right
+set nocursorline                    " hide cursorline highlight
 
 " netrw/Explore (almost) like NERDTree
 let g:netrw_banner = 0
@@ -332,7 +334,6 @@ set secure
 " other config files
 source ~/.config/vim/session_manager.vim
 source ~/.config/vim/syntax.vim
-source ~/.config/vim/vim-test.vim
 source ~/.config/vim/yank_history.vim
 
 " os-specific settings
