@@ -62,9 +62,9 @@ return {
             vim.keymap.set('n', 'gwr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP: Remove Workspace Folder' })
             vim.keymap.set({ 'n', 'i' }, '<F12>', vim.lsp.buf.definition, { desc = 'LSP: Go to Definition' })
             vim.keymap.set({ 'n', 'i' }, '<F9>', vim.lsp.buf.hover, { desc = 'LSP: Hover' })
-            vim.keymap.set({ 'n', 'i' }, '<Leader><F12>', vim.lsp.buf.type_definition, { desc = 'LSP: Type Definition' })
-            vim.keymap.set({ 'n', 'i' }, '<Leader><F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename' })
-            vim.keymap.set({ 'n', 'i' }, '<Leader>ca', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
+            vim.keymap.set({ 'n', 'v' }, '<Leader><F12>', vim.lsp.buf.type_definition, { desc = 'LSP: Type Definition' })
+            vim.keymap.set({ 'n', 'v' }, '<Leader><F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename' })
+            vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
           end
         }
 
