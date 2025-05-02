@@ -309,8 +309,8 @@ command! HexdumpReverse %!xxd -r
 " AUTOCMD SECTION "
 """""""""""""""""""
 
-" close quick fix list on enter
-autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+" close quick fix list on <Leader>Enter
+autocmd FileType qf nnoremap <buffer> <Leader><CR> <CR>:cclose<CR>
 
 " unmap ft plugin maps
 augroup UnMaps
