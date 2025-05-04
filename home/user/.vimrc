@@ -320,7 +320,7 @@ augroup UnMaps
 augroup END
 
 augroup FileTypes
-  autocmd BufNewFile,BufRead *.md setlocal conceallevel=0
+  autocmd BufNewFile,BufRead *.md,*.json setlocal conceallevel=0
   autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
 augroup END
 
