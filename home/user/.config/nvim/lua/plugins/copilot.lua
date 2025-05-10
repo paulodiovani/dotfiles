@@ -7,7 +7,7 @@ return {
     },
 
     opts = {
-      copilot_model = 'claude-3.7-sonnet',
+      -- copilot_model = 'claude-3.7-sonnet',
       -- Set enable = true until this bug is fixed:
       -- https://github.com/zbirenbaum/copilot-cmp/issues/10
       suggestion = {
