@@ -204,6 +204,10 @@ nnoremap ]z zj
 " close preview window
 map <Leader>z <C-w>z
 
+" scroll down/up
+nnoremap <C-Down> <C-e>
+nnoremap <C-Up> <C-y>
+
 " navigate to previous window
 noremap <Leader>w <C-w>p
 " close other windows
