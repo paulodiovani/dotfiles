@@ -7,6 +7,7 @@
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
+    "custom/poweroff",
     "sway/workspaces",
     "sway/mode",
     "sway/window"
@@ -14,7 +15,6 @@
   "modules-center": [
     "clock#calendar",
     "clock",
-    "custom/notifications"
   ],
   "modules-right": [
     "tray",
@@ -25,7 +25,7 @@
     "bluetooth",
     "network",
     "battery",
-    "custom/poweroff"
+    "custom/notifications"
   ],
   // Modules configuration
 
@@ -84,9 +84,9 @@
   "custom/notifications": {
     "format": "{icon}",
     "format-icons": {
-      "notification": "",
+      "notification": "  ",
       "none": "",
-      "dnd-notification": "",
+      "dnd-notification": "  ",
       "dnd-none": ""
     },
     "return-type": "json",
