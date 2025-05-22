@@ -23,13 +23,20 @@ return {
           normal = '?',
         },
       },
-      window = {
-        layout = 'replace',
-      },
     },
 
     keys = {
-      { '<Leader>cc', '<Cmd>DarkRoomRight CopilotChatOpen<CR>', mode = { 'n', 'v' }, desc = 'Copilot Chat right window', silent = true },
+      {
+        '<Leader>cc',
+        function()
+          vim.cmd('set splitright')
+          vim.cmd('DarkRoomReplaceRight CopilotChatOpen')
+          vim.cmd('set nosplitright')
+        end,
+        mode = { 'n', 'v' },
+        desc = 'Copilot Chat right window',
+        silent = true
+      },
     },
 
     cmd = {
