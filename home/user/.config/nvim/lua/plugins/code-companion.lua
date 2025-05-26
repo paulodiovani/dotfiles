@@ -7,6 +7,19 @@ return {
   },
 
   opts = {
+    adapters = {
+      copilot = function()
+        return require("codecompanion.adapters").extend("copilot", {
+          name = "copilot",
+          schema = {
+            model = {
+              default = "claude-3.7-sonnet"
+            },
+          },
+        })
+      end,
+    },
+
     display = {
       chat = {
         show_header_separator = true,
