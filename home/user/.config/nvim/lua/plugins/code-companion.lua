@@ -10,14 +10,16 @@ return {
     display = {
       chat = {
         show_header_separator = true,
-        show_settings = true,
+        -- show_settings = true,
         window = {
           layout = "vertical",
           position = "right",
-          width = 0.3,
+          -- width = 0.3,
+          width = (vim.go.columns - 130) / 2,
         },
       },
     },
+
     send = {
       callback = function(chat)
         -- https://github.com/olimorris/codecompanion.nvim/discussions/640#discussioncomment-12866279
@@ -28,9 +30,14 @@ return {
       index = 1,
       description = "Send",
     },
+
     strategies = {
       chat = {
         adapter = "copilot",
+        keymaps = {
+          next_chat = { modes = { n = '<A-Right>' } },
+          previous_chat = { modes = { n = '<A-Left>' } },
+        },
       },
       inline = {
         adapter = "copilot",
