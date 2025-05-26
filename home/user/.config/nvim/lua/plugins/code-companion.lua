@@ -46,6 +46,23 @@ return {
         adapter = "copilot",
       }
     },
+
+    opts = {
+      ---@param opts table
+      ---@return string
+      system_prompt = function(opts)
+        local language = opts.language or "English"
+
+        local prompt_file = io.open(vim.env.HOME .. "/.config/nvim/assets/codecompanion-system-prompt.md", "r")
+        local prompt_content = prompt_file and prompt_file:read("*a") or ""
+        if prompt_file then prompt_file:close() end
+
+        return string.format(
+          prompt_content,
+          language
+        )
+      end,
+    },
   },
 
   keys = {
