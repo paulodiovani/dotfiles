@@ -28,6 +28,17 @@ return {
       index = 1,
       description = "Send",
     },
+    strategies = {
+      chat = {
+        adapter = "copilot",
+      },
+      inline = {
+        adapter = "copilot",
+      },
+      cmd = {
+        adapter = "copilot",
+      }
+    },
   },
 
   keys = {
