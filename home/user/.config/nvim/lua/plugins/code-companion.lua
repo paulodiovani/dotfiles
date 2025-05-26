@@ -7,9 +7,20 @@ return {
   },
 
   opts = {
-    -- IS THIS CORRECT?
+    display = {
+      chat = {
+        show_header_separator = true,
+        show_settings = true,
+        window = {
+          layout = 'vertical',
+          position = 'right',
+          width = 0.3,
+        },
+      },
+    },
     send = {
       callback = function(chat)
+        -- https://github.com/olimorris/codecompanion.nvim/discussions/640#discussioncomment-12866279
         vim.cmd("stopinsert")
         chat:submit()
         chat:add_buf_message({ role = "llm", content = "" })
@@ -22,11 +33,7 @@ return {
   keys = {
     {
       '<Leader>cc',
-      function()
-        vim.cmd('set splitright')
-        vim.cmd('DarkRoomReplaceRight CodeCompanionChat')
-        vim.cmd('set nosplitright')
-      end,
+      '<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>',
       mode = { 'n', 'v' },
       desc = 'Code Companion right window',
       silent = true
@@ -40,7 +47,7 @@ return {
     'CodeCompanionCmd',
   },
 
-  config = function(opts)
+  config = function(_, opts)
     require('codecompanion').setup(opts)
     require('modules.codecompanion-spinner'):init()
   end
