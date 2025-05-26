@@ -12,8 +12,8 @@ return {
         show_header_separator = true,
         show_settings = true,
         window = {
-          layout = 'vertical',
-          position = 'right',
+          layout = "vertical",
+          position = "right",
           width = 0.3,
         },
       },
@@ -43,23 +43,23 @@ return {
 
   keys = {
     {
-      '<Leader>cc',
-      '<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>',
-      mode = { 'n', 'v' },
-      desc = 'Code Companion right window',
+      "<Leader>cc",
+      "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>",
+      mode = { "n", "v" },
+      desc = "Code Companion right window",
       silent = true
     },
   },
 
   cmd = {
-    'CodeCompanion',
-    'CodeCompanionActions',
-    'CodeCompanionChat',
-    'CodeCompanionCmd',
+    "CodeCompanion",
+    "CodeCompanionActions",
+    "CodeCompanionChat",
+    "CodeCompanionCmd",
   },
 
   config = function(_, opts)
-    require('codecompanion').setup(opts)
-    require('modules.codecompanion-spinner'):init()
+    require("codecompanion").setup(opts)
+    require("modules.codecompanion-spinner"):init()
   end
 }
