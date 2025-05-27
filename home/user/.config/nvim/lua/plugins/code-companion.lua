@@ -48,6 +48,7 @@ return {
       chat = {
         adapter = "copilot",
         keymaps = {
+          debug = { modes = { n = 'gD' } },
           next_chat = { modes = { n = '<A-Right>' } },
           previous_chat = { modes = { n = '<A-Left>' } },
         },
