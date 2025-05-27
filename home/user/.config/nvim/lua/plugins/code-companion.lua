@@ -52,6 +52,15 @@ return {
           next_chat = { modes = { n = '<A-Right>' } },
           previous_chat = { modes = { n = '<A-Left>' } },
         },
+        roles = {
+          llm = function(adapter)
+            local name = adapter.formatted_name
+            if (adapter.model and adapter.model.name) then
+              name = name .. " (" .. adapter.model.name .. ")"
+            end
+            return name
+          end,
+        },
       },
       inline = {
         adapter = "copilot",
