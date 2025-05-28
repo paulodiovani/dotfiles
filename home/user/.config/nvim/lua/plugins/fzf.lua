@@ -1,47 +1,55 @@
--- FZF configuration
+-- FZF Lua configuration
 return {
-  "junegunn/fzf.vim",
-  dependencies = { "junegunn/fzf" },
-  config = function()
-    -- FZF config
-    vim.g.fzf_buffers_jump = 1
-    vim.g.fzf_layout = { window = 'botright 15new' }
-    vim.g.fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
-    vim.g.fzf_colors = {
-      ['fg']      = {'fg', 'Normal'},
-      ['bg']      = {'bg', 'Normal'},
-      ['hl']      = {'fg', 'Comment'},
-      ['fg+']     = {'fg', 'CursorLine', 'CursorColumn', 'Normal'},
-      ['bg+']     = {'bg', 'CursorLine', 'CursorColumn'},
-      ['hl+']     = {'fg', 'Statement'},
-      ['info']    = {'fg', 'PreProc'},
-      ['border']  = {'fg', 'Ignore'},
-      ['prompt']  = {'fg', 'Conditional'},
-      ['pointer'] = {'fg', 'Exception'},
-      ['marker']  = {'fg', 'Keyword'},
-      ['spinner'] = {'fg', 'Label'},
-      ['header']  = {'fg', 'Comment'}
-    }
+  "ibhagwan/fzf-lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
 
-    -- Custom command for GFiles/Files switching
-    vim.cmd([[command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? "execute 'GFiles ' . getcwd()" : 'Files']])
+  opts = {
+    "fzf-vim", -- profile
+    winopts = {
+      backdrop = 100,
+      border = 'rounded',
+      height = 0.3,
+      row = 1, --bottom
+      width = 1,
+      preview = {
+        border = 'rounded',
+        hidden = false,
+      },
+    },
+  },
 
-    -- Search with ripgrep including hidden files
-    vim.cmd([[command! -bang -nargs=* Rgh call fzf#vim#grep("rg --hidden --column --line-number --no-heading --color=always --smart-case -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]])
+  init = function()
+    -- Use Rg command to search
+    vim.api.nvim_create_user_command('Rg', function(opts)
+      require('fzf-lua').grep({ search = opts.args })
+    end, { nargs = '*' })
 
-    -- Key mappings
-    vim.keymap.set('n', '<C-p>', ':Ctrlp<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>p', ':Ctrlp<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>P', ':Files<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>b', ':Buffers<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>t', ':BTags<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>T', ':Tags<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>l', ':BLines<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>L', ':Lines<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>m', ':Marks<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>rg', 'yiw:Rg <C-r>"', { noremap = true })
-    vim.keymap.set('v', '<Leader>rg', 'y:Rg <C-r>"', { noremap = true })
-    vim.keymap.set('n', '<Leader>rh', 'yiw:Rgh <C-r>"', { noremap = true })
-    vim.keymap.set('v', '<Leader>rh', 'y:Rgh <C-r>"', { noremap = true })
-  end
+    -- Use Rgh command to search hidden files
+    vim.api.nvim_create_user_command('Rgh', function(opts)
+      require('fzf-lua').grep({ search = opts.args, rg_opts =
+      '--hidden --column --line-number --no-heading --color=always --smart-case' })
+    end, { nargs = '*' })
+  end,
+
+  cmd = {
+    'FzfLua',
+    'Rg',
+    'Rgh',
+  },
+
+  keys = {
+    { '<C-p>',      '<Cmd>FzfLua git_files<CR>',              mode = { 'n' } },
+    { '<Leader>p',  '<Cmd>FzfLua git_files<CR>',              mode = { 'n' } },
+    { '<Leader>P',  '<Cmd>FzfLua files<CR>',                  mode = { 'n' } },
+    { '<Leader>b',  '<Cmd>FzfLua buffers<CR>',                mode = { 'n' } },
+    { '<Leader>t',  '<Cmd>FzfLua btags<CR>',                  mode = { 'n' } },
+    { '<Leader>T',  '<Cmd>FzfLua tags<CR>',                   mode = { 'n' } },
+    { '<Leader>l',  '<Cmd>FzfLua blines<CR>',                 mode = { 'n' } },
+    { '<Leader>L',  '<Cmd>FzfLua lines<CR>',                  mode = { 'n' } },
+    { '<Leader>m',  '<Cmd>FzfLua marks<CR>',                  mode = { 'n' } },
+    { '<Leader>rg', 'yiw<Cmd>FzfLua grep_cword<CR>',          mode = { 'n' } },
+    { '<Leader>rg', 'y<Cmd>FzfLua grep_visual<CR>',           mode = { 'v' } },
+    { '<Leader>rh', 'yiw<Cmd>FzfLua grep_cword --hidden<CR>', mode = { 'n' } },
+    { '<Leader>rh', 'y<Cmd>FzfLua grep_visual --hidden<CR>',  mode = { 'v' } },
+  },
 }
