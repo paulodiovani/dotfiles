@@ -269,8 +269,6 @@ command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | if buflisted(bu
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
-command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? "execute 'GFiles ' . getcwd()" : 'Files'
-
 " file drawer
 command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args> | else | 1 wincmd w | Explore <args> | endif
 command! DrawerCwd execute 'Drawer' getcwd()
