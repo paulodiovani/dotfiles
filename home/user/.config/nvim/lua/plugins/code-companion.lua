@@ -135,6 +135,7 @@ Follow these rules:
       desc = "Code Companion right window",
       silent = true
     },
+    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>", mode = { "n", "v" } },
   },
 
   cmd = {
