@@ -21,6 +21,10 @@ return {
           on_attach = function(_, bufnr)
             local lsp_utils = require('modules.lsp-utils')
 
+            -- Enable inlay hints by default (should be a config?)
+            -- toggle with <Leader><S-8>
+            vim.lsp.inlay_hint.enable(true)
+
             -- Enable completion triggered by <c-x><c-o>
             vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
             vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
@@ -68,9 +72,8 @@ return {
           end
         }
 
-        for k, v in pairs(extra_config or {}) do
-          config[k] = v
-        end
+        -- merge config with extra configs, where the extra have priority
+        config = vim.tbl_deep_extend('force', config, extra_config or {})
 
         lspconfig[server_name].setup(config)
       end

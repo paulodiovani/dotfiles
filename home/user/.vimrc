@@ -305,6 +305,9 @@ command! -bang -nargs=* Rgh call fzf#vim#grep("rg --hidden --column --line-numbe
 command! Hexdump %!xxd
 command! HexdumpReverse %!xxd -r
 
+" open claude code with a hidden buffer
+command! Claude edit term://claude | setlocal nobuflisted | set ft=claudecode
+
 """""""""""""""""""""
 " FUNCTIONS SECTION "
 """""""""""""""""""""
