@@ -201,9 +201,6 @@ nnoremap [m [`
 nnoremap [z zk
 nnoremap ]z zj
 
-" close preview window
-map <Leader>z <C-w>z
-
 " scroll down/up
 nnoremap <C-Down> <C-e>
 nnoremap <C-Up> <C-y>
@@ -212,6 +209,9 @@ nnoremap <C-Up> <C-y>
 noremap <Leader>w <C-w>p
 " close other windows
 noremap <Leader>o <C-w>o
+" resize windows
+noremap <silent><C-w>< :vert resize -10<CR>
+noremap <silent><C-w>> :vert resize +10<CR>
 " navigate in tabs
 noremap <Leader><PageUp> :tabprev<CR>
 noremap <Leader><PageDown> :tabnext<CR>
