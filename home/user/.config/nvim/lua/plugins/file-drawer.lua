@@ -14,6 +14,8 @@ return {
   cmd = {
     'DrawerCwd',
     'DrawerFind',
+    'NvimTreeOpen',
+    'NvimTreeToggle',
   },
 
   config = function()

@@ -201,9 +201,6 @@ nnoremap [m [`
 nnoremap [z zk
 nnoremap ]z zj
 
-" close preview window
-map <Leader>z <C-w>z
-
 " scroll down/up
 nnoremap <C-Down> <C-e>
 nnoremap <C-Up> <C-y>
@@ -212,6 +209,9 @@ nnoremap <C-Up> <C-y>
 noremap <Leader>w <C-w>p
 " close other windows
 noremap <Leader>o <C-w>o
+" resize windows
+noremap <silent><C-w>< :vert resize -10<CR>
+noremap <silent><C-w>> :vert resize +10<CR>
 " navigate in tabs
 noremap <Leader><PageUp> :tabprev<CR>
 noremap <Leader><PageDown> :tabnext<CR>
@@ -253,28 +253,6 @@ map <Leader>gb :Git blame<CR>
 map <Leader>d :DrawerCwd<CR>
 map <Leader>f :DrawerFind<CR>
 
-" fzf and ripgrep maps
-
-" list git files/files
-map <C-p> :Ctrlp<CR>
-map <Leader>p :Ctrlp<CR>
-map <Leader>P :Files<CR>
-" list buffers
-map <Leader>b :Buffers<CR>
-" list tags (current buffer / all)
-map <Leader>t :BTags<CR>
-map <Leader>T :Tags<CR>
-" list lines (current buffer)
-map <Leader>l :BLines<CR>
-map <Leader>L :Lines<CR>
-" list marks
-map <Leader>m :Marks<CR>
-" ripgrep search word under cursor, or selected
-noremap <Leader>rg yiw:Rg <C-r>"
-vnoremap <Leader>rg y:Rg <C-r>"
-" ripgrep search also hidden files
-noremap <Leader>rh yiw:Rgh <C-r>"
-vnoremap <Leader>rh y:Rgh <C-r>"
 " paste word under cursor, or selected, in command mode
 noremap <Leader>: yiw:<Space><C-r>"<Home>
 vnoremap <Leader>: y:<Space><C-r>"<Home>
@@ -291,15 +269,10 @@ command! -bang Bdelete if len(getbufinfo({'buflisted':1})) > 1 | if buflisted(bu
 
 command! -nargs=1 -complete=dir New call mkdir(fnamemodify(<q-args>, ':h'), 'p') | edit <args>
 
-command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? "execute 'GFiles ' . getcwd()" : 'Files'
-
 " file drawer
 command! -nargs=? Drawer if winnr("$") == 1 | Vexplore <args> | else | 1 wincmd w | Explore <args> | endif
 command! DrawerCwd execute 'Drawer' getcwd()
 command! DrawerFind let @/=expand("%:t") | execute 'Drawer' expand("%:p:h") | normal n
-
-" search also hidden files with ripgrep
-command! -bang -nargs=* Rgh call fzf#vim#grep("rg --hidden --column --line-number --no-heading --color=always --smart-case -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)',
 
 " hextdump / reverse
 command! Hexdump %!xxd

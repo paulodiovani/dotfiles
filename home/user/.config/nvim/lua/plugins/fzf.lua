@@ -1,47 +1,79 @@
--- FZF configuration
+-- FZF Lua configuration
 return {
-  "junegunn/fzf.vim",
-  dependencies = { "junegunn/fzf" },
-  config = function()
-    -- FZF config
-    vim.g.fzf_buffers_jump = 1
-    vim.g.fzf_layout = { window = 'botright 15new' }
-    vim.g.fzf_commits_log_options = '--format="%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]" --date=short'
-    vim.g.fzf_colors = {
-      ['fg']      = {'fg', 'Normal'},
-      ['bg']      = {'bg', 'Normal'},
-      ['hl']      = {'fg', 'Comment'},
-      ['fg+']     = {'fg', 'CursorLine', 'CursorColumn', 'Normal'},
-      ['bg+']     = {'bg', 'CursorLine', 'CursorColumn'},
-      ['hl+']     = {'fg', 'Statement'},
-      ['info']    = {'fg', 'PreProc'},
-      ['border']  = {'fg', 'Ignore'},
-      ['prompt']  = {'fg', 'Conditional'},
-      ['pointer'] = {'fg', 'Exception'},
-      ['marker']  = {'fg', 'Keyword'},
-      ['spinner'] = {'fg', 'Label'},
-      ['header']  = {'fg', 'Comment'}
-    }
+  "ibhagwan/fzf-lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
 
-    -- Custom command for GFiles/Files switching
-    vim.cmd([[command! Ctrlp execute (exists("*fugitive#Head") && len(fugitive#Head())) ? "execute 'GFiles ' . getcwd()" : 'Files']])
+  opts = {
+    "fzf-vim", -- profile
+    winopts = {
+      backdrop = 100,
+      border = 'rounded',
+      height = 0.3,
+      row = 1, --bottom
+      width = 1,
+      preview = {
+        border = 'rounded',
+        hidden = false,
+      },
+    },
+  },
 
-    -- Search with ripgrep including hidden files
-    vim.cmd([[command! -bang -nargs=* Rgh call fzf#vim#grep("rg --hidden --column --line-number --no-heading --color=always --smart-case -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)]])
+  init = function()
+    -- Use Rg command to search
+    vim.api.nvim_create_user_command('Rg', function(opts)
+      require('fzf-lua').grep({ search = opts.args })
+    end, { nargs = '*' })
 
-    -- Key mappings
-    vim.keymap.set('n', '<C-p>', ':Ctrlp<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>p', ':Ctrlp<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>P', ':Files<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>b', ':Buffers<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>t', ':BTags<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>T', ':Tags<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>l', ':BLines<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>L', ':Lines<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>m', ':Marks<CR>', { silent = true })
-    vim.keymap.set('n', '<Leader>rg', 'yiw:Rg <C-r>"', { noremap = true })
-    vim.keymap.set('v', '<Leader>rg', 'y:Rg <C-r>"', { noremap = true })
-    vim.keymap.set('n', '<Leader>rh', 'yiw:Rgh <C-r>"', { noremap = true })
-    vim.keymap.set('v', '<Leader>rh', 'y:Rgh <C-r>"', { noremap = true })
-  end
+    -- Use Rgh command to search hidden files
+    vim.api.nvim_create_user_command('Rgh', function(opts)
+      require('fzf-lua').grep({
+        search = opts.args,
+        rg_opts =
+        '--hidden --column --line-number --no-heading --color=always --smart-case'
+      })
+    end, { nargs = '*' })
+
+    -- Check if in a git repo and use git_files, otherwise use files
+    vim.api.nvim_create_user_command('Ctrlp', function(opts)
+      if vim.fn.exists("*fugitive#Head") == 1 and vim.fn.len(vim.fn.FugitiveHead()) > 0 then
+        require('fzf-lua').git_files()
+      else
+        require('fzf-lua').files()
+      end
+    end, {})
+  end,
+
+  cmd = {
+    'FzfLua',
+  },
+
+  keys = {
+    { '<C-p>',      '<Cmd>Ctrlp<CR>',                            mode = { 'n' } },
+    { '<C-P>',      '<Cmd>FzfLua commands<CR>',                  mode = { 'n' } },
+    { '<Leader>p',  '<Cmd>Ctrlp<CR>',                            mode = { 'n' } },
+    { '<Leader>P',  '<Cmd>FzfLua files<CR>',                     mode = { 'n' } },
+    { '<Leader>b',  '<Cmd>FzfLua buffers<CR>',                   mode = { 'n' } },
+    { '<Leader>t',  '<Cmd>FzfLua btags<CR>',                     mode = { 'n' } },
+    { '<Leader>T',  '<Cmd>FzfLua tags<CR>',                      mode = { 'n' } },
+    { '<Leader>l',  '<Cmd>FzfLua blines<CR>',                    mode = { 'n' } },
+    { '<Leader>L',  '<Cmd>FzfLua lines<CR>',                     mode = { 'n' } },
+    { '<Leader>m',  '<Cmd>FzfLua marks<CR>',                     mode = { 'n' } },
+    -- lsp features
+    { 'gD',         '<Cmd>FzfLua lsp_definitions<CR>',           mode = { 'n' }, desc = "LSP Definitions" },
+    { 'grD',        '<Cmd>FzfLua lsp_declarations<CR>',          mode = { 'n' }, desc = "LSP Declarations" },
+    { 'grE',        '<Cmd>FzfLua lsp_workspace_diagnostics<CR>', mode = { 'n' }, desc = "LSP Workspace Diagnostics" },
+    { 'grS',        '<Cmd>FzfLua lsp_workspace_symbols<CR>',     mode = { 'n' }, desc = "LSP Workspace Symbols" },
+    { 'gra',        '<Cmd>FzfLua lsp_code_actions<CR>',          mode = { 'n' }, desc = "LSP Code Actions" },
+    { 'grd',        '<Cmd>FzfLua lsp_definitions<CR>',           mode = { 'n' }, desc = "LSP Definitions" },
+    { 'gre',        '<Cmd>FzfLua lsp_document_diagnostics<CR>',  mode = { 'n' }, desc = "LSP Document Diagnostics" },
+    { 'gri',        '<Cmd>FzfLua lsp_implementations<CR>',       mode = { 'n' }, desc = "LSP Implementations" },
+    { 'grr',        '<Cmd>FzfLua lsp_references<CR>',            mode = { 'n' }, desc = "LSP References" },
+    { 'grs',        '<Cmd>FzfLua lsp_document_symbols<CR>',      mode = { 'n' }, desc = "LSP Document Symbols" },
+    { 'grt',        '<Cmd>FzfLua lsp_typedefs<CR>',              mode = { 'n' }, desc = "LSP Type Definitions" },
+    -- search word under cursor or selection
+    { '<Leader>rg', '<Cmd>FzfLua grep_cword<CR>',                mode = { 'n' } },
+    { '<Leader>rg', '<Cmd>FzfLua grep_visual<CR>',               mode = { 'v' } },
+    { '<Leader>rh', 'yiw:Rgh <C-r>"<CR>',                        mode = { 'n' } },
+    { '<Leader>rh', 'y:Rgh <C-r>"<CR>',                          mode = { 'v' } },
+  },
 }

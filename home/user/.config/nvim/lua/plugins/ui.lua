@@ -37,7 +37,7 @@ return {
     end,
   },
 
-  -- WriteRoom plugin
+  -- DarkRoom plugin
   {
     "paulodiovani/vim-darkroom",
     dependencies = { "tinted-theming/tinted-vim" },
@@ -60,5 +60,5 @@ return {
         set fillchars+=vert:\ " hide vertical window separator
       ]])
     end,
-  }
+  },
 }
