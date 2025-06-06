@@ -48,6 +48,8 @@ return {
       settings = {
         ltex = {
           checkFrequency = 'save',
+          enabled = { 'markdown', 'plaintex', 'rst', 'tex', 'latex' },
+          language = 'en-US',       -- default language
         },
       },
     })
