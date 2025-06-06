@@ -302,6 +302,7 @@ augroup END
 augroup FileTypes
   autocmd BufNewFile,BufRead *.md,*.json setlocal conceallevel=0
   autocmd BufNewFile,BufRead *.es6 setlocal filetype=javascript
+  autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
 augroup END
 
 " disable unsafe commands in project-specific .vimrc files
