@@ -7,7 +7,7 @@ return {
     local null_ls = require("null-ls")
     null_ls.setup({
       sources = {
-        null_ls.builtins.diagnostics.codespell,
+        null_ls.builtins.diagnostics.codespell.with({ disabled_filetypes = { "markdown", "tex" } }),
         null_ls.builtins.diagnostics.erb_lint,
         null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.diagnostics.yamllint,
