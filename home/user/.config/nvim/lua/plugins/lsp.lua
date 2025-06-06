@@ -43,17 +43,6 @@ return {
       },
     })
 
-    -- Ltex
-    vim.lsp.config("ltex_plus", {
-      settings = {
-        ltex = {
-          checkFrequency = 'save',
-          enabled = { 'markdown', 'plaintex', 'rst', 'tex', 'latex' },
-          language = 'en-US',       -- default language
-        },
-      },
-    })
-
     -- Rust Analyzer config
     vim.lsp.config("rust_analyzer", {
       settings = {

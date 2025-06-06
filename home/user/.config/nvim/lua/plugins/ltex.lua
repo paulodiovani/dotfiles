@@ -5,17 +5,26 @@ return {
   "barreiroleo/ltex_extra.nvim",
   dependencies = { "neovim/nvim-lspconfig" },
 
-  -- load on save
-  event = {
-    "BufWritePost *.markdown",
-    "BufWritePost *.md",
-    "BufWritePost *.tex",
-  },
-
   opts = {
     load_langs = { "en-US", "pt-BR" },
-    -- save to .vscode dir for compatibility
-    -- https://ltex-plus.github.io/ltex-plus/faq.html#where-does-vscode-ltex-plus-save-its-settings-eg-dictionary-false-positives
-    path = ".vscode",
+    -- save to .ltex dir
+    path = ".ltex",
   },
+
+  config = function(_, opts)
+    -- Ltex LSP
+    vim.lsp.config("ltex_plus", {
+      on_attach = function()
+        require("ltex_extra").setup(opts)
+      end,
+
+      settings = {
+        ltex = {
+          checkFrequency = 'save',
+          enabled = { 'markdown', 'plaintex', 'rst', 'tex', 'latex' },
+          language = 'en-US',       -- default language
+        },
+      },
+    })
+  end,
 }
