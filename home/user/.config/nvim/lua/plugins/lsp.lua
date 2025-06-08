@@ -58,7 +58,7 @@ return {
         { cmd = { "bundle", "exec", "solargraph", "stdio" }, check = "bundle exec solargraph --version" },
         { cmd = { "asdf", "exec", "solargraph", "stdio" },   check = "asdf exec solargraph --version" },
         { cmd = { "solargraph", "stdio" },                   check = "solargraph --version" },
-      })
+      }),
     })
 
     -- Rust Analyzer config
