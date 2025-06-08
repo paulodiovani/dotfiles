@@ -88,6 +88,36 @@ return {
     },
 
     prompt_library = {
+      ["Add documentation to this code or function"] = {
+        strategy = "chat",
+        description = "Create documentation for this code and update the buffer",
+        opts = {
+          auto_submit = true,
+          -- ignore_system_prompt = true,
+          is_slash_cmd = true,
+          short_name = "document",
+          adapter = {
+            name = "copilot",
+            model = "claude-3.7-sonnet",
+          },
+        },
+        prompts = {
+          {
+            role = "user",
+            content =
+            [[#buffer
+#buffer
+@editor
+
+Add documentation to the selected code or function.
+Include argument and return types and examples in docs.
+Be succinct.
+Do not add comments to variables or single line expressions.
+            ]],
+          },
+        },
+      },
+
       ["Review this article"] = {
         strategy = "chat",
         description = "Review this blog post for typos, errors, or redundancy.",
@@ -106,7 +136,6 @@ return {
             role = "user",
             content =
             [[#buffer
-
 Review this blog post for:
 - typos
 - english semantic errors
@@ -120,7 +149,7 @@ Follow these rules:
 - do not change tone or writing style
 - ignore the use of double dashes (`--`) for separation of sentences
 - explain the changes.
-]],
+            ]],
           },
         },
       },
