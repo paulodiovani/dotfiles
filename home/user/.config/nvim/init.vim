@@ -38,6 +38,9 @@ map ]a :lua vim.diagnostic.goto_next()<CR>
 map <Leader>a :lua vim.diagnostic.open_float()<CR>
 map <Leader>A :lua vim.diagnostic.setloclist()<CR>
 
+" use H instead of K for keywordprg
+noremap H K
+
 " code completion with omni function
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>

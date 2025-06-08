@@ -18,6 +18,8 @@ return {
     vim.keymap.set("n", "gwl", lsp_utils.list_workspace_folders, { desc = "LSP: List Workspace Folders" })
     vim.keymap.set("n", "gwr", vim.lsp.buf.remove_workspace_folder, { desc = "LSP: Remove Workspace Folder" })
     vim.keymap.set({ "n", "v" }, "<Leader><F2>", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+    -- make K always open LSP Hover and not keywordprg
+    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { desc = "LSP: Hover" })
 
     -- All servers
     vim.lsp.config('*', {
