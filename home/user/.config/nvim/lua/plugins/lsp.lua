@@ -43,6 +43,15 @@ return {
       },
     })
 
+    -- Solargraph
+    vim.lsp.config("solargraph", {
+      cmd = lsp_utils.check_executable({
+        { cmd = { "bundle", "exec", "solargraph", "stdio" }, check = "bundle exec solargraph --version" },
+        { cmd = { "asdf", "exec", "solargraph", "stdio" }, check = "asdf exec solargraph --version" },
+        { cmd = { "solargraph", "stdio" }, check = "solargraph --version" },
+      })
+    })
+
     -- Rust Analyzer config
     vim.lsp.config("rust_analyzer", {
       settings = {
