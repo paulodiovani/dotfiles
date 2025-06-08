@@ -38,37 +38,6 @@ return {
     },
   },
 
-  -- Emmet HTML expansion
-  {
-    "mattn/emmet-vim",
-    filetype = {
-      "astro",
-      "css",
-      "erb",
-      "handlebars",
-      "hbs",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "jsx",
-      "less",
-      "markdown",
-      "php",
-      "sass",
-      "scss",
-      "svelte",
-      "tsx",
-      "typescript",
-      "typescriptreact",
-      "vue",
-      "xml",
-    },
-    config = function()
-      vim.g.user_emmet_leader_key = '<C-e>'
-      vim.g.user_emmet_mode = 'iv'  -- enable only in insert and visual modes
-    end
-  },
-
   -- Markdown TOC
   {
     "ajorgensen/vim-markdown-toc",
