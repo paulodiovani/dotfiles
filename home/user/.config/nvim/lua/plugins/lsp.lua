@@ -2,10 +2,14 @@
 return {
   "neovim/nvim-lspconfig",
   lazy = false,
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+  },
 
   config = function()
     -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_utils = require("modules.lsp-utils")
+    local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- custom mappings (also check fzf.lua)
     -- vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
@@ -14,6 +18,11 @@ return {
     vim.keymap.set("n", "gwl", lsp_utils.list_workspace_folders, { desc = "LSP: List Workspace Folders" })
     vim.keymap.set("n", "gwr", vim.lsp.buf.remove_workspace_folder, { desc = "LSP: Remove Workspace Folder" })
     vim.keymap.set({ "n", "v" }, "<Leader><F2>", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+
+    -- All servers
+    vim.lsp.config('*', {
+      capabilities = cmp_capabilities,
+    })
 
     -- Java JDTLS
     vim.lsp.config("jdtls", {
@@ -47,8 +56,8 @@ return {
     vim.lsp.config("solargraph", {
       cmd = lsp_utils.check_executable({
         { cmd = { "bundle", "exec", "solargraph", "stdio" }, check = "bundle exec solargraph --version" },
-        { cmd = { "asdf", "exec", "solargraph", "stdio" }, check = "asdf exec solargraph --version" },
-        { cmd = { "solargraph", "stdio" }, check = "solargraph --version" },
+        { cmd = { "asdf", "exec", "solargraph", "stdio" },   check = "asdf exec solargraph --version" },
+        { cmd = { "solargraph", "stdio" },                   check = "solargraph --version" },
       })
     })
 
