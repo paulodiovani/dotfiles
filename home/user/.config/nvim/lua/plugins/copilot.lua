@@ -6,6 +6,8 @@ return {
   },
 
   opts = {
+    copilot_node_command = "/usr/bin/node", -- use system node command
+
     -- Set enable = true until this bug is fixed:
     -- https://github.com/zbirenbaum/copilot-cmp/issues/10
     suggestion = {
