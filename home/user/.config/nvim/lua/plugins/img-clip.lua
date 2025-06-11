@@ -4,12 +4,16 @@ return {
 
   opts = {
     default = {
+      -- use current filename as media folder
+      dir_path = function()
+        return "assets/media/" .. vim.fn.expand("%:t:r")
+      end,
       prompt_for_file_name = true,
       show_dir_path_in_prompt = true,
     },
     filetypes = {
       markdown = {
-        template = "![$FILE_NAME_NO_EXT$CURSOR]($FILE_PATH)",
+        template = "![$LABEL$CURSOR]($FILE_PATH)",
       },
     },
   },
