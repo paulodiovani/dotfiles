@@ -8,7 +8,7 @@ export PAGER="less -S"
 
 # Fuzzy search command and options
 export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --no-mouse --bind='F12:toggle-preview'"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --no-mouse --bind='F4:toggle-preview'"
 
 # Change NPM PREFIX
 export NPM_CONFIG_PREFIX="$HOME/.local"
