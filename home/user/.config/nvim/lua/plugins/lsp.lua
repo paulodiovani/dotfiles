@@ -4,6 +4,7 @@ return {
   lazy = false,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "barreiroleo/ltex_extra.nvim", -- Need ltex-ls or ltex-ls-plus
   },
 
   config = function()
@@ -50,6 +51,25 @@ return {
               enabled = true,
             },
           },
+        },
+      },
+    })
+
+    -- Ltex LSP + ltex_extra
+    vim.lsp.config("ltex_plus", {
+      on_attach = function()
+        require("ltex_extra").setup({
+          load_langs = { "en-US", "pt-BR" },
+          -- save to .ltex dir
+          path = ".ltex",
+        })
+      end,
+
+      settings = {
+        ltex = {
+          checkFrequency = 'save',
+          enabled = { 'markdown', 'plaintex', 'rst', 'tex', 'latex' },
+          language = 'en-US', -- default language
         },
       },
     })
