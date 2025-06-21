@@ -11,6 +11,10 @@ return {
 
   opts = {
     adapters = {
+      opts = {
+        show_defaults = false,
+      },
+
       copilot = function()
         return require("codecompanion.adapters").extend("copilot", {
           name = "copilot",
