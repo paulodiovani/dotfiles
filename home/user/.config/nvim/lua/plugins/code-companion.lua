@@ -18,10 +18,27 @@ return {
 
       copilot = function()
         return require("codecompanion.adapters").extend("copilot", {
-          name = "copilot",
+          name = "GitHub Copilot",
           schema = {
             model = {
               default = "claude-3.7-sonnet"
+            },
+          },
+        })
+      end,
+
+      openrouter = function()
+        return require("codecompanion.adapters").extend("openai_compatible", {
+          name = "OpenRouter",
+          env = {
+            url = "https://openrouter.ai/api/v1",
+            api_key = "OPENROUTER_API_KEY",
+            chat_url = "/chat/completions",
+            models_endpoint = "/models"
+          },
+          schema = {
+            model = {
+              default = "anthropic/claude-3.7-sonnet",
             },
           },
         })
@@ -190,7 +207,7 @@ Follow these rules:
       desc = "Code Companion right window",
       silent = true
     },
-    { "<Leader>cl", ":CodeCompanion ", mode = { "v" }, desc = "Code Companion Inline" },
+    { "<Leader>cl", ":CodeCompanion ",               mode = { "v" },     desc = "Code Companion Inline" },
   },
 
   cmd = {
