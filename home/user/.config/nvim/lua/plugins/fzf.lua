@@ -19,14 +19,19 @@ return {
   },
 
   init = function()
+    local fzf_lua = require("fzf-lua")
+
+    -- register ui select
+    fzf_lua.register_ui_select()
+
     -- Use Rg command to search
     vim.api.nvim_create_user_command('Rg', function(opts)
-      require('fzf-lua').grep({ search = opts.args })
+      fzf_lua.grep({ search = opts.args })
     end, { nargs = '*' })
 
     -- Use Rgh command to search hidden files
     vim.api.nvim_create_user_command('Rgh', function(opts)
-      require('fzf-lua').grep({
+      fzf_lua.grep({
         search = opts.args,
         rg_opts =
         '--hidden --column --line-number --no-heading --color=always --smart-case'
@@ -34,11 +39,11 @@ return {
     end, { nargs = '*' })
 
     -- Check if in a git repo and use git_files, otherwise use files
-    vim.api.nvim_create_user_command('Ctrlp', function(opts)
+    vim.api.nvim_create_user_command('Ctrlp', function()
       if vim.fn.exists("*fugitive#Head") == 1 and vim.fn.len(vim.fn.FugitiveHead()) > 0 then
-        require('fzf-lua').git_files()
+        fzf_lua.git_files()
       else
-        require('fzf-lua').files()
+        fzf_lua.files()
       end
     end, {})
   end,
