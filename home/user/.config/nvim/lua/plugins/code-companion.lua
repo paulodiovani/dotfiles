@@ -4,6 +4,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     "echasnovski/mini.diff",
     "hrsh7th/nvim-cmp",
+    "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
@@ -194,8 +195,7 @@ Follow these rules:
     "CodeCompanionCmd",
   },
 
-  config = function(_, opts)
-    require("codecompanion").setup(opts)
-    require("modules.codecompanion-spinner"):init()
-  end
+  init = function()
+    require("modules.codecompanion.fidget-spinner"):init()
+  end,
 }
