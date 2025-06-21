@@ -63,17 +63,6 @@ return {
       },
     },
 
-    send = {
-      callback = function(chat)
-        -- https://github.com/olimorris/codecompanion.nvim/discussions/640#discussioncomment-12866279
-        vim.cmd("stopinsert")
-        chat:submit()
-        chat:add_buf_message({ role = "llm", content = "" })
-      end,
-      index = 1,
-      description = "Send",
-    },
-
     strategies = {
       chat = {
         adapter = "copilot",
