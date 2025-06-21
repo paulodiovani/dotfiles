@@ -21,4 +21,10 @@ return {
       enable = true,
     },
   },
+
+  config = function(_, opts)
+    require("nvim-treesitter").setup(opts)
+
+    vim.treesitter.language.register("markdown", { "codecompanion" })
+  end,
 }

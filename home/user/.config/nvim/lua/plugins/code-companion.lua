@@ -1,9 +1,12 @@
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
+    "MeanderingProgrammer/render-markdown.nvim",
+    "echasnovski/mini.diff",
+    "hrsh7th/nvim-cmp",
+    "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "hrsh7th/nvim-cmp",
   },
 
   opts = {
@@ -30,6 +33,10 @@ return {
           -- width = 0.3,
           width = (vim.go.columns - 130) / 2,
         },
+      },
+
+      diff = {
+        provider = "mini_diff",
       },
     },
 
@@ -62,9 +69,22 @@ return {
           end,
         },
       },
+
       inline = {
         adapter = "copilot",
+
+        keymaps = {
+          accept_change = {
+            modes = { n = "do" },
+            description = "Diff obtain: Accept the suggested change",
+          },
+          reject_change = {
+            modes = { n = "dr" },
+            description = "Diff reject: Reject the suggested change",
+          },
+        },
       },
+
       cmd = {
         adapter = "copilot",
       }
@@ -157,6 +177,7 @@ Follow these rules:
   },
 
   keys = {
+    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>", mode = { "n", "v" } },
     {
       "<Leader>cc",
       "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>",
@@ -164,7 +185,7 @@ Follow these rules:
       desc = "Code Companion right window",
       silent = true
     },
-    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>", mode = { "n", "v" } },
+    { "<Leader>cl", ":CodeCompanion ", mode = { "v" }, desc = "Code Companion Inline" },
   },
 
   cmd = {
@@ -174,8 +195,7 @@ Follow these rules:
     "CodeCompanionCmd",
   },
 
-  config = function(_, opts)
-    require("codecompanion").setup(opts)
-    require("modules.codecompanion-spinner"):init()
-  end
+  init = function()
+    require("modules.codecompanion.fidget-spinner"):init()
+  end,
 }
