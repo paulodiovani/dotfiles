@@ -19,7 +19,7 @@ return {
 
       copilot = function()
         return require("codecompanion.adapters").extend("copilot", {
-          name = "GitHub Copilot",
+          formatted_name = "GitHub Copilot",
           schema = {
             model = {
               default = "claude-3.7-sonnet"
@@ -30,7 +30,7 @@ return {
 
       openrouter = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
-          name = "OpenRouter",
+          formatted_name = "OpenRouter",
           env = {
             url = "https://openrouter.ai/api/v1",
             api_key = "OPENROUTER_API_KEY",
