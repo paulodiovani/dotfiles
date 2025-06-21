@@ -14,6 +14,7 @@ return {
     adapters = {
       opts = {
         show_defaults = false,
+        show_model_choices = true,
       },
 
       copilot = function()
