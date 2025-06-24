@@ -2,7 +2,6 @@ return {
   "olimorris/codecompanion.nvim",
   dependencies = {
     "MeanderingProgrammer/render-markdown.nvim",
-    "echasnovski/mini.diff",
     "hrsh7th/nvim-cmp",
     "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
@@ -59,7 +58,7 @@ return {
       },
 
       diff = {
-        provider = "mini_diff",
+        provider = "default",
       },
     },
 
