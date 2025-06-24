@@ -83,17 +83,6 @@ return {
 
       inline = {
         adapter = "copilot",
-
-        keymaps = {
-          accept_change = {
-            modes = { n = "do" },
-            description = "Diff obtain: Accept the suggested change",
-          },
-          reject_change = {
-            modes = { n = "dr" },
-            description = "Diff reject: Reject the suggested change",
-          },
-        },
       },
 
       cmd = {
