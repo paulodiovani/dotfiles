@@ -127,7 +127,7 @@ return {
             content =
             [[#buffer
 #buffer
-@editor
+@insert_edit_into_file
 
 Add documentation to the selected code or function.
 Include argument and return types and examples in docs.
