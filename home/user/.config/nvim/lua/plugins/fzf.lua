@@ -54,15 +54,15 @@ return {
 
   keys = {
     { '<C-p>',      '<Cmd>Ctrlp<CR>',                            mode = { 'n' } },
-    { '<C-P>',      '<Cmd>FzfLua commands<CR>',                  mode = { 'n' } },
-    { '<Leader>p',  '<Cmd>Ctrlp<CR>',                            mode = { 'n' } },
-    { '<Leader>P',  '<Cmd>FzfLua files<CR>',                     mode = { 'n' } },
-    { '<Leader>b',  '<Cmd>FzfLua buffers<CR>',                   mode = { 'n' } },
-    { '<Leader>t',  '<Cmd>FzfLua btags<CR>',                     mode = { 'n' } },
-    { '<Leader>T',  '<Cmd>FzfLua tags<CR>',                      mode = { 'n' } },
-    { '<Leader>l',  '<Cmd>FzfLua blines<CR>',                    mode = { 'n' } },
+    { '<Leader>F',  '<Cmd>FzfLua files<CR>',                     mode = { 'n' } },
     { '<Leader>L',  '<Cmd>FzfLua lines<CR>',                     mode = { 'n' } },
+    { '<Leader>P',  '<Cmd>FzfLua commands<CR>',                  mode = { 'n' } },
+    { '<Leader>T',  '<Cmd>FzfLua tags<CR>',                      mode = { 'n' } },
+    { '<Leader>b',  '<Cmd>FzfLua buffers<CR>',                   mode = { 'n' } },
+    { '<Leader>l',  '<Cmd>FzfLua blines<CR>',                    mode = { 'n' } },
     { '<Leader>m',  '<Cmd>FzfLua marks<CR>',                     mode = { 'n' } },
+    { '<Leader>p',  '<Cmd>Ctrlp<CR>',                            mode = { 'n' } },
+    { '<Leader>t',  '<Cmd>FzfLua btags<CR>',                     mode = { 'n' } },
     -- lsp features
     { 'gD',         '<Cmd>FzfLua lsp_definitions<CR>',           mode = { 'n' }, desc = "LSP Definitions" },
     { 'grD',        '<Cmd>FzfLua lsp_declarations<CR>',          mode = { 'n' }, desc = "LSP Declarations" },
