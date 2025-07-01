@@ -125,12 +125,12 @@ return {
           {
             role = "user",
             content =
-            [[#buffer
+            [[
 #buffer
 @insert_edit_into_file
 
 Add documentation to the selected code or function.
-Include argument and return types and examples in docs.
+Include argument and return types (but omit types for typescript).
 Be succinct.
 Do not add comments to variables or single line expressions.
             ]],
@@ -155,7 +155,8 @@ Do not add comments to variables or single line expressions.
           {
             role = "user",
             content =
-            [[#buffer
+            [[
+#buffer
 Review this blog post for:
 - typos
 - english semantic errors
