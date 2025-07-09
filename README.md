@@ -4,20 +4,57 @@ Config files for various programs.
 
 Mostly for `$HOME`
 
+## Fonts
+
+- Source Code Pro
+- Nerd Fonts patched fonts
+
+## Package Requirements
+
+### All distros
+
+- alacritty
+- autojump
+- awk
+- fzf
+- git
+- neovim
+- ripgrep
+- rsync
+- tmux
+- zsh
+
+### Arch Linux
+
+- adobe-source-code-pro-fonts
+- base-devel
+- asdf-vm
+
+### macOS
+
+- homebrew (install first)
+- aerospace
+- asdf
+
+#### Extra
+
+```bash
+# remove quarantine from unsigned apps
+```
+
 ## Usage
 
 ```bash
-git clone --depth 1 https://github.com/paulodiovani/dot-files.git
-cd dot-files
+git clone --depth 1 https://github.com/paulodiovani/dotfiles.git
+cd dotfiles
 make all
 ```
 
-This install required packages (Arch Linux, only), copy the config files and clone submodules into respective directories.
-
 Run `make help` or read the `Makefile` for more details.
 
-## Supported distros
+## Supported OS and distros
 
 - Arch Linux
+- macOS
 
-May or may not work on other distros.
+May or may not work with other Linux distros.
