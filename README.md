@@ -17,6 +17,7 @@ Mostly for `$HOME`
 - asdf-vm
 - autojump
 - awk
+- bat
 - fzf
 - git
 - neovim
