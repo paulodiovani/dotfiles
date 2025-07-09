@@ -31,7 +31,6 @@ Mostly for `$HOME`
 
 ### Arch Linux
 
-- adobe-source-code-pro-fonts
 - base-devel
 
 ### macOS
