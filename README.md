@@ -40,6 +40,10 @@ Mostly for `$HOME`
 
 ```bash
 # remove quarantine from unsigned apps
+xattr -d com.apple.quarantine /Applications/Alacritty.app
+
+# fix font blur in Alacritty
+defaults -currentHost write -g AppleFontSmoothing -int 0
 ```
 
 ## Usage
