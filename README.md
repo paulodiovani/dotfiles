@@ -27,22 +27,7 @@ Mostly for `$HOME`
 
 #### WM, UI tools, and launcher
 
-- autotiling
-- avizo
-- azote
-- grimshot
-- nwg-drawer
-- polkit-gnome
-- rofi
-- sway
-- swaylock
-- swaync
-- sworkstyle
-- waybar
-- wf-recorder
-- wl-paste
-- wlogout
-- xdg-desktop-portal
+- sway (check [docs/SWAYWM.md](docs/SWAYWM.md)
 
 ### Arch Linux
 
