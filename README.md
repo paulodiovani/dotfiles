@@ -29,6 +29,12 @@ Mostly for `$HOME`
 
 - sway (check [docs/SWAYWM.md](docs/SWAYWM.md)
 
+#### Password Manager
+
+- browserpass
+- pass (https://www.passwordstore.org/)
+- pinentry-gnome
+
 ### Arch Linux
 
 - base-devel
@@ -36,11 +42,13 @@ Mostly for `$HOME`
 ### macOS
 
 - homebrew (install first)
+- pinentry-mac
 
 #### WM, UI tools, and launcher
 
 - aerospace
 - karabiner-elements
+- raycast
 - scroll-reverser
 
 #### Extra settings
@@ -51,6 +59,10 @@ xattr -d com.apple.quarantine /Applications/Alacritty.app
 
 # fix font blur in Alacritty
 defaults -currentHost write -g AppleFontSmoothing -int 0
+
+# fix browserpass use homebrew-installed gpg
+# source: https://github.com/browserpass/browserpass-legacy?tab=readme-ov-file#faq-1
+sudo ln -s /opt/homebrew/bin/gpg /usr/local/bin/gpg
 ```
 
 ## Usage
