@@ -14,6 +14,7 @@ Mostly for `$HOME`
 ### All distros
 
 - alacritty
+- asdf-vm
 - autojump
 - awk
 - fzf
@@ -24,19 +25,41 @@ Mostly for `$HOME`
 - tmux
 - zsh
 
+#### WM, UI tools, and launcher
+
+- autotiling
+- avizo
+- azote
+- grimshot
+- nwg-drawer
+- polkit-gnome
+- rofi
+- sway
+- swaylock
+- swaync
+- sworkstyle
+- waybar
+- wf-recorder
+- wl-paste
+- wlogout
+- xdg-desktop-portal
+
 ### Arch Linux
 
 - adobe-source-code-pro-fonts
 - base-devel
-- asdf-vm
 
 ### macOS
 
 - homebrew (install first)
-- aerospace
-- asdf
 
-#### Extra
+#### WM, UI tools, and launcher
+
+- aerospace
+- karabiner-elements
+- scroll-reverser
+
+#### Extra settings
 
 ```bash
 # remove quarantine from unsigned apps
