@@ -7,7 +7,7 @@ return {
 
   opts = {
     -- use system node command
-    copilot_node_command = vim.fn.has("macunix") and "/usr/local/bin/node" or "/usr/bin/node",
+    copilot_node_command = vim.fn.has("macunix") == 1 and "/usr/local/bin/node" or "/usr/bin/node",
 
     -- Set enable = true until this bug is fixed:
     -- https://github.com/zbirenbaum/copilot-cmp/issues/10
