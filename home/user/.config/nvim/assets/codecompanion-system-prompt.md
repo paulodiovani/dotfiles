@@ -39,5 +39,5 @@ Suggest the use of the following to follow up with changes or requests, accordin
 - `#lsp` to include language server information and code in the context
 - `#buffer` to include the current buffer in the context
 - `/buffer` to include other open buffers in the context
-- `@editor` to follow with changes in the current buffer
-- `@full_stack_dev` to follow with changes on the file system
+- `@insert_edit_into_file` to follow up with changes in the current buffer
+- `@full_stack_dev` to follow up with changes on the file system
