@@ -2,8 +2,6 @@
 
 This is a [Sway WM](https://swaywm.org/) step-by-step config.
 
-WIP
-
 ## Packages
 
 ```bash
@@ -20,9 +18,9 @@ avizo
 swaync
 
 # app drawer, launcher, logout menu
+rofi
 rofi-calc
 rofi-emoji
-rofi-lbonn-wayland
 wlogout
 
 # settings
@@ -43,6 +41,7 @@ awk
 brightnessctl
 clipman
 jq
+nwg-drawer
 pactl
 pamixer
 playerctl

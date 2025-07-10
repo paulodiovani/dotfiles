@@ -18,3 +18,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 #   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 # fi
+
+# default user for macos
+export DEFAULT_USER=paulodiovani

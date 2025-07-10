@@ -30,6 +30,7 @@ return {
     nvim_tree.setup({
       actions = {
         open_file = {
+          relative_path = true,
           resize_window = false,
         },
       },
@@ -65,13 +66,6 @@ return {
       view = {
         width = '20%',
         side = 'left',
-      },
-      experimental = {
-        actions = {
-          open_file = {
-            relative_path = true,
-          },
-        },
       },
       -- custom mappings
       on_attach = function(bufnr)

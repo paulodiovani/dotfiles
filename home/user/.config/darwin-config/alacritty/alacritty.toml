@@ -21,10 +21,10 @@ mods = "Control|Shift"
 enabled = true
 mods = "Shift"
 
-[[keyboard.bindings]]
-chars = "\u001F"
-key = "Slash"
-mods = "Control"
+[keyboard]
+bindings = [
+  { key = "Slash", mods = "Control", chars = "\u001F" },
+]
 
 [selection]
 save_to_clipboard = true

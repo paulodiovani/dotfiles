@@ -10,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="../../.oh-my-zsh-agnoster-custom"
 
 # Default user don't need to show in prompt
-DEFAULT_USER=diovani
+DEFAULT_USER=${DEFAULT_USER:-diovani}
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
