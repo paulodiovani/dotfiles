@@ -36,6 +36,23 @@ Mostly for `$HOME`
 - pass (https://www.passwordstore.org/)
 - pinentry-gnome
 
+#### Extra settings
+
+```bash
+# configure git
+<<EOF > "$HOME/.config/gitconfig.d/index"
+[include]
+  path = ./user
+EOF
+
+git config set --file="$HOME/.config/gitconfig.d/user" user.name "YOUR NAME"
+git config set --file="$HOME/.config/gitconfig.d/user" user.email "YOUR EMAIL ADDRESS"
+
+# add more includes to $HOME/.config/gitconfig.d/index if you need
+# use [includeIf "gitdir:~/path/to/dir]" for conditional include
+#   source: https://git-scm.com/docs/git-config#_includes
+```
+
 ### Arch Linux
 
 - base-devel
