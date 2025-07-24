@@ -9,8 +9,9 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="agnoster"
 ZSH_THEME="../../.oh-my-zsh-agnoster-custom"
 
-# Default user don't need to show in prompt
+# Default values don't need to show in prompt
 DEFAULT_USER=${DEFAULT_USER:-diovani}
+DEFAULT_ARCH=${DEFAULT_ARCH:-x86_64}
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -19,5 +19,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 # fi
 
-# default user for macos
+# default zsh theme vars
 export DEFAULT_USER=paulodiovani
+export DEFAULT_ARCH=arm64

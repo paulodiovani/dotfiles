@@ -73,11 +73,17 @@ prompt_end() {
 # Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
+# or current arch
 prompt_context() {
   local user=`whoami`
+  local arch=`uname -m`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     prompt_segment $PRIMARY_FG default " %(!.%{%F{$ALERT_FG}%}.)$user@%m "
+  fi
+
+  if [[ "$arch" != "$DEFAULT_ARCH" ]]; then
+    prompt_segment $PRIMARY_FG default " %(!.%{%F{$ALERT_FG}%}.)$arch "
   fi
 }
 
