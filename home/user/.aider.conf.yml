@@ -1,13 +1,17 @@
 ---
-## Specify the model to use for the main chat
-model: openrouter/anthropic/claude-3.7-sonnet
-## Specify the model to use for commit messages and chat history summarization (default depends on --model)
-weak-model: openrouter/openai/gpt-4.1-mini
-
-## Use colors suitable for a dark terminal background (default: False)
-dark-mode: true
-## Set a better coding theme
+## Set coding theme
 code-theme: one-dark
+
+## Set a different assistant color theme
+user-input-color: "#98c379"                # Green
+tool-output-color: "#abb2bf"               # Light Gray
+tool-error-color: "#e06c75"                # Red
+tool-warning-color: "#e5c07b"              # Yellow
+assistant-output-color: "#61afef"          # Blue
+completion-menu-color: "#abb2bf"           # Light Gray
+completion-menu-bg-color: "#282c34"        # Dark Gray
+completion-menu-current-color: "#ffffff"   # White
+completion-menu-current-bg-color: "#3e4452" # Medium Gray
 
 ## Enable/disable looking for a git repo (default: True)
 git: false
