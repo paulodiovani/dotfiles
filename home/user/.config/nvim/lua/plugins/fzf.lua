@@ -71,6 +71,7 @@ return {
     { 'gra',        '<Cmd>FzfLua lsp_code_actions<CR>',          mode = { 'n' }, desc = "LSP Code Actions" },
     { 'grd',        '<Cmd>FzfLua lsp_definitions<CR>',           mode = { 'n' }, desc = "LSP Definitions" },
     { 'gre',        '<Cmd>FzfLua lsp_document_diagnostics<CR>',  mode = { 'n' }, desc = "LSP Document Diagnostics" },
+    { 'grg',        '<Cmd>FzfLua tags_grep_cword<CR>',           mode = { 'n' }, desc = "Search in Tags" },
     { 'gri',        '<Cmd>FzfLua lsp_implementations<CR>',       mode = { 'n' }, desc = "LSP Implementations" },
     { 'grr',        '<Cmd>FzfLua lsp_references<CR>',            mode = { 'n' }, desc = "LSP References" },
     { 'grs',        '<Cmd>FzfLua lsp_document_symbols<CR>',      mode = { 'n' }, desc = "LSP Document Symbols" },

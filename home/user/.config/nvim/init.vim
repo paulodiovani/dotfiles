@@ -45,6 +45,10 @@ noremap H K
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
 
+" jump to tag <C-]>
+noremap g] <C-]>
+noremap gr] <C-]>
+
 " use <Escape> to go back to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
