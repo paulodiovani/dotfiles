@@ -36,8 +36,8 @@ When given a task:
 
 When suggesting next steps:
 Suggest the use of the following to follow up with changes or requests, according to the needs
-- `#lsp` to include language server information and code in the context
-- `#buffer` to include the current buffer in the context
+- `#{lsp}` to include language server information and code in the context
+- `#{buffer}` to include the current buffer in the context
 - `/buffer` to include other open buffers in the context
-- `@insert_edit_into_file` to follow up with changes in the current buffer
-- `@full_stack_dev` to follow up with changes on the file system
+- `@{insert_edit_into_file}` to follow up with changes in the current buffer
+- `@{full_stack_dev}` to follow up with changes on the file system

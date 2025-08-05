@@ -17,8 +17,8 @@ return {
         role = "user",
         content =
         [[
-#buffer
-@insert_edit_into_file
+#{buffer}
+@{insert_edit_into_file}
 
 Add documentation to the selected code or function.
 Include argument and return types (but omit types for typescript).
@@ -47,7 +47,7 @@ Do not add comments to variables or single line expressions.
         role = "user",
         content =
         [[
-#buffer
+#{buffer}
 Review this blog post for:
 - typos
 - english semantic errors
@@ -84,8 +84,8 @@ Follow these rules:
         role = "user",
         content =
         [[
-#buffer
-@full_stack_dev
+#{buffer}
+@{full_stack_dev}
 
 Write tests for this file or module.
 
