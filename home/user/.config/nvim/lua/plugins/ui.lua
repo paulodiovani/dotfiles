@@ -42,6 +42,8 @@ return {
     "paulodiovani/darkroom.nvim",
     dependencies = { "tinted-theming/tinted-vim" },
 
+    dev = true, -- use local development version
+
     keys = {
       { '<Leader><BS>', '<Cmd>DarkRoomToggle<CR>', desc = 'Toggle DarkRoom mode' },
     },
