@@ -28,3 +28,7 @@ workspace 6 output $external-output
 workspace 7 output $external-output
 workspace 8 output $external-output
 workspace 9 output $external-output
+
+# Disable laptop output when lid is closed
+bindswitch lid:on output $laptop-output disable
+bindswitch lid:off output $laptop-output enable
