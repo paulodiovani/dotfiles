@@ -40,7 +40,10 @@ return {
   -- DarkRoom plugin
   {
     "paulodiovani/darkroom.nvim",
-    dependencies = { "tinted-theming/tinted-vim" },
+    dependencies = {
+      "folke/edgy.nvim",
+      "tinted-theming/tinted-vim",
+    },
 
     dev = true, -- use local development version
 
