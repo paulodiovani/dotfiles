@@ -42,7 +42,9 @@ return {
     "paulodiovani/darkroom.nvim",
     dependencies = { "tinted-theming/tinted-vim" },
 
-    keys = '<Leader><BS>',
+    keys = {
+      { '<Leader><BS>', '<Cmd>DarkRoomToggle<CR>', desc = 'Toggle DarkRoom mode' },
+    },
 
     cmd = {
       'DarkRoomLeft',
