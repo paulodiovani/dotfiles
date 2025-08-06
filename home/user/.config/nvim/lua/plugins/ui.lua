@@ -39,7 +39,7 @@ return {
 
   -- DarkRoom plugin
   {
-    "paulodiovani/vim-darkroom",
+    "paulodiovani/darkroom.nvim",
     dependencies = { "tinted-theming/tinted-vim" },
 
     keys = '<Leader><BS>',
