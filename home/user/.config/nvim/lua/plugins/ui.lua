@@ -47,6 +47,15 @@ return {
 
     dev = true, -- use local development version
 
+    opts = {
+      left = {
+        additional_filetypes = { 'NvimTree' },
+      },
+      right = {
+        additional_filetypes = { 'codecompanion' },
+      },
+    },
+
     keys = {
       { '<Leader><BS>', '<Cmd>DarkRoomToggle<CR>', desc = 'Toggle DarkRoom mode' },
     },
