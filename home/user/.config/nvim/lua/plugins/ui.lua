@@ -36,45 +36,4 @@ return {
       vim.keymap.set('n', '<Leader>@', ':SignatureToggle<CR>', { silent = true })
     end,
   },
-
-  -- DarkRoom plugin
-  {
-    "paulodiovani/darkroom.nvim",
-    dependencies = {
-      "folke/edgy.nvim",
-      "tinted-theming/tinted-vim",
-    },
-
-    dev = true, -- use local development version
-
-    opts = {
-      left = {
-        additional_filetypes = { 'NvimTree' },
-      },
-      right = {
-        additional_filetypes = { 'codecompanion' },
-      },
-    },
-
-    keys = {
-      { '<Leader><BS>', '<Cmd>DarkRoomToggle<CR>', desc = 'Toggle DarkRoom mode' },
-    },
-
-    cmd = {
-      'DarkRoomLeft',
-      'DarkRoomRight',
-      'DarkRoomReplaceLeft',
-      'DarkRoomReplaceRight',
-      'DarkRoomToggle',
-    },
-
-    init = function()
-      vim.cmd([[
-        " hide split separator
-        " TODO: make part of plugin
-        "highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
-        set fillchars+=vert:\ " hide vertical window separator
-      ]])
-    end,
-  },
 }
