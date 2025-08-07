@@ -3,10 +3,10 @@
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "home/user/.config/base16-shell"]
 	path = home/user/.config/base16-shell
-	url = https://github.com/tinted-theming/base16-shell.git
+	url = https://github.com/tinted-theming/tinted-shell.git
 [submodule "home/user/.config/base16-fzf"]
 	path = home/user/.config/base16-fzf
-	url = https://github.com/tinted-theming/base16-fzf.git
+	url = https://github.com/tinted-theming/tinted-fzf.git
 [submodule "home/user/.tmux/plugins/base16-tmux"]
 	path = home/user/.tmux/plugins/base16-tmux
-	url = https://github.com/tinted-theming/base16-tmux.git
+	url = https://github.com/tinted-theming/tinted-tmux.git
