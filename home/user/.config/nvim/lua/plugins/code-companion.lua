@@ -111,9 +111,9 @@ return {
   },
 
   keys = {
-    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>", mode = { "n", "v" } },
-    { "<Leader>cc", "<Cmd>CodeCompanionChat<CR>",    mode = { "n", "v" } },
-    { "<Leader>cl", ":CodeCompanion ",               mode = { "v" },     desc = "Code Companion Inline" },
+    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>",                   mode = { "n", "v" } },
+    { "<Leader>cc", "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>", mode = { "n", "v" } },
+    { "<Leader>cl", ":CodeCompanion ",                                 mode = { "v" },     desc = "Code Companion Inline" },
   },
 
   cmd = {

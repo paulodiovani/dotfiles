@@ -7,7 +7,7 @@ return {
   },
 
   keys = {
-    { '<Leader>d', ':DrawerCwd<CR>', silent = true },
+    { '<Leader>d', ':DarkRoomLeft DrawerCwd<CR>', silent = true },
     { '<Leader>f', ':DrawerFind<CR>', silent = true },
   },
 
@@ -76,12 +76,13 @@ return {
     })
 
     vim.api.nvim_create_user_command('DrawerCwd', function()
-      nvim_tree_api.tree.open({ current_window = false })
+      nvim_tree_api.tree.open({ current_window = true })
     end, {})
 
     vim.api.nvim_create_user_command('DrawerFind', function()
       local bufnr = vim.api.nvim_get_current_buf()
-      nvim_tree_api.tree.find_file { open = true, buf = bufnr, focus = true }
+      vim.cmd('DarkRoomLeft DrawerCwd')
+      nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
     end, {})
   end,
 }
