@@ -2,8 +2,9 @@
 source "$HOME/.profile"
 
 # Base16 Shell
-# https://github.com/tinted-theming/base16-shell
+# https://github.com/tinted-theming/tinted-shell
 export BASE16_THEME_DEFAULT=onedark
+export TINTED_SHELL_ENABLE_BASE24_VARS=1
 BASE16_SHELL_PATH="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && \
   [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] && \
