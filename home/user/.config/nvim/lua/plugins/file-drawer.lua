@@ -3,11 +3,12 @@ return {
   "kyazdani42/nvim-tree.lua",
   dependencies = {
     "kyazdani42/nvim-web-devicons",
+    "paulodiovani/darkroom.nvim",
   },
 
   keys = {
-    { '<Leader>d', ':vsplit | DrawerCwd<CR>', silent = true },
-    { '<Leader>f', ':vsplit | DrawerFind<CR>', silent = true },
+    { '<Leader>d', ':DrawerCwd<CR>', silent = true },
+    { '<Leader>f', ':DrawerFind<CR>', silent = true },
   },
 
   cmd = {
@@ -75,13 +76,12 @@ return {
     })
 
     vim.api.nvim_create_user_command('DrawerCwd', function()
-      nvim_tree_api.tree.open({ current_window = true })
+      nvim_tree_api.tree.open({ current_window = false })
     end, {})
 
     vim.api.nvim_create_user_command('DrawerFind', function()
       local bufnr = vim.api.nvim_get_current_buf()
-      vim.cmd('DrawerCwd')
-      nvim_tree_api.tree.find_file { open = false, buf = bufnr, focus = true }
+      nvim_tree_api.tree.find_file { open = true, buf = bufnr, focus = true }
     end, {})
   end,
 }

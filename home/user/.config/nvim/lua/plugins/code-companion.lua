@@ -6,6 +6,7 @@ return {
     "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "paulodiovani/darkroom.nvim",
   },
 
   opts = {
