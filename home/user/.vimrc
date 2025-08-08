@@ -315,6 +315,7 @@ set secure
 " other config files
 source ~/.config/vim/session_manager.vim
 source ~/.config/vim/syntax.vim
+source ~/.config/vim/theme-overrides.vim
 source ~/.config/vim/yank_history.vim
 
 " os-specific settings

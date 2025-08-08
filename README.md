@@ -23,6 +23,7 @@ Mostly for `$HOME`
 - neovim
 - ripgrep
 - rsync
+- tinty (tinted-theme cli)
 - tmux
 - zsh
 
@@ -51,6 +52,9 @@ git config set --file="$HOME/.config/gitconfig.d/user" user.email "YOUR EMAIL AD
 # add more includes to $HOME/.config/gitconfig.d/index if you need
 # use [includeIf "gitdir:~/path/to/dir]" for conditional include
 #   source: https://git-scm.com/docs/git-config#_includes
+
+# configure tinted-theme
+tinty sync
 ```
 
 ### Arch Linux
