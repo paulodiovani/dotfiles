@@ -27,6 +27,7 @@
   excludesfile = ~/.gitignore
   # pager = less -XFR -x4
   pager = bat --style=numbers --color=always
+  sshCommand = ssh -o VisualHostKey=no
 [blame]
   date = short
 [pull]
