@@ -1,0 +1,10 @@
+shell = "sh -c '{}'"
+
+default-scheme = "base16-onedark"
+
+[[items]]
+name = "tinted-shell"
+path = "https://github.com/tinted-theming/tinted-shell"
+hook = ". %f"
+supported-systems = ["base16"]
+themes-dir = "scripts"

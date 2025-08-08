@@ -23,6 +23,7 @@ Mostly for `$HOME`
 - neovim
 - ripgrep
 - rsync
+- tinty (tinted-theme cli)
 - tmux
 - zsh
 
