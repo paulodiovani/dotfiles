@@ -1,10 +1,30 @@
-shell = "sh -c '{}'"
+shell = "zsh -c '{}'"
 
-default-scheme = "base16-onedark"
+default-scheme = "base24-one-dark"
 
 [[items]]
 name = "tinted-shell"
 path = "https://github.com/tinted-theming/tinted-shell"
 hook = ". %f"
-supported-systems = ["base16"]
+supported-systems = ["base16", "base24"]
 themes-dir = "scripts"
+
+[[items]]
+name = "tinted-vim"
+path = "https://github.com/tinted-theming/tinted-vim"
+supported-systems = ["base16", "base24"]
+themes-dir = "colors"
+
+[[items]]
+name = "tmux"
+path = "https://github.com/tinted-theming/tinted-tmux"
+themes-dir = "colors"
+hook = "tmux run 2> /dev/null && tmux source-file \"$TINTY_THEME_FILE_PATH\""
+supported-systems = ["base16", "base24"]
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-fzf"
+name = "tinted-fzf"
+themes-dir = "sh"
+hook = ". %f"
+supported-systems = ["base16", "base24"]
