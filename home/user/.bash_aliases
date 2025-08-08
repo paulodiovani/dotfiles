@@ -20,6 +20,9 @@ alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
 alias bx='bundle exec'
 alias dc='docker compose'
 
+# list and select a tinted-theme
+alias tinted-theme-select='tinty apply $(tinty list | fzf)'
+
 # make aliases work with sudo and noglob
 alias sudo='sudo '
 alias noglob='noglob '
