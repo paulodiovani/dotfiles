@@ -3,7 +3,7 @@ return {
   "kyazdani42/nvim-tree.lua",
   dependencies = {
     "kyazdani42/nvim-web-devicons",
-    "paulodiovani/vim-darkroom",
+    "paulodiovani/darkroom.nvim",
   },
 
   keys = {

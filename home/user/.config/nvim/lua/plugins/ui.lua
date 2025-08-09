@@ -36,29 +36,4 @@ return {
       vim.keymap.set('n', '<Leader>@', ':SignatureToggle<CR>', { silent = true })
     end,
   },
-
-  -- DarkRoom plugin
-  {
-    "paulodiovani/vim-darkroom",
-    dependencies = { "tinted-theming/tinted-vim" },
-
-    keys = '<Leader><BS>',
-
-    cmd = {
-      'DarkRoomLeft',
-      'DarkRoomRight',
-      'DarkRoomReplaceLeft',
-      'DarkRoomReplaceRight',
-      'DarkRoomToggle',
-    },
-
-    init = function()
-      vim.cmd([[
-        " hide split separator
-        " TODO: make part of plugin
-        "highlight WinSeparator ctermfg=bg ctermbg=NONE guifg=bg guibg=NONE
-        set fillchars+=vert:\ " hide vertical window separator
-      ]])
-    end,
-  },
 }

@@ -6,7 +6,7 @@ return {
     "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "paulodiovani/vim-darkroom",
+    "paulodiovani/darkroom.nvim",
   },
 
   opts = {
@@ -111,15 +111,9 @@ return {
   },
 
   keys = {
-    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>", mode = { "n", "v" } },
-    {
-      "<Leader>cc",
-      "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>",
-      mode = { "n", "v" },
-      desc = "Code Companion right window",
-      silent = true
-    },
-    { "<Leader>cl", ":CodeCompanion ",               mode = { "v" },     desc = "Code Companion Inline" },
+    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>",                   mode = { "n", "v" } },
+    { "<Leader>cc", "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>", mode = { "n", "v" } },
+    { "<Leader>cl", ":CodeCompanion ",                                 mode = { "v" },     desc = "Code Companion Inline" },
   },
 
   cmd = {
@@ -131,17 +125,5 @@ return {
 
   init = function()
     require("modules.codecompanion.fidget-spinner"):init()
-
-    local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
-    -- use darkroom highlight
-    vim.api.nvim_create_autocmd({ "User" }, {
-      pattern = "CodeCompanionChatCreated",
-      group = group,
-      callback = function()
-        vim.cmd [[
-          set winhighlight=Normal:DarkRoomNormal
-        ]]
-      end,
-    })
   end,
 }
