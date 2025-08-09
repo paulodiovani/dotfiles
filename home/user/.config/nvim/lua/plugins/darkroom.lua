@@ -5,7 +5,7 @@ return {
       "tinted-theming/tinted-vim",
     },
 
-    dev = true, -- use local development version
+    -- dev = true, -- use local development version
 
     opts = {
       left = {
