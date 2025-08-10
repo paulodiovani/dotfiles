@@ -15,6 +15,7 @@
   "modules-center": [
     "clock#calendar",
     "clock",
+    "clock#world"
   ],
   "modules-right": [
     "tray",
@@ -52,7 +53,7 @@
     "format": " {:%B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
-      "mode": "year",
+      "mode": "month", // month | year
       "mode-mon-col": 4,
       "on-scroll": 1,
       "format": {
@@ -61,25 +62,35 @@
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      },
-      "actions":  {
-        "on-click": "shift_reset",
-        "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
       }
+    },
+    "actions":  {
+      "on-click": "shift_reset",
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
     }
-    // show notifications on click
-    // "on-click": "yad --calendar --title=Calendar --width=340 --text=Calendar --date-format=%Y-%m-%d --no-buttons --on-top --close-on-unfocus | tr -d '\n' | wl-copy"
   },
   "clock": {
-    "format": " {:%H:%M %Z}",
+    // chrono format: https://fmt.dev/latest/syntax/#chrono-format-specifications
+    "format": " {:%H:%M BRT}",
+    "timezone": "America/Sao_Paulo", // BRT
+    "tooltip": false
+  },
+  "clock#world": {
+    // chrono format: https://fmt.dev/latest/syntax/#chrono-format-specifications
+    "format": " {:%H:%M %Z}",
     "tooltip-format": "{tz_list}",
     "timezones": [
-      "America/Sao_Paulo",
-      "America/Los_Angeles",
-      "America/Toronto",
-      "Etc/UTC"
-    ]
+      "Etc/UTC",             // UTC
+      "America/Los_Angeles", // PDT / PT
+      "America/Panama",      // EST
+      "America/New_York"     // EDT / ET
+    ],
+    "actions":  {
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down"
+    }
   },
   "custom/notifications": {
     "format": "{icon}",
