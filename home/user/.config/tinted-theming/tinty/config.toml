@@ -19,7 +19,7 @@ themes-dir = "colors"
 name = "tmux"
 path = "https://github.com/tinted-theming/tinted-tmux"
 themes-dir = "colors"
-hook = "tmux run 2> /dev/null && tmux source-file \"$TINTY_THEME_FILE_PATH\""
+hook = "tmux run 2> /dev/null && tmux source-file %f"
 supported-systems = ["base16", "base24"]
 
 [[items]]
