@@ -9,7 +9,7 @@ return {
       short_name = "document",
       adapter = {
         name = "copilot",
-        model = "claude-3.7-sonnet",
+        model = "claude-sonnet-4",
       },
     },
     prompts = {
@@ -76,7 +76,7 @@ Follow these rules:
       short_name = "write-tests",
       adapter = {
         name = "copilot",
-        model = "claude-3.7-sonnet",
+        model = "claude-sonnet-4",
       },
     },
     prompts = {
