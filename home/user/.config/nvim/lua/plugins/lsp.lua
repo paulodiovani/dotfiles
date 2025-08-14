@@ -65,12 +65,39 @@ return {
       },
     })
 
+    -- Ruby LSP
+    vim.lsp.config("ruby_lsp", {
+      cmd = lsp_utils.check_executable({
+        { cmd = { "bundle", "exec", "ruby-lsp" }, check = "bundle exec ruby-lsp --version" },
+        { cmd = { "asdf", "exec", "ruby-lsp" },   check = "asdf exec ruby-lsp --version" },
+        { cmd = { "ruby-lsp" },                   check = "ruby-lsp --version" },
+      }),
+    })
+
+    -- Rubocop
+    vim.lsp.config("rubocop", {
+      cmd = lsp_utils.check_executable({
+        { cmd = { "bundle", "exec", "rubocop", "--lsp" }, check = "bundle exec rubocop --version" },
+        { cmd = { "asdf", "exec", "rubocop", "--lsp" },   check = "asdf exec rubocop --version" },
+        { cmd = { "rubocop", "--lsp" },                   check = "rubocop --version" },
+      }),
+    })
+
     -- Solargraph
     vim.lsp.config("solargraph", {
       cmd = lsp_utils.check_executable({
         { cmd = { "bundle", "exec", "solargraph", "stdio" }, check = "bundle exec solargraph --version" },
         { cmd = { "asdf", "exec", "solargraph", "stdio" },   check = "asdf exec solargraph --version" },
         { cmd = { "solargraph", "stdio" },                   check = "solargraph --version" },
+      }),
+    })
+
+    -- Sorbet
+    vim.lsp.config("sorbet", {
+      cmd = lsp_utils.check_executable({
+        { cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" }, check = "bundle exec srb --version" },
+        { cmd = { "asdf", "exec", "srb", "tc", "--lsp", "--disable-watchman" },   check = "asdf exec srb --version" },
+        { cmd = { "srb", "tc", "--lsp", "--disable-watchman" },                   check = "srb --version" },
       }),
     })
 
