@@ -74,7 +74,7 @@ tinty() {
     while read -r script; do
       # shellcheck disable=SC1090
       . "$script"
-    done < <(find "$tinty_data_dir" -maxdepth 1 -type l -name "*.sh" -newer "$newer_file")
+    done < <(find "$tinty_data_dir" -maxdepth 1 -type f -o -type l -name "*.sh" -newer "$newer_file")
 
     unset tinty_data_dir
   fi
