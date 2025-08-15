@@ -5,7 +5,8 @@ return {
   "barreiroleo/ltex_extra.nvim",
   branch = "dev",
   dependencies = { "neovim/nvim-lspconfig" },
-  ft = { "markdown", "tex" },
+  -- ft = { "markdown", "tex" },
+  event = { "LspAttach *.md", "LspAttach *.tex", "LspAttach *.sty" },
 
   opts = {
     load_langs = { "en-US", "pt-BR" },

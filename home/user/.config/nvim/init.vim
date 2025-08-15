@@ -80,6 +80,6 @@ autocmd TermOpen term://* map <buffer> <Leader>x :Bdelete!<CR>
 " close terminal buffer alongside window with <Leader>q
 autocmd TermOpen term://* map <buffer> <Leader>q :bd!<CR>
 
-" override lsp commands to not open in tab (also in completion.lua)
+" override lsp commands to not open in tab (also in lsp.lua)
 autocmd VimEnter * command! LspInfo Checkhealth vim.lsp
 autocmd VimEnter * command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))

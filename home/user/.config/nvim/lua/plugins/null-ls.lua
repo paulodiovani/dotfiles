@@ -3,6 +3,8 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  event = "VeryLazy",
+
   config = function()
     local null_ls = require("null-ls")
     null_ls.setup({

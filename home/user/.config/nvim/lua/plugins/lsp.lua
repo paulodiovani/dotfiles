@@ -1,10 +1,10 @@
 -- LSP configuration
 return {
   "neovim/nvim-lspconfig",
-  lazy = false,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
   },
+  event = "VeryLazy",
 
   config = function()
     -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -118,5 +118,11 @@ return {
         },
       },
     })
+
+    -- override lsp commands to not open in tab (also in init.vim)
+    vim.cmd([[
+      command! LspInfo Checkhealth vim.lsp
+      command! LspLog lua vim.cmd(string.format('above split %s | setlocal bufhidden=wipe nomodifiable nobuflisted', vim.lsp.get_log_path()))
+    ]])
   end,
 }

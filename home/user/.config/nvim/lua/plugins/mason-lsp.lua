@@ -1,11 +1,11 @@
 -- Mason config to install/enable LSP
 return {
   "mason-org/mason-lspconfig.nvim",
-  lazy = false,
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
     "neovim/nvim-lspconfig",
   },
+  event = "VeryLazy",
 
   opts = {
     automatic_enable = true, -- default = true

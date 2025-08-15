@@ -1,7 +1,6 @@
 -- Completion configuration
 return {
   'hrsh7th/nvim-cmp',
-  lazy = false,
   dependencies = {
     'L3MON4D3/LuaSnip',
     'hrsh7th/cmp-buffer',
@@ -14,6 +13,7 @@ return {
     'zbirenbaum/copilot-cmp',
     -- 'zbirenbaum/copilot.lua', -- loaded on InsertEnter
   },
+  event = "VeryLazy",
 
   config = function()
     -- Set up luasnip
