@@ -110,15 +110,20 @@ cmd-enter = '''exec-and-forget pgrep -x alacritty > /dev/null && \
 '''
 
 # Dropdown terminal
-ctrl-esc = '''exec-and-forget pgrep -x alacritty > /dev/null && \
-  alacritty msg create-window \
-    --title='Dropdown terminal' \
-    -o window.position.y=0 -o window.position.x=0 \
-    -o window.dimensions.lines=35 -o window.dimensions.columns=240 || \
-  open -na /Applications/Alacritty.app --args \
-    --title='Dropdown terminal' \
-    -o window.position.y=0 -o window.position.x=0 \
-    -o window.dimensions.lines=35 -o window.dimensions.columns=240
+ctrl-esc = '''exec-and-forget \
+  WINID=$(aerospace list-windows --all --json | jq '.[] | select(."window-title"=="Dropdown terminal") | ."window-id"')
+  [ -n "$WINID" ] && aerospace close --window-id "$WINID" || \
+  (
+    pgrep -x alacritty > /dev/null && \
+    alacritty msg create-window \
+      --title='Dropdown terminal' \
+      -o window.position.y=0 -o window.position.x=0 \
+      -o window.dimensions.lines=35 -o window.dimensions.columns=240 || \
+    open -na /Applications/Alacritty.app --args \
+      --title='Dropdown terminal' \
+      -o window.position.y=0 -o window.position.x=0 \
+      -o window.dimensions.lines=35 -o window.dimensions.columns=240
+  )
 '''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout

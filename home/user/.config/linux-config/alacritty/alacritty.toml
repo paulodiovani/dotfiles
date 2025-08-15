@@ -17,3 +17,7 @@ mods = "Control|Shift"
 [hints.enabled.mouse]
 enabled = true
 mods = "Shift"
+
+[window]
+decorations = "none"
+opacity = 0.95

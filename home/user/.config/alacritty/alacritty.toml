@@ -20,9 +20,5 @@ action = "ToggleViMode"
 key = "Q"
 mode = "Vi"
 
-[window]
-decorations = "none"
-opacity = 0.95
-
 [general]
 import = ["~/.config/os-config/alacritty/alacritty.toml"]
