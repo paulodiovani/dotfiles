@@ -28,3 +28,7 @@ bindings = [
 
 [selection]
 save_to_clipboard = true
+
+[window]
+decorations = "Buttonless"
+opacity = 0.95
