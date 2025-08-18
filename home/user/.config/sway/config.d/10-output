@@ -29,6 +29,7 @@ workspace 7 output $external-output
 workspace 8 output $external-output
 workspace 9 output $external-output
 
-# Disable laptop output when lid is closed
-bindswitch lid:on output $laptop-output disable
-bindswitch lid:off output $laptop-output enable
+# Disable laptop output when lid is closed (including when locked)
+# source: https://github.com/swaywm/sway/issues/3137#issuecomment-475924964
+bindswitch --locked lid:on output $laptop-output disable
+bindswitch --locked lid:off output $laptop-output enable
