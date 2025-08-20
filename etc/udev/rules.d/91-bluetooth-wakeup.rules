@@ -2,4 +2,4 @@ ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", \
     ATTR{bDeviceClass}=="e0", \
     ATTR{bDeviceSubClass}=="01", \
     ATTR{bDeviceProtocol}=="01", \
-ATTR{power/wakeup}="enabled"
+    ATTR{power/wakeup}="enabled"
