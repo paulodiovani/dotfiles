@@ -21,7 +21,7 @@ return {
           formatted_name = "GitHub Copilot",
           schema = {
             model = {
-              default = "claude-sonnet-4"
+              default = "claude-3.7-sonnet"
             },
           },
         })
@@ -38,7 +38,7 @@ return {
           },
           schema = {
             model = {
-              default = "anthropic/claude-sonnet-4",
+              default = "anthropic/claude-3.7-sonnet",
             },
           },
         })
