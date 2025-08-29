@@ -8,30 +8,22 @@ function M.list_workspace_folders()
   end
 end
 
----Finds the first executable command from a list of commands
----@param commands table[] List of command objects, each with 'cmd' and 'check' properties
----@return string First working command or fallback command
----
----Example:
----```lua
----local cmd = M.first_executable({
----  { cmd = "prettier", check = "command -v prettier" },
----  { cmd = "prettierd", check = "command -v prettierd" }
----})
----```
-function M.check_executable(commands)
-  local cmd = 'exit 1'
+--- Attempts to run multiple commands until one succeeds
+--- @param commands table A list of command arrays to try sequentially
+--- @return table Command to be executed with sh -c that chains the commands with || operators
+function M.try_commands(commands)
+  local cmd = {}
+  local count = vim.tbl_count(commands)
 
-  for _, item in ipairs(commands or  {}) do
-    cmd = item["cmd"]
-    local check = item["check"]
+  for i, item in ipairs(commands or  {}) do
+    vim.list_extend(cmd, item)
 
-    if os.execute(check .. ' &> /dev/null') == 0 then
-      return cmd
+    if i < count then
+      vim.list_extend(cmd, { '2>', '/dev/null', '||' })
     end
   end
 
-  return cmd -- fallback to last command
+  return { 'sh', '-c', table.concat(cmd, ' ') }
 end
 
 return M

@@ -67,37 +67,37 @@ return {
 
     -- Ruby LSP
     vim.lsp.config("ruby_lsp", {
-      cmd = lsp_utils.check_executable({
-        { cmd = { "bundle", "exec", "ruby-lsp" }, check = "bundle exec ruby-lsp --version" },
-        { cmd = { "asdf", "exec", "ruby-lsp" },   check = "asdf exec ruby-lsp --version" },
-        { cmd = { "ruby-lsp" },                   check = "ruby-lsp --version" },
+      cmd = lsp_utils.try_commands({
+        { "bundle", "exec", "ruby-lsp" },
+        { "asdf", "exec", "ruby-lsp" },
+        { "ruby-lsp" },
       }),
     })
 
     -- Rubocop
     vim.lsp.config("rubocop", {
-      cmd = lsp_utils.check_executable({
-        { cmd = { "bundle", "exec", "rubocop", "--lsp" }, check = "bundle exec rubocop --version" },
-        { cmd = { "asdf", "exec", "rubocop", "--lsp" },   check = "asdf exec rubocop --version" },
-        { cmd = { "rubocop", "--lsp" },                   check = "rubocop --version" },
+      cmd = lsp_utils.try_commands({
+        { "bundle", "exec", "rubocop", "--lsp" },
+        { "asdf", "exec", "rubocop", "--lsp" },
+        { "rubocop", "--lsp" },
       }),
     })
 
     -- Solargraph
     vim.lsp.config("solargraph", {
-      cmd = lsp_utils.check_executable({
-        { cmd = { "bundle", "exec", "solargraph", "stdio" }, check = "bundle exec solargraph --version" },
-        { cmd = { "asdf", "exec", "solargraph", "stdio" },   check = "asdf exec solargraph --version" },
-        { cmd = { "solargraph", "stdio" },                   check = "solargraph --version" },
+      cmd = lsp_utils.try_commands({
+        { "bundle", "exec", "solargraph", "stdio" },
+        { "asdf", "exec", "solargraph", "stdio" },
+        { "solargraph", "stdio" },
       }),
     })
 
     -- Sorbet
     vim.lsp.config("sorbet", {
-      cmd = lsp_utils.check_executable({
-        { cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" }, check = "bundle exec srb --version" },
-        { cmd = { "asdf", "exec", "srb", "tc", "--lsp", "--disable-watchman" },   check = "asdf exec srb --version" },
-        { cmd = { "srb", "tc", "--lsp", "--disable-watchman" },                   check = "srb --version" },
+      cmd = lsp_utils.try_commands({
+        { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
+        { "asdf", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
+        { "srb", "tc", "--lsp", "--disable-watchman" },
       }),
     })
 
