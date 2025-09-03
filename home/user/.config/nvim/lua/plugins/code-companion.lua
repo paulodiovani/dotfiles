@@ -7,42 +7,45 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
+    { "ravitemer/codecompanion-history.nvim", dev = true },
   },
 
   opts = {
     adapters = {
-      opts = {
-        show_defaults = false,
-        show_model_choices = true,
+      http = {
+        opts = {
+          show_defaults = false,
+          show_model_choices = true,
+        },
+
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            formatted_name = "GitHub Copilot",
+            schema = {
+              model = {
+                default = "claude-3.7-sonnet"
+              },
+            },
+          })
+        end,
+
+        openrouter = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            formatted_name = "OpenRouter",
+            env = {
+              url = "https://openrouter.ai/api/v1",
+              api_key = "OPENROUTER_API_KEY",
+              chat_url = "/chat/completions",
+              models_endpoint = "/models"
+            },
+            schema = {
+              model = {
+                default = "anthropic/claude-3.7-sonnet",
+              },
+            },
+          })
+        end,
       },
-
-      copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
-          formatted_name = "GitHub Copilot",
-          schema = {
-            model = {
-              default = "claude-3.7-sonnet"
-            },
-          },
-        })
-      end,
-
-      openrouter = function()
-        return require("codecompanion.adapters").extend("openai_compatible", {
-          formatted_name = "OpenRouter",
-          env = {
-            url = "https://openrouter.ai/api/v1",
-            api_key = "OPENROUTER_API_KEY",
-            chat_url = "/chat/completions",
-            models_endpoint = "/models"
-          },
-          schema = {
-            model = {
-              default = "anthropic/claude-3.7-sonnet",
-            },
-          },
-        })
-      end,
     },
 
     display = {
@@ -59,6 +62,12 @@ return {
 
       diff = {
         provider = "default",
+      },
+    },
+
+    extensions = {
+      history = {
+        enabled = true,
       },
     },
 

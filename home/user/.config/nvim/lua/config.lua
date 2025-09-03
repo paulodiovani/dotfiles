@@ -20,13 +20,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  spec = {
-    -- import your plugins
-    { import = "plugins" },
+  defaults = {
+    -- version = "*", -- use latest tagged version
   },
   dev = {
     path = "~/Development/Vim",
     patterns = { "paulodiovani" },
     fallback = true,
+  },
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
   },
 })
