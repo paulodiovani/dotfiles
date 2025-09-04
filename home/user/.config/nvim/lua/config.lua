@@ -33,3 +33,6 @@ require("lazy").setup({
     { import = "plugins" },
   },
 })
+
+-- Additional settings
+require("modules.maximize")
