@@ -68,6 +68,19 @@ return {
     extensions = {
       history = {
         enabled = true,
+        auto_save = true,
+        expiration_days = 45,
+        opts = {
+          picker_keymaps = {
+            rename = { n = "<F2>", i = "<C-r>" },
+            delete = { n = "dd", i = "<C-d>" },
+            duplicate = { n = "yyp", i = "<C-y>" },
+          },
+        },
+        title_generation_opts = {
+          adapter = "copilot",
+          model = "gpt-4o",
+        },
       },
     },
 
