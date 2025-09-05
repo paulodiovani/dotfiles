@@ -62,7 +62,7 @@ return {
       },
 
       diff = {
-        provider = "default",
+        provider = "split",
       },
     },
 
