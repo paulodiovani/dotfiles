@@ -9,6 +9,7 @@ return {
     "paulodiovani/darkroom.nvim",
     { "ravitemer/codecompanion-history.nvim", dev = true },
   },
+  version = "*",
 
   opts = {
     adapters = {
