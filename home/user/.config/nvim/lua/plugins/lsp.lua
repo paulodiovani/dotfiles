@@ -68,17 +68,24 @@ return {
     -- Ruby LSP
     vim.lsp.config("ruby_lsp", {
       cmd = lsp_utils.try_commands({
-        { "bundle", "exec", "ruby-lsp" },
-        { "asdf", "exec", "ruby-lsp" },
+        { "bundle",  "exec", "ruby-lsp" },
+        { "asdf",    "exec", "ruby-lsp" },
         { "ruby-lsp" },
       }),
+      init_options = {
+        addonSettings = {
+          ["Ruby LSP Rails"] = {
+            enablePendingMigrationsPrompt = false,
+          },
+        },
+      },
     })
 
     -- Rubocop
     vim.lsp.config("rubocop", {
       cmd = lsp_utils.try_commands({
-        { "bundle", "exec", "rubocop", "--lsp" },
-        { "asdf", "exec", "rubocop", "--lsp" },
+        { "bundle",  "exec", "rubocop", "--lsp" },
+        { "asdf",    "exec", "rubocop", "--lsp" },
         { "rubocop", "--lsp" },
       }),
     })
@@ -86,8 +93,8 @@ return {
     -- Solargraph
     vim.lsp.config("solargraph", {
       cmd = lsp_utils.try_commands({
-        { "bundle", "exec", "solargraph", "stdio" },
-        { "asdf", "exec", "solargraph", "stdio" },
+        { "bundle",     "exec", "solargraph", "stdio" },
+        { "asdf",       "exec", "solargraph", "stdio" },
         { "solargraph", "stdio" },
       }),
     })
@@ -95,9 +102,9 @@ return {
     -- Sorbet
     vim.lsp.config("sorbet", {
       cmd = lsp_utils.try_commands({
-        { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
-        { "asdf", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
-        { "srb", "tc", "--lsp", "--disable-watchman" },
+        { "bundle", "exec", "srb",   "tc",                "--lsp", "--disable-watchman" },
+        { "asdf",   "exec", "srb",   "tc",                "--lsp", "--disable-watchman" },
+        { "srb",    "tc",   "--lsp", "--disable-watchman" },
       }),
     })
 
