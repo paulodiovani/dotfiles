@@ -7,7 +7,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
-    { "ravitemer/codecompanion-history.nvim", dev = true },
+    "ravitemer/codecompanion-history.nvim",
   },
   version = "*",
 
