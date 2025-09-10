@@ -13,6 +13,11 @@ return {
 
   opts = {
     adapters = {
+      acp = {
+        opts = {
+          show_defaults = false,
+        },
+      },
       http = {
         opts = {
           show_defaults = false,
@@ -30,7 +35,7 @@ return {
           })
         end,
 
-        openrouter = function()
+        openrouter = vim.env.OPENROUTER_API_KEY and  function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             formatted_name = "OpenRouter",
             env = {
