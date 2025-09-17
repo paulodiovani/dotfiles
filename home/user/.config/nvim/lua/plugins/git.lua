@@ -8,10 +8,10 @@ return {
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<Leader>gd", ":DarkRoomReplaceLeft Gdiffsplit<CR>", desc = "Git diff", silent = true },
-      { "<Leader>gdh", ":DarkRoomReplaceLeft Gdiffsplit HEAD<CR>", desc = "Git diff HEAD", silent = true },
-      { "<Leader>gdm", ":DarkRoomReplaceLeft Gdiffsplit main<CR>", desc = "Git diff main", silent = true },
-      { "<Leader>gb", ":DarkRoomReplaceLeft Git blame<CR>", desc = "Git blame", silent = true },
+      { "<Leader>gd", ":Gdiffsplit<CR>", desc = "Git diff", silent = true },
+      { "<Leader>gdh", ":Gdiffsplit HEAD<CR>", desc = "Git diff HEAD", silent = true },
+      { "<Leader>gdm", ":Gdiffsplit main<CR>", desc = "Git diff main", silent = true },
+      { "<Leader>gb", ":Git blame<CR>", desc = "Git blame", silent = true },
     },
   },
 
