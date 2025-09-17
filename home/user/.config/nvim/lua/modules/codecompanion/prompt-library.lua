@@ -9,7 +9,6 @@ return {
       short_name = "document",
       adapter = {
         name = "copilot",
-        model = "claude-3.7-sonnet",
       },
     },
     prompts = {
@@ -39,7 +38,6 @@ Do not add comments to variables or single line expressions.
       short_name = "review-article",
       adapter = {
         name = "copilot",
-        model = "gemini-2.5-pro",
       },
     },
     prompts = {
@@ -76,7 +74,6 @@ Follow these rules:
       short_name = "write-tests",
       adapter = {
         name = "copilot",
-        model = "claude-3.7-sonnet",
       },
     },
     prompts = {
