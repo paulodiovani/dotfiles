@@ -72,6 +72,7 @@ tinty sync
 - karabiner-elements
 - raycast
 - scroll-reverser
+- autoraise
 
 #### Extra settings
 
@@ -81,6 +82,11 @@ xattr -d com.apple.quarantine /Applications/Alacritty.app
 
 # fix font blur in Alacritty
 defaults -currentHost write -g AppleFontSmoothing -int 0
+
+# install and start autoraise with EXPERIMENTAL_FOCUS_FIRST flag
+brew tap dimentium/autoraise
+brew install autoraise --with-dexperimental_focus_first
+brew services start autoraise
 
 # fix browserpass use homebrew-installed gpg
 # source: https://github.com/browserpass/browserpass-legacy?tab=readme-ov-file#faq-1
