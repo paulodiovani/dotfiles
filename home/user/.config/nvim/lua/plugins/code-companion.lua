@@ -8,6 +8,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
     "ravitemer/codecompanion-history.nvim",
+    "ravitemer/mcphub.nvim",
   },
   version = "*",
 
@@ -17,7 +18,16 @@ return {
         opts = {
           show_defaults = false,
         },
+
+        claude_code = vim.env.CLAUDE_CODE_OAUTH_TOKEN and function()
+          return require("codecompanion.adapters").extend("claude_code", {
+            env = {
+              api_key = "CLAUDE_CODE_OAUTH_TOKEN",
+            },
+          })
+        end,
       },
+
       http = {
         opts = {
           show_defaults = false,
@@ -30,7 +40,7 @@ return {
           })
         end,
 
-        openrouter = vim.env.OPENROUTER_API_KEY and  function()
+        openrouter = vim.env.OPENROUTER_API_KEY and function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             formatted_name = "OpenRouter",
             env = {
@@ -77,12 +87,21 @@ return {
             delete = { n = "dd", i = "<C-d>" },
             duplicate = { n = "yyp", i = "<C-y>" },
           },
-        },
-        title_generation_opts = {
-          adapter = "copilot",
-          model = "gpt-4o",
+          title_generation_opts = {
+            adapter = "copilot",
+            model = "gpt-4o",
+          },
         },
       },
+
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          make_vars = true,
+          make_slash_commands = true,
+          show_result_in_chat = true
+        }
+      }
     },
 
     strategies = {
