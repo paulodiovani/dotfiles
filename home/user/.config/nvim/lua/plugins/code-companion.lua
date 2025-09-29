@@ -8,6 +8,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
     "ravitemer/codecompanion-history.nvim",
+    "ravitemer/mcphub.nvim",
   },
   version = "*",
 
@@ -92,6 +93,15 @@ return {
           },
         },
       },
+
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          make_vars = true,
+          make_slash_commands = true,
+          show_result_in_chat = true
+        }
+      }
     },
 
     strategies = {
