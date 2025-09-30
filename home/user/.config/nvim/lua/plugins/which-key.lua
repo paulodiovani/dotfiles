@@ -5,8 +5,8 @@ return {
     delay = 1000, -- milliseconds
     preset = "helix",
     keys = {
-      scroll_down = "<C-Down>", -- binding to scroll down inside the popup
-      scroll_up = "<C-Up>", -- binding to scroll up inside the popup
+      scroll_down = "<S-Down>", -- binding to scroll down inside the popup
+      scroll_up = "<S-Up>", -- binding to scroll up inside the popup
     },
   },
   keys = {

@@ -202,8 +202,8 @@ nnoremap [z zk
 nnoremap ]z zj
 
 " scroll down/up
-nnoremap <C-Down> <C-e>
-nnoremap <C-Up> <C-y>
+nnoremap <S-Down> <C-e>
+nnoremap <S-Up> <C-y>
 
 " navigate to previous window
 noremap <Leader>w <C-w>p
