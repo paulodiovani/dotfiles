@@ -73,6 +73,11 @@ return {
 
       diff = {
         provider = "split",
+        provider_opts = {
+            inline = {
+                layout = "buffer",
+            },
+        },
       },
     },
 
