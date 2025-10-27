@@ -109,6 +109,16 @@ return {
       }
     },
 
+    memory = {
+      opts = {
+        chat = {
+          enabled = true,
+        },
+      },
+    },
+
+    prompt_library = require("modules.codecompanion.prompt-library"),
+
     strategies = {
       chat = {
         adapter = "copilot",
@@ -136,8 +146,6 @@ return {
         adapter = "copilot",
       }
     },
-
-    prompt_library = require("modules.codecompanion.prompt-library"),
   },
 
   keys = {
