@@ -112,7 +112,15 @@ return {
     memory = {
       opts = {
         chat = {
+          default_memory = { "default", "readme" },
           enabled = true,
+        },
+      },
+
+      readme = {
+        description = "Read the README.md file, if it exists",
+        files = {
+          "README.md",
         },
       },
     },
