@@ -23,10 +23,11 @@ return {
 
       let test#custom_strategies = {'terminal': function('TerminalStrategy')}
       let test#strategy = "terminal"
+      let test#javascript#vitest#options = '--silent=false'
+      let test#python#pytest#options = '--verbosity=2'
       let test#ruby#minitest#options = '--verbose'
       let test#ruby#rails#options = '--verbose --backtrace'
       let test#ruby#rspec#options = '--format doc'
-      let test#python#pytest#options = '--verbosity=2'
     ]])
   end
 }
