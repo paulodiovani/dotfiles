@@ -44,5 +44,6 @@ kls_database.db
 .project
 .settings
 
-# aider chat files
+# LLM chat files and configs
 .aider*
+.claude
