@@ -9,6 +9,10 @@ return {
     -- use system node command
     copilot_node_command = vim.fn.has("macunix") == 1 and vim.fn.systemlist("brew --prefix")[1] .. "/bin/node" or "/usr/bin/node",
 
+    filetypes = {
+      ["*"] = true, -- enable for all filetypes
+    },
+
     -- Set enable = true until this bug is fixed:
     -- https://github.com/zbirenbaum/copilot-cmp/issues/10
     suggestion = {
