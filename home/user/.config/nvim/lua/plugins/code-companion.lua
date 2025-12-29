@@ -74,9 +74,9 @@ return {
       diff = {
         provider = "split",
         provider_opts = {
-            inline = {
-                layout = "buffer",
-            },
+          inline = {
+            layout = "buffer",
+          },
         },
       },
     },
@@ -157,9 +157,11 @@ return {
   },
 
   keys = {
-    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>",                   mode = { "n", "v" } },
-    { "<Leader>cc", "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>", mode = { "n", "v" } },
-    { "<Leader>cl", ":CodeCompanion ",                                 mode = { "v" },     desc = "Code Companion Inline" },
+    { "<Leader>ca", "<Cmd>CodeCompanionActions<CR>",                          mode = { "n", "v" } },
+    { "<Leader>cn", "<Cmd>DarkRoomReplaceRight CodeCompanionChat<CR>",        mode = { "n", "v" } },
+    { "<Leader>cc", "<Cmd>DarkRoomReplaceRight CodeCompanionChat Toggle<CR>", mode = { "n" } },
+    { "<Leader>cc", "<Cmd>DarkRoomReplaceRight CodeCompanionChat Add<CR>",    mode = { "v" } },
+    { "<Leader>cl", ":CodeCompanion ",                                        mode = { "v" } },
   },
 
   cmd = {
