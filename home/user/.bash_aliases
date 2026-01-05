@@ -33,9 +33,6 @@ alias noglob='noglob '
 # make linux more polite
 alias please='sudo'
 
-# use github copilot for command suggestions
-copilot() { gh copilot suggest --target shell "\"$@\"" }
-
 # switch aws profiles from ~/.aws/credentials
 alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo export AWS_PROFILE={} | source /dev/stdin"
 
