@@ -16,7 +16,7 @@ return {
     adapters = {
       acp = {
         opts = {
-          show_defaults = false,
+          show_presets = false,
         },
 
         claude_code = vim.env.CLAUDE_CODE_OAUTH_TOKEN and function()
@@ -30,7 +30,7 @@ return {
 
       http = {
         opts = {
-          show_defaults = false,
+          show_presets = false,
           show_model_choices = true,
         },
 
@@ -109,22 +109,6 @@ return {
       }
     },
 
-    memory = {
-      opts = {
-        chat = {
-          default_memory = { "default", "readme" },
-          enabled = true,
-        },
-      },
-
-      readme = {
-        description = "Read the README.md file, if it exists",
-        files = {
-          "README.md",
-        },
-      },
-    },
-
     prompt_library = require("modules.codecompanion.prompt-library"),
 
     strategies = {
@@ -153,6 +137,22 @@ return {
       cmd = {
         adapter = "copilot",
       }
+    },
+
+    rules = {
+      opts = {
+        chat = {
+          autoload = { "default", "readme" },
+          enabled = true,
+        },
+      },
+
+      readme = {
+        description = "Read the README.md file, if it exists",
+        files = {
+          "README.md",
+        },
+      },
     },
   },
 

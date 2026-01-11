@@ -1,12 +1,12 @@
 return {
   ["Add documentation to this code or function"] = {
-    strategy = "chat",
+    interaction = "chat",
     description = "Create documentation for this code and update the buffer",
     opts = {
       auto_submit = true,
       -- ignore_system_prompt = true,
       is_slash_cmd = true,
-      short_name = "document",
+      alias = "document",
       adapter = {
         name = "copilot",
       },
@@ -29,13 +29,13 @@ Do not add comments to variables or single line expressions.
   },
 
   ["Review this article"] = {
-    strategy = "chat",
+    interaction = "chat",
     description = "Review this blog post for typos, errors, or redundancy.",
     opts = {
       auto_submit = true,
       -- ignore_system_prompt = true,
       is_slash_cmd = true,
-      short_name = "review-article",
+      alias = "review-article",
       adapter = {
         name = "copilot",
       },
@@ -65,13 +65,13 @@ Follow these rules:
   },
 
   ["Write tests for this file"] = {
-    strategy = "chat",
+    interaction = "chat",
     description = "Write tests for this file or module following existing convention.",
     opts = {
       auto_submit = true,
       -- ignore_system_prompt = true,
       is_slash_cmd = true,
-      short_name = "write-tests",
+      alias = "write-tests",
       adapter = {
         name = "copilot",
       },
