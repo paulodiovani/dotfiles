@@ -19,13 +19,7 @@ return {
           show_presets = false,
         },
 
-        claude_code = vim.env.CLAUDE_CODE_OAUTH_TOKEN and function()
-          return require("codecompanion.adapters").extend("claude_code", {
-            env = {
-              api_key = "CLAUDE_CODE_OAUTH_TOKEN",
-            },
-          })
-        end,
+        claude_code = vim.env.CLAUDE_CODE_OAUTH_TOKEN and "claude_code",
       },
 
       http = {
@@ -34,11 +28,8 @@ return {
           show_model_choices = true,
         },
 
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            formatted_name = "GitHub Copilot",
-          })
-        end,
+        copilot = "copilot",
+        ollama = "ollama",
 
         openrouter = vim.env.OPENROUTER_API_KEY and function()
           return require("codecompanion.adapters").extend("openai_compatible", {
