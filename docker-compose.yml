@@ -1,0 +1,16 @@
+---
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    network_mode: bridge
+    profiles:
+      - llm
+
+volumes:
+  ollama:
+    name: ollama
