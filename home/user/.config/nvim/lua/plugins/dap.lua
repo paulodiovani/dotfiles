@@ -77,6 +77,23 @@ return {
           processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
         },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach to Remote",
+          address = function()
+            return vim.fn.input("Remote address (default localhost): ", "localhost")
+          end,
+          port = function()
+            return tonumber(vim.fn.input("Remote port (default 9229): ", "9229"))
+          end,
+          localRoot = "${workspaceFolder}",
+          remoteRoot = function()
+            return vim.fn.input("Remote root path: ", "/app")
+          end,
+          sourceMaps = true,
+          restart = true,
+        },
       }
 
       -- Copy JavaScript configuration to TypeScript
