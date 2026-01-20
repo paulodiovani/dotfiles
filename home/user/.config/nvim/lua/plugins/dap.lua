@@ -18,13 +18,23 @@ return {
   },
 
   keys = {
-    { "<Leader><F8>", "<Cmd>DapNew<CR>",              desc = "Start debugging" },
-    { "<F8>",         "<Cmd>DapContinue<CR>",         desc = "Continue" },
-    { "<F9>",         "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-    { "<F10>",        "<Cmd>DapStepOver<CR>",         desc = "Step over" },
-    { "<F11>",        "<Cmd>DapStepInto<CR>",         desc = "Step into" },
-    { "<S-F11>",      "<Cmd>DapStepOut<CR>",          desc = "Step out" },
-    { "<S-F8>",       "<Cmd>DapTerminate<CR>",        desc = "Stop debug session" },
+    {
+      "<Leader><F8>",
+      function()
+        local dap = require("dap")
+        if dap.session() then
+          dap.terminate()
+        else
+          dap.continue()
+        end
+      end,
+      desc = "Start debugging/Terminate"
+    },
+    { "<F8>",    "<Cmd>DapContinue<CR>",         desc = "Continue" },
+    { "<F9>",    "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
+    { "<F10>",   "<Cmd>DapStepOver<CR>",         desc = "Step over" },
+    { "<F11>",   "<Cmd>DapStepInto<CR>",         desc = "Step into" },
+    { "<S-F11>", "<Cmd>DapStepOut<CR>",          desc = "Step out" },
   },
 
   build = function()
