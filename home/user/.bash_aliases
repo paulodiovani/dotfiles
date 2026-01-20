@@ -36,6 +36,9 @@ alias please='sudo'
 # switch aws profiles from ~/.aws/credentials
 alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo export AWS_PROFILE={} | source /dev/stdin"
 
+# delegate ollama do a docker container
+alias ollama='docker exec -it ollama ollama'
+
 # git command overrides
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
