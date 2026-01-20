@@ -49,8 +49,8 @@ return {
         host = "localhost",
         port = "${port}",
         executable = {
-          command = vim.fn.stdpath("data") .. "/dap/js-debug/src/dapDebugServer.js",
-          args = { "${port}" },
+          command = "node",
+          args = { vim.fn.stdpath("data") .. "/dap/js-debug/src/dapDebugServer.js", "${port}" },
         },
       }
 
