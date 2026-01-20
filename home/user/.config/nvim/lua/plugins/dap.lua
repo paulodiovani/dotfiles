@@ -21,6 +21,7 @@ return {
     keys = {
       { "<Leader><F8>", "<Cmd>DapNew<CR>",              desc = "Start debugging" },
       { "<F8>",         "<Cmd>DapContinue<CR>",         desc = "Continue" },
+      { "<F9>",         "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
       { "<F10>",        "<Cmd>DapStepOver<CR>",         desc = "Step over" },
       { "<F11>",        "<Cmd>DapStepInto<CR>",         desc = "Step into" },
       { "<S-F11>",      "<Cmd>DapStepOut<CR>",          desc = "Step out" },
@@ -41,7 +42,24 @@ return {
       local dap = require("dap")
 
       -- Setup virtual text
-      require("nvim-dap-virtual-text").setup({})
+      require("nvim-dap-virtual-text").setup({
+        enabled = true,
+        enabled_commands = true,
+        virt_text_pos = 'eol',
+      })
+
+      -- Auto open/close REPL
+      dap.listeners.after.event_initialized["dap_repl"] = function()
+        dap.repl.open()
+      end
+
+      dap.listeners.before.event_terminated["dap_repl"] = function()
+        dap.repl.close()
+      end
+
+      dap.listeners.before.event_exited["dap_repl"] = function()
+        dap.repl.close()
+      end
 
       -- Setup JavaScript/Node.js adapter
       dap.adapters["pwa-node"] = {
@@ -98,6 +116,32 @@ return {
 
       -- Copy JavaScript configuration to TypeScript
       dap.configurations.typescript = dap.configurations.javascript
+
+      -- Define breakpoint signs with ASCII characters and existing highlights
+      vim.fn.sign_define('DapBreakpoint', {
+        text = '●',
+        texthl = 'ErrorMsg',
+        numhl = 'ErrorMsg'
+      })
+
+      vim.fn.sign_define('DapBreakpointRejected', {
+        text = '○',
+        texthl = 'ErrorMsg',
+        numhl = 'ErrorMsg'
+      })
+
+      vim.fn.sign_define('DapBreakpointCondition', {
+        text = '◆',
+        texthl = 'WarningMsg',
+        numhl = 'WarningMsg'
+      })
+
+      vim.fn.sign_define('DapStopped', {
+        text = '→',
+        texthl = 'Question',
+        linehl = 'CursorLine',
+        numhl = 'Question'
+      })
     end,
   },
 }
