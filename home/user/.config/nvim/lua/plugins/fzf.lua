@@ -41,9 +41,9 @@ return {
     -- Check if in a git repo and use git_files, otherwise use files
     vim.api.nvim_create_user_command('Ctrlp', function()
       if vim.fn.exists("*fugitive#Head") == 1 and vim.fn.len(vim.fn.FugitiveHead()) > 0 then
-        fzf_lua.git_files()
+        fzf_lua.git_files({ cwd = vim.fn.getcwd() })
       else
-        fzf_lua.files()
+        fzf_lua.files({ cwd = vim.fn.getcwd() })
       end
     end, {})
   end,
