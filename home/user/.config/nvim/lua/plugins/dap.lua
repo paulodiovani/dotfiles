@@ -49,6 +49,7 @@ return {
 
   config = function()
     local dap = require("dap")
+    local dap_utils = require("dap.utils")
 
     -- Auto open/close REPL
     dap.listeners.after.event_initialized["dap_repl"] = function()
@@ -74,7 +75,7 @@ return {
       },
     }
 
-    -- Default configuration for Node.js
+    -- Configuration for Node.js
     dap.configurations.javascript = {
       {
         type = "pwa-node",
@@ -85,32 +86,19 @@ return {
       },
       {
         type = "pwa-node",
-        request = "launch",
-        name = "Launch Node.js Program",
-        program = "${workspaceFolder}/index.js",
-        cwd = "${workspaceFolder}",
-      },
-      {
-        type = "pwa-node",
         request = "attach",
         name = "Attach",
-        processId = require("dap.utils").pick_process,
+        processId = function() return dap_utils.pick_process({ filter = "node" }) end,
         cwd = "${workspaceFolder}",
       },
       {
         type = "pwa-node",
         request = "attach",
         name = "Attach to Remote",
-        address = function()
-          return vim.fn.input("Remote address (default localhost): ", "localhost")
-        end,
-        port = function()
-          return tonumber(vim.fn.input("Remote port (default 9229): ", "9229"))
-        end,
+        address = function() return vim.fn.input("Remote address: ", "localhost") end,
+        port = function() return tonumber(vim.fn.input("Remote port: ", "9229")) end,
         localRoot = "${workspaceFolder}",
-        remoteRoot = function()
-          return vim.fn.input("Remote root path: ", "/app")
-        end,
+        remoteRoot = function() return vim.fn.input("Remote root path: ", "/app") end,
         sourceMaps = true,
         restart = true,
       },
