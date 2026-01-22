@@ -177,9 +177,6 @@ map <F4> ggVGg?                                     " shuffle text content (to h
 map <F5> :TestFile<CR>                              " run tests for current file
 map <leader><F5> :TestNearest<CR>                   " run tests nearest to cursor
 map <F6> :throw 'No run command defined.'<CR>       " run command
-map <F9> :ptjump<CR>                                " open definition (using ctags) in preview window
-map <leader><F9> <C-o>:ptjump<CR>
-map <F10> :set paste!<CR>:set paste?<CR>            " enable/disable paste mode with F10
 map <F12> <C-]>                                     " open definition (using ctags) in new buffer
 imap <F12> <C-o><C-]>
 
