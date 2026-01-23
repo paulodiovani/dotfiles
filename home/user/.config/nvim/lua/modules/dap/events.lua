@@ -9,7 +9,7 @@ function M.setup()
 
   -- Auto open/close REPL
   dap.listeners.after.event_initialized["dap_repl"] = function()
-    dap.repl.open()
+    dap.repl.open({ height = math.floor(vim.o.lines * 0.3) })
   end
 
   dap.listeners.before.event_terminated["dap_repl"] = function()
