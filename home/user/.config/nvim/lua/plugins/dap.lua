@@ -121,6 +121,12 @@ return {
       numhl = 'ErrorMsg'
     })
 
+    vim.fn.sign_define('DapLogPoint', {
+      text = '●',
+      texthl = 'ErrorMsg',
+      numhl = 'ErrorMsg'
+    })
+
     vim.fn.sign_define('DapBreakpointRejected', {
       text = '○',
       texthl = 'ErrorMsg',
