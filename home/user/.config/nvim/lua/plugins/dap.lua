@@ -2,6 +2,8 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "theHamsta/nvim-dap-virtual-text",
+    "hrsh7th/nvim-cmp",
+    "rcarriga/cmp-dap"
   },
 
   cmd = {
@@ -30,18 +32,25 @@ return {
       end,
       desc = "Start debugging/Terminate"
     },
-    { "<F8>",    "<Cmd>DapContinue<CR>",         desc = "Continue" },
-    { "<F9>",    "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-    { "<F10>",   "<Cmd>DapStepOver<CR>",         desc = "Step over" },
-    { "<F11>",   "<Cmd>DapStepInto<CR>",         desc = "Step into" },
-    { "<S-F11>", "<Cmd>DapStepOut<CR>",          desc = "Step out" },
+    { "<F8>", "<Cmd>DapContinue<CR>",         desc = "Continue" },
+    { "<F9>", "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
+    {
+      "<Leader><F9>",
+      function()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+      end,
+      desc = "Set breakpoint with log point."
+    },
+    { "<F10>",   "<Cmd>DapStepOver<CR>", desc = "Step over" },
+    { "<F11>",   "<Cmd>DapStepInto<CR>", desc = "Step into" },
+    { "<S-F11>", "<Cmd>DapStepOut<CR>",  desc = "Step out" },
   },
 
   build = function()
-    local adapter_downloader = require("modules.dap.download-adapter")
+    local dap_adapter_downloader = require("modules.dap.download-adapter")
 
     -- Download vscode-js-debug adapter
-    adapter_downloader.download_adapter("microsoft/vscode-js-debug", {
+    dap_adapter_downloader.download_adapter("microsoft/vscode-js-debug", {
       version = "v1.105.0",
       prefix = "js-debug-dap"
     })
@@ -50,19 +59,11 @@ return {
   config = function()
     local dap = require("dap")
     local dap_utils = require("dap.utils")
+    local dap_gutter_symbols = require("modules.dap.gutter-symbols")
+    local dap_events = require("modules.dap.events")
 
-    -- Auto open/close REPL
-    dap.listeners.after.event_initialized["dap_repl"] = function()
-      dap.repl.open()
-    end
-
-    dap.listeners.before.event_terminated["dap_repl"] = function()
-      dap.repl.close()
-    end
-
-    dap.listeners.before.event_exited["dap_repl"] = function()
-      dap.repl.close()
-    end
+    local cmp = require("cmp")
+    local cmp_dap = require("cmp_dap")
 
     -- Setup JavaScript/Node.js adapter
     dap.adapters["pwa-node"] = {
@@ -107,30 +108,22 @@ return {
     -- Copy JavaScript configuration to TypeScript
     dap.configurations.typescript = dap.configurations.javascript
 
-    -- Define breakpoint signs with ASCII characters and existing highlights
-    vim.fn.sign_define('DapBreakpoint', {
-      text = '●',
-      texthl = 'ErrorMsg',
-      numhl = 'ErrorMsg'
+    -- Setup cmp completion for REPL
+    cmp.setup({
+      enabled = function()
+        return vim.bo.buftype ~= "prompt" or cmp_dap.is_dap_buffer()
+      end
+    })
+    cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+      sources = {
+        { name = "dap" },
+      },
     })
 
-    vim.fn.sign_define('DapBreakpointRejected', {
-      text = '○',
-      texthl = 'ErrorMsg',
-      numhl = 'ErrorMsg'
-    })
+    -- Setup gutter symbols
+    dap_gutter_symbols.setup()
 
-    vim.fn.sign_define('DapBreakpointCondition', {
-      text = '◆',
-      texthl = 'WarningMsg',
-      numhl = 'WarningMsg'
-    })
-
-    vim.fn.sign_define('DapStopped', {
-      text = '→',
-      texthl = 'Question',
-      linehl = 'CursorLine',
-      numhl = 'Question'
-    })
+    -- Setup DAP events
+    dap_events.setup()
   end,
 }
