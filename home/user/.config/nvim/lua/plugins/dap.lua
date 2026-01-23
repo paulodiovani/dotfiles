@@ -45,10 +45,10 @@ return {
   },
 
   build = function()
-    local adapter_downloader = require("modules.dap.download-adapter")
+    local dap_adapter_downloader = require("modules.dap.download-adapter")
 
     -- Download vscode-js-debug adapter
-    adapter_downloader.download_adapter("microsoft/vscode-js-debug", {
+    dap_adapter_downloader.download_adapter("microsoft/vscode-js-debug", {
       version = "v1.105.0",
       prefix = "js-debug-dap"
     })
@@ -57,6 +57,7 @@ return {
   config = function()
     local dap = require("dap")
     local dap_utils = require("dap.utils")
+    local dap_gutter_symbols = require("modules.dap.gutter-symbols")
 
     -- Auto open/close REPL
     dap.listeners.after.event_initialized["dap_repl"] = function()
@@ -114,36 +115,7 @@ return {
     -- Copy JavaScript configuration to TypeScript
     dap.configurations.typescript = dap.configurations.javascript
 
-    -- Define breakpoint signs with ASCII characters and existing highlights
-    vim.fn.sign_define('DapBreakpoint', {
-      text = '●',
-      texthl = 'ErrorMsg',
-      numhl = 'ErrorMsg'
-    })
-
-    vim.fn.sign_define('DapLogPoint', {
-      text = '●',
-      texthl = 'ErrorMsg',
-      numhl = 'ErrorMsg'
-    })
-
-    vim.fn.sign_define('DapBreakpointRejected', {
-      text = '○',
-      texthl = 'ErrorMsg',
-      numhl = 'ErrorMsg'
-    })
-
-    vim.fn.sign_define('DapBreakpointCondition', {
-      text = '◆',
-      texthl = 'WarningMsg',
-      numhl = 'WarningMsg'
-    })
-
-    vim.fn.sign_define('DapStopped', {
-      text = '→',
-      texthl = 'Question',
-      linehl = 'CursorLine',
-      numhl = 'Question'
-    })
+    -- Setup gutter symbols
+    dap_gutter_symbols.setup()
   end,
 }
