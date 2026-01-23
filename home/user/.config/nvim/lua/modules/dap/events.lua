@@ -22,15 +22,15 @@ function M.setup()
 
   -- Override K key with DAP hover during debug sessions
   dap.listeners.after.event_initialized["dap_hover"] = function()
-    vim.keymap.set({ 'n', 'v' }, 'K', dap_ui_widgets.hover, { desc = "DAP Hover", buffer = 0 })
+    vim.keymap.set({ 'n', 'v' }, 'K', dap_ui_widgets.hover, { desc = "DAP Hover" })
   end
 
   dap.listeners.before.event_terminated["dap_hover"] = function()
-    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { desc = "LSP: Hover", buffer = 0 })
+    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { desc = "LSP: Hover" })
   end
 
   dap.listeners.before.event_exited["dap_hover"] = function()
-    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { desc = "LSP: Hover", buffer = 0 })
+    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { desc = "LSP: Hover" })
   end
 end
 
