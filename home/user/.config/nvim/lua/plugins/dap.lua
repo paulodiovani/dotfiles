@@ -59,19 +59,6 @@ return {
     local dap_utils = require("dap.utils")
     local dap_gutter_symbols = require("modules.dap.gutter-symbols")
 
-    -- Auto open/close REPL
-    dap.listeners.after.event_initialized["dap_repl"] = function()
-      dap.repl.open({ height = math.floor(vim.o.lines * 0.3) })
-    end
-
-    dap.listeners.before.event_terminated["dap_repl"] = function()
-      dap.repl.close()
-    end
-
-    dap.listeners.before.event_exited["dap_repl"] = function()
-      dap.repl.close()
-    end
-
     -- Setup JavaScript/Node.js adapter
     dap.adapters["pwa-node"] = {
       type = "server",
@@ -114,6 +101,19 @@ return {
 
     -- Copy JavaScript configuration to TypeScript
     dap.configurations.typescript = dap.configurations.javascript
+
+    -- Auto open/close REPL
+    dap.listeners.after.event_initialized["dap_repl"] = function()
+      dap.repl.open({ height = math.floor(vim.o.lines * 0.3) })
+    end
+
+    dap.listeners.before.event_terminated["dap_repl"] = function()
+      dap.repl.close()
+    end
+
+    dap.listeners.before.event_exited["dap_repl"] = function()
+      dap.repl.close()
+    end
 
     -- Setup gutter symbols
     dap_gutter_symbols.setup()
