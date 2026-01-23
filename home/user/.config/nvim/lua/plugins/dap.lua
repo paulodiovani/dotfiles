@@ -30,11 +30,18 @@ return {
       end,
       desc = "Start debugging/Terminate"
     },
-    { "<F8>",    "<Cmd>DapContinue<CR>",         desc = "Continue" },
-    { "<F9>",    "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-    { "<F10>",   "<Cmd>DapStepOver<CR>",         desc = "Step over" },
-    { "<F11>",   "<Cmd>DapStepInto<CR>",         desc = "Step into" },
-    { "<S-F11>", "<Cmd>DapStepOut<CR>",          desc = "Step out" },
+    { "<F8>", "<Cmd>DapContinue<CR>",         desc = "Continue" },
+    { "<F9>", "<Cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
+    {
+      "<Leader><F9>",
+      function()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+      end,
+      desc = "Set breakpoint with log point."
+    },
+    { "<F10>",   "<Cmd>DapStepOver<CR>", desc = "Step over" },
+    { "<F11>",   "<Cmd>DapStepInto<CR>", desc = "Step into" },
+    { "<S-F11>", "<Cmd>DapStepOut<CR>",  desc = "Step out" },
   },
 
   build = function()
@@ -53,7 +60,7 @@ return {
 
     -- Auto open/close REPL
     dap.listeners.after.event_initialized["dap_repl"] = function()
-      dap.repl.open()
+      dap.repl.open({ height = math.floor(vim.o.lines * 0.3) })
     end
 
     dap.listeners.before.event_terminated["dap_repl"] = function()
