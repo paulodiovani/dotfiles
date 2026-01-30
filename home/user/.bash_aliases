@@ -36,6 +36,9 @@ alias please='sudo'
 # switch aws profiles from ~/.aws/credentials
 alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo export AWS_PROFILE={} | source /dev/stdin"
 
+# granted and assume (granted.dev)
+alias assume=". assume"
+
 # delegate ollama do a docker container
 alias ollama='docker exec -it ollama ollama'
 
