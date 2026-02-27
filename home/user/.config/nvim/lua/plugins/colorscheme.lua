@@ -9,11 +9,14 @@ return {
     -- load theme overrides
     vim.cmd("source " .. vim.fn.expand("$HOME/.config/vim/theme-overrides.vim"))
 
-    -- fix colorschemes comment issues
+    -- fix colorschemes issues
     -- https://github.com/tinted-theming/tinted-vim/issues/103
+    -- https://github.com/tinted-theming/tinted-vim/blob/main/templates/tinted-vim.mustache
+    -- https://github.com/tinted-theming/base24/blob/main/styling.md
     vim.cmd([[
       function! s:tinted_customize() abort
-        call Tinted_Hi('@variable.member', g:tinted_gui08, '', g:tinted_cterm08, '', '', '')
+        "hi! link @variable.member Identifier
+        call Tinted_Hi('@variable.member', g:tinted_gui06, '', g:tinted_cterm06, '', '', '')
       endfunction
 
       " fix colorscheme on startup
