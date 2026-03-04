@@ -28,9 +28,15 @@ azote
 nwg-displays
 nwg-look-bin
 
-# gt2 theme for qt5
-qt5-styleplugins
-qt6gtk2
+# theme for qt5/qt6
+qt5ct
+qt6ct
+
+# gtk auth window
+polkit-gnome
+
+# gtk theme for some Gnome apps (e.g. Timeshift)
+manjaro-gnome-settings
 
 # scripts
 autotiling
@@ -46,9 +52,6 @@ pactl
 pamixer
 playerctl
 wl-clipboard
-
-# gtk auth window
-polkit-gnome
 
 # screenshot and recorder
 grim
