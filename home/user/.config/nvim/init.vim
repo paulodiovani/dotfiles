@@ -9,8 +9,6 @@ source ~/.vimrc
 
 set jumpoptions-=unload             " Do not unload buffers with bdelete
                                     " (https://github.com/neovim/neovim/pull/29347)
-set foldmethod=expr                 " enable fold for treesitter
-set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable                    " Disable folding at startup.
 set winborder=rounded               " Use rounded borders for all windows
 
