@@ -60,9 +60,6 @@ return {
           width = (vim.go.columns - 130) / 2,
         },
       },
-
-      -- Note: diff provider configuration removed in v19
-      -- The new built-in diff system is used automatically
     },
 
     extensions = {
