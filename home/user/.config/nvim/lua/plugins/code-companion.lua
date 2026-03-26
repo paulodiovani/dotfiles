@@ -94,7 +94,10 @@ return {
           },
           always_accept = {
             callback = "keymaps.always_accept",
-            modes = { n = "gdy" },
+            modes = { n = "gdA" },
+          },
+          cancel = {
+            modes = { n = "gdc" },
           },
           next_hunk = {
             callback = "keymaps.next_hunk",
