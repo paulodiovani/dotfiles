@@ -62,14 +62,8 @@ return {
         },
       },
 
-      diff = {
-        provider = "split",
-        provider_opts = {
-          inline = {
-            layout = "buffer",
-          },
-        },
-      },
+      -- Note: diff provider configuration removed in v19
+      -- The new built-in diff system is used automatically
     },
 
     extensions = {
@@ -89,6 +83,7 @@ return {
           },
         },
       },
+    },
 
       mcphub = {
         callback = "mcphub.extensions.codecompanion",
@@ -98,6 +93,33 @@ return {
           show_result_in_chat = true
         }
       }
+    },
+
+    interactions = {
+      shared = {
+        keymaps = {
+          accept_change = {
+            callback = "keymaps.accept_change",
+            modes = { n = "gda" },
+          },
+          reject_change = {
+            callback = "keymaps.reject_change",
+            modes = { n = "gdr" },
+          },
+          always_accept = {
+            callback = "keymaps.always_accept",
+            modes = { n = "gdy" },
+          },
+          next_hunk = {
+            callback = "keymaps.next_hunk",
+            modes = { n = "]c" },
+          },
+          previous_hunk = {
+            callback = "keymaps.previous_hunk",
+            modes = { n = "[c" },
+          },
+        },
+      },
     },
 
     prompt_library = require("modules.codecompanion.prompt-library"),
