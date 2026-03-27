@@ -82,6 +82,32 @@ return {
     },
 
     interactions = {
+      chat = {
+        adapter = "copilot",
+        keymaps = {
+          debug = { modes = { n = 'gD' } },
+          next_chat = { modes = { n = '<A-Right>' } },
+          previous_chat = { modes = { n = '<A-Left>' } },
+        },
+        roles = {
+          llm = function(adapter)
+            local name = adapter.formatted_name
+            if (adapter.model and adapter.model.name) then
+              name = name .. " (" .. adapter.model.name .. ")"
+            end
+            return name
+          end,
+        },
+      },
+
+      inline = {
+        adapter = "copilot",
+      },
+
+      cmd = {
+        adapter = "copilot",
+      },
+
       shared = {
         keymaps = {
           accept_change = {
@@ -112,34 +138,6 @@ return {
     },
 
     prompt_library = require("modules.codecompanion.prompt-library"),
-
-    strategies = {
-      chat = {
-        adapter = "copilot",
-        keymaps = {
-          debug = { modes = { n = 'gD' } },
-          next_chat = { modes = { n = '<A-Right>' } },
-          previous_chat = { modes = { n = '<A-Left>' } },
-        },
-        roles = {
-          llm = function(adapter)
-            local name = adapter.formatted_name
-            if (adapter.model and adapter.model.name) then
-              name = name .. " (" .. adapter.model.name .. ")"
-            end
-            return name
-          end,
-        },
-      },
-
-      inline = {
-        adapter = "copilot",
-      },
-
-      cmd = {
-        adapter = "copilot",
-      }
-    },
 
     rules = {
       opts = {
