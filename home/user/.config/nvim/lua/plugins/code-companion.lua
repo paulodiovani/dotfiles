@@ -8,7 +8,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
     "ravitemer/codecompanion-history.nvim",
-    "ravitemer/mcphub.nvim",
   },
   version = "*",
 
@@ -61,15 +60,6 @@ return {
           width = (vim.go.columns - 130) / 2,
         },
       },
-
-      diff = {
-        provider = "split",
-        provider_opts = {
-          inline = {
-            layout = "buffer",
-          },
-        },
-      },
     },
 
     extensions = {
@@ -89,20 +79,9 @@ return {
           },
         },
       },
-
-      mcphub = {
-        callback = "mcphub.extensions.codecompanion",
-        opts = {
-          make_vars = true,
-          make_slash_commands = true,
-          show_result_in_chat = true
-        }
-      }
     },
 
-    prompt_library = require("modules.codecompanion.prompt-library"),
-
-    strategies = {
+    interactions = {
       chat = {
         adapter = "copilot",
         keymaps = {
@@ -127,8 +106,38 @@ return {
 
       cmd = {
         adapter = "copilot",
-      }
+      },
+
+      shared = {
+        keymaps = {
+          accept_change = {
+            callback = "keymaps.accept_change",
+            modes = { n = "gda" },
+          },
+          reject_change = {
+            callback = "keymaps.reject_change",
+            modes = { n = "gdr" },
+          },
+          always_accept = {
+            callback = "keymaps.always_accept",
+            modes = { n = "gdA" },
+          },
+          cancel = {
+            modes = { n = "gdc" },
+          },
+          next_hunk = {
+            callback = "keymaps.next_hunk",
+            modes = { n = "]c" },
+          },
+          previous_hunk = {
+            callback = "keymaps.previous_hunk",
+            modes = { n = "[c" },
+          },
+        },
+      },
     },
+
+    prompt_library = require("modules.codecompanion.prompt-library"),
 
     rules = {
       opts = {
