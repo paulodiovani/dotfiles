@@ -73,10 +73,6 @@ return {
             delete = { n = "dd", i = "<C-d>" },
             duplicate = { n = "yyp", i = "<C-y>" },
           },
-          title_generation_opts = {
-            adapter = "copilot",
-            model = "gpt-4o",
-          },
         },
       },
     },
