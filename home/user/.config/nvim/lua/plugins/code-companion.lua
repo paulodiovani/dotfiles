@@ -3,7 +3,6 @@ return {
   dependencies = {
     "MeanderingProgrammer/render-markdown.nvim",
     "hrsh7th/nvim-cmp",
-    "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
@@ -166,8 +165,4 @@ return {
     "CodeCompanionChat",
     "CodeCompanionCmd",
   },
-
-  init = function()
-    require("modules.codecompanion.fidget-spinner"):init()
-  end,
 }
