@@ -132,7 +132,14 @@ return {
       },
     },
 
-    prompt_library = require("modules.codecompanion.prompt-library"),
+    prompt_library = {
+      markdown = {
+        dirs = {
+          vim.fn.getcwd() .. "/.codecompanion/prompt-library", -- local dir
+          '~/.config/codecompanion/prompt-library',
+        },
+      },
+    },
 
     rules = {
       opts = {
