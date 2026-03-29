@@ -1,7 +1,6 @@
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
-    "MeanderingProgrammer/render-markdown.nvim",
     "hrsh7th/nvim-cmp",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
