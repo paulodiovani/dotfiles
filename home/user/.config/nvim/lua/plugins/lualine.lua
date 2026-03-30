@@ -12,7 +12,7 @@ return {
       section_separators = { left = '\u{e0b0}', right = '\u{e0b2}' },
       component_separators = { left = '\u{e0b1}', right = '\u{e0b3}' },
       always_show_tabline = true,
-      globalstatus = true,
+      globalstatus = false,
     },
 
     sections = {
