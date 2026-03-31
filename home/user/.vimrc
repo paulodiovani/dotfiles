@@ -86,7 +86,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " Lightline config
-set laststatus=2
+set laststatus=3
 set showtabline=2
 let g:lightline = {
   \ 'colorscheme': 'base16',
@@ -188,6 +188,7 @@ map <Leader># :set invnumber<CR>                    " <Leader><S-3> show/hide li
 map <Leader>$ :set list!<CR>                        " <Leader><S-4> show/hide hidden chars
 map <Leader>% :set hlsearch!<CR>                    " <Leader><S-5> toggle search highlight
 map <Leader>& :set wrap!<CR>                        " <Leader><S-7> toggle word wrapping
+map <Leader>( :ToggleLastStatus<CR>                 " <Leader><S-9> toggle laststatus between win/global
 
 " open terminal
 map <Leader>` :Terminal<CR>
@@ -257,6 +258,9 @@ vnoremap <Leader>: y:<Space><C-r>"<Home>
 """""""""""""""""""""""""""
 " CUSTOM COMMANDS SECTION "
 """""""""""""""""""""""""""
+
+" Toggle global/window status
+command! ToggleLastStatus if &laststatus == 3 | set laststatus=2 | else | set laststatus=3 | endif
 
 " Open terminal below
 command! -nargs=* Terminal :bel terminal <args>

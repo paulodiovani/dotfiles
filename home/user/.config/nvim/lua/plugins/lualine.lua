@@ -1,8 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
     'franco-ruggeri/codecompanion-lualine.nvim',
+    'nvim-tree/nvim-web-devicons',
   },
 
   opts = {
@@ -12,7 +12,7 @@ return {
       section_separators = { left = '\u{e0b0}', right = '\u{e0b2}' },
       component_separators = { left = '\u{e0b1}', right = '\u{e0b3}' },
       always_show_tabline = true,
-      globalstatus = false,
+      -- globalstatus = false, -- use laststatus=3 instead
     },
 
     sections = {

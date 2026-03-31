@@ -26,7 +26,7 @@ lua require('config')
 " Toggles
 
 map <Leader>^ :lua toggle_diagnostics()<CR>         " <Leader><S-6> toggle diagnostics visibility
-map <Leader>* :ToggleInlayHints<CR>                 " <Leader><S-6> toggle inlay hints visibility
+map <Leader>* :ToggleInlayHints<CR>                 " <Leader><S-8> toggle inlay hints visibility
 
 " navigate in diagnostics
 map [a :lua vim.diagnostic.goto_prev()<CR>
