@@ -21,6 +21,10 @@ return {
         {
           'branch',
           icon = '\u{e0a0} ',
+          cond = function()
+            local ft = vim.bo.filetype
+            return ft ~= 'codecompanion' and ft ~= 'NvimTree'
+          end,
         },
         {
           -- christoomey/vim-conflicted
@@ -43,6 +47,10 @@ return {
             modified = '~',
             removed = '-'
           },
+          cond = function()
+            local ft = vim.bo.filetype
+            return ft ~= 'codecompanion' and ft ~= 'NvimTree'
+          end,
         },
       },
       lualine_c = {
