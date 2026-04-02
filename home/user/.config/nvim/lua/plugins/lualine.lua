@@ -1,8 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
     'franco-ruggeri/codecompanion-lualine.nvim',
+    'nvim-tree/nvim-web-devicons',
   },
 
   opts = {
@@ -12,7 +12,7 @@ return {
       section_separators = { left = '\u{e0b0}', right = '\u{e0b2}' },
       component_separators = { left = '\u{e0b1}', right = '\u{e0b3}' },
       always_show_tabline = true,
-      globalstatus = false,
+      -- globalstatus = false, -- use laststatus=3 instead
     },
 
     sections = {
@@ -21,6 +21,10 @@ return {
         {
           'branch',
           icon = '\u{e0a0} ',
+          cond = function()
+            local ft = vim.bo.filetype
+            return ft ~= 'codecompanion' and ft ~= 'NvimTree'
+          end,
         },
         {
           -- christoomey/vim-conflicted
@@ -43,6 +47,10 @@ return {
             modified = '~',
             removed = '-'
           },
+          cond = function()
+            local ft = vim.bo.filetype
+            return ft ~= 'codecompanion' and ft ~= 'NvimTree'
+          end,
         },
       },
       lualine_c = {
@@ -96,6 +104,9 @@ return {
         {
           'tabs',
           mode = 1,
+          cond = function()
+            return #vim.api.nvim_list_tabpages() > 1
+          end,
         },
       },
     },
