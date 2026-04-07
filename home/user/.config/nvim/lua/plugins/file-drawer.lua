@@ -1,6 +1,7 @@
 -- File drawer configuration
 return {
   "kyazdani42/nvim-tree.lua",
+  version = "~1",
   dependencies = {
     "kyazdani42/nvim-web-devicons",
     "paulodiovani/darkroom.nvim",

@@ -1,7 +1,9 @@
 -- FZF Lua configuration
 return {
   "ibhagwan/fzf-lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
 
   opts = {
     "fzf-vim", -- profile

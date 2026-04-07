@@ -1,9 +1,10 @@
 return {
   "mfussenegger/nvim-dap",
+  version = "~0",
   dependencies = {
     "theHamsta/nvim-dap-virtual-text",
     "hrsh7th/nvim-cmp",
-    "rcarriga/cmp-dap"
+    "rcarriga/cmp-dap",
   },
 
   cmd = {

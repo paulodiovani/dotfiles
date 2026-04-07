@@ -3,8 +3,10 @@
 --   https://github.com/ltex-plus/ltex-ls-plus
 return {
   "barreiroleo/ltex_extra.nvim",
-  branch = "dev",
-  dependencies = { "neovim/nvim-lspconfig" },
+  version = "~0",
+  dependencies = {
+    "neovim/nvim-lspconfig",
+  },
   -- ft = { "markdown", "tex" },
   event = { "LspAttach *.md", "LspAttach *.tex", "LspAttach *.sty" },
 

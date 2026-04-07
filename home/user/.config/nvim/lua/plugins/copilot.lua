@@ -1,6 +1,7 @@
 -- Copilot configuration
 return {
   "zbirenbaum/copilot.lua",
+  version = "~2",
   dependencies = {
     "zbirenbaum/copilot-cmp",
   },

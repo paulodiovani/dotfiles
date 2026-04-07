@@ -1,8 +1,9 @@
 -- Completion configuration
 return {
   'hrsh7th/nvim-cmp',
+  version = "~0",
   dependencies = {
-    'L3MON4D3/LuaSnip',
+    { 'L3MON4D3/LuaSnip', version = "~2" },
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp',
