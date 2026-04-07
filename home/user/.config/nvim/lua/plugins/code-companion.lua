@@ -39,7 +39,7 @@ return {
             },
             schema = {
               model = {
-                default = "anthropic/claude-sonnet-4",
+                default = "anthropic/claude-sonnet-4.6",
               },
             },
           })
@@ -66,6 +66,7 @@ return {
         auto_save = true,
         expiration_days = 45,
         opts = {
+          dir_to_save = vim.fn.getcwd() .. "/.codecompanion/codecompanion-history",
           picker_keymaps = {
             rename = { n = "<F2>", i = "<C-r>" },
             delete = { n = "dd", i = "<C-d>" },

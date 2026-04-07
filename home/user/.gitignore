@@ -47,3 +47,4 @@ kls_database.db
 # LLM chat files and configs
 .aider*
 .claude
+.codecompanion
