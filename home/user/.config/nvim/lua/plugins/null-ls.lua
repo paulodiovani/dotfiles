@@ -2,7 +2,7 @@ return {
   "nvimtools/none-ls.nvim",
   commit = "7f9301e",
   dependencies = {
-    { "nvim-lua/plenary.nvim", version = "~0" },
+    "nvim-lua/plenary.nvim",
   },
   event = "VeryLazy",
 
