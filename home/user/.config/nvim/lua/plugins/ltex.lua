@@ -3,7 +3,7 @@
 --   https://github.com/ltex-plus/ltex-ls-plus
 return {
   "barreiroleo/ltex_extra.nvim",
-  version = "~0",
+  branch = "dev",
   dependencies = {
     "neovim/nvim-lspconfig",
   },
