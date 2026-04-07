@@ -4,6 +4,7 @@ return {
     { 'franco-ruggeri/codecompanion-lualine.nvim', version = "~0" },
     'nvim-tree/nvim-web-devicons',
   },
+  lazy = false,
 
   opts = {
     options = {
@@ -91,7 +92,7 @@ return {
       lualine_a = {
         {
           'buffers',
-          mode = 4,
+          mode = 2,
           show_filename_only = true,
           hide_filename_extension = false,
           shew_modified_status = true,
@@ -111,4 +112,14 @@ return {
       },
     },
   },
+
+  keys = {
+    { "gb", function()
+      if vim.v.count > 0 then
+        require('lualine.components.buffers').buffer_jump(vim.v.count, "!")
+      else
+        vim.cmd([[buffer #]])
+      end
+    end, mode = { "n" } },
+  }
 }
