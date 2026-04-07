@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  version = "~3",
   event = "VeryLazy",
   opts = {
     delay = 1000, -- milliseconds

@@ -1,7 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'franco-ruggeri/codecompanion-lualine.nvim',
+    { 'franco-ruggeri/codecompanion-lualine.nvim', version = "~0" },
     'nvim-tree/nvim-web-devicons',
   },
 

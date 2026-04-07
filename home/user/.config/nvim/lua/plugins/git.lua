@@ -3,6 +3,7 @@ return {
   -- Fugitive (Git integration)
   {
     "tpope/vim-fugitive",
+    version = "~3",
     lazy = false, -- always load fugitive
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -18,6 +19,7 @@ return {
   -- Github integration
   {
     "tpope/vim-rhubarb",
+    commit = "5496d7c",
     lazy = false, -- always load rhubarb
     dependencies = {
       "tpope/vim-fugitive",
@@ -31,6 +33,7 @@ return {
   -- Git conflict resolution
   {
     "christoomey/vim-conflicted",
+    commit = "b0f584b",
     dependencies = {
       "tpope/vim-fugitive",
     },

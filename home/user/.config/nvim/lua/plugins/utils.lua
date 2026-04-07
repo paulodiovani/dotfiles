@@ -1,14 +1,13 @@
 -- Utility plugins configuration
 return {
-  -- EditorConfig integration
-  { "editorconfig/editorconfig-vim" },
-
   -- Comment plugin
-  { "tomtom/tcomment_vim",
+  {
+    "tomtom/tcomment_vim",
+    version = "~4",
     keys = {
-      { "<C-_><C-_>", ":TComment<CR>", mode = "n", desc = "Toggle line comment", silent = true },
+      { "<C-_><C-_>", ":TComment<CR>",            mode = "n", desc = "Toggle line comment",      silent = true },
       { "<C-_><C-_>", ":TCommentMaybeInline<CR>", mode = "v", desc = "Toggle multiline comment", silent = true },
-      { "<C-_><C-_>", "<C-o>:TComment<CR>", mode = "i", desc = "Toggle line comment", silent = true },
+      { "<C-_><C-_>", "<C-o>:TComment<CR>",       mode = "i", desc = "Toggle line comment",      silent = true },
     },
     cmd = {
       "TComment",
@@ -22,11 +21,12 @@ return {
   },
 
   -- File operations
-  { "tpope/vim-eunuch" },
+  { "tpope/vim-eunuch", version = "~1" },
 
   -- Diff lines
   {
     "AndrewRadev/linediff.vim",
+    version = "~0",
     cmd = {
       "Linediff",
       "LinediffAdd",
@@ -41,6 +41,7 @@ return {
   -- Markdown TOC
   {
     "ajorgensen/vim-markdown-toc",
+    commit = "29e4b9c",
     cmd = {
       "GenerateMarkdownTOC",
     },

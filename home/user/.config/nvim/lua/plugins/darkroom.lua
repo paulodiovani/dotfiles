@@ -1,7 +1,8 @@
 return {
     "paulodiovani/darkroom.nvim",
+    version = "~1",
     dependencies = {
-      "folke/edgy.nvim",
+      { "folke/edgy.nvim", version = "~1" },
       "tinted-theming/tinted-vim",
     },
 

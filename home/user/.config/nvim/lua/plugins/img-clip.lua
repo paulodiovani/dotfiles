@@ -1,5 +1,6 @@
 return {
   "HakonHarnes/img-clip.nvim",
+  version = "~0",
   event = "VeryLazy",
 
   opts = {
