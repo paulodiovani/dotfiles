@@ -55,6 +55,26 @@ git() {
   fi
 }
 
+# Creates a new Git worktree in a sibling directory using the provided name suffix,
+# switches to the new worktree's path.
+#
+# Arguments:
+# - $1: Path suffix for worktree (e.g. new-feature => ../my-repos-new-feature). Also used as branch name.
+# - $2: (Optional) Base branch for the new worktree. Default to 'main'.
+#
+# Usage:
+#   git_worktree new-feature [base_branch]
+#
+git_worktree() {
+  local branch_name=$1
+  local base_branch=${2:-main}
+  local destination
+  destination=../$(basename "$PWD")-${branch_name//\//-}
+
+  git worktree add  -b "$branch_name" "$destination" "$base_branch"
+  cd "$destination" || return
+}
+
 # use gradew script if available
 gradle() {
   if [ -f ./gradlew ]; then
