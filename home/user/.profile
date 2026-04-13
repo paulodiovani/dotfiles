@@ -20,11 +20,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# os-specific profile
+[ -f "$HOME/.config/os-config/.profile" ] && . "$HOME/.config/os-config/.profile"
+
 # set JAVA_HOME
 # [ -d "$HOME/.asdf/plugins/java" ] && . "$HOME/.asdf/plugins/java/set-java-home.zsh"
 
 # ~/.local/bin
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
-
-# os-specific profile
-[ -f "$HOME/.config/os-config/.profile" ] && . "$HOME/.config/os-config/.profile"
