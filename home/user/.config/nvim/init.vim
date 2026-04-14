@@ -14,7 +14,7 @@ set winborder=rounded               " Use rounded borders for all windows
 
 " Disable Netrw
 " let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+" let g:loaded_netrwPlugin = 1
 
 " Require lua conf
 lua require('config')
