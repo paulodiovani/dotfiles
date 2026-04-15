@@ -59,19 +59,33 @@ git() {
 # switches to the new worktree's path.
 #
 # Arguments:
-# - $1: Path suffix for worktree (e.g. new-feature => ../my-repos-new-feature). Also used as branch name.
-# - $2: (Optional) Base branch for the new worktree. Default to 'main'.
+# - -b <branch>: (Optional) Create a new branch with this name.
+# - $1: Base branch or commit-ish for the worktree.
 #
 # Usage:
-#   git_worktree new-feature [base_branch]
+#   git_worktree feature-branch
+#   git_worktree -b feature-branch base-branch
 #
 git_worktree() {
-  local branch_name=$1
-  local base_branch=${2:-main}
+  local new_branch=""
+  local base_branch="main"
   local destination
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -b) new_branch=$2; shift 2 ;;
+      *) base_branch=$1; shift ;;
+    esac
+  done
+
+  local branch_name=${new_branch:-$base_branch}
   destination=../$(basename "$PWD")-${branch_name//\//-}
 
-  git worktree add  -b "$branch_name" "$destination" "$base_branch"
+  if [[ -n "$new_branch" ]]; then
+    git worktree add -b "$new_branch" "$destination" "$base_branch"
+  else
+    git worktree add "$destination" "$base_branch"
+  fi
   cd "$destination" || return
 }
 
