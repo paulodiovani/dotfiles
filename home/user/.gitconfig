@@ -6,6 +6,7 @@
   ci = commit
   co = checkout
   st = status
+  wt = worktree
   logpretty = log --pretty=format:\"%C(yellow)%h %ad%C(reset) %C(auto)| %s%d %C(cyan)[%an]\" --graph --date=format-local:'%Y-%m-%d %H:%M'
   diffvim = -c core.pager=vimless diff --no-color
   logvim = -c core.pager=vimless log --no-color
