@@ -39,9 +39,6 @@ alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo ex
 # granted and assume (granted.dev)
 alias assume=". assume"
 
-# delegate ollama do a docker container
-alias ollama='docker exec -it ollama ollama'
-
 # git command overrides
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
