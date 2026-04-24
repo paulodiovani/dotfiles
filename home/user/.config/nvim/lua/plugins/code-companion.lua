@@ -9,6 +9,31 @@ return {
   },
   version = "~19",
 
+  -- Keep the chat buffer unlisted. The variable/tool completion path in
+  -- codecompanion (cmp + blink) re-lists the buffer on confirm; only the
+  -- slash-command path resets it.
+  init = function()
+    local group = vim.api.nvim_create_augroup("codecompanion-unlist", { clear = true })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = group,
+      pattern = "codecompanion",
+      callback = function(ft_args)
+        vim.bo[ft_args.buf].buflisted = false
+
+        vim.api.nvim_create_autocmd({ "CompleteDone", "TextChangedI" }, {
+          group = group,
+          buffer = ft_args.buf,
+          callback = function(ev)
+            if vim.bo[ev.buf].buflisted then
+              vim.bo[ev.buf].buflisted = false
+            end
+          end,
+        })
+      end,
+    })
+  end,
+
   opts = {
     adapters = {
       acp = {
