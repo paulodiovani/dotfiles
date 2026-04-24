@@ -9,6 +9,24 @@ return {
   },
   version = "~19",
 
+  -- Keep the chat buffer unlisted. Was probably re-listed by codecompanion-history.
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      group = vim.api.nvim_create_augroup("codecompanion-unlist", { clear = true }),
+      pattern = {
+        "CodeCompanionChatOpened",
+        "CodeCompanionHistoryTitleSet",
+        "CodeCompanionHistoryTitleRenamed",
+      },
+      callback = function(args)
+        local bufnr = args.data and args.data.bufnr
+        if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+          vim.bo[bufnr].buflisted = false
+        end
+      end,
+    })
+  end,
+
   opts = {
     adapters = {
       acp = {
