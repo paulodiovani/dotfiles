@@ -49,7 +49,8 @@ git() {
     command git "${cmd}vim" $@
   elif [[ $@ =~ ^(worktree|wt)\ add ]]; then
     shift 2
-    git-worktree-add-ext "$@"
+    git-worktree-add-ext "$@" && \
+    cd "$(source "$(command -v git-worktree-add-ext)"; get_add_path "$@")"
   elif [[ $@ =~ ^(worktree|wt)\ remove ]]; then
     shift 2
     git-worktree-remove-ext "$@"

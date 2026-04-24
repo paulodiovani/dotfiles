@@ -151,6 +151,5 @@ get_add_commit_ish() {
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   set -euo pipefail
   commit_ish="$(get_add_commit_ish "$@")"
-  command git worktree add $(get_add_flags "$@") $(get_add_branch "$@") "$(get_add_path "$@")" ${commit_ish:+"$commit_ish"} && \
-  command cd "$(get_add_path "$@")"
+  command git worktree add $(get_add_flags "$@") $(get_add_branch "$@") "$(get_add_path "$@")" ${commit_ish:+"$commit_ish"}
 fi
