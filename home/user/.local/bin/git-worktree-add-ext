@@ -8,7 +8,18 @@
 
 ## helpers — each scans $@ and echoes its piece (or nothing)
 
-# Echoes flags that are not -b/-B (e.g. -f --detach --lock)
+# Extract pass-through flags from the argument list.
+#
+# Collects all option flags except -b/-B (which define a new branch).
+# Flags that take a value (e.g. --reason <string>) are kept together
+# with their argument. Positional arguments are ignored.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   Space-separated flags string (e.g. "-f --detach --lock --reason msg"),
+#   or nothing if no flags are present.
 get_add_flags() {
   local flags=""
   while [[ $# -gt 0 ]]; do
@@ -22,7 +33,16 @@ get_add_flags() {
   echo $flags
 }
 
-# Echoes "-b <branch>" or "-B <branch>", or nothing
+# Extract the branch creation flag from the argument list.
+#
+# Looks for -b <branch> or -B <branch> and echoes the flag together
+# with its value. Returns nothing if neither flag is present.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   "-b <branch>" or "-B <branch>", or nothing.
 get_add_branch() {
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -34,7 +54,23 @@ get_add_branch() {
   done
 }
 
-# Echoes the path. Auto-generates from branch/commit-ish if not provided.
+# Determine the worktree path from the argument list.
+#
+# If an explicit path-like positional argument is given (starts with
+# /, ~, or .), it is used as-is. Otherwise, a path is auto-generated
+# as a sibling of the repository root:
+#
+#   ../<repo-name>--<sanitized-name>
+#
+# where <sanitized-name> is derived from the branch name (via -b/-B),
+# the commit-ish positional argument, or "main" as a last resort.
+# Slashes and dots in the name are replaced with hyphens.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   The worktree path (always produces a value).
 get_add_path() {
   local branch="" location="" commit_ish=""
 
@@ -65,7 +101,24 @@ get_add_path() {
   echo "${repo_root}/../${repo_name}--${sanitized}"
 }
 
-# Echoes the commit-ish only if explicitly provided, or nothing.
+# Extract the commit-ish from the argument list.
+#
+# Positional arguments are parsed to distinguish path from commit-ish:
+#   - Two positionals: the second one is the commit-ish.
+#   - One positional that looks like a path (starts with /, ~, or .):
+#     no commit-ish is returned.
+#   - One non-path-like positional: it is treated as the commit-ish.
+#   - No positionals: nothing is returned.
+#
+# Returns nothing when no commit-ish is explicitly provided, so that
+# git-worktree-add uses its own default (typically HEAD) instead of
+# always checking out a fixed branch like "main".
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   The commit-ish string, or nothing.
 get_add_commit_ish() {
   local location="" commit_ish=""
 
