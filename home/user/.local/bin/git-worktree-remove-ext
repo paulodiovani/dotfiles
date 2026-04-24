@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+#
+# git-worktree-remove-ext: Enhanced git worktree remove
+#
+# After removing the worktree, also deletes the associated branch.
+# Uses -D (force delete) if -f was passed, otherwise -d.
+
+## helpers
+
+# Echoes the branch checked out at the worktree found in $@
+get_remove_branch() {
+  local location=""
+  for arg in "$@"; do
+    case "$arg" in
+      -*) ;;
+      *) location="$arg"; break ;;
+    esac
+  done
+
+  [[ -z "$location" ]] && return
+
+  local resolved current_wt=""
+  resolved="$(cd "$location" 2>/dev/null && pwd -P)" || resolved="$location"
+  while IFS= read -r line; do
+    if [[ "$line" == "worktree "* ]]; then
+      current_wt="${line#worktree }"
+    elif [[ "$line" == "branch "* && "$current_wt" == "$resolved" ]]; then
+      echo "${line#branch refs/heads/}"
+      return
+    fi
+  done < <(command git worktree list --porcelain)
+}
+
+# Echoes -D if -f/--force is present, -d otherwise
+get_delete_flag() {
+  for arg in "$@"; do
+    case "$arg" in
+      -f|--force) echo "-D"; return ;;
+      *) ;;
+    esac
+  done
+  echo "-d"
+}
+
+## main — only runs when executed directly, not sourced
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  set -euo pipefail
+  branch="$(get_remove_branch "$@")"
+  command git worktree remove "$@"
+  [[ -n "$branch" ]] && command git branch "$(get_delete_flag "$@")" "$branch"
+fi
