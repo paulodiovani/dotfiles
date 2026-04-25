@@ -23,9 +23,6 @@ esac
 # os-specific profile
 [ -f "$HOME/.config/os-config/.profile" ] && . "$HOME/.config/os-config/.profile"
 
-# opencode
-[ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
-
 # set JAVA_HOME
 # [ -d "$HOME/.asdf/plugins/java" ] && . "$HOME/.asdf/plugins/java/set-java-home.zsh"
 
