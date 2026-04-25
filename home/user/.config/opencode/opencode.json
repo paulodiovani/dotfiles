@@ -1,0 +1,8 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "permission": {
+    "edit": "ask",
+    "write": "ask"
+  }
+}
