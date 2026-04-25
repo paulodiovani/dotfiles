@@ -3,9 +3,15 @@
   "mouse": false,
   "theme": "system",
   "keybinds": {
-    "leader": "ctrl+x",
+    "leader": "ctrl+space",
     "messages_line_up": "shift+up",
     "messages_line_down": "shift+down",
-    "editor_open": "ctrl+g"
+    "editor_open": "ctrl+g",
+    "messages_first": "shift+home",
+    "messages_last": "shift+end",
+    "input_line_home": "home",
+    "input_line_end": "end",
+    "input_buffer_home": "ctrl+home",
+    "input_buffer_end": "ctrl+end"
   }
 }
