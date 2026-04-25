@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "mouse": false,
+  "theme": "system",
+  "keybinds": {
+    "leader": "ctrl+x",
+    "messages_line_up": "shift+up",
+    "messages_line_down": "shift+down",
+    "editor_open": "ctrl+g"
+  }
+}
