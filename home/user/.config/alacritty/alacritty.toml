@@ -15,10 +15,12 @@ mods = "Control|Shift"
 enabled = true
 mods = "Shift"
 
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Q"
-mode = "Vi"
+[keyboard]
+bindings = [
+  { key = "Q", mode = "Vi", action = "ToggleViMode" },
+  { key = "Return", mods = "Shift", chars = "\u001b[13;2u" },
+  { key = "Return", mods = "Control", chars = "\u001b[13;5u" },
+]
 
 [general]
 import = ["~/.config/os-config/alacritty/alacritty.toml"]
