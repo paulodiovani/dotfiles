@@ -6,14 +6,14 @@ default-scheme = "base24-one-dark"
 name = "tinted-shell"
 path = "https://github.com/tinted-theming/tinted-shell"
 hook = ". %f"
-supported-systems = ["base16", "base24"]
 themes-dir = "scripts"
+supported-systems = ["base16", "base24"]
 
 [[items]]
 name = "tinted-vim"
 path = "https://github.com/tinted-theming/tinted-vim"
-supported-systems = ["base16", "base24"]
 themes-dir = "colors"
+supported-systems = ["base16", "base24"]
 
 [[items]]
 name = "tmux"
@@ -23,8 +23,8 @@ hook = "tmux run 2> /dev/null && tmux source-file %f"
 supported-systems = ["base16", "base24"]
 
 [[items]]
-path = "https://github.com/tinted-theming/tinted-fzf"
 name = "tinted-fzf"
+path = "https://github.com/tinted-theming/tinted-fzf"
 themes-dir = "sh"
 hook = ". %f"
 supported-systems = ["base16", "base24"]
