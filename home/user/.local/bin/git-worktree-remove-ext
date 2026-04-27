@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# git-worktree-remove-ext: Enhanced git worktree remove
+#
+# After removing the worktree, also deletes the associated branch.
+# Uses -D (force delete) if -f was passed, otherwise -d.
+
+## helpers
+
+# Find the branch checked out in the worktree being removed.
+#
+# Extracts the first positional (non-flag) argument as the worktree
+# location, resolves it to an absolute path, then walks the porcelain
+# output of `git worktree list` to find the matching branch.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   The branch name (without refs/heads/ prefix), or nothing if the
+#   worktree is not found or is in detached HEAD state.
+get_remove_branch() {
+  local location=""
+  for arg in "$@"; do
+    case "$arg" in
+      -*) ;;
+      *) location="$arg"; break ;;
+    esac
+  done
+
+  [[ -z "$location" ]] && return
+
+  local resolved current_wt=""
+  resolved="$(cd "$location" 2>/dev/null && pwd -P)" || resolved="$location"
+  while IFS= read -r line; do
+    if [[ "$line" == "worktree "* ]]; then
+      current_wt="${line#worktree }"
+    elif [[ "$line" == "branch "* && "$current_wt" == "$resolved" ]]; then
+      echo "${line#branch refs/heads/}"
+      return
+    fi
+  done < <(command git worktree list --porcelain)
+}
+
+# Determine the branch deletion flag based on the force option.
+#
+# If -f or --force is present in the arguments, returns -D (force
+# delete, even if the branch is not fully merged). Otherwise returns
+# -d (safe delete).
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   "-D" if force was requested, "-d" otherwise.
+get_delete_flag() {
+  for arg in "$@"; do
+    case "$arg" in
+      -f|--force) echo "-D"; return ;;
+      *) ;;
+    esac
+  done
+  echo "-d"
+}
+
+## main — only runs when executed directly, not sourced
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  set -euo pipefail
+  branch="$(get_remove_branch "$@")"
+  command git worktree remove "$@" && \
+  [[ -n "$branch" ]] && command git branch "$(get_delete_flag "$@")" "$branch"
+fi

@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+#
+# git-worktree-add-ext: Enhanced git worktree add
+#
+# When -b <branch> is given without a <path>, auto-generates the path
+# as a sibling directory of the repo root: ../<repo-name>--<sanitized-branch>
+# A single non-path-like positional arg is treated as <commit-ish>, not <path>.
+
+## helpers — each scans $@ and echoes its piece (or nothing)
+
+# Extract pass-through flags from the argument list.
+#
+# Collects all option flags except -b/-B (which define a new branch).
+# Flags that take a value (e.g. --reason <string>) are kept together
+# with their argument. Positional arguments are ignored.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   Space-separated flags string (e.g. "-f --detach --lock --reason msg"),
+#   or nothing if no flags are present.
+get_add_flags() {
+  local flags=""
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b|-B) shift 2 ;;
+      --reason) flags="$flags $1 $2"; shift 2 ;; # takes a value, shift both
+      -*) flags="$flags $1"; shift ;;
+      *) shift ;;
+    esac
+  done
+  echo $flags
+}
+
+# Extract the branch creation flag from the argument list.
+#
+# Looks for -b <branch> or -B <branch> and echoes the flag together
+# with its value. Returns nothing if neither flag is present.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   "-b <branch>" or "-B <branch>", or nothing.
+get_add_branch() {
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b|-B) echo "$1 $2"; return ;;
+      --reason) shift 2 ;; # takes a value, shift both
+      -*) shift ;;
+      *) shift ;;
+    esac
+  done
+}
+
+# Determine the worktree path from the argument list.
+#
+# If an explicit path-like positional argument is given (starts with
+# /, ~, or .), it is used as-is. Otherwise, a path is auto-generated
+# as a sibling of the repository root:
+#
+#   ../<repo-name>--<sanitized-name>
+#
+# where <sanitized-name> is derived from the branch name (via -b/-B),
+# the commit-ish positional argument, or "main" as a last resort.
+# Slashes and dots in the name are replaced with hyphens.
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   The worktree path (always produces a value).
+get_add_path() {
+  local branch="" location="" commit_ish=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b|-B) branch="$2"; shift 2 ;;
+      --reason) shift 2 ;; # takes a value, shift both
+      -*) shift ;;
+      *) commit_ish="${location:+$1}"; location="${location:-$1}"; shift ;;
+    esac
+  done
+
+  # If location looks like a path, echo it directly
+  if [[ "$location" =~ ^[/~.] ]]; then
+    echo "$location"
+    return
+  fi
+
+  # location is not path-like: treat it as commit-ish
+  [[ -n "$location" ]] && commit_ish="$location"
+
+  # Generate from branch name or commit-ish
+  local name="${branch:-${commit_ish:-main}}"
+  local repo_root repo_name sanitized
+  repo_root="$(command git rev-parse --show-toplevel)"
+  repo_name="$(basename "$repo_root")"
+  sanitized="${name//[\/.]/-}"
+  echo "${repo_root}/../${repo_name}--${sanitized}"
+}
+
+# Extract the commit-ish from the argument list.
+#
+# Positional arguments are parsed to distinguish path from commit-ish:
+#   - Two positionals: the second one is the commit-ish.
+#   - One positional that looks like a path (starts with /, ~, or .):
+#     no commit-ish is returned.
+#   - One non-path-like positional: it is treated as the commit-ish.
+#   - No positionals: nothing is returned.
+#
+# Returns nothing when no commit-ish is explicitly provided, so that
+# git-worktree-add uses its own default (typically HEAD) instead of
+# always checking out a fixed branch like "main".
+#
+# Arguments:
+#   $@ - the full argument list passed to the script
+#
+# Output:
+#   The commit-ish string, or nothing.
+get_add_commit_ish() {
+  local location="" commit_ish=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b|-B) shift 2 ;;
+      --reason) shift 2 ;; # takes a value, shift both
+      -*) shift ;;
+      *) commit_ish="${location:+$1}"; location="${location:-$1}"; shift ;;
+    esac
+  done
+
+  # Two positional args: second is commit-ish
+  if [[ -n "$commit_ish" ]]; then
+    echo "$commit_ish"
+    return
+  fi
+
+  # Single positional that looks like a path: no commit-ish
+  if [[ "$location" =~ ^[/~.] ]]; then
+    return
+  fi
+
+  # Single non-path positional is the commit-ish
+  echo "$location"
+}
+
+## main — only runs when executed directly, not sourced
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  set -euo pipefail
+  commit_ish="$(get_add_commit_ish "$@")"
+  command git worktree add $(get_add_flags "$@") $(get_add_branch "$@") "$(get_add_path "$@")" ${commit_ish:+"$commit_ish"}
+fi

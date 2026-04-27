@@ -50,43 +50,16 @@ git() {
     cmd=$1
     shift
     command git "${cmd}vim" $@
+  elif [[ $@ =~ ^(worktree|wt)\ add ]]; then
+    shift 2
+    git-worktree-add-ext "$@" && \
+    cd "$(source "$(command -v git-worktree-add-ext)"; get_add_path "$@")"
+  elif [[ $@ =~ ^(worktree|wt)\ remove ]]; then
+    shift 2
+    git-worktree-remove-ext "$@"
   else
     command git "$@"
   fi
-}
-
-# Creates a new Git worktree in a sibling directory using the provided name suffix,
-# switches to the new worktree's path.
-#
-# Arguments:
-# - -b <branch>: (Optional) Create a new branch with this name.
-# - $1: Base branch or commit-ish for the worktree.
-#
-# Usage:
-#   git_worktree feature-branch
-#   git_worktree -b feature-branch base-branch
-#
-git_worktree() {
-  local new_branch=""
-  local base_branch="main"
-  local destination
-
-  while [[ $# -gt 0 ]]; do
-    case $1 in
-      -b) new_branch=$2; shift 2 ;;
-      *) base_branch=$1; shift ;;
-    esac
-  done
-
-  local branch_name=${new_branch:-$base_branch}
-  destination=../$(basename "$PWD")-${branch_name//\//-}
-
-  if [[ -n "$new_branch" ]]; then
-    git worktree add -b "$new_branch" "$destination" "$base_branch"
-  else
-    git worktree add "$destination" "$base_branch"
-  fi
-  cd "$destination" || return
 }
 
 # use gradew script if available
