@@ -3,6 +3,7 @@
   "mouse": false,
   "theme": "system",
   "vim_enter_submit": true,
+  "vim_system_clipboard_register": true,
   "keybinds": {
     "leader": "ctrl+x",
     "app_exit": "ctrl+d,<leader>q",
