@@ -39,9 +39,6 @@ alias aws-switch-profile="aws configure list-profiles | fzf | xargs -I{} echo ex
 # granted and assume (granted.dev)
 alias assume=". assume"
 
-# use opencode-vim
-alias opencode="ocv"
-
 # git command overrides
 git() {
   if [[ $@ =~ 'push -f' || $@ =~ 'push --force' ]]; then
