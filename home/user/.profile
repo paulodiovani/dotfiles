@@ -20,6 +20,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# Disable husky (https://typicode.github.io/husky/get-started.html#disabling-hooks)
+export HUSKY=0
+
 # os-specific profile
 [ -f "$HOME/.config/os-config/.profile" ] && . "$HOME/.config/os-config/.profile"
 
