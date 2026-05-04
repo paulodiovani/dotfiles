@@ -13,3 +13,8 @@ highlight DiagnosticFloatingWarn guibg=NONE
 highlight DiagnosticFloatingInfo guibg=NONE
 highlight DiagnosticFloatingHint guibg=NONE
 highlight DiagnosticFloatingOk guibg=NONE
+
+" blink.cmp borders: pick up the muted FloatBorder color instead of Pmenu orange
+highlight! link BlinkCmpMenuBorder FloatBorder
+highlight! link BlinkCmpDocBorder FloatBorder
+highlight! link BlinkCmpSignatureHelpBorder FloatBorder
