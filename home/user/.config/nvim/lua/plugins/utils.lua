@@ -21,7 +21,13 @@ return {
   },
 
   -- File operations
-  { "tpope/vim-eunuch", version = "~1" },
+  {
+    "chrisgrieser/nvim-genghis",
+    cmd = "Genghis",
+    keys = {
+      { "<F2>", function() require("genghis").renameFile() end, desc = "Rename current file" },
+    },
+  },
 
   -- Diff lines
   {
