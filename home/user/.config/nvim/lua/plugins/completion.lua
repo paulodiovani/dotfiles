@@ -45,16 +45,16 @@ return {
     sources = {
       default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
       providers = {
+        lsp      = { name = 'LSP',    score_offset = 400 },
         copilot  = {
           name = 'Copilot',
           module = 'blink-copilot',
-          score_offset = -3,
+          score_offset = 300,
           async = true,
         },
-        lsp      = { name = 'LSP' },
-        snippets = { name = 'Snip' },
-        buffer   = { name = 'Buffer' },
-        path     = { name = 'Path' },
+        snippets = { name = 'Snip',   score_offset = 200 },
+        path     = { name = 'Path',   score_offset = 100 },
+        buffer   = { name = 'Buffer', score_offset = 0 },
       },
     },
 
