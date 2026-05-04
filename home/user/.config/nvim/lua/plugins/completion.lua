@@ -14,7 +14,7 @@ return {
   opts = {
     keymap = {
       preset      = 'default',
-      ['<Tab>']   = { 'select_next', 'fallback' },
+      ['<Tab>']   = { 'select_next', 'snippet_forward', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<CR>']    = { 'accept', 'fallback' },
       ['<C-s>']   = { 'show_signature', 'hide_signature', 'fallback' }
@@ -66,16 +66,17 @@ return {
 
     fuzzy = { implementation = 'prefer_rust_with_warning' },
 
-    -- signature = {
-    --   enabled = true,
-    -- },
+    signature = {
+      enabled = true,
+      window = { border = 'rounded' },
+    },
 
-    -- appearance = {
-    --   nerd_font_variant = 'mono',
-    --   kind_icons = {
-    --     Copilot = '',
-    --   },
-    -- },
+    appearance = {
+      nerd_font_variant = 'mono',
+      kind_icons = {
+        Copilot = '',
+      },
+    },
   },
 
   config = function(_, opts)
