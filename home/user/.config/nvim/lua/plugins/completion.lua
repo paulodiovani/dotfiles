@@ -13,10 +13,11 @@ return {
   ---@type blink.cmp.Config
   opts = {
     keymap = {
-      preset = 'default',
+      preset      = 'default',
       ['<Tab>']   = { 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<CR>']    = { 'accept', 'fallback' },
+      ['<C-s>']   = { 'show_signature', 'hide_signature', 'fallback' }
     },
 
     completion = {
@@ -26,15 +27,15 @@ return {
         draw = {
           columns = {
             { 'kind_icon' },
-            { 'label', 'label_description', gap = 1 },
+            { 'label',      'label_description', gap = 1 },
             { 'source_name' },
           },
         },
       },
+
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 200,
-        window = { border = 'rounded' },
+        auto_show_delay_ms = 500,
       },
       list = { selection = { preselect = false, auto_insert = false } },
     },
@@ -44,14 +45,14 @@ return {
     sources = {
       default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
       providers = {
-        copilot = {
-          name = 'copilot',
+        copilot  = {
+          name = 'Copilot',
           module = 'blink-copilot',
           score_offset = -3,
           async = true,
         },
         lsp      = { name = 'LSP' },
-        snippets = { name = 'LuaSnip' },
+        snippets = { name = 'Snip' },
         buffer   = { name = 'Buffer' },
         path     = { name = 'Path' },
       },
@@ -60,22 +61,21 @@ return {
     cmdline = {
       enabled = true,
       keymap = { preset = 'cmdline' },
-      completion = { menu = { auto_show = true } },
+      completion = { menu = { auto_show = false } },
     },
 
     fuzzy = { implementation = 'prefer_rust_with_warning' },
 
-    signature = {
-      enabled = true,
-      window = { border = 'rounded' },
-    },
+    -- signature = {
+    --   enabled = true,
+    -- },
 
-    appearance = {
-      nerd_font_variant = 'mono',
-      kind_icons = {
-        Copilot = '',
-      },
-    },
+    -- appearance = {
+    --   nerd_font_variant = 'mono',
+    --   kind_icons = {
+    --     Copilot = '',
+    --   },
+    -- },
   },
 
   config = function(_, opts)
