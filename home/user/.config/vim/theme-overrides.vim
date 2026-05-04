@@ -5,8 +5,8 @@ highlight LineNr ctermbg=NONE guibg=NONE
 highlight SignColumn ctermbg=NONE guibg=NONE
 " set color of float window and borders
 highlight! link FloatBorder LineNr
-" fix issue with diagnostics windows (or the theme)
-highlight! link NormalFloat Float
+" use the editor's normal fg/bg for float windows (Float = float-number syntax color)
+highlight! link NormalFloat Normal
 " remove text background in diagnostics windows
 highlight DiagnosticFloatingError guibg=NONE
 highlight DiagnosticFloatingWarn guibg=NONE
@@ -18,3 +18,5 @@ highlight DiagnosticFloatingOk guibg=NONE
 highlight! link BlinkCmpMenuBorder FloatBorder
 highlight! link BlinkCmpDocBorder FloatBorder
 highlight! link BlinkCmpSignatureHelpBorder FloatBorder
+" popup menu (Pmenu) and float backgrounds match the editor;
+highlight! link Pmenu NormalFloat
