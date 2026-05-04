@@ -2,9 +2,6 @@
 return {
   "zbirenbaum/copilot.lua",
   version = "~2",
-  dependencies = {
-    "zbirenbaum/copilot-cmp",
-  },
 
   opts = {
     -- use system node command
@@ -14,21 +11,8 @@ return {
       ["*"] = true, -- enable for all filetypes
     },
 
-    -- Set enable = true until this bug is fixed:
-    -- https://github.com/zbirenbaum/copilot-cmp/issues/10
-    suggestion = {
-      enabled = true,
-      auto_trigger = false,
-      debounce = 75,
-      keymap = {
-        accept = '<M-l>',
-        accept_word = false,
-        accept_line = false,
-        next = '<M-]>',
-        prev = '<M-[>',
-        dismiss = '<C-]>',
-      },
-    },
+    -- Ghost text disabled: Copilot is surfaced as a blink.cmp source instead.
+    suggestion = { enabled = false },
     panel = { enabled = false },
   },
 
@@ -41,11 +25,4 @@ return {
   },
 
   cmd = 'Copilot',
-
-  config = function(_, opts)
-    require('copilot').setup(opts)
-
-    -- Use Copilot as a cmp source
-    require('copilot_cmp').setup()
-  end,
 }
