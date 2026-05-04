@@ -14,10 +14,10 @@ return {
   opts = {
     keymap = {
       preset      = 'default',
-      ['<Tab>']   = { 'select_next', 'snippet_forward', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+      ['<C-s>']   = { 'show_signature', 'hide_signature', 'fallback' },
       ['<CR>']    = { 'accept', 'fallback' },
-      ['<C-s>']   = { 'show_signature', 'hide_signature', 'fallback' }
+      ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+      ['<Tab>']   = { 'select_next', 'snippet_forward', 'fallback' },
     },
 
     completion = {
@@ -60,7 +60,11 @@ return {
 
     cmdline = {
       enabled = true,
-      keymap = { preset = 'cmdline' },
+      keymap = {
+        preset = 'cmdline',
+        ['<Up>']   = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+      },
       completion = { menu = { auto_show = false } },
     },
 
