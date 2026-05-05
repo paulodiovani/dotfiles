@@ -1,7 +1,7 @@
 -- Vim Test configuration
 return {
   "vim-test/vim-test",
-  version = "~2",
+  version = "~3",
   cmd = {
     "TestFile",
     "TestLast",
