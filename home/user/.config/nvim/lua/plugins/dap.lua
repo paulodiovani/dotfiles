@@ -3,8 +3,6 @@ return {
   version = "~0",
   dependencies = {
     "theHamsta/nvim-dap-virtual-text",
-    "hrsh7th/nvim-cmp",
-    "rcarriga/cmp-dap",
   },
 
   cmd = {
@@ -63,9 +61,6 @@ return {
     local dap_gutter_symbols = require("modules.dap.gutter-symbols")
     local dap_events = require("modules.dap.events")
 
-    local cmp = require("cmp")
-    local cmp_dap = require("cmp_dap")
-
     -- Setup JavaScript/Node.js adapter
     dap.adapters["pwa-node"] = {
       type = "server",
@@ -108,18 +103,6 @@ return {
 
     -- Copy JavaScript configuration to TypeScript
     dap.configurations.typescript = dap.configurations.javascript
-
-    -- Setup cmp completion for REPL
-    cmp.setup({
-      enabled = function()
-        return vim.bo.buftype ~= "prompt" or cmp_dap.is_dap_buffer()
-      end
-    })
-    cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-      sources = {
-        { name = "dap" },
-      },
-    })
 
     -- Setup gutter symbols
     dap_gutter_symbols.setup()
