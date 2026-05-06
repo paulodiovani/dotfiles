@@ -20,7 +20,6 @@ return {
   -- Github integration
   {
     "tpope/vim-rhubarb",
-    commit = "5496d7c",
     lazy = false, -- always load rhubarb
     dependencies = {
       "tpope/vim-fugitive",
@@ -34,7 +33,6 @@ return {
   -- Git conflict resolution
   {
     "christoomey/vim-conflicted",
-    commit = "b0f584b",
     dependencies = {
       "tpope/vim-fugitive",
     },
