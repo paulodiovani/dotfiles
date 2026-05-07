@@ -28,19 +28,6 @@ return {
           end,
         },
         {
-          -- christoomey/vim-conflicted
-          function()
-            local v = vim.fn.ConflictedVersion()
-            if v ~= '' then
-              return '\u{22b6} ' .. v
-            end
-            return ''
-          end,
-          cond = function()
-            return vim.fn.exists('*ConflictedVersion') == 1 and vim.fn.ConflictedVersion() ~= ''
-          end,
-        },
-        {
           'diff',
           colored = true,
           symbols = {

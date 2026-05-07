@@ -39,5 +39,11 @@ return {
     cmd = {
       'Conflicted',
     },
+    config = function()
+      -- Disable linematch so [c/]c and :diffget operate on whole hunks
+      vim.opt.diffopt:remove('linematch:40')
+      -- Show the conflict version (working/local/upstream/...) in the winbar
+      vim.opt.winbar = "%{ConflictedVersion() != '' ? '\u{22b6} ' . ConflictedVersion() : ''}"
+    end,
   }
 }
