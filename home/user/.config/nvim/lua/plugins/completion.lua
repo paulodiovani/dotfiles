@@ -6,6 +6,7 @@ return {
     { 'L3MON4D3/LuaSnip', version = '~2' },
     'rafamadriz/friendly-snippets',
     'fang2hou/blink-copilot',
+    'mayromr/blink-cmp-dap',
   },
   event = 'VeryLazy',
 
@@ -32,7 +33,6 @@ return {
           },
         },
       },
-
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 500,
@@ -43,25 +43,31 @@ return {
     snippets = { preset = 'luasnip' },
 
     sources = {
-      default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
+      default = { 'lsp', 'path', 'copilot', 'snippets', 'buffer' },
+      per_filetype = {
+        ['dap-repl'] = { 'dap', 'buffer' },
+        ['dapui_watches'] = { 'dap', 'buffer' },
+        ['dapui_hover'] = { 'dap', 'buffer' },
+      },
       providers = {
-        lsp      = { name = 'LSP',    score_offset = 400 },
-        copilot  = {
+        copilot = {
           name = 'Copilot',
           module = 'blink-copilot',
-          score_offset = 300,
+          score_offset = -1,
           async = true,
         },
-        snippets = { name = 'Snip',   score_offset = 200 },
-        path     = { name = 'Path',   score_offset = 100 },
-        buffer   = { name = 'Buffer', score_offset = 0 },
+        dap     = {
+          name = 'DAP',
+          module = 'blink-cmp-dap',
+          score_offset = 1,
+        },
       },
     },
 
     cmdline = {
       enabled = true,
       keymap = {
-        preset = 'cmdline',
+        preset     = 'cmdline',
         ['<Up>']   = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
       },
@@ -73,13 +79,6 @@ return {
     signature = {
       enabled = true,
       window = { border = 'rounded' },
-    },
-
-    appearance = {
-      nerd_font_variant = 'mono',
-      kind_icons = {
-        Copilot = '',
-      },
     },
   },
 
