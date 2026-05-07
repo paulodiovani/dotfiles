@@ -3,14 +3,13 @@ return {
   "neovim/nvim-lspconfig",
   version = "~2",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
   },
   event = "VeryLazy",
 
   config = function()
-    -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_utils = require("modules.lsp-utils")
-    local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local cmp_capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- custom mappings (also check fzf.lua)
     -- vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })

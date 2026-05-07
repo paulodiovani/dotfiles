@@ -21,7 +21,25 @@ return {
   },
 
   -- File operations
-  { "tpope/vim-eunuch", version = "~1" },
+  {
+    "chrisgrieser/nvim-genghis",
+    cmd = { "Genghis", "Copy", "Move", "Delete" },
+    keys = {
+      { "<F2>", function() require("genghis").renameFile() end, desc = "Rename current file" },
+    },
+    config = function()
+      local genghis = require("genghis")
+      vim.api.nvim_create_user_command("Copy",
+        function() genghis.duplicateFile() end,
+        { desc = "Duplicate current file" })
+      vim.api.nvim_create_user_command("Move",
+        function() genghis.moveAndRenameFile() end,
+        { desc = "Move/rename current file" })
+      vim.api.nvim_create_user_command("Delete",
+        function() genghis.trashFile() end,
+        { desc = "Trash current file" })
+    end,
+  },
 
   -- Diff lines
   {

@@ -1,7 +1,7 @@
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
