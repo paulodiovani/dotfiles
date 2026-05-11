@@ -5,9 +5,9 @@ return {
     "tomtom/tcomment_vim",
     version = "~4",
     keys = {
-      { "<C-_><C-_>", ":TComment<CR>",            mode = "n", desc = "Toggle line comment",      silent = true },
-      { "<C-_><C-_>", ":TCommentMaybeInline<CR>", mode = "v", desc = "Toggle multiline comment", silent = true },
-      { "<C-_><C-_>", "<C-o>:TComment<CR>",       mode = "i", desc = "Toggle line comment",      silent = true },
+      { "<C-_>", ":TComment<CR>",            mode = "n", desc = "Toggle line comment",      silent = true },
+      { "<C-_>", ":TCommentMaybeInline<CR>", mode = "v", desc = "Toggle multiline comment", silent = true },
+      { "<C-_>", "<C-o>:TComment<CR>",       mode = "i", desc = "Toggle line comment",      silent = true },
     },
     cmd = {
       "TComment",
