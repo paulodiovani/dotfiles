@@ -2,8 +2,13 @@
 #
 # git-worktree-remove-ext: Enhanced git worktree remove
 #
-# After removing the worktree, also deletes the associated branch.
-# Uses -D (force delete) if -f was passed, otherwise -d.
+# Removes the worktree and optionally deletes the associated branch.
+#
+# Flags:
+#   -f    force remove worktree even if dirty (passed to git worktree remove)
+#   -d    delete branch after removing the worktree
+#   -D    force delete branch even if not fully merged
+#   -d -f combined: implies -D (force delete branch)
 
 ## helpers
 
@@ -42,32 +47,45 @@ get_remove_branch() {
   done < <(command git worktree list --porcelain)
 }
 
-# Determine the branch deletion flag based on the force option.
-#
-# If -f or --force is present in the arguments, returns -D (force
-# delete, even if the branch is not fully merged). Otherwise returns
-# -d (safe delete).
-#
-# Arguments:
-#   $@ - the full argument list passed to the script
-#
-# Output:
-#   "-D" if force was requested, "-d" otherwise.
-get_delete_flag() {
-  for arg in "$@"; do
-    case "$arg" in
-      -f|--force) echo "-D"; return ;;
-      *) ;;
-    esac
-  done
-  echo "-d"
-}
-
 ## main — only runs when executed directly, not sourced
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   set -euo pipefail
-  branch="$(get_remove_branch "$@")"
-  command git worktree remove "$@" && \
-  [[ -n "$branch" ]] && command git branch "$(get_delete_flag "$@")" "$branch"
+
+  delete_branch=false
+  force_delete=false
+  force_remove=false
+  worktree_args=()
+
+  for arg in "$@"; do
+    case "$arg" in
+      -D) delete_branch=true; force_delete=true ;;
+      -d) delete_branch=true ;;
+      -f|--force) force_remove=true; worktree_args+=("$arg") ;;
+      *) worktree_args+=("$arg") ;;
+    esac
+  done
+
+  # -d -f combined implies -D
+  if $delete_branch && $force_remove; then
+    force_delete=true
+  fi
+
+  # Resolve branch before removing worktree
+  branch=""
+  if $delete_branch; then
+    branch="$(get_remove_branch "${worktree_args[@]}")"
+  fi
+
+  # Remove worktree
+  command git worktree remove "${worktree_args[@]}"
+
+  # Delete branch if requested
+  if $delete_branch && [[ -n "$branch" ]]; then
+    if $force_delete; then
+      command git branch -D "$branch"
+    else
+      command git branch -d "$branch"
+    fi
+  fi
 fi
