@@ -30,15 +30,15 @@ return {
       callback = function(ev)
         if vim.treesitter.get_parser(ev.buf, nil, { error = false }) then
           vim.treesitter.start(ev.buf)
-          vim.wo[0][0].foldmethod = 'expr'
-          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo.foldmethod = 'expr'
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
         end
       end,
     })
   end,
 
   config = function(_, opts)
-    require("nvim-treesitter").setup(opts)
+    require("nvim-treesitter.configs").setup(opts)
 
     vim.treesitter.language.register("markdown", { "codecompanion" })
   end,
