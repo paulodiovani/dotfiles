@@ -45,6 +45,41 @@ return {
           })
         end,
 
+        opencode_go = vim.env.OPENCODE_API_KEY and function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            formatted_name = "Opencode Go",
+            env = {
+              url = "https://opencode.ai/zen/go/v1",
+              api_key = "OPENCODE_API_KEY",
+              chat_url = "/chat/completions",
+              models_endpoint = "/models"
+            },
+            schema = {
+              model = {
+                default = "qwen3.6-plus",
+              },
+            },
+          })
+        end,
+
+        opencode_zen = vim.env.OPENCODE_API_KEY and function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            formatted_name = "Opencode Zen",
+            env = {
+              url = "https://opencode.ai/zen/v1",
+              api_key = "OPENCODE_API_KEY",
+              chat_url = "/chat/completions",
+              models_endpoint = "/models"
+            },
+            schema = {
+              model = {
+                default = "claude-sonnet-4-6",
+              },
+            },
+          })
+        end,
+
+
         openrouter = vim.env.OPENROUTER_API_KEY and function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             formatted_name = "Open Router",
