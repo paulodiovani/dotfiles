@@ -28,23 +28,6 @@ return {
         copilot = "copilot",
         ollama = "ollama",
 
-        abacus_ai = vim.env.ABACUS_AI_API_KEY and function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            formatted_name = "Abacus AI",
-            env = {
-              url = "https://routellm.abacus.ai/v1",
-              api_key = "ABACUS_AI_API_KEY",
-              chat_url = "/chat/completions",
-              models_endpoint = "/models"
-            },
-            schema = {
-              model = {
-                default = "anthropic/claude-sonnet-4.6",
-              },
-            },
-          })
-        end,
-
         ollama_cloud = vim.env.OLLAMA_API_KEY and function()
           return require("codecompanion.adapters").extend("ollama", {
             formatted_name = "Ollama Cloud",
