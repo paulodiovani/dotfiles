@@ -28,23 +28,6 @@ return {
         copilot = "copilot",
         ollama = "ollama",
 
-        ollama_cloud = vim.env.OLLAMA_API_KEY and function()
-          return require("codecompanion.adapters").extend("ollama", {
-            formatted_name = "Ollama Cloud",
-            env = {
-              url = "https://ollama.com",
-              api_key = "OLLAMA_API_KEY",
-            },
-            headers = {
-              ["Content-Type"] = "application/json",
-              ["Authorization"] = "Bearer ${api_key}",
-            },
-            parameters = {
-              sync = true,
-            },
-          })
-        end,
-
         opencode_go = vim.env.OPENCODE_API_KEY and function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             formatted_name = "Opencode Go",
@@ -78,24 +61,6 @@ return {
             },
           })
         end,
-
-
-        openrouter = vim.env.OPENROUTER_API_KEY and function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            formatted_name = "Open Router",
-            env = {
-              url = "https://openrouter.ai/api/v1",
-              api_key = "OPENROUTER_API_KEY",
-              chat_url = "/chat/completions",
-              models_endpoint = "/models"
-            },
-            schema = {
-              model = {
-                default = "anthropic/claude-sonnet-4.6",
-              },
-            },
-          })
-        end,
       },
     },
 
@@ -125,8 +90,7 @@ return {
             duplicate = { n = "yyp", i = "<C-y>" },
           },
           title_generation_opts = {
-            adapter = "ollama_cloud",
-            model = "ministral-3:3b",
+            adapter = "copilot",
             refresh_every_n_prompts = 3,
             max_refreshes = 2,
           },
