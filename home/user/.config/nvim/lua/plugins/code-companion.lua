@@ -90,7 +90,8 @@ return {
             duplicate = { n = "yyp", i = "<C-y>" },
           },
           title_generation_opts = {
-            adapter = "copilot",
+            adapter = "ollama",
+            model = "gemma4:31b-cloud",
             refresh_every_n_prompts = 3,
             max_refreshes = 2,
           },
