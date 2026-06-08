@@ -90,8 +90,8 @@ return {
             duplicate = { n = "yyp", i = "<C-y>" },
           },
           title_generation_opts = {
-            adapter = "ollama",
-            model = "gemma4:31b-cloud",
+            adapter = vim.env.CODECOMPANION_HISTORY_ADAPTER or nil,
+            model = vim.env.CODECOMPANION_HISTORY_MODEL or nil,
             refresh_every_n_prompts = 3,
             max_refreshes = 2,
           },
