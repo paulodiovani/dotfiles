@@ -72,6 +72,13 @@ return {
       },
     }
 
+    -- Setup C/C++/Rust adapter using gdb
+    dap.adapters["rust-gdb"] = {
+      type = "executable",
+      command = "rust-gdb",
+      args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+    }
+
     -- Configuration for Node.js
     dap.configurations.javascript = {
       {
@@ -103,6 +110,45 @@ return {
 
     -- Copy JavaScript configuration to TypeScript
     dap.configurations.typescript = dap.configurations.javascript
+
+
+    -- Rust configurations
+    dap.configurations.rust = {
+      {
+        name = "Launch",
+        type = "rust-gdb",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        args = {}, -- provide arguments if needed
+        cwd = "${workspaceFolder}",
+        stopAtBeginningOfMainSubprogram = false,
+      },
+      {
+        name = "Select and attach to process",
+        type = "rust-gdb",
+        request = "attach",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        pid = function()
+          local name = vim.fn.input('Executable name (filter): ')
+          return require("dap.utils").pick_process({ filter = name })
+        end,
+        cwd = "${workspaceFolder}"
+      },
+      {
+        name = "Attach to gdbserver :1234",
+        type = "rust-gdb",
+        request = "attach",
+        target = "localhost:1234",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        cwd = '${workspaceFolder}'
+      }
+    }
 
     -- Setup gutter symbols
     dap_gutter_symbols.setup()
