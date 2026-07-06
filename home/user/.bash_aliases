@@ -10,6 +10,8 @@ alias cdp='cd -P'
 alias less='less -S -x4'
 alias expand='expand -t4'
 
+# start neovim with vim cmd
+alias vim=nvim
 # vim less (user nvim as less for syntax highlight)
 alias vimless='/usr/share/nvim/runtime/macros/less.sh'
 

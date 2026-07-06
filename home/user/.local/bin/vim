@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# start neovim instead
-nvim "$@"
