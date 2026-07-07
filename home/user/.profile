@@ -1,7 +1,7 @@
 #! /bin/env sh
 
 # editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # Change pager to LESS (for psql, etc)
 export PAGER="less -S"
