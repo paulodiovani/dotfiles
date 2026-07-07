@@ -1,0 +1,30 @@
+#!/bin/sh
+# Switch to another window in the same session that shares the current directory.
+# - 0 matches: noop
+# - 1 match:   switch directly
+# - 2+ matches: show a selection menu
+
+tab=$(printf '\t')
+
+current_path=$(tmux display-message -p '#{pane_current_path}')
+current_win=$(tmux display-message -p '#{window_index}')
+
+matches=$(tmux list-windows -F "#{window_index}${tab}#{window_name}${tab}#{pane_current_path}" | \
+  awk -F'\t' -v p="$current_path" -v c="$current_win" '$3 == p && $1 != c {print $1 "\t" $2}')
+
+[ -z "$matches" ] && exit 0
+
+count=$(printf '%s\n' "$matches" | wc -l | tr -d ' ')
+
+if [ "$count" -eq 1 ]; then
+  idx=$(printf '%s\n' "$matches" | awk -F'\t' '{print $1}')
+  tmux select-window -t ":$idx"
+else
+  set --
+  while IFS="$tab" read -r idx name; do
+    set -- "$@" "[$idx] $name" "" "select-window -t :$idx"
+  done << EOF
+$matches
+EOF
+  tmux display-menu -T "Same-dir windows" "$@"
+fi
