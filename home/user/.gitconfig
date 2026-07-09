@@ -2,6 +2,7 @@
   ui = always
 [push]
   default = simple
+	autoSetupRemote = true
 [alias]
   ci = commit
   co = checkout
