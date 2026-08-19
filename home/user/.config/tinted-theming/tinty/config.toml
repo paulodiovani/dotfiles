@@ -1,6 +1,6 @@
 shell = "zsh -c '{}'"
 
-default-scheme = "base24-one-dark"
+default-scheme = "base24-gruvbox-dark"
 
 [[items]]
 name = "tinted-shell"
