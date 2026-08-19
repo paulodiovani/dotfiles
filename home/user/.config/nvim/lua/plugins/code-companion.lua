@@ -101,7 +101,10 @@ return {
 
     interactions = {
       chat = {
-        adapter = "copilot",
+        adapter = {
+          name = vim.env.CODECOMPANION_DEFAULT_ADAPTER or "copilot",
+          model = vim.env.CODECOMPANION_DEFAULT_MODEL or "gpt-4.1",
+        },
         keymaps = {
           debug = { modes = { n = 'gD' } },
           next_chat = { modes = { n = '<A-Right>' } },
@@ -119,11 +122,17 @@ return {
       },
 
       inline = {
-        adapter = "copilot",
+        adapter = {
+          name = vim.env.CODECOMPANION_DEFAULT_ADAPTER or "copilot",
+          model = vim.env.CODECOMPANION_DEFAULT_MODEL or "gpt-4.1",
+        },
       },
 
       cmd = {
-        adapter = "copilot",
+        adapter = {
+          name = vim.env.CODECOMPANION_DEFAULT_ADAPTER or "copilot",
+          model = vim.env.CODECOMPANION_DEFAULT_MODEL or "gpt-4.1",
+        },
       },
 
       shared = {
