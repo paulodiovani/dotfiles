@@ -47,7 +47,9 @@ ZSH_CUSTOM=$HOME/.config/oh-my-zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tinty asdf direnv gcloud man rust tmux)
+plugins=(asdf direnv man rust tmux)
+# Prepend tinty if not in a tmux session
+[[ -z "$TMUX" ]] && plugins=(tinty $plugins)
 
 # Autostart tmux
 ZSH_TMUX_AUTOSTART="true"
