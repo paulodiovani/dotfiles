@@ -9,10 +9,6 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="agnoster"
 ZSH_THEME="../../.oh-my-zsh-agnoster-custom"
 
-# Default values don't need to show in prompt
-DEFAULT_USER=${DEFAULT_USER:-diovani}
-DEFAULT_ARCH=${DEFAULT_ARCH:-x86_64}
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -45,13 +41,15 @@ DISABLE_AUTO_UPDATE="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.config/oh-my-zsh/custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf direnv gcloud man rust tmux)
+plugins=(asdf direnv man rust tmux)
+# Prepend tinty if not in a tmux session
+[[ -z "$TMUX" ]] && plugins=(tinty $plugins)
 
 # Autostart tmux
 ZSH_TMUX_AUTOSTART="true"
