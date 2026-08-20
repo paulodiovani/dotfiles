@@ -1,5 +1,9 @@
 #! /bin/env sh
 
+# Default values don't need to show in prompt
+DEFAULT_USER=${DEFAULT_USER:-diovani}
+DEFAULT_ARCH=${DEFAULT_ARCH:-x86_64}
+
 # editor
 export EDITOR=nvim
 
