@@ -1,6 +1,11 @@
 shell = "zsh -c '{}'"
 
 default-scheme = "base24-gruvbox-dark"
+default-cycle-ring = "default"
+
+[[rings]]
+name = "default"
+schemes = ["base24-gruvbox-dark", "base24-gruvbox-light"]
 
 [[items]]
 name = "tinted-shell"
