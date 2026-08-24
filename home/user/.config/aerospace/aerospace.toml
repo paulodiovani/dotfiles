@@ -107,22 +107,6 @@ cmd-enter = '''exec-and-forget osascript -e '
   tell application "Ghostty" to new window'
 '''
 
-# Dropdown terminal
-ctrl-esc = '''exec-and-forget \
-  WINID=$(aerospace list-windows --all --json | jq '.[] | select(."window-title"=="Dropdown terminal") | ."window-id"')
-  [ -n "$WINID" ] && aerospace close --window-id "$WINID" || \
-  (
-    pgrep -x alacritty > /dev/null && \
-    alacritty msg create-window \
-      --title='Dropdown terminal' \
-      -o window.position.y=0 -o window.position.x=0 \
-      -o window.dimensions.lines=35 -o window.dimensions.columns=240 || \
-    open -na /Applications/Alacritty.app --args \
-      --title='Dropdown terminal' \
-      -o window.position.y=0 -o window.position.x=0 \
-      -o window.dimensions.lines=35 -o window.dimensions.columns=240
-  )
-'''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 # cmd-slash = 'layout tiles horizontal vertical'
@@ -207,10 +191,6 @@ cmd-shift-c = 'reload-config'
 alt-shift-r = 'mode resize'
 alt-shift-semicolon = 'mode service'
 
-# Dropdown terminal
-[[on-window-detected]]
-if.window-title-regex-substring = 'Dropdown terminal'
-run = ['layout floating']
 
 [mode.resize.binding]
 left = 'resize width -50'

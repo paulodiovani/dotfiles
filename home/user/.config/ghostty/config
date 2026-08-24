@@ -2,3 +2,9 @@ font-family = Source Code Pro
 font-size = 14
 window-decoration = false
 background-opacity = 0.95
+
+# Quick terminal (dropdown)
+quick-terminal-position = top
+quick-terminal-size = 40%,100%
+quick-terminal-animation-duration = 0
+keybind = global:ctrl+escape=toggle_quick_terminal
