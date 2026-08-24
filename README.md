@@ -13,7 +13,7 @@ Mostly for `$HOME`
 
 ### All distros
 
-- alacritty
+- ghostty
 - asdf-vm
 - autojump
 - awk
@@ -59,6 +59,7 @@ tinty sync
 
 ### Arch Linux
 
+- alacritty
 - base-devel
 
 ### macOS
@@ -77,12 +78,6 @@ tinty sync
 #### Extra settings
 
 ```bash
-# remove quarantine from unsigned apps
-xattr -d com.apple.quarantine /Applications/Alacritty.app
-
-# fix font blur in Alacritty
-defaults -currentHost write -g AppleFontSmoothing -int 0
-
 # install and start autoraise with EXPERIMENTAL_FOCUS_FIRST flag
 brew tap dimentium/autoraise
 brew install autoraise --with-dexperimental_focus_first

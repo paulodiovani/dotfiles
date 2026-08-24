@@ -101,12 +101,10 @@ cmd-q = [] # Disable "close window"
 # end tell'
 # '''
 
-# Alacritty might be under quarantine
-# xattr -d com.apple.quarantine /opt/homebrew/Caskroom/alacritty/*/Alacritty.app
-# source: https://superuser.com/questions/526920/how-to-remove-quarantine-from-file-permissions-in-os-x
-cmd-enter = '''exec-and-forget pgrep -x alacritty > /dev/null && \
-  alacritty msg create-window || \
-  open -na /Applications/Alacritty.app
+# Open a new Ghostty window (reuses the existing process via AppleScript)
+# If Ghostty is not running, AppleScript will launch it.
+cmd-enter = '''exec-and-forget osascript -e '
+  tell application "Ghostty" to new window'
 '''
 
 # Dropdown terminal
