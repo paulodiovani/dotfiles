@@ -1,7 +1,8 @@
+background-opacity = 0.95
 font-family = Source Code Pro
 font-size = 14
+keybind = clear
 window-decoration = false
-background-opacity = 0.95
 
 # Quick terminal (dropdown)
 quick-terminal-position = top
