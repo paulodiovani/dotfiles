@@ -93,9 +93,9 @@ prompt_git() {
   CURRENT_BG=''
 }
 
-# Dir: current working directory
+# Dir: current working directory (truncated to 20 chars)
 prompt_dir() {
-  prompt_segment $PRIMARY_BG $PRIMARY_FG ' %F%c%f '
+  prompt_segment $PRIMARY_BG $PRIMARY_FG ' %20<..<%c%<< '
 }
 
 # Emoji to help distinguish prompts
