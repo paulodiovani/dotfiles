@@ -1,3 +1,5 @@
+local opencode_session_id = vim.fn.tempname()
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
@@ -37,6 +39,9 @@ return {
               chat_url = "/chat/completions",
               models_endpoint = "/models"
             },
+            headers = {
+              ["x-opencode-session"] = opencode_session_id,
+            },
             schema = {
               model = {
                 default = "qwen3.6-plus",
@@ -53,6 +58,9 @@ return {
               api_key = "OPENCODE_API_KEY",
               chat_url = "/chat/completions",
               models_endpoint = "/models"
+            },
+            headers = {
+              ["x-opencode-session"] = opencode_session_id,
             },
             schema = {
               model = {
