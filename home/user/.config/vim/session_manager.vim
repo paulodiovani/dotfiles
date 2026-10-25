@@ -4,7 +4,11 @@
 " :mksession<CR>
 
 function! IsCurrentSess()
-  let l:lines = readfile(getcwd() . '/Session.lock')
+  let l:lockfile = getcwd() . '/Session.lock'
+  if !filereadable(l:lockfile)
+    return 0
+  endif
+  let l:lines = readfile(l:lockfile)
   return get(l:lines, 0) == getpid()
 endfunction
 
