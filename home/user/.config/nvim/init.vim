@@ -11,6 +11,9 @@ set jumpoptions-=unload             " Do not unload buffers with bdelete
                                     " (https://github.com/neovim/neovim/pull/29347)
 set nofoldenable                    " Disable folding at startup.
 set winborder=rounded               " Use rounded borders for all windows
+set pumborder=rounded               " Use rounded borders for popup menu
+set diffopt+=indent-heuristic       " Better diff alignment
+set diffopt+=inline:word            " Word-level inline diff highlighting
 
 " Disable Netrw
 " let g:loaded_netrw = 1
