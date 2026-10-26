@@ -3,7 +3,7 @@ return {
   -- Fugitive (Git integration)
   {
     "tpope/vim-fugitive",
-    version = "~3",
+    -- version = "~3",
     lazy = false, -- always load fugitive
     dependencies = {
       "nvim-lua/plenary.nvim",

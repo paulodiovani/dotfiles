@@ -5,7 +5,6 @@ return {
   dependencies = {
     "saghen/blink.cmp",
     "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
     "paulodiovani/darkroom.nvim",
     { "ravitemer/codecompanion-history.nvim", commit = "bc1b4fe" },
   },
