@@ -17,7 +17,13 @@ return {
           show_presets = false,
         },
 
-        claude_code = vim.env.CLAUDE_CODE_OAUTH_TOKEN and "claude_code",
+        claude_code = vim.env.CODECOMPANION_CLAUDE_CODE_OAUTH_TOKEN and function()
+          return require("codecompanion.adapters").extend("claude_code", {
+            env = {
+              CLAUDE_CODE_OAUTH_TOKEN = "CODECOMPANION_CLAUDE_CODE_OAUTH_TOKEN",
+            },
+          })
+        end,
       },
 
       http = {
