@@ -122,6 +122,9 @@ return {
               enable = true,
             },
           },
+          check = {
+            command = vim.fn.executable("cargo-clippy") == 1 and "clippy" or "check",
+          },
         },
       },
     })
