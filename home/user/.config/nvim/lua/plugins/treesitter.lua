@@ -1,10 +1,13 @@
--- Neovim 0.12+ has built-in treesitter support, no external plugin needed.
--- For additional parsers: install tree-sitter-cli and run :TSInstall <lang>
+-- Neovim 0.12+ has built-in treesitter support.
+-- nvim-treesitter (main branch) installs parsers and queries: :TSInstall <lang>
+-- Requires tree-sitter-cli.
 return {
   {
-    -- Dummy spec to run treesitter setup code without installing a plugin
     "nvim-treesitter/nvim-treesitter",
-    enabled = false,
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+
     init = function()
       -- Enable treesitter highlight and fold for current filetype
       vim.api.nvim_create_autocmd('FileType', {
@@ -20,6 +23,25 @@ return {
 
       -- Register markdown parser for codecompanion buffers
       vim.treesitter.language.register("markdown", { "codecompanion" })
+    end,
+
+    config = function()
+      local treesitter = require("nvim-treesitter")
+
+      -- Install most used parsers
+      treesitter.install({
+        "bash",
+        "diff",
+        "git_rebase",
+        "gitcommit",
+        "json",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "vim",
+        "vimdoc",
+      })
     end,
   },
 }
